@@ -14,6 +14,7 @@ Welcome to Formulas and Vehicles's documentation!
    :caption: Contents:
 
    installation
+   first_steps
 
 
 
