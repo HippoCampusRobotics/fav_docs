@@ -12,4 +12,3 @@ Installation
    installation/virtual_machine
    installation/install_ros
    installation/install_firmware
-   installation/test_run
