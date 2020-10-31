@@ -43,6 +43,16 @@ Installation
 
       sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-tools
 
+#. Set up :code:`rosdep`
+
+   .. code-block:: sh
+
+      sudo rosdep init
+
+   .. code-block:: sh
+
+      rosdep update
+
 Set Up Catkin Workspace
 =======================
 
@@ -83,3 +93,40 @@ To apply this changes execute:
    source ~/.bashrc
 
 For new terminal session your catkin workspace is sourced automatically since we added the instruction to do so to the :file:`.bashrc` file.
+
+Get The First Catkin Package
+============================
+
+#. Make sure you are inside your catkin workspace:
+
+   .. code-block:: bash
+
+      cd ~/fav/catkin_ws
+
+#. Clone :file:`bluerov_sim`
+
+   .. code-block:: bash
+
+      git clone https://github.com/HippoCampusRobotics/fav_bluerov_sim.git src/bluerov_sim
+
+#. Let ROS resolve the package's dependencies
+
+   .. code-block:: bash
+
+      rosdep install --from-paths src --ignore-src -r -y
+
+#. Rebuild your workspace
+
+   .. code-block:: bash
+
+      catkin build
+
+#. Apply changes of your environment variables by either
+
+   * starting a new terminal session (remember that this means :file:`~/.bashrc` gets sourced automatically as mentioned before).
+
+   * sourcing :file:`~/.bashrc` manually by executing
+
+      .. code-block:: bash
+
+         source ~/.bashrc
