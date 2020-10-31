@@ -42,6 +42,11 @@ By now your directory structure should look like this if you followed the previo
 
       sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 
+#. Use :code:`rosdep` to resolve dependencies
+
+   .. code-block::
+
+      rosdep install --from-paths src --ignore-src -r -y
 
 
 Now your directory structure should look similiar to::
