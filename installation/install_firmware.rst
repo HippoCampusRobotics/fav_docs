@@ -1,6 +1,9 @@
 Install Firmware
 ################
 
+.. sectionauthor:: Lennart Alff <thies.lennart.alff@tuhh.de>
+
+
 .. note:: The BlueROV used in this class runs the PX4 firmware. For the class we have created a fork of the firmware, please follow the instructions to install it. Most likely you will not get in touch with any of the Firmware source code, but still you need to clone and install the corresponding repositories to complete this setup guide.
 
 Set Up The Workspace
@@ -116,6 +119,14 @@ At this point you can check that your setup is functional by launching the simul
 .. code-block:: bash
 
    roslaunch px4 mavros_posix_sitl.launch vehicle:=uuv_bluerov2_heavy world:=~/fav/fav_PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
+
+After a few seconds something similiar to the following screenshot should appear:
+
+.. image:: /res/images/px4_test_screenshot.png
+
+You can quit the program by hitting :kbd:`Ctrl` + :kbd:`C` in the terminal you have started it. It will take a few seconds to stop all the running processes.
+
+.. note:: Closing the Gazebo GUI will **only** close the Gazebo GUI. All the other started processes will continue running. So please use the above mentioned shortcut to kill them.
 
 
 
