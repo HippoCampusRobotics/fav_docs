@@ -36,6 +36,14 @@ By now your directory structure should look like this if you followed the previo
 
       git clone https://github.com/HippoCampusRobotics/fav_mavros.git ~/fav/catkin_ws/src/mavros
 
+#. Install GeographicLib dataset
+
+   .. code-block:: bash
+
+      sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
+
+
+
 Now your directory structure should look similiar to::
 
    ~/fav
