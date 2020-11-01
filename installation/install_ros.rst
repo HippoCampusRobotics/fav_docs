@@ -9,10 +9,11 @@ The `ROS Wiki <http://wiki.ros.org/melodic/Installation/Ubuntu>`_ provides a com
 
    Since Ubuntu 18.04 Canonical decided it was a good idea to have unattended updates running in the background. This might lead to error messages similiar to:
 
-      .. code-block:: sh
+   .. code-block:: sh
 
-         E: Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
-         E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+      E: Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
+      E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+   
    If you encounter them after running anything related to :code:`apt`: no worries. Just wait until the backgroud updates are finished.
 
 Preparation
