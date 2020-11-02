@@ -9,6 +9,7 @@ Installation
 .. toctree::
    :maxdepth: 1
 
+   installation/install_ubuntu
    installation/virtual_machine
    installation/install_ros
    installation/install_firmware

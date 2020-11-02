@@ -36,17 +36,17 @@ By now your directory structure should look like this if you followed the previo
 
       git clone https://github.com/HippoCampusRobotics/fav_mavros.git ~/fav/catkin_ws/src/mavros
 
+#. Use :code:`rosdep` to resolve dependencies
+
+   .. code-block::
+
+      cd ~/fav/catkin_ws && rosdep install --from-paths src --ignore-src -r -y
+
 #. Install GeographicLib dataset
 
    .. code-block:: bash
 
       sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
-
-#. Use :code:`rosdep` to resolve dependencies
-
-   .. code-block::
-
-      rosdep install --from-paths src --ignore-src -r -y
 
 
 Now your directory structure should look similiar to::
