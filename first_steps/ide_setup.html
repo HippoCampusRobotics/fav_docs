@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IDE Setup &mdash; Formulas and Vehicles  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Start The Simulation" href="start_the_simulation.html" />
+    <link rel="prev" title="First Steps" href="../first_steps.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Formulas and Vehicles
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../first_steps.html">First Steps</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IDE Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vs-code-project-configuration">VS Code Project Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-the-catkin-workspace">Open The Catkin Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-hints">Useful Hints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#integrated-terminal">Integrated Terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start_the_simulation.html">Start The Simulation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../first_steps.html">First Steps</a> &raquo;</li>
+        
+      <li>IDE Setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/master/first_steps/ide_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ide-setup">
+<h1>IDE Setup<a class="headerlink" href="#ide-setup" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: Lennart Alff &lt;<a class="reference external" href="mailto:thies&#46;lennart&#46;alff&#37;&#52;&#48;tuhh&#46;de">thies<span>&#46;</span>lennart<span>&#46;</span>alff<span>&#64;</span>tuhh<span>&#46;</span>de</a>&gt;</em></p>
+<p>For this class we recommend Visual Studio Code. Of course you can use any IDE you like and that works for you. The <a class="reference external" href="http://wiki.ros.org/IDEs">ROS Wiki</a> lists several options how to use IDEs with ROS.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Ubuntu has <code class="code docutils literal notranslate"><span class="pre">snap</span></code> preinstalled so probably the easiest way to install VS Code is to execute</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo snap install --classic code-insiders
+</pre></div>
+</div>
+<p>For more detailed instructions and alternative installation options see the <a class="reference external" href="https://code.visualstudio.com/docs/setup/linux">VS Code Documentation</a>.</p>
+</div>
+<div class="section" id="vs-code-project-configuration">
+<h2>VS Code Project Configuration<a class="headerlink" href="#vs-code-project-configuration" title="Permalink to this headline">¶</a></h2>
+<p>If you open a folder with VS Code you can have project specific settings stored in a <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory. The basic configuration files are the <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> and the <code class="file docutils literal notranslate"><span class="pre">extensions.json</span></code>. There might be some other fies present in a <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory depending on the extensions installed.</p>
+<p>We provide a basic version of both the above mentioned files.</p>
+<ol class="arabic">
+<li><p>Create the <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir ~/fav/catkin_ws/.vscode <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/fav/catkin_ws/.vscode
+</pre></div>
+</div>
+</li>
+<li><p>Get the files</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>wget https://gist.githubusercontent.com/lennartalff/d530ffca7affc6340a4d58c360548d5d/raw/c186a94331f4d70ed9af54ecd4e5a4bfeb9fc07e/extensions.json
+wget https://gist.githubusercontent.com/lennartalff/d530ffca7affc6340a4d58c360548d5d/raw/c186a94331f4d70ed9af54ecd4e5a4bfeb9fc07e/settings.json
+</pre></div>
+</div>
+</li>
+</ol>
+<p>These files contain the following content:</p>
+<script src="https://gist.github.com/lennartalff/d530ffca7affc6340a4d58c360548d5d.js"></script></div>
+<div class="section" id="open-the-catkin-workspace">
+<h2>Open The Catkin Workspace<a class="headerlink" href="#open-the-catkin-workspace" title="Permalink to this headline">¶</a></h2>
+<p>Open the <code class="file docutils literal notranslate"><span class="pre">~/fav/catkin_ws</span></code> directory in VS Code:</p>
+<img alt="../_images/vscode_open_folder.png" src="../_images/vscode_open_folder.png" />
+<p>If you followed the instructions in the previous section and created the <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory and put the <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> and :file::<cite>extensions.json</cite> into it, you probably get a message prompt informing you that there are extension recommendations. These recommendations are based on the <code class="file docutils literal notranslate"><span class="pre">extensions.json</span></code>. Install the extensions:</p>
+<img alt="../_images/vscode_recommended_extensions.png" src="../_images/vscode_recommended_extensions.png" />
+<p>If you did not get the prompt you can install the recommendations by switching to the extensions tab, enter <code class="code docutils literal notranslate"><span class="pre">&#64;recommended</span></code> and hit the cloud icon in the <strong>WORKSPACE RECOMMENDATIONS</strong> section:</p>
+<img alt="../_images/vscode_install_recommended.png" src="../_images/vscode_install_recommended.png" />
+<p>Most likely you will be asked to reload the window to apply the changes. You can also manually reload the window with <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">P</kbd> and enter <code class="code docutils literal notranslate"><span class="pre">reload</span></code>:</p>
+<img alt="../_images/vscode_reload_window.png" src="../_images/vscode_reload_window.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes it might not be enough to reload the window. So if you want to be super safe just restart VS Code completly.</p>
+</div>
+</div>
+<div class="section" id="useful-hints">
+<h2>Useful Hints<a class="headerlink" href="#useful-hints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="integrated-terminal">
+<h3>Integrated Terminal<a class="headerlink" href="#integrated-terminal" title="Permalink to this headline">¶</a></h3>
+<p>If the integrated terminal of VS Code is not visible by default you can activate it by <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">´</kbd> or via the menu bar:</p>
+<img alt="../_images/vscode_view_terminal.png" src="../_images/vscode_view_terminal.png" />
+<p>The integrated terminal has two tabs that are probably of most interest for you:</p>
+<ul class="simple">
+<li><p>The <strong>TERMINAL</strong> tab with the terminal itself, which is as you would expect a quite ordinary terminal. You can open new terminals by clicking the plus symbol and switch between the terminal via the dropdown menu. Or you can split the terminal to have multiple terminals next to each other.</p></li>
+<li><p>The <strong>PROBLEMS</strong> tab in which problems concerning your open source code are shown.</p></li>
+</ul>
+<img alt="../_images/vscode_terminal_problems.png" src="../_images/vscode_terminal_problems.png" />
+<p>In the <strong>PROBLEMS</strong> tab you can apply a filter to only show problems for the currently active files. The following image shows problems of several kinds. For example a syntax error due to a missing colon in line 11 or a rather cosmetic problem in line 62 that exceeds the specified line length of 80 characters.</p>
+<img alt="../_images/vscode_problems_tab.png" src="../_images/vscode_problems_tab.png" />
+</div>
+<div class="section" id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Permalink to this headline">¶</a></h3>
+<p>There are tools out there to help you keep your code neat and clean, called formatters. In the provided <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> file a formatter has been already selected. To apply formatting on your currently active file hit <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">I</kbd>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Formatting can only be applied if your code is sintactically correct.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="start_the_simulation.html" class="btn btn-neutral float-right" title="Start The Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../first_steps.html" class="btn btn-neutral float-left" title="First Steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

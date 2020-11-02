@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Install Firmware &mdash; Formulas and Vehicles  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="First Steps" href="../first_steps.html" />
+    <link rel="prev" title="Install ROS" href="install_ros.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Formulas and Vehicles
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install Firmware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-the-workspace">Set Up The Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-catkin-workspace">Build The Catkin Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-px4-firmware">Build The PX4 Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-environment-variables">Configure Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-your-setup">Test Your Setup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../first_steps.html">First Steps</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../installation.html">Installation</a> &raquo;</li>
+        
+      <li>Install Firmware</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/master/installation/install_firmware.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install-firmware">
+<h1>Install Firmware<a class="headerlink" href="#install-firmware" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: Lennart Alff &lt;<a class="reference external" href="mailto:thies&#46;lennart&#46;alff&#37;&#52;&#48;tuhh&#46;de">thies<span>&#46;</span>lennart<span>&#46;</span>alff<span>&#64;</span>tuhh<span>&#46;</span>de</a>&gt;</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The BlueROV used in this class runs the PX4 firmware. For the class we have created a fork of the firmware, please follow the instructions to install it. Most likely you will not get in touch with any of the Firmware source code, but still you need to clone and install the corresponding repositories to complete this setup guide.</p>
+</div>
+<div class="section" id="set-up-the-workspace">
+<h2>Set Up The Workspace<a class="headerlink" href="#set-up-the-workspace" title="Permalink to this headline">¶</a></h2>
+<p>By now your directory structure should look like this if you followed the previous ROS installation section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/fav
+└── catkin_ws
+    ├── build
+    ├── devel
+    ├── logs
+    └── src
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p>Clone the Firmware</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav <span class="o">&amp;&amp;</span> git clone --recursive https://github.com/HippoCampusRobotics/fav_PX4-Autopilot.git
+</pre></div>
+</div>
+</li>
+<li><p>Clone MAVLink</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/HippoCampusRobotics/fav_mavlink.git ~/fav/catkin_ws/src/mavlink
+</pre></div>
+</div>
+</li>
+<li><p>Clone mavros</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/HippoCampusRobotics/fav_mavros.git ~/fav/catkin_ws/src/mavros
+</pre></div>
+</div>
+</li>
+<li><p>Use <code class="code docutils literal notranslate"><span class="pre">rosdep</span></code> to resolve dependencies</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">fav</span><span class="o">/</span><span class="n">catkin_ws</span> <span class="o">&amp;&amp;</span> <span class="n">rosdep</span> <span class="n">install</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">paths</span> <span class="n">src</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">src</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install GeographicLib dataset</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Now your directory structure should look similiar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/fav
+├── catkin_ws
+│   ├── build
+│   ├── devel
+│   ├── logs
+│   └── src
+│       ├── mavlink
+│       └── mavros
+└── fav_PX4-Autopilot
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-the-catkin-workspace">
+<h2>Build The Catkin Workspace<a class="headerlink" href="#build-the-catkin-workspace" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">catkin_ws</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/catkin_ws
+</pre></div>
+</div>
+</li>
+<li><p>Build the code</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin build
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="build-the-px4-firmware">
+<h2>Build The PX4 Firmware<a class="headerlink" href="#build-the-px4-firmware" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">fav_PX4-Autopilot</span></code> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/fav_PX4-Autopilot
+</pre></div>
+</div>
+</li>
+<li><p>Set up dependencies</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash ./Tools/setup/ubuntu.sh --no-nuttx
+</pre></div>
+</div>
+</li>
+<li><p>Build the code</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DONT_RUN</span><span class="o">=</span><span class="m">1</span> make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases the <code class="code docutils literal notranslate"><span class="pre">make</span></code> command might fail with an internal compiler error. This happens if the build process needs more RAM than is available. Just repeat the build command a few times.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="configure-environment-variables">
+<h2>Configure Environment Variables<a class="headerlink" href="#configure-environment-variables" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">fav</span></code> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav
+</pre></div>
+</div>
+</li>
+<li><p>Edit your <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code> by executing the following commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;source </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/catkin_ws/devel/setup.bash&quot;</span> &gt;&gt; ~/.bashrc
+
+<span class="nb">echo</span> <span class="s2">&quot;source </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot/Tools/setup_gazebo.bash </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot/build/px4_sitl_default &gt; /dev/null&quot;</span> &gt;&gt; ~/.bashrc
+
+<span class="nb">echo</span> <span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot&quot;</span> &gt;&gt; ~/.bashrc
+
+<span class="nb">echo</span> <span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot/Tools/sitl_gazebo&quot;</span> &gt;&gt; ~/.bashrc
+</pre></div>
+</div>
+</li>
+<li><p>Apply the changes of <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="test-your-setup">
+<h2>Test Your Setup<a class="headerlink" href="#test-your-setup" title="Permalink to this headline">¶</a></h2>
+<p>At this point you can check that your setup is functional by launching the simulation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch px4 mavros_posix_sitl.launch vehicle:<span class="o">=</span>uuv_bluerov2_heavy world:<span class="o">=</span>~/fav/fav_PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
+</pre></div>
+</div>
+<p>After a few seconds something similiar to the following screenshot should appear:</p>
+<img alt="../_images/px4_test_screenshot.png" src="../_images/px4_test_screenshot.png" />
+<p>You can quit the program by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal you have started it. It will take a few seconds to stop all the running processes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Closing the Gazebo GUI will <strong>only</strong> close the Gazebo GUI. All the other started processes will continue running. So please use the above mentioned shortcut to kill them.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../first_steps.html" class="btn btn-neutral float-right" title="First Steps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install_ros.html" class="btn btn-neutral float-left" title="Install ROS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
