@@ -27,7 +27,7 @@ We provide a basic version of both the above mentioned files.
 
    .. code-block:: sh
 
-      mkdir ~/fav/catkin_ws/.vscode & cd ~/fav/catkin_ws/.vscode
+      mkdir ~/fav/catkin_ws/.vscode && cd ~/fav/catkin_ws/.vscode
 
 
 #. Get the files

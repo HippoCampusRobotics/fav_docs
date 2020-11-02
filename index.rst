@@ -12,7 +12,8 @@ Welcome to Formulas and Vehicles's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
+   linux_terminal
    installation
    first_steps
 

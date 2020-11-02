@@ -95,7 +95,9 @@ Build The PX4 Firmware
 
    .. code-block:: bash
 
-      DONT_RUN=1 make px4_sitl gazebo_uuv_bluerov2_heavy
+      DONT_RUN=1 make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
+
+   .. note:: In some cases the :code:`make` command might fail with an internal compiler error. This happens if the build process needs more RAM than is available. Just repeat the build command a few times.
 
 Configure Environment Variables
 ===============================
@@ -112,7 +114,7 @@ Configure Environment Variables
 
       echo "source $(pwd)/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
-      echo "source $(pwd)/fav_PX4-Autopilot/Tools/setup_gazebo.bash $(pwd)/fav_PX4-Autopilot $(pwd)/fav_PX4-Autopilot/build/px4_sitl_default" >> ~/.bashrc
+      echo "source $(pwd)/fav_PX4-Autopilot/Tools/setup_gazebo.bash $(pwd)/fav_PX4-Autopilot $(pwd)/fav_PX4-Autopilot/build/px4_sitl_default > /dev/null" >> ~/.bashrc
 
       echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/fav_PX4-Autopilot" >> ~/.bashrc
 
