@@ -167,8 +167,8 @@
 <p><em>Section author: Lennart Alff &lt;<a class="reference external" href="mailto:thies&#46;lennart&#46;alff&#37;&#52;&#48;tuhh&#46;de">thies<span>&#46;</span>lennart<span>&#46;</span>alff<span>&#64;</span>tuhh<span>&#46;</span>de</a>&gt;</em></p>
 <p>Now that we have everything prepared, i.e.:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../installation/install_ros.html#install-ros"><span class="std std-ref">installation of ROS</span></a></p></li>
-<li><p><a class="reference internal" href="../installation/install_firmware.html#install-firmware"><span class="std std-ref">installation of PX4</span></a></p></li>
+<li><p><a class="reference internal" href="../installation/install_ros.html#install-ros"><span class="std std-ref">Installation of ROS</span></a></p></li>
+<li><p><a class="reference internal" href="../installation/install_firmware.html#install-firmware"><span class="std std-ref">Installation of PX4</span></a></p></li>
 </ul>
 <p>we can eventually start to work with ROS and the Gazebo simulator.</p>
 <p>At the time being there are 3 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">bluerov_sim</span></code> package.</p>
@@ -181,14 +181,14 @@
 </dd>
 </dl>
 <p>To test that everything is set up correctly open two terminals (for example by using the integrated terminal in VS Code and hitting the <strong>split terminal</strong> button.</p>
-<p>In the first terminal enter:</p>
+<p>In the first terminal, enter:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch bluerov_sim gazebo_base.launch
 </pre></div>
 </div>
 <p>This should launch Gazebo. Wait until an empty world is visible.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In some rare cases the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which started Gazebo and try again.</p>
+<p>In some rare cases the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you started Gazebo and try again.</p>
 </div>
 <p>In the second enter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">bluerov_sim</span> <span class="n">spawn_vehicle</span><span class="o">.</span><span class="n">launch</span>
