@@ -1,5 +1,5 @@
 Install ROS
-##############
+###########
 
 .. sectionauthor:: Lennart Alff <thies.lennart.alff@tuhh.de>
 

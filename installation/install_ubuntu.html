@@ -86,7 +86,15 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../linux_terminal.html">Linux Terminal</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Installation</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Install Ubuntu</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install Ubuntu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-your-disk-partition">Prepare Your Disk Partition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-bootable-usb-stick">Create A Bootable USB stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-fast-startup">Disable Fast Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-secure-boot">Disable Secure Boot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-from-ubuntu-usb-stick">Boot From Ubuntu USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-installation-wizard">Start The Installation Wizard</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_firmware.html">Install Firmware</a></li>
@@ -164,6 +172,7 @@
             
   <div class="section" id="install-ubuntu">
 <h1>Install Ubuntu<a class="headerlink" href="#install-ubuntu" title="Permalink to this headline">¶</a></h1>
+<p>This section should guide you through the process of installing Ubuntu alongisde Windows on your machine. If you prefer to install Ubuntu inside a Virtual Machine, you can skip this section and continue with <a class="reference internal" href="virtual_machine.html#virtual-machine"><span class="std std-ref">Virtual Machine</span></a>.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Since we are going to install a new/second operating system on your device, that might be a good opportunity to create a backup just in case anything goes really wrong! We are not responsible for any damage or loss of data that might result from any of the following instructions.</p>
@@ -172,6 +181,8 @@
 <p class="admonition-title">Note</p>
 <p>For those of you who have their windows encrypted with bitlocker you might have to enter your bitlocker key the next time you boot windows after you have installed Ubuntu. You should save your bitlocker key (you can find it <a class="reference external" href="https://account.microsoft.com/devices/">here</a>). Alternatively you can turn off bitlocker encryption.</p>
 </div>
+<div class="section" id="prepare-your-disk-partition">
+<h2>Prepare Your Disk Partition<a class="headerlink" href="#prepare-your-disk-partition" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Resize your Windows partition. Hit <kbd class="kbd docutils literal notranslate">Win</kbd> + <kbd class="kbd docutils literal notranslate">R</kbd> and enter <code class="code docutils literal notranslate"><span class="pre">diskmgmt.msg</span></code> and click <strong>OK</strong></p>
 <img alt="../_images/windows_execute.png" src="../_images/windows_execute.png" />
@@ -183,6 +194,11 @@
 <li><p>The result could look similiar to this:</p>
 <img alt="../_images/windows_disk_manager_result.png" src="../_images/windows_disk_manager_result.png" />
 </li>
+</ol>
+</div>
+<div class="section" id="create-a-bootable-usb-stick">
+<h2>Create A Bootable USB stick<a class="headerlink" href="#create-a-bootable-usb-stick" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
 <li><p>Download <a class="reference external" href="https://releases.ubuntu.com/18.04/">Ubuntu 18.04 Desktop</a> from the offical Website.</p></li>
 <li><p>Download <a class="reference external" href="https://www.balena.io/etcher/">Etcher</a>.</p></li>
 <li><p>Insert an USB stick with at least 4GB of memory.</p></li>
@@ -191,18 +207,43 @@
 </li>
 <li><p>Make sure you <strong>really</strong> selected the correct target. Otherwise all your data on the wrongly selected target might get deleted.</p></li>
 <li><p>Click <strong>Flash!</strong>.</p></li>
+</ol>
+</div>
+<div class="section" id="disable-fast-startup">
+<h2>Disable Fast Startup<a class="headerlink" href="#disable-fast-startup" title="Permalink to this headline">¶</a></h2>
+<p>If you want to access your Windows partition from inside Ubuntu, you need to disable Windows’ Fast Startup. Follow <a class="reference external" href="https://help.uaudio.com/hc/en-us/articles/213195423-How-To-Disable-Fast-Startup-in-Windows-10">these instructions</a>, if you want to do so.</p>
+</div>
+<div class="section" id="disable-secure-boot">
+<h2>Disable Secure Boot<a class="headerlink" href="#disable-secure-boot" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
 <li><p>Reboot your system after flashing is done and enter your BIOS/UEFI. During Bootup. To do so you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit <kbd class="kbd docutils literal notranslate">F12</kbd> during the DELL splashscreen. For Lenovo it is <kbd class="kbd docutils literal notranslate">Enter</kbd>. This opens a dialog where you can choose to enter your BIOS settings.</p></li>
-<li><p>Find the settings to disable Fast Startup (if available) and Secure Boot.</p></li>
-<li><p>Save your changes, reboot and select the medium you want to boot from during the splashscreen (again <kbd class="kbd docutils literal notranslate">F12</kbd> for Dell or <kbd class="kbd docutils literal notranslate">Enter</kbd> for Lenovo). Now you want to boot from the Ubuntu USB drive.</p></li>
+<li><p>Find the settings to disable Secure Boot, save your changes and exit the BIOS/UEFI.</p></li>
+</ol>
+</div>
+<div class="section" id="boot-from-ubuntu-usb-stick">
+<h2>Boot From Ubuntu USB Stick<a class="headerlink" href="#boot-from-ubuntu-usb-stick" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Reboot and select the medium you want to boot from during the splashscreen (again <kbd class="kbd docutils literal notranslate">F12</kbd> for Dell or <kbd class="kbd docutils literal notranslate">Enter</kbd> for Lenovo). Now you want to boot from the Ubuntu USB stick.</p></li>
 <li><p>Choose <code class="code docutils literal notranslate"><span class="pre">Try</span> <span class="pre">Ubuntu</span> <span class="pre">without</span> <span class="pre">installing</span></code>. This will boot Ubuntu from the USB stick.</p></li>
+</ol>
+</div>
+<div class="section" id="start-the-installation-wizard">
+<h2>Start The Installation Wizard<a class="headerlink" href="#start-the-installation-wizard" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
 <li><p>On the desktop there will be an icon for installing Ubuntu. Double click it to launch the installation wizard.</p></li>
 <li><p>Choose the option to install additional drivers. It is also a good idea to connect to a nearby WiFi or Ethernet.</p>
 <img alt="../_images/ubuntu_additional_drivers.png" src="../_images/ubuntu_additional_drivers.png" />
 </li>
 <li><p>In the last step of the installation the wizard asks you if you want to install Ubuntu alongside windows because it detects your windows installation and the free disk space we created before. Chose this option and click <strong>Install Now</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <strong>NOT</strong> choose the <strong>Erase disk and install Ubuntu</strong> option! This will delete your Windows installation!</p>
+</div>
 <img alt="../_images/ubuntu_alongside.png" src="../_images/ubuntu_alongside.png" />
 </li>
+<li><p>Reboot.</p></li>
 </ol>
+</div>
 </div>
 
 

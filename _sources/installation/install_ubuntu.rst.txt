@@ -1,9 +1,15 @@
 Install Ubuntu
 ##############
 
+This section should guide you through the process of installing Ubuntu alongisde Windows on your machine. If you prefer to install Ubuntu inside a Virtual Machine, you can skip this section and continue with :ref:`installation/virtual_machine:Virtual Machine`.
+
 .. attention:: Since we are going to install a new/second operating system on your device, that might be a good opportunity to create a backup just in case anything goes really wrong! We are not responsible for any damage or loss of data that might result from any of the following instructions.
 
 .. note:: For those of you who have their windows encrypted with bitlocker you might have to enter your bitlocker key the next time you boot windows after you have installed Ubuntu. You should save your bitlocker key (you can find it `here <https://account.microsoft.com/devices/>`_). Alternatively you can turn off bitlocker encryption.
+
+Prepare Your Disk Partition
+===========================
+
 
 #. Resize your Windows partition. Hit :kbd:`Win` + :kbd:`R` and enter :code:`diskmgmt.msg` and click **OK**
 
@@ -19,6 +25,9 @@ Install Ubuntu
 
    .. image:: /res/images/windows_disk_manager_result.png
 
+Create A Bootable USB stick
+===========================
+
 #. Download `Ubuntu 18.04 Desktop <https://releases.ubuntu.com/18.04/>`_ from the offical Website.
 
 #. Download `Etcher <https://www.balena.io/etcher/>`_. 
@@ -33,13 +42,27 @@ Install Ubuntu
 
 #. Click **Flash!**.
 
+Disable Fast Startup
+====================
+
+If you want to access your Windows partition from inside Ubuntu, you need to disable Windows' Fast Startup. Follow `these instructions <https://help.uaudio.com/hc/en-us/articles/213195423-How-To-Disable-Fast-Startup-in-Windows-10>`_, if you want to do so. 
+
+Disable Secure Boot
+===================
+
 #. Reboot your system after flashing is done and enter your BIOS/UEFI. During Bootup. To do so you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit :kbd:`F12` during the DELL splashscreen. For Lenovo it is :kbd:`Enter`. This opens a dialog where you can choose to enter your BIOS settings.
 
-#. Find the settings to disable Fast Startup (if available) and Secure Boot.
+#. Find the settings to disable Secure Boot, save your changes and exit the BIOS/UEFI.
 
-#. Save your changes, reboot and select the medium you want to boot from during the splashscreen (again :kbd:`F12` for Dell or :kbd:`Enter` for Lenovo). Now you want to boot from the Ubuntu USB drive.
+Boot From Ubuntu USB Stick
+==========================
+
+#. Reboot and select the medium you want to boot from during the splashscreen (again :kbd:`F12` for Dell or :kbd:`Enter` for Lenovo). Now you want to boot from the Ubuntu USB stick.
 
 #. Choose :code:`Try Ubuntu without installing`. This will boot Ubuntu from the USB stick.
+
+Start The Installation Wizard
+=============================
 
 #. On the desktop there will be an icon for installing Ubuntu. Double click it to launch the installation wizard.
 
@@ -49,7 +72,11 @@ Install Ubuntu
 
 #. In the last step of the installation the wizard asks you if you want to install Ubuntu alongside windows because it detects your windows installation and the free disk space we created before. Chose this option and click **Install Now**.
 
+   .. warning:: Do **NOT** choose the **Erase disk and install Ubuntu** option! This will delete your Windows installation!
+
    .. image:: /res/images/ubuntu_alongside.png
+
+#. Reboot.
 
 
 

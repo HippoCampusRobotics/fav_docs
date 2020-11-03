@@ -87,7 +87,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../linux_terminal.html">Linux Terminal</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Installation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Virtual Machine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Virtual Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_firmware.html">Install Firmware</a></li>
 </ul>
@@ -168,9 +171,15 @@
 <p class="admonition-title">Attention</p>
 <p>Skip this section if you do <strong>not</strong> want to use a virtual machine but you have installed Ubuntu directly on your computer (<strong>recommended</strong>). Continue with the <a class="reference internal" href="install_ros.html#install-ros"><span class="std std-ref">installation of ROS</span></a>.</p>
 </div>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>Fill this section.</p>
+<p>For instructions on how to install Ubuntu in a Virtual Machine please use your preferred search engine to find one of the many tutorials out there.</p>
+<p>For performance reasons we recommend to run Ubuntu alongside Windows as Dual Boot as described in the <a class="reference internal" href="install_ubuntu.html#install-ubuntu"><span class="std std-ref">Install Ubuntu</span></a> section.</p>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>If you can not launch the <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> command after you have installed <code class="code docutils literal notranslate"><span class="pre">ros-melodic-desktop-full</span></code> in the section <a class="reference internal" href="install_ros.html#install-ros"><span class="std std-ref">Install ROS</span></a> please execute the command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;export SVGA_VGPU10=0&quot;</span> &gt;&gt; ~/.profile
+</pre></div>
+</div>
+<p>and restart your Virtual Machine.</p>
 </div>
 </div>
 
