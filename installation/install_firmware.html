@@ -213,6 +213,11 @@
 </pre></div>
 </div>
 </li>
+<li><p>Install <code class="code docutils literal notranslate"><span class="pre">xmlstarlet</span></code> and <code class="code docutils literal notranslate"><span class="pre">python-pip</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install xmlstarlet python-pip
+</pre></div>
+</div>
+</li>
 </ol>
 <p>Now your directory structure should look similiar to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/fav
@@ -294,6 +299,13 @@
 </div>
 <div class="section" id="test-your-setup">
 <h2>Test Your Setup<a class="headerlink" href="#test-your-setup" title="Permalink to this headline">¶</a></h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Make sure all packages are upgraded by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+</div>
 <p>At this point you can check that your setup is functional by launching the simulation:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch px4 mavros_posix_sitl.launch vehicle:<span class="o">=</span>uuv_bluerov2_heavy world:<span class="o">=</span>~/fav/fav_PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
 </pre></div>
