@@ -20,14 +20,14 @@ copy
    :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`C`
 
 paste
-   :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`B`
+   :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`V`
 
 Autocompletion
 ==============
 
 If you start to enter commands you can hit :kbd:`Tab` to trigger automatic completion. If there are multiple possibilities, you need to hit :kbd:`Tab` a second time to show you the options.
 
-Realy useful. Use it. Believe me. It's awesome.
+Really useful. Use it. Believe me. It's awesome.
 
 Quit Running Commands/Programs
 ==============================
