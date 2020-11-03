@@ -48,6 +48,12 @@ By now your directory structure should look like this if you followed the previo
 
       sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 
+#. Install :code:`xmlstarlet` and :code:`python-pip`
+
+   .. code-block:: bash
+
+      sudo apt install xmlstarlet python-pip
+
 
 Now your directory structure should look similiar to::
 
@@ -128,6 +134,13 @@ Configure Environment Variables
 
 Test Your Setup
 ===============
+
+.. attention:: 
+   Make sure all packages are upgraded by running
+
+   .. code-block::
+
+      sudo apt update && sudo apt upgrade
 
 At this point you can check that your setup is functional by launching the simulation:
 
