@@ -3,7 +3,7 @@ Install Ubuntu
 
 This section should guide you through the process of installing Ubuntu alongisde Windows on your machine. If you prefer to install Ubuntu inside a Virtual Machine, you can skip this section and continue with :ref:`installation/virtual_machine:Virtual Machine`.
 
-.. attention:: Since we are going to install a new/second operating system on your device, that might be a good opportunity to create a backup just in case anything goes really wrong! We are not responsible for any damage or loss of data that might result from any of the following instructions.
+.. attention:: Since we are going to install a new/second operating system on your device, that might be a good opportunity to create a backup just in case anything goes wrong! We are not responsible for any damage or loss of data that might result from any of the following instructions.
 
 .. note:: For those of you who have their windows encrypted with bitlocker you might have to enter your bitlocker key the next time you boot windows after you have installed Ubuntu. You should save your bitlocker key (you can find it `here <https://account.microsoft.com/devices/>`_). Alternatively you can turn off bitlocker encryption.
 
@@ -50,7 +50,7 @@ If you want to access your Windows partition from inside Ubuntu, you need to dis
 Disable Secure Boot
 ===================
 
-#. Reboot your system after flashing is done and enter your BIOS/UEFI. During Bootup. To do so you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit :kbd:`F12` during the DELL splashscreen. For Lenovo it is :kbd:`Enter`. This opens a dialog where you can choose to enter your BIOS settings.
+#. Reboot your system after flashing is done and enter your BIOS/UEFI during Bootup. To do so, you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit :kbd:`F12` during the DELL splashscreen. For Lenovo it is :kbd:`Enter`. This opens a dialog where you can choose to enter your BIOS settings.
 
 #. Find the settings to disable Secure Boot, save your changes and exit the BIOS/UEFI.
 
@@ -70,7 +70,7 @@ Start The Installation Wizard
 
    .. image:: /res/images/ubuntu_additional_drivers.png
 
-#. In the last step of the installation the wizard asks you if you want to install Ubuntu alongside windows because it detects your windows installation and the free disk space we created before. Chose this option and click **Install Now**.
+#. In the last step of the installation, the wizard asks you if you want to install Ubuntu alongside windows because it detects your windows installation and the free disk space we created before. Choose this option and click **Install Now**.
 
    .. warning:: Do **NOT** choose the **Erase disk and install Ubuntu** option! This will delete your Windows installation!
 
