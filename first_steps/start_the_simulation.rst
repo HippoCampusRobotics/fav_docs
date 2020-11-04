@@ -5,9 +5,9 @@ Start The Simulation
 
 Now that we have everything prepared, i.e.:
 
-* :ref:`installation of ROS<installation/install_ros:Install ROS>` 
+* :ref:`Installation of ROS<installation/install_ros:Install ROS>` 
 
-* :ref:`installation of PX4 <installation/install_firmware:Install Firmware>`
+* :ref:`Installation of PX4 <installation/install_firmware:Install Firmware>`
 
 we can eventually start to work with ROS and the Gazebo simulator.
 
@@ -24,7 +24,7 @@ keyboard_control.launch
 
 To test that everything is set up correctly open two terminals (for example by using the integrated terminal in VS Code and hitting the **split terminal** button.
 
-In the first terminal enter:
+In the first terminal, enter:
 
 .. code-block:: sh
 
@@ -32,7 +32,7 @@ In the first terminal enter:
 
 This should launch Gazebo. Wait until an empty world is visible.
 
-.. note:: In some rare cases the Gazebo window will stay black. If this is the case, quit by hitting :kbd:`Ctrl` + :kbd:`C` in the terminal in which started Gazebo and try again.
+.. note:: In some rare cases the Gazebo window will stay black. If this is the case, quit by hitting :kbd:`Ctrl` + :kbd:`C` in the terminal in which you started Gazebo and try again.
 
 In the second enter:
 

@@ -7,7 +7,7 @@ The `ROS Wiki <http://wiki.ros.org/melodic/Installation/Ubuntu>`_ provides a com
 
 .. attention:: 
 
-   Since Ubuntu 18.04 Canonical decided it was a good idea to have unattended updates running in the background. This might lead to error messages similiar to:
+   Since Ubuntu 18.04, Canonical decided it was a good idea to have unattended updates running in the background. This might lead to error messages similiar to:
 
    .. code-block:: sh
 
@@ -98,13 +98,13 @@ Set Up Catkin Workspace
 
       catkin build
 
-To automatically source your catkin workspace execute the following command:
+To automatically source your catkin workspace, execute the following command:
 
 .. code-block:: sh
 
    echo 'source $HOME/fav/catkin_ws/devel/setup.bash' >> ~/.bashrc
 
-To apply this changes execute:
+To apply these changes, execute:
 
 .. code-block:: sh
 
