@@ -39,6 +39,11 @@ Entering Passwords
 
 If you execute commands with :code:`sudo` to gain root privileges, you will be asked to enter your password. Do **not** worry, if no characters appear while you are entering it. That is quite normal. Just enter it and hit :kbd:`Enter`.
 
+Use The History
+===============
+
+By pressing the up/down arrow keys, you can navigate through your recently entered commands. Or you can search your command history by using the shortcut :kbd:`Ctrl` + :kbd:`R` to search in your command history.
+
 Further Readings
 ================
 
