@@ -72,7 +72,7 @@ A/D:
 Up/Down:
    Move upwards/downwards.
 
-Left/Right:
+Q/E:
    Turn left/right.
 
 With the number keys you can decrease/increase the speed of movements.
