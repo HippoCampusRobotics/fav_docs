@@ -146,7 +146,7 @@ At this point you can check that your setup is functional by launching the simul
 
 .. code-block:: bash
 
-   roslaunch px4 mavros_posix_sitl.launch vehicle:=uuv_bluerov2_heavy world:=~/fav/fav_PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
+   roslaunch px4 mavros_posix_sitl.launch vehicle:=uuv_bluerov2_heavy world:=$HOME/fav/fav_PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
 
 After a few seconds something similiar to the following screenshot should appear:
 
