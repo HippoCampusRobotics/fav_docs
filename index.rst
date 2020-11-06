@@ -16,6 +16,7 @@ Welcome to Formulas and Vehicles's documentation!
    linux_terminal
    installation
    first_steps
+   getting_started
 
 
 
