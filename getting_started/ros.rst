@@ -145,7 +145,7 @@ If you want to run a Python programm, normally you would use a command like :cod
 
 The general usage of the :code:`rosrun` command is :code:`rosrun <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`motor_command_sender.py` it would be:
 
-.. code-block: sh
+.. code-block:: sh
 
    rosrun awesome_package motor_command_sender.py
 
@@ -183,5 +183,5 @@ In the second start the node via :code:`rosrun`:
 
    rosrun awesome_package motor_command_sender.py
 
-.. hint:: Just to remnind you: you stop running programs in a terminal by the shortcut :kbd:`Ctrl` + :kbd:`C`.
+.. hint:: Just to remind you: you stop running programs in a terminal by the shortcut :kbd:`Ctrl` + :kbd:`C`.
 
