@@ -5,9 +5,7 @@ In this section you will:
 
 * create a new Catkin package
 * write a node in Python
-* run nodes via :code:`rosrun`
-* write a launchfile
-* run sets of nodes via :code:`roslaunch`.
+* run a node via :code:`rosrun`
 
 Create A Package
 ================
@@ -78,6 +76,12 @@ We have to make the Python file executable. To do so, enter the following comman
 .. code-block:: sh
 
    chmod +x ~/fav/catkin_ws/src/awesome_package/nodes/motor_command_sender.py
+
+The general syntax is :code:`chmod +x PATH_TO_THE_FILE`.
+
+If you feel more comfortable with the graphical interface, you can also set the executable flag in the file browser:
+
+.. image:: /res/images/executable.gif
 
 .. note:: Each time you create a new node, make sure you have made it executable.
 
@@ -183,5 +187,12 @@ In the second start the node via :code:`rosrun`:
 
    rosrun awesome_package motor_command_sender.py
 
+.. image:: /res/images/rosrun_motor_command_sender.gif
+
 .. hint:: Just to remind you: you stop running programs in a terminal by the shortcut :kbd:`Ctrl` + :kbd:`C`.
 
+In the node's source code you can see, the motor commands, that are sent, are :code:`sin` and :code:`cos` signals.
+
+We can use :code:`rqt-multiplot` to visualize the data. The following screenshot shows the motor commands for the first four motors.
+
+.. image:: /res/images/rqt_multiplot.png
