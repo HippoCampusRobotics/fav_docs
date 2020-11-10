@@ -80,5 +80,4 @@ With the number keys you can decrease/increase the speed of movements.
 .. note:: The keyboard control window reads your keyboard input. If the window is not the active one, the vehicle will not react to your input!
 
 
-
-
+.. hint:: For assignment 0 it is not required to read the further sections. But if you like to continue, feel free to do so.
