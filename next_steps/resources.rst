@@ -73,7 +73,7 @@ If you want to transform vectors by hand using rotation matrices or quaternions,
 Messages
 ========
 There's a pre-defined ROS message for almost everything, trust me. 
-Standard messages representing primitive data types and other basic message constructs, such as multiarrays, can be found in `std_msgs <other basic message constructs, such as multiarrays>`_.
+Standard messages representing primitive data types and other basic message constructs, such as multiarrays, can be found in `std_msgs <http://wiki.ros.org/std_msgs>`_.
 The package `common_msgs <http://wiki.ros.org/common_msgs>`_ includes the most common generic robot-specific message packages, such as `geometry_msgs <http://wiki.ros.org/geometry_msgs?distro=noetic>`_,  `sensor_msgs <http://wiki.ros.org/sensor_msgs?distro=noetic>`_ and `nav_msgs <http://wiki.ros.org/nav_msgs?distro=noetic>`_.
 When you google a message name, you'll easily find the API (`example <http://docs.ros.org/en/api/sensor_msgs/html/msg/Imu.html>`_ for a :code:`sensor_msgs/Imu.msg` ).
 
