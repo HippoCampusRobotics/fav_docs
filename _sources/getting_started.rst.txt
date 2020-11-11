@@ -1,8 +1,8 @@
-Getting Started
-###############
+Next Steps
+##########
 
 .. toctree::
    :maxdepth: 1
 
-   getting_started/ros
-   getting_started/simulation
+   next_steps/ros
+   next_steps/simulation
