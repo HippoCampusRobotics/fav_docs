@@ -24,13 +24,13 @@ ROS
 (Minimal) Example
 =================
 
-Let us start where we have left off in the previous :ref:`getting_started/ros:ROS`  section:
+Let us start where we have left off in the previous :ref:`next_steps/ros:ROS`  section:
 
 We have a package called :code:`awesome_package`. And we have node called :code:`motor_command_sender.py`. To get a working example, we have to add two things. The first thing is, we need to modify the node slightly, to *arm* the vehicle. This means, we have to tell the PX4-Autopilot that it is now allowed to actuate the motors. The other thing we have to take care of, is the Gazebo part. So we need to start Gazebo and spawn our model of the BlueROV.
 
 Arm The Vehicle
 ***************
-The following code is for most parts identical to the one in the previous :ref:`getting_started/ros:ROS` section. The :code:`arm_vehicle()` method now ensures, that the vehicle will get armed.
+The following code is for most parts identical to the one in the previous :ref:`next_steps/ros:ROS` section. The :code:`arm_vehicle()` method now ensures, that the vehicle will get armed.
 
 .. code-block:: python
    :linenos:
@@ -146,7 +146,7 @@ The BlueROV has a pressure sensor. The output of the pressure sensor is publishe
 
 Theoretically we could use the :file:`motor_command_sender.py` and modify it's code to subscribe to the :file:`pressure` topic. But to keep things modular and separated, we add a new node to the :file:`awesome_package`. Let's name it :file:`depth_calculator.py`. 
 
-.. note:: Keep in mind, you have to make every node executable! See :ref:`getting_started/ros:Write A Node`.
+.. note:: Keep in mind, you have to make every node executable! See :ref:`next_steps/ros:Write A Node`.
 
 The source code might look like this:
 
