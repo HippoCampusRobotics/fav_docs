@@ -15,8 +15,8 @@ All motors are turning in counterclockwise direction for positive setpoints.
 
 .. image:: /res/images/bluerov2.svg
 
-For more information on the BlueROV visit `BlueRobotics website <https://bluerobotics.com/store/rov/bluerov2/>`_. Our BlueROV2 is in the heavy configuration, which means, instead of only two vertical thrusters we have four.
+For more information on the BlueROV visit `BlueRobotics website <https://bluerobotics.com/store/rov/bluerov2/>`__. Our BlueROV2 is in the heavy configuration, which means, instead of only two vertical thrusters we have four.
 
-If you are interested in the characteristics of the thrusters, also visit the `BlueRobotics website <https://bluerobotics.com/store/thrusters/t100-t200-thrusters/t200-thruster/>`_. There are performance charts available.
+If you are interested in the characteristics of the thrusters, also visit the `BlueRobotics website <https://bluerobotics.com/store/thrusters/t100-t200-thrusters/t200-thruster/>`__. There are performance charts available.
 
 .. note:: The ESC PWM values in the charts are normalized to motor commands in range [-1..1].
