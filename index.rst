@@ -17,6 +17,7 @@ Welcome to Formulas and Vehicles's documentation!
    installation
    first_steps
    next_steps
+   the_vehicle
 
 
 
