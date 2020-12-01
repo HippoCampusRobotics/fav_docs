@@ -69,6 +69,8 @@ ROS uses the tf transformations tool to keep track of coordinate frames and thei
 
 If you want to transform vectors by hand using rotation matrices or quaternions, you might find the `transformations (Python) API <http://docs.ros.org/en/melodic/api/tf/html/python/transformations.html>`_ helpful.
 
+The :code:`tf.transformations` library also helps you deal with quaternions by providing various transformation options, for example to Euler angles.
+
 
 Messages
 ========
