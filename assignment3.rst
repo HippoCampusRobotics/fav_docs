@@ -15,17 +15,19 @@ You will need to update your :code:`bluerov_sim` package, for example by:
 
    roscd bluerov_sim && git pull
 
-You will also need the :code:`apriltag_ros` package:
-
-.. code-block:: sh
-
-   sudo apt-get install ros-melodic-apriltag-ros
 
 We have prepared a :code:`range_sensor` package that will publish the range measurements in a topic :code:`/ranges`:
 
 .. code-block:: sh
 
    git clone https://github.com/HippoCampusRobotics/fav_range_sensor.git ~/fav/catkin_ws/src/range_sensor
+
+To install missing dependencies:
+
+.. code-block:: sh
+
+   cd ~/fav/catkin_ws && rosdep install --from-paths src --ignore-src -r -y
+
 
 Don't forget to rebuild your catkin workspace after downloading these packages.
 
