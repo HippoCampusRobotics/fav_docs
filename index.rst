@@ -19,6 +19,7 @@ Welcome to Formulas and Vehicles's documentation!
    next_steps
    the_vehicle
    assignment2
+   assignment3
 
 
 
