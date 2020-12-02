@@ -104,6 +104,8 @@ Taking it Further
 
 In the following, we collected a few hints for you. They are supposed to help you dive deeper into the simulation.
 
+In general, we encourage you to use our :code:`keyboard_control` node for convenient testing.
+
 .. note::
 
    Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your localization algorithm. Keep in mind that velocities are given in the world frame "map". Our docs section :ref:`next_steps/resources:Coordinate transformations` includes some pointers for where to look.
@@ -111,6 +113,11 @@ In the following, we collected a few hints for you. They are supposed to help yo
 .. hint:: 
 
    The :code:`tf.transformations` library helps you deal with quaternions. Check the `API <http://docs.ros.org/en/melodic/api/tf/html/python/transformations.html>`_ .
+
+.. hint::
+
+   You can access IMU data in the topic :code:`mavros/imu/data`, this has already been filtered by PX4's own estimator.
+
 .. hint::
 
    As you have noticed in the first experiment, the real BlueROV2 behaves differently to the simulated one. The fact that we've never done a proper parameter identification doesn't help. Priorities... the simulation works perfectly fine for testing and evaluating your algorithms. 

@@ -230,6 +230,7 @@
 <div class="section" id="taking-it-further">
 <h2>Taking it Further<a class="headerlink" href="#taking-it-further" title="Permalink to this headline">¶</a></h2>
 <p>In the following, we collected a few hints for you. They are supposed to help you dive deeper into the simulation.</p>
+<p>In general, we encourage you to use our <code class="code docutils literal notranslate"><span class="pre">keyboard_control</span></code> node for convenient testing.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your localization algorithm. Keep in mind that velocities are given in the world frame “map”. Our docs section <a class="reference internal" href="next_steps/resources.html#coordinate-transformations"><span class="std std-ref">Coordinate Transformations</span></a> includes some pointers for where to look.</p>
@@ -237,6 +238,10 @@
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>The <code class="code docutils literal notranslate"><span class="pre">tf.transformations</span></code> library helps you deal with quaternions. Check the <a class="reference external" href="http://docs.ros.org/en/melodic/api/tf/html/python/transformations.html">API</a> .</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You can access IMU data in the topic <code class="code docutils literal notranslate"><span class="pre">mavros/imu/data</span></code>, this has already been filtered by PX4’s own estimator.</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
