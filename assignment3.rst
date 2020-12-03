@@ -77,6 +77,7 @@ The range sensor plugin parameters can be found here:
 * **viewingAngle**: The viewing angle at which a tag is still detectable.
 * **dropProb**: The probability a single distance measurement is dropped.
 * **maxDetectionDist** and **distDropProbExponent**: We compute an additional probability that a tag measurement will be dropped which increases with increasing distance to the tag. This is independent of the general **dropProb**.
+
 We compute this probability according to the following equation, where the **distDropProbExponent** is n:
 
 .. math::
@@ -84,6 +85,10 @@ We compute this probability according to the following equation, where the **dis
    p_{\text{drop}}(\text{dist}) = \frac{1}{\text{maxDist}^{n}} \cdot \text{dist}^{n}
 
 You can use these parameters to test your algorithm in different situations and prepare for reality with varying degrees of pessimism.
+
+.. hint::
+
+   When you implement your localization and problems arise, you might want to turn off the noise to test whether your algorithm is working at all. 
 
 .. hint::
 
