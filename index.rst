@@ -20,6 +20,7 @@ Welcome to Formulas and Vehicles's documentation!
    the_vehicle
    assignment2
    assignment3
+   final_project
 
 
 
