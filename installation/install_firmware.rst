@@ -118,8 +118,6 @@ Configure Environment Variables
 
    .. code-block:: bash
 
-      echo "source $(pwd)/catkin_ws/devel/setup.bash" >> ~/.bashrc
-
       echo "source $(pwd)/fav_PX4-Autopilot/Tools/setup_gazebo.bash $(pwd)/fav_PX4-Autopilot $(pwd)/fav_PX4-Autopilot/build/px4_sitl_default > /dev/null" >> ~/.bashrc
 
       echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/fav_PX4-Autopilot" >> ~/.bashrc
