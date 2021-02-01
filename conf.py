@@ -19,7 +19,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'Formulas and Vehicles'
-copyright = '2020, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
+copyright = '2021, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 
 
@@ -42,7 +42,13 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'venv']
 
+rst_prolog = """ 
 
+.. |br| raw:: html
+
+   <br />
+   
+"""
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

@@ -26,7 +26,7 @@ You will design a depth controller for the BlueROV2. We have prepared an empty R
 
    git clone https://github.com/HippoCampusRobotics/fav_depth_control_template.git ~/fav/catkin_ws/src/depth_controller
 
-This package already includes a mixer module in :code:`nodes/mixer.py` you could use. Head over to :ref:`the_vehicle:the vehicle` for a more detailed description of the BlueROV2.
+This package already includes a mixer module in :code:`nodes/mixer.py` you could use. Head over to :ref:`the_robot:The Robot` for a more detailed description of the BlueROV2 and its thruster configuration.
 
 .. note::
    Remember to rebuild your catkin workspace after downloading or creating new packages. 

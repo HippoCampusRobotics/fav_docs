@@ -113,7 +113,7 @@ In general, we encourage you to use our :code:`keyboard_control` node for conven
 
 .. note::
 
-   Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your localization algorithm. Keep in mind that velocities are given in the world frame "map". Our docs section :ref:`next_steps/resources:Coordinate transformations` includes some pointers for where to look.
+   Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your localization algorithm. Keep in mind that velocities are given in the world frame "map". Our docs section :ref:`resources:Coordinate transformations` includes some pointers for where to look.
 
 .. hint:: 
 
