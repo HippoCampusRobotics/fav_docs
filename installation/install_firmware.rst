@@ -22,19 +22,19 @@ By now your directory structure should look like this if you followed the previo
 
    .. code-block:: bash
 
-      cd ~/fav && git clone --recursive https://github.com/HippoCampusRobotics/fav_PX4-Autopilot.git
+      cd ~/fav && git clone --recursive https://github.com/FormulasAndVehicles/PX4-Autopilot.git
 
 #. Clone MAVLink
 
    .. code-block:: bash
 
-      git clone https://github.com/HippoCampusRobotics/fav_mavlink.git ~/fav/catkin_ws/src/mavlink
+      git clone https://github.com/FormulasAndVehicles/mavlink.git ~/fav/catkin_ws/src/mavlink
 
 #. Clone mavros
 
    .. code-block:: bash
 
-      git clone https://github.com/HippoCampusRobotics/fav_mavros.git ~/fav/catkin_ws/src/mavros
+      git clone https://github.com/FormulasAndVehicles/mavros.git ~/fav/catkin_ws/src/mavros
 
 #. Use :code:`rosdep` to resolve dependencies
 
@@ -65,7 +65,7 @@ Now your directory structure should look similiar to::
    │   └── src
    │       ├── mavlink
    │       └── mavros
-   └── fav_PX4-Autopilot
+   └── PX4-Autopilot
 
 Build The Catkin Workspace
 ==========================
@@ -85,11 +85,11 @@ Build The Catkin Workspace
 Build The PX4 Firmware
 ======================
 
-#. Switch into your :file:`fav_PX4-Autopilot` directory
+#. Switch into your :file:`PX4-Autopilot` directory
 
    .. code-block:: bash
 
-      cd ~/fav/fav_PX4-Autopilot
+      cd ~/fav/PX4-Autopilot
 
 #. Set up dependencies
 
@@ -118,11 +118,11 @@ Configure Environment Variables
 
    .. code-block:: bash
 
-      echo "source $(pwd)/fav_PX4-Autopilot/Tools/setup_gazebo.bash $(pwd)/fav_PX4-Autopilot $(pwd)/fav_PX4-Autopilot/build/px4_sitl_default > /dev/null" >> ~/.bashrc
+      echo "source $(pwd)/PX4-Autopilot/Tools/setup_gazebo.bash $(pwd)/PX4-Autopilot $(pwd)/PX4-Autopilot/build/px4_sitl_default > /dev/null" >> ~/.bashrc
 
-      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/fav_PX4-Autopilot" >> ~/.bashrc
+      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot" >> ~/.bashrc
 
-      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/fav_PX4-Autopilot/Tools/sitl_gazebo" >> ~/.bashrc
+      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot/Tools/sitl_gazebo" >> ~/.bashrc
 
 #. Apply the changes of :file:`~/.bashrc`
 
@@ -144,7 +144,7 @@ At this point you can check that your setup is functional by launching the simul
 
 .. code-block:: bash
 
-   roslaunch px4 mavros_posix_sitl.launch vehicle:=uuv_bluerov2_heavy world:=$HOME/fav/fav_PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
+   roslaunch px4 mavros_posix_sitl.launch vehicle:=uuv_bluerov2_heavy world:=$HOME/fav/PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
 
 After a few seconds something similiar to the following screenshot should appear:
 
