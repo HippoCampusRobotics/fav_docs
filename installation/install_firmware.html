@@ -195,17 +195,17 @@
 </div>
 <ol class="arabic">
 <li><p>Clone the Firmware</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav <span class="o">&amp;&amp;</span> git clone --recursive https://github.com/HippoCampusRobotics/fav_PX4-Autopilot.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav <span class="o">&amp;&amp;</span> git clone --recursive https://github.com/FormulasAndVehicles/PX4-Autopilot.git
 </pre></div>
 </div>
 </li>
 <li><p>Clone MAVLink</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/HippoCampusRobotics/fav_mavlink.git ~/fav/catkin_ws/src/mavlink
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/FormulasAndVehicles/mavlink.git ~/fav/catkin_ws/src/mavlink
 </pre></div>
 </div>
 </li>
 <li><p>Clone mavros</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/HippoCampusRobotics/fav_mavros.git ~/fav/catkin_ws/src/mavros
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/FormulasAndVehicles/mavros.git ~/fav/catkin_ws/src/mavros
 </pre></div>
 </div>
 </li>
@@ -234,7 +234,7 @@
 │   └── src
 │       ├── mavlink
 │       └── mavros
-└── fav_PX4-Autopilot
+└── PX4-Autopilot
 </pre></div>
 </div>
 </div>
@@ -256,8 +256,8 @@
 <div class="section" id="build-the-px4-firmware">
 <h2>Build The PX4 Firmware<a class="headerlink" href="#build-the-px4-firmware" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">fav_PX4-Autopilot</span></code> directory</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/fav_PX4-Autopilot
+<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">PX4-Autopilot</span></code> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/PX4-Autopilot
 </pre></div>
 </div>
 </li>
@@ -286,11 +286,11 @@
 </div>
 </li>
 <li><p>Edit your <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code> by executing the following commands</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;source </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot/Tools/setup_gazebo.bash </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot/build/px4_sitl_default &gt; /dev/null&quot;</span> &gt;&gt; ~/.bashrc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;source </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot/Tools/setup_gazebo.bash </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot/build/px4_sitl_default &gt; /dev/null&quot;</span> &gt;&gt; ~/.bashrc
 
-<span class="nb">echo</span> <span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot&quot;</span> &gt;&gt; ~/.bashrc
+<span class="nb">echo</span> <span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot&quot;</span> &gt;&gt; ~/.bashrc
 
-<span class="nb">echo</span> <span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/fav_PX4-Autopilot/Tools/sitl_gazebo&quot;</span> &gt;&gt; ~/.bashrc
+<span class="nb">echo</span> <span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot/Tools/sitl_gazebo&quot;</span> &gt;&gt; ~/.bashrc
 </pre></div>
 </div>
 </li>
@@ -311,7 +311,7 @@
 </div>
 </div>
 <p>At this point you can check that your setup is functional by launching the simulation:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch px4 mavros_posix_sitl.launch vehicle:<span class="o">=</span>uuv_bluerov2_heavy world:<span class="o">=</span><span class="nv">$HOME</span>/fav/fav_PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch px4 mavros_posix_sitl.launch vehicle:<span class="o">=</span>uuv_bluerov2_heavy world:<span class="o">=</span><span class="nv">$HOME</span>/fav/PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
 </pre></div>
 </div>
 <p>After a few seconds something similiar to the following screenshot should appear:</p>
