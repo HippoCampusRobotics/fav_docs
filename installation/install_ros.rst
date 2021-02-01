@@ -125,7 +125,7 @@ Get The First Catkin Package
 
    .. code-block:: bash
 
-      git clone https://github.com/HippoCampusRobotics/fav_bluerov_sim.git src/bluerov_sim
+      git clone https://github.com/FormulasAndVehicles/bluerov_sim.git src/bluerov_sim
 
 #. Let ROS resolve the package's dependencies
 

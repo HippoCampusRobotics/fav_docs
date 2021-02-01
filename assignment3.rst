@@ -20,7 +20,7 @@ We have prepared a :code:`range_sensor` package that will publish the range meas
 
 .. code-block:: sh
 
-   git clone https://github.com/HippoCampusRobotics/fav_range_sensor.git ~/fav/catkin_ws/src/range_sensor
+   git clone https://github.com/FormulasAndVehicles/range_sensor.git ~/fav/catkin_ws/src/range_sensor
 
 To install missing dependencies:
 
