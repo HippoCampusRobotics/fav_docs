@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Start The Simulation &mdash; Formulas and Vehicles  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Concepts" href="../concepts.html" />
+    <link rel="prev" title="IDE Setup" href="ide_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Formulas and Vehicles
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Installation and Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_firmware.html">Install Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide_setup.html">IDE Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Start The Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-fun-part">The Fun Part</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment2.html">Assignment 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment3.html">Assignment 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final Project</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../installation.html">Installation and Setup</a> &raquo;</li>
+        
+      <li>Start The Simulation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/master/installation/start_the_simulation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="start-the-simulation">
+<h1>Start The Simulation<a class="headerlink" href="#start-the-simulation" title="Permalink to this headline">¶</a></h1>
+<p><em>Section author: Lennart Alff &lt;<a class="reference external" href="mailto:thies&#46;lennart&#46;alff&#37;&#52;&#48;tuhh&#46;de">thies<span>&#46;</span>lennart<span>&#46;</span>alff<span>&#64;</span>tuhh<span>&#46;</span>de</a>&gt;</em></p>
+<p>Now that we have everything prepared, i.e.:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="install_ros.html#install-ros"><span class="std std-ref">Installation of ROS</span></a></p></li>
+<li><p><a class="reference internal" href="install_firmware.html#install-firmware"><span class="std std-ref">Installation of PX4</span></a></p></li>
+</ul>
+<p>we can eventually start to work with ROS and the Gazebo simulator.</p>
+<p>At the time being there are 3 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">bluerov_sim</span></code> package.</p>
+<dl class="simple">
+<dt>gazebo_base.launch</dt><dd><p>Launches gazebo with the basic world file in <code class="file docutils literal notranslate"><span class="pre">bluerov_sim/worlds/base.world</span></code></p>
+</dd>
+<dt>spawn_vehicle.launch</dt><dd><p>Spawns the BlueROV model. The model files are in <code class="file docutils literal notranslate"><span class="pre">bluerov_sim/models/uuv_bluerov2_heavy</span></code></p>
+</dd>
+<dt>keyboard_control.launch</dt><dd><p>Includes both the above mentioned launchfiles and also starts a node to control the BlueROV.</p>
+</dd>
+</dl>
+<p>To test that everything is set up correctly open two terminals (for example by using the integrated terminal in VS Code and hitting the <strong>split terminal</strong> button.</p>
+<p>In the first terminal, enter:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch bluerov_sim gazebo_base.launch
+</pre></div>
+</div>
+<p>This should launch Gazebo. Wait until an empty world is visible.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some rare cases the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you started Gazebo and try again.</p>
+</div>
+<p>In the second enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">bluerov_sim</span> <span class="n">spawn_vehicle</span><span class="o">.</span><span class="n">launch</span>
+</pre></div>
+</div>
+<p>You should see a model of the BlueROV appearing in your Gazebo window.</p>
+<p>Stop everything by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in both terminals.</p>
+<div class="section" id="the-fun-part">
+<h2>The Fun Part<a class="headerlink" href="#the-fun-part" title="Permalink to this headline">¶</a></h2>
+<p>If you are reading this and did not skip essential parts of the setup instructions we are ready to have some fun.</p>
+<p>Launch the third of the mentioned launchfiles:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch bluerov_sim keyboard_control.launch
+</pre></div>
+</div>
+<p>This will start Gazebo, spawn the BlueROV and creates a small window for keyboard control.</p>
+<p>Make sure you have the keyboard control window active:</p>
+<img alt="../_images/keyboard_control.png" src="../_images/keyboard_control.png" />
+<p>The controls are:</p>
+<dl class="simple">
+<dt>W/S:</dt><dd><p>Move forward/backwards.</p>
+</dd>
+<dt>A/D:</dt><dd><p>Move left/right.</p>
+</dd>
+<dt>Up/Down:</dt><dd><p>Move upwards/downwards.</p>
+</dd>
+<dt>Q/E:</dt><dd><p>Turn left/right.</p>
+</dd>
+</dl>
+<p>With the number keys you can decrease/increase the speed of movements.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The keyboard control window reads your keyboard input. If the window is not the active one, the vehicle will not react to your input!</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>For assignment 0 it is not required to read the further sections. But if you like to continue, feel free to do so.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../concepts.html" class="btn btn-neutral float-right" title="Concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ide_setup.html" class="btn btn-neutral float-left" title="IDE Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
