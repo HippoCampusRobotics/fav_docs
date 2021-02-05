@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
+
 Welcome to Formulas and Vehicles's documentation!
 =================================================
 
@@ -13,11 +15,11 @@ Welcome to Formulas and Vehicles's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   linux_terminal
    installation
-   first_steps
-   next_steps
-   the_vehicle
+   concepts
+   the_robot
+   tutorials
+   resources
    assignment2
    assignment3
    final_project
