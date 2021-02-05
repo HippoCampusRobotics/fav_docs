@@ -119,9 +119,9 @@ Configure Environment Variables
    .. code-block:: bash
 
       echo "source $(pwd)/PX4-Autopilot/Tools/setup_gazebo.bash $(pwd)/PX4-Autopilot $(pwd)/PX4-Autopilot/build/px4_sitl_default > /dev/null" >> ~/.bashrc
-
+      
       echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot" >> ~/.bashrc
-
+      
       echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot/Tools/sitl_gazebo" >> ~/.bashrc
 
 #. Apply the changes of :file:`~/.bashrc`
