@@ -11,7 +11,7 @@ Prepare Your Disk Partition
 ===========================
 
 
-#. Resize your Windows partition. Hit :kbd:`Win` + :kbd:`R` and enter :code:`diskmgmt.msg` and click **OK**
+#. Resize your Windows partition. Hit :kbd:`Win` + :kbd:`R` and enter :code:`diskmgmt.msc` and click **OK**
 
    .. image:: /res/images/windows_execute.png
 
