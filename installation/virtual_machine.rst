@@ -10,7 +10,7 @@ For performance reasons we recommend to run Ubuntu alongside Windows as Dual Boo
 Troubleshooting
 ===============
 
-If you can not launch the :code:`gazebo` command after you have installed :code:`ros-melodic-desktop-full` in the section :ref:`installation/install_ros:Install ROS` please execute the command
+If you can not launch the :code:`gazebo` command after you have installed :code:`ros-noetic-desktop-full` in the section :ref:`installation/install_ros:Install ROS` please execute the command
 
 .. code-block:: sh
 
