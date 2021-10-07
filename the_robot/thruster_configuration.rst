@@ -13,8 +13,11 @@ The red arrows indicate the direction of thrust if the thrusters receive positiv
 
 All motors are turning in counterclockwise direction for positive setpoints.
 
+
+.. image:: /res/images/klopsi_top_view.jpg 
+    :width: 40%
 .. image:: /res/images/bluerov2.svg
-    :align: center
+    :width: 40%
 
 If you are interested in the characteristics of the thrusters, also visit the `BlueRobotics website <https://bluerobotics.com/store/thrusters/t100-t200-thrusters/t200-thruster/>`__. There are performance charts available.
 
