@@ -107,6 +107,7 @@ To automatically source your catkin workspace, execute the following command:
 
 .. code-block:: sh
 
+   echo 'source /opt/ros/noetic/setup.bash' >> ~/.bashrc
    echo 'source $HOME/fav/catkin_ws/devel/setup.bash' >> ~/.bashrc
 
 To apply these changes, execute:

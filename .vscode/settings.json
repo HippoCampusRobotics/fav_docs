@@ -4,5 +4,6 @@
     "editor.wordWrap": "on",
     "restructuredtext.languageServer.disabled": false,
     "restructuredtext.preview.scrollEditorWithPreview": false,
-    "restructuredtext.preview.scrollPreviewWithEditor": false
+    "restructuredtext.preview.scrollPreviewWithEditor": false,
+    "cmake.configureOnOpen": false
 }
