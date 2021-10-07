@@ -179,8 +179,7 @@
             
   <div class="section" id="install-ros">
 <h1>Install ROS<a class="headerlink" href="#install-ros" title="Permalink to this headline">¶</a></h1>
-<p><em>Section author: Lennart Alff &lt;<a class="reference external" href="mailto:thies&#46;lennart&#46;alff&#37;&#52;&#48;tuhh&#46;de">thies<span>&#46;</span>lennart<span>&#46;</span>alff<span>&#64;</span>tuhh<span>&#46;</span>de</a>&gt;</em></p>
-<p>The <a class="reference external" href="http://wiki.ros.org/melodic/Installation/Ubuntu">ROS Wiki</a> provides a complete installation guide. The following instructions are a summary of their article.</p>
+<p>The <a class="reference external" href="http://wiki.ros.org/noetic/Installation/Ubuntu">ROS Wiki</a> provides a complete installation guide. The following instructions are a summary of their article.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Since Ubuntu 18.04, Canonical decided it was a good idea to have unattended updates running in the background. This might lead to error messages similiar to:</p>
@@ -199,7 +198,8 @@ E: Unable to acquire the dpkg frontend lock <span class="o">(</span>/var/lib/dpk
 </div>
 </li>
 <li><p>Add key</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt-key adv --keyserver <span class="s1">&#39;hkp://keyserver.ubuntu.com:80&#39;</span> --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install curl <span class="c1"># if you haven&#39;t already installed curl</span>
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span class="p">|</span> sudo apt-key add -
 </pre></div>
 </div>
 </li>
@@ -219,12 +219,17 @@ E: Unable to acquire the dpkg frontend lock <span class="o">(</span>/var/lib/dpk
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Install ROS</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-melodic-desktop-full
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-noetic-desktop-full
 </pre></div>
 </div>
 </li>
 <li><p>Install build dependencies</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-tools
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+</pre></div>
+</div>
+</li>
+<li><p>Install catkin-tools</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install python3-catkin-tools python3-osrf-pycommon
 </pre></div>
 </div>
 </li>
@@ -242,7 +247,7 @@ E: Unable to acquire the dpkg frontend lock <span class="o">(</span>/var/lib/dpk
 <h2>Set Up Catkin Workspace<a class="headerlink" href="#set-up-catkin-workspace" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Source your ROS installation</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/ros/melodic/setup.bash
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/ros/noetic/setup.bash
 </pre></div>
 </div>
 </li>
@@ -271,6 +276,10 @@ E: Unable to acquire the dpkg frontend lock <span class="o">(</span>/var/lib/dpk
 </pre></div>
 </div>
 <p>For new terminal session your catkin workspace is sourced automatically since we added the instruction to do so to the <code class="file docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you are using <code class="code docutils literal notranslate"><span class="pre">zsh</span></code> instead of <code class="code docutils literal notranslate"><span class="pre">bash</span></code>, you need to adjust the above commands. You will also have pay attention and adjust some commands in the following parts of this setup guide.</p>
+</div>
 </div>
 <div class="section" id="get-the-first-catkin-package">
 <h2>Get The First Catkin Package<a class="headerlink" href="#get-the-first-catkin-package" title="Permalink to this headline">¶</a></h2>

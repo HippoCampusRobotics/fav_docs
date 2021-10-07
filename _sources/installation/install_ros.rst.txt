@@ -1,9 +1,7 @@
 Install ROS
 ###########
 
-.. sectionauthor:: Lennart Alff <thies.lennart.alff@tuhh.de>
-
-The `ROS Wiki <http://wiki.ros.org/melodic/Installation/Ubuntu>`_ provides a complete installation guide. The following instructions are a summary of their article.
+The `ROS Wiki <http://wiki.ros.org/noetic/Installation/Ubuntu>`_ provides a complete installation guide. The following instructions are a summary of their article.
 
 .. attention:: 
 
@@ -29,7 +27,8 @@ Preparation
 
    .. code-block:: sh
 
-      sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+      sudo apt install curl # if you haven't already installed curl
+      curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 
 
 #. Update index
@@ -53,13 +52,19 @@ Installation
 
    .. code-block:: sh
 
-      sudo apt install ros-melodic-desktop-full
+      sudo apt install ros-noetic-desktop-full
 
 #. Install build dependencies
 
    .. code-block:: sh
 
-      sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-tools
+      sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+
+#. Install catkin-tools
+
+   .. code-block:: sh
+
+      sudo apt install python3-catkin-tools python3-osrf-pycommon
 
 #. Set up :code:`rosdep`
 
@@ -78,7 +83,7 @@ Set Up Catkin Workspace
 
    .. code-block:: sh
 
-      source /opt/ros/melodic/setup.bash
+      source /opt/ros/noetic/setup.bash
 
 #. Create workspace
 
@@ -111,6 +116,10 @@ To apply these changes, execute:
    source ~/.bashrc
 
 For new terminal session your catkin workspace is sourced automatically since we added the instruction to do so to the :file:`.bashrc` file.
+
+.. attention::
+
+   If you are using :code:`zsh` instead of :code:`bash`, you need to adjust the above commands. You will also have pay attention and adjust some commands in the following parts of this setup guide.
 
 Get The First Catkin Package
 ============================
@@ -148,3 +157,4 @@ Get The First Catkin Package
       .. code-block:: bash
 
          source ~/.bashrc
+

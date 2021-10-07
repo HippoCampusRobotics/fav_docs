@@ -208,7 +208,7 @@
 <div class="section" id="create-a-bootable-usb-stick">
 <h2>Create A Bootable USB stick<a class="headerlink" href="#create-a-bootable-usb-stick" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p>Download <a class="reference external" href="https://releases.ubuntu.com/18.04/">Ubuntu 18.04 Desktop</a> from the offical Website.</p></li>
+<li><p>Download <a class="reference external" href="https://releases.ubuntu.com/20.04/">Ubuntu 20.04 Desktop</a> from the offical Website.</p></li>
 <li><p>Download <a class="reference external" href="https://www.balena.io/etcher/">Etcher</a>.</p></li>
 <li><p>Insert an USB stick with at least 4GB of memory.</p></li>
 <li><p>Start Etcher and select the downloaded Ubuntu image and the inserted USB device as target.</p>
@@ -225,7 +225,7 @@
 <div class="section" id="disable-secure-boot">
 <h2>Disable Secure Boot<a class="headerlink" href="#disable-secure-boot" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Reboot your system after flashing is done and enter your BIOS/UEFI during Bootup. To do so, you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit <kbd class="kbd docutils literal notranslate">F12</kbd> during the DELL splashscreen. For Lenovo it is <kbd class="kbd docutils literal notranslate">Enter</kbd>. This opens a dialog where you can choose to enter your BIOS settings.</p></li>
+<li><p>Reboot your system after flashing is done and enter your BIOS/UEFI during Bootup. To do so, you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit <kbd class="kbd docutils literal notranslate">F12</kbd> during the DELL splashscreen. For Lenovo, this key is <kbd class="kbd docutils literal notranslate">Enter</kbd>. This opens a dialog where you can choose to enter your BIOS settings.</p></li>
 <li><p>Find the settings to disable Secure Boot, save your changes and exit the BIOS/UEFI.</p></li>
 </ol>
 </div>
@@ -233,13 +233,14 @@
 <h2>Boot From Ubuntu USB Stick<a class="headerlink" href="#boot-from-ubuntu-usb-stick" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Reboot and select the medium you want to boot from during the splashscreen (again <kbd class="kbd docutils literal notranslate">F12</kbd> for Dell or <kbd class="kbd docutils literal notranslate">Enter</kbd> for Lenovo). Now you want to boot from the Ubuntu USB stick.</p></li>
-<li><p>Choose <code class="code docutils literal notranslate"><span class="pre">Try</span> <span class="pre">Ubuntu</span> <span class="pre">without</span> <span class="pre">installing</span></code>. This will boot Ubuntu from the USB stick.</p></li>
+<li><p>In the Grub menu, choose <code class="code docutils literal notranslate"><span class="pre">Ubuntu</span></code> (probably the first option). This will boot Ubuntu from the USB stick after a quick file system check.</p></li>
 </ol>
 </div>
 <div class="section" id="start-the-installation-wizard">
 <h2>Start The Installation Wizard<a class="headerlink" href="#start-the-installation-wizard" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p>On the desktop there will be an icon for installing Ubuntu. Double click it to launch the installation wizard.</p></li>
+<li><p>Once booted, you will get the option to either <code class="code docutils literal notranslate"><span class="pre">Try</span> <span class="pre">Ubuntu</span></code> or <code class="code docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Ubuntu</span></code> immediately. If you decide to try Ubuntu before installing, you will find an icon for installing Ubuntu on the desktop. Double click it to launch the installation wizard. If you don’t want to try Ubuntu first, you can click on <code class="code docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Ubuntu</span></code> to start the installation wizard.</p></li>
+<li><p>We <em>highly</em> recommend setting the language to <strong>English</strong>.</p></li>
 <li><p>Choose the option to install additional drivers. It is also a good idea to connect to a nearby WiFi or Ethernet.</p>
 <img alt="../_images/ubuntu_additional_drivers.png" src="../_images/ubuntu_additional_drivers.png" />
 </li>

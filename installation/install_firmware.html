@@ -93,6 +93,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Install Firmware</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#set-up-the-workspace">Set Up The Workspace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build-the-catkin-workspace">Build The Catkin Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-gazebo-installation">Update Gazebo Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build-the-px4-firmware">Build The PX4 Firmware</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-environment-variables">Configure Environment Variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#test-your-setup">Test Your Setup</a></li>
@@ -180,10 +181,9 @@
             
   <div class="section" id="install-firmware">
 <h1>Install Firmware<a class="headerlink" href="#install-firmware" title="Permalink to this headline">¶</a></h1>
-<p><em>Section author: Lennart Alff &lt;<a class="reference external" href="mailto:thies&#46;lennart&#46;alff&#37;&#52;&#48;tuhh&#46;de">thies<span>&#46;</span>lennart<span>&#46;</span>alff<span>&#64;</span>tuhh<span>&#46;</span>de</a>&gt;</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The BlueROV used in this class runs the PX4 firmware. For the class we have created a fork of the firmware, please follow the instructions to install it. Most likely you will not get in touch with any of the Firmware source code, but still you need to clone and install the corresponding repositories to complete this setup guide.</p>
+<p>The BlueROV used in this class runs the PX4 firmware. For the class we have created a fork of the firmware, please follow the instructions to install it. Most likely you will not get in touch with any of the firmware source code, but still you need to clone and install the corresponding repositories to complete this setup guide.</p>
 </div>
 <div class="section" id="set-up-the-workspace">
 <h2>Set Up The Workspace<a class="headerlink" href="#set-up-the-workspace" title="Permalink to this headline">¶</a></h2>
@@ -222,8 +222,13 @@
 </pre></div>
 </div>
 </li>
-<li><p>Install <code class="code docutils literal notranslate"><span class="pre">xmlstarlet</span></code> and <code class="code docutils literal notranslate"><span class="pre">python-pip</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install xmlstarlet python-pip
+<li><p>Install <code class="code docutils literal notranslate"><span class="pre">xmlstarlet</span></code> and <code class="code docutils literal notranslate"><span class="pre">python3-pip</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install xmlstarlet python3-pip
+</pre></div>
+</div>
+</li>
+<li><p>Install additional dependencies</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install libignition-rendering3
 </pre></div>
 </div>
 </li>
@@ -255,6 +260,28 @@
 </div>
 </li>
 </ol>
+</div>
+<div class="section" id="update-gazebo-installation">
+<h2>Update Gazebo Installation<a class="headerlink" href="#update-gazebo-installation" title="Permalink to this headline">¶</a></h2>
+<p>You might get a build error similar to</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="o">[</span><span class="m">2</span><span class="o">]</span>: *** No rule to make target <span class="s1">&#39;/usr/lib/x86_64-linux-gnu/libsdformat9.so.9.5.0&#39;</span>, needed by <span class="s1">&#39;/home/hippo/fav/catkin_ws/devel/.private/bluerov_sim/lib/libgazebo_range_sensor_plugin.so&#39;</span>.  Stop.
+make<span class="o">[</span><span class="m">2</span><span class="o">]</span>: *** Waiting <span class="k">for</span> unfinished jobs....
+In file included from /home/hippo/fav/catkin_ws/src/bluerov_sim/include/gazebo_range_sensor_plugin.h:6,
+              from /home/hippo/fav/catkin_ws/src/bluerov_sim/plugins/gazebo_range_sensor_plugin.cpp:1:
+/usr/include/gazebo-11/gazebo/common/Plugin.hh:33:10: fatal error: sdf/sdf.hh: No such file or directory
+   <span class="m">33</span> <span class="p">|</span> <span class="c1">#include &lt;sdf/sdf.hh&gt;</span>
+      <span class="p">|</span>          ^~~~~~~~~~~~
+compilation terminated.
+</pre></div>
+</div>
+<p>To fix this, uninstall Gazebo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt remove gazebo11 ros-noetic-gazebo-*
+</pre></div>
+</div>
+<p>And reinstall</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install gazebo11 ros-noetic-gazebo-*
+</pre></div>
+</div>
 </div>
 <div class="section" id="build-the-px4-firmware">
 <h2>Build The PX4 Firmware<a class="headerlink" href="#build-the-px4-firmware" title="Permalink to this headline">¶</a></h2>
