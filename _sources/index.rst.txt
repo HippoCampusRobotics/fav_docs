@@ -15,14 +15,12 @@ Welcome to Formulas and Vehicles's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   installation
+   overview
    concepts
+   installation
    the_robot
    tutorials
    resources
-   assignment2
-   assignment3
-   final_project
 
 
 

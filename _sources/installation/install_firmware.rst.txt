@@ -135,7 +135,16 @@ Build The PX4 Firmware
 
       DONT_RUN=1 make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
 
-   .. note:: In some cases the :code:`make` command might fail with an internal compiler error. This happens if the build process needs more RAM than is available. Just repeat the build command a few times.
+   .. note:: In some cases the :code:`make` command might fail.
+      You might have to execute this again (just once is enough):
+      
+      .. code-block:: bash
+         
+         sudo apt install libignition-rendering3
+      
+      The :code:`make` command might also fail with an internal compiler error. This happens if the build process needs more RAM than is available. Just repeat the build command a few times until it succeeds.
+
+
 
 Configure Environment Variables
 ===============================
