@@ -1,8 +1,6 @@
 Start The Simulation
 ####################
 
-.. sectionauthor:: Lennart Alff <thies.lennart.alff@tuhh.de>
-
 Now that we have everything prepared, i.e.:
 
 * :ref:`Installation of ROS<installation/install_ros:Install ROS>` 
