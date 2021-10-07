@@ -1,8 +1,6 @@
 IDE Setup
 #########
 
-.. sectionauthor:: Lennart Alff <thies.lennart.alff@tuhh.de>
-
 For this class we recommend Visual Studio Code. Of course you can use any IDE you like and that works for you. The `ROS Wiki <http://wiki.ros.org/IDEs>`_ lists several options how to use IDEs with ROS.
 
 Installation

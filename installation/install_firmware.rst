@@ -1,10 +1,7 @@
 Install Firmware
 ################
 
-.. sectionauthor:: Lennart Alff <thies.lennart.alff@tuhh.de>
-
-
-.. note:: The BlueROV used in this class runs the PX4 firmware. For the class we have created a fork of the firmware, please follow the instructions to install it. Most likely you will not get in touch with any of the Firmware source code, but still you need to clone and install the corresponding repositories to complete this setup guide.
+.. note:: The BlueROV used in this class runs the PX4 firmware. For the class we have created a fork of the firmware, please follow the instructions to install it. Most likely you will not get in touch with any of the firmware source code, but still you need to clone and install the corresponding repositories to complete this setup guide.
 
 Set Up The Workspace
 ====================
@@ -48,11 +45,17 @@ By now your directory structure should look like this if you followed the previo
 
       sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 
-#. Install :code:`xmlstarlet` and :code:`python-pip`
+#. Install :code:`xmlstarlet` and :code:`python3-pip`
 
    .. code-block:: bash
 
-      sudo apt install xmlstarlet python-pip
+      sudo apt install xmlstarlet python3-pip
+
+#. Install additional dependencies
+
+   .. code-block:: bash
+
+      sudo apt install libignition-rendering3
 
 
 Now your directory structure should look similiar to::
@@ -81,6 +84,35 @@ Build The Catkin Workspace
    .. code-block:: bash
 
       catkin build
+
+
+Update Gazebo Installation
+==========================
+
+You might get a build error similar to 
+
+.. code-block:: bash
+
+   make[2]: *** No rule to make target '/usr/lib/x86_64-linux-gnu/libsdformat9.so.9.5.0', needed by '/home/hippo/fav/catkin_ws/devel/.private/bluerov_sim/lib/libgazebo_range_sensor_plugin.so'.  Stop.
+   make[2]: *** Waiting for unfinished jobs....
+   In file included from /home/hippo/fav/catkin_ws/src/bluerov_sim/include/gazebo_range_sensor_plugin.h:6,
+                 from /home/hippo/fav/catkin_ws/src/bluerov_sim/plugins/gazebo_range_sensor_plugin.cpp:1:
+   /usr/include/gazebo-11/gazebo/common/Plugin.hh:33:10: fatal error: sdf/sdf.hh: No such file or directory
+      33 | #include <sdf/sdf.hh>
+         |          ^~~~~~~~~~~~
+   compilation terminated.
+
+To fix this, uninstall Gazebo
+
+.. code-block:: bash
+
+   sudo apt remove gazebo11 ros-noetic-gazebo-*
+
+And reinstall
+
+.. code-block:: bash
+
+   sudo apt install gazebo11 ros-noetic-gazebo-*
 
 Build The PX4 Firmware
 ======================

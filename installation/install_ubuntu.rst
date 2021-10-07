@@ -28,7 +28,7 @@ Prepare Your Disk Partition
 Create A Bootable USB stick
 ===========================
 
-#. Download `Ubuntu 18.04 Desktop <https://releases.ubuntu.com/18.04/>`_ from the offical Website.
+#. Download `Ubuntu 20.04 Desktop <https://releases.ubuntu.com/20.04/>`_ from the offical Website.
 
 #. Download `Etcher <https://www.balena.io/etcher/>`_. 
 
@@ -50,7 +50,7 @@ If you want to access your Windows partition from inside Ubuntu, you need to dis
 Disable Secure Boot
 ===================
 
-#. Reboot your system after flashing is done and enter your BIOS/UEFI during Bootup. To do so, you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit :kbd:`F12` during the DELL splashscreen. For Lenovo it is :kbd:`Enter`. This opens a dialog where you can choose to enter your BIOS settings.
+#. Reboot your system after flashing is done and enter your BIOS/UEFI during Bootup. To do so, you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit :kbd:`F12` during the DELL splashscreen. For Lenovo, this key is :kbd:`Enter`. This opens a dialog where you can choose to enter your BIOS settings.
 
 #. Find the settings to disable Secure Boot, save your changes and exit the BIOS/UEFI.
 
@@ -59,12 +59,15 @@ Boot From Ubuntu USB Stick
 
 #. Reboot and select the medium you want to boot from during the splashscreen (again :kbd:`F12` for Dell or :kbd:`Enter` for Lenovo). Now you want to boot from the Ubuntu USB stick.
 
-#. Choose :code:`Try Ubuntu without installing`. This will boot Ubuntu from the USB stick.
+#. In the Grub menu, choose :code:`Ubuntu` (probably the first option). This will boot Ubuntu from the USB stick after a quick file system check.
+
 
 Start The Installation Wizard
 =============================
 
-#. On the desktop there will be an icon for installing Ubuntu. Double click it to launch the installation wizard.
+#. Once booted, you will get the option to either :code:`Try Ubuntu` or :code:`Install Ubuntu` immediately. If you decide to try Ubuntu before installing, you will find an icon for installing Ubuntu on the desktop. Double click it to launch the installation wizard. If you don't want to try Ubuntu first, you can click on :code:`Install Ubuntu` to start the installation wizard. 
+
+#. We *highly* recommend setting the language to **English**.
 
 #. Choose the option to install additional drivers. It is also a good idea to connect to a nearby WiFi or Ethernet.
 
