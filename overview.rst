@@ -3,7 +3,7 @@ Class Overview
 
 .. attention::
 
-    We will host **two preliminary info sessions** in-person on Tuesday, Oct 12nd, and Tuesday, Oct 19th, at 16:15 in M 0571 and via Zoom. We are looking forward to meeting you! :)
+    We will host **two preliminary info sessions** in-person on Tuesday, Oct 12th, and Tuesday, Oct 19th, at 16:15 in M 0571 and via Zoom. We are looking forward to meeting you! :)
 
 General Information
 ###################
