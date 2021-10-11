@@ -5,6 +5,8 @@ Class Overview
 
     We will host **a preliminary info session** in-person on Tuesday, Oct 12th, at 16:15 in M 0571 and via Zoom. We are looking forward to meeting you! :)
 
+    Zoom Link: `https://tuhh.zoom.us/j/87901509456?pwd=NFNUWENBOWtRL0phUk9FTldkUDI4Zz09 <https://tuhh.zoom.us/j/87901509456?pwd=NFNUWENBOWtRL0phUk9FTldkUDI4Zz09>`_.
+
 General Information
 ###################
 
