@@ -48,7 +48,9 @@ Format and Schedule
 The class will be held in a hybrid format including Zoom and in-person pitch lectures as well as practical lab experiments.
 Pitch lectures in the first half of the course will be held on Tuesday afternoons at 16:15 until approximately 18:15.
 
-**Schedule TBA**. 
+.. figure:: /res/images/schedule.png
+    
+    Schedule.
 
 Registration
 ############
