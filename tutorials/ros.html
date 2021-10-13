@@ -206,6 +206,17 @@
 </div>
 <div class="section" id="run-a-node">
 <h2>Run A Node<a class="headerlink" href="#run-a-node" title="Permalink to this headline"></a></h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>For each node we have to modify the <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> of the corresponding package. Add the node’s path relative to the package’s root to the <code class="code docutils literal notranslate"><span class="pre">catkin_install_python()</span></code> call.</p>
+</div>
+<p>For our first node we add the highlighted line to the <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin_install_python<span class="o">(</span>PROGRAMS
+<span class="hll">  nodes/motor_command_sender.py
+</span>  DESTINATION <span class="si">${</span><span class="nv">CATKIN_PACKAGE_BIN_DESTINATION</span><span class="si">}</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Make sure you UNcomment these lines -&gt; remove the <code class="code docutils literal notranslate"><span class="pre">#</span></code> characeters. Every time you modify the <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> rebuild your workspace with <code class="code docutils literal notranslate"><span class="pre">catkin</span> <span class="pre">build</span></code> and to be super save you might also want to resource your workspace setup with <code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code>.</p>
 <p>If you want to run a Python programm, normally you would use a command like <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/your/file/python_file.py</span></code>. This would work for our node too. But instead of running our node by entering <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">~/fav/catkin_ws/src/awesome_package/nodes/motor_command_sender.py</span></code>, where we have to explicitly tell Python where it can find our file <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code>, we can use <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>. One of the advantages of <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> is, that we do not have to know, where the program/node is, that we want to run.</p>
 <p>The general usage of the <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> command is <code class="code docutils literal notranslate"><span class="pre">rosrun</span> <span class="pre">&lt;package_name&gt;</span> <span class="pre">&lt;executable_name&gt;</span></code>. So for our <code class="file docutils literal notranslate"><span class="pre">awesome_package</span></code> and its <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code> it would be:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package motor_command_sender.py
