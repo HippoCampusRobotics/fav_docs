@@ -41,7 +41,7 @@ rqt
 
    .. code-block:: sh
 
-      sudo apt install ros-melodic-rqt-multiplot
+      sudo apt install ros-noetic-rqt-multiplot
 
 #. To tell rqt about this new plugin, run
    
@@ -92,7 +92,7 @@ Released packages can be installed with aptitude and don't have to be build from
 
 .. code-block:: sh
 
-      sudo apt install ros-melodic-<package>
+      sudo apt install ros-noetic-<package>
 
 Additional Stuff
 ================
