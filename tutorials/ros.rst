@@ -147,6 +147,20 @@ Your first node could look like:
 Run A Node
 ==========
 
+.. attention:: For each node we have to modify the :file:`CMakeLists.txt` of the corresponding package. Add the node's path relative to the package's root to the :code:`catkin_install_python()` call.
+
+For our first node we add the highlighted line to the :file:`CMakeLists.txt`.
+
+.. code-block:: bash
+   :emphasize-lines: 2
+
+   catkin_install_python(PROGRAMS
+     nodes/motor_command_sender.py
+     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+Make sure you UNcomment these lines -> remove the :code:`#` characeters. Every time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`catkin build` and to be super save you might also want to resource your workspace setup with :code:`source ~/.bashrc`.
+
+
 If you want to run a Python programm, normally you would use a command like :code:`python /path/to/your/file/python_file.py`. This would work for our node too. But instead of running our node by entering :code:`python ~/fav/catkin_ws/src/awesome_package/nodes/motor_command_sender.py`, where we have to explicitly tell Python where it can find our file :file:`motor_command_sender.py`, we can use :code:`rosrun`. One of the advantages of :code:`rosrun` is, that we do not have to know, where the program/node is, that we want to run. 
 
 The general usage of the :code:`rosrun` command is :code:`rosrun <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`motor_command_sender.py` it would be:
