@@ -68,6 +68,7 @@ Now your directory structure should look similiar to::
    │   └── src
    │       ├── mavlink
    │       └── mavros
+   │       └── bluerov_sim  
    └── PX4-Autopilot
 
 Build The Catkin Workspace
