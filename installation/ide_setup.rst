@@ -49,7 +49,7 @@ Open the :file:`~/fav/catkin_ws` directory in VS Code:
 .. image:: /res/images/vscode_open_folder.png
 
 
-If you followed the instructions in the previous section and created the :file:`.vscode` directory and put the :file:`settings.json` and :file::`extensions.json` into it, you probably get a message prompt informing you that there are extension recommendations. These recommendations are based on the :file:`extensions.json`. Install the extensions:
+If you followed the instructions in the previous section and created the :file:`.vscode` directory and put the :file:`settings.json` and :file:`extensions.json` into it, you probably get a message prompt informing you that there are extension recommendations. These recommendations are based on the :file:`extensions.json`. Install the extensions:
 
 .. image:: /res/images/vscode_recommended_extensions.png
 
