@@ -10,7 +10,7 @@ Ubuntu has :code:`snap` preinstalled so probably the easiest way to install VS C
 
 .. code-block:: sh
 
-   sudo snap install --classic code-insiders
+   sudo snap install --classic code
 
 For more detailed instructions and alternative installation options see the `VS Code Documentation <https://code.visualstudio.com/docs/setup/linux>`_.
 
