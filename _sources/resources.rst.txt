@@ -12,7 +12,7 @@ You can find the ROS wiki `here <http://wiki.ros.org/>`_.
 
 ROS Tutorials
 =============
-The official ROS `tutorials <http://wiki.ros.org/ROS/Tutorials>`_  are a very good place to start if you've never used ROS before and got some time on your hands.
+The official ROS `tutorials <http://wiki.ros.org/ROS/Tutorials>`__  are a very good place to start if you've never used ROS before and got some time on your hands.
 There are C++ and Python versions for coding examples. Since we will be using Python in this class, you can skip C++ specific chapters.
 However, if you're already confident in C++ (more so than in Python), feel free to use C++ instead. 
 
@@ -58,7 +58,7 @@ RViz
 
 Recording and playing back data
 ===============================
-`ROSbags <http://wiki.ros.org/rosbag>`_ are an awesome functionality of ROS, trust me. Use them. There also is a ROS `tutorial <http://wiki.ros.org/ROS/Tutorials/Recording%20and%20playing%20back%20data>`_ on how to record and play back data.
+`ROSbags <http://wiki.ros.org/rosbag>`_ are an awesome functionality of ROS, trust me. Use them. There also is a ROS `tutorial <http://wiki.ros.org/ROS/Tutorials/Recording%20and%20playing%20back%20data>`__ on how to record and play back data.
 
 In case you want to then plot your data in, for example, Matlab, converting your ROSbags to \*.csv files will be useful. 
 I like `this tool <https://github.com/AtsushiSakai/rosbag_to_csv>`_ for that purpose, but there are other options out there.
@@ -79,7 +79,7 @@ Standard messages representing primitive data types and other basic message cons
 The package `common_msgs <http://wiki.ros.org/common_msgs>`_ includes the most common generic robot-specific message packages, such as `geometry_msgs <http://wiki.ros.org/geometry_msgs?distro=noetic>`_,  `sensor_msgs <http://wiki.ros.org/sensor_msgs?distro=noetic>`_ and `nav_msgs <http://wiki.ros.org/nav_msgs?distro=noetic>`_.
 When you google a message name, you'll easily find the API (`example <http://docs.ros.org/en/api/sensor_msgs/html/msg/Imu.html>`_ for a :code:`sensor_msgs/Imu.msg` ).
 
-However, if you do find yourself needing to define your own message type, there is a ROS `tutorial <http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv#Creating_a_msg>`_ on that, too.
+However, if you do find yourself needing to define your own message type, there is a ROS `tutorial <http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv#Creating_a_msg>`__ on that, too.
 
 ROS Logger
 ==========
