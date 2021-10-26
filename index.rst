@@ -21,6 +21,7 @@ Welcome to Formulas and Vehicles's documentation!
    the_robot
    tutorials
    resources
+   assignment1
 
 
 
