@@ -6,6 +6,7 @@
   <title>Assignment 1 &mdash; Formulas and Vehicles  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -43,7 +44,10 @@
 <li class="toctree-l1"><a class="reference internal" href="the_robot.html">The Robot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">ROS Resources</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 1</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-benefits-of-simulation">The Benefits of Simulation</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -97,6 +101,10 @@ You can do this by navigating into the repository, using for example:</p>
 <p>Remember to rebuild your catkin workspace after downloading or creating new packages.
 You don’t have to rebuild if you only change Python code.
 However, if you create a <em>new</em> Python file, you have to add it to <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and rebuild the workspace.</p>
+</div>
+<div class="section" id="the-benefits-of-simulation">
+<h2>The Benefits of Simulation<a class="headerlink" href="#the-benefits-of-simulation" title="Permalink to this headline"></a></h2>
+<p>In the real world it might be hard to tell if the depth of your vehicle calculated from pressure measurements is close to the real depth of the vehicle. In simulation we can compare the results with the ground truth information we get from the simulator itself. The topic name in our case is <code class="file docutils literal notranslate"><span class="pre">/bluerov/ground_truth/state</span></code> and has the type <code class="file docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code>.</p>
 </div>
 </div>
 

@@ -34,3 +34,8 @@ To actuate the BlueROV's thrusters, you will need a mixer module. You can use th
    Remember to rebuild your catkin workspace after downloading or creating new packages. 
    You don't have to rebuild if you only change Python code.
    However, if you create a *new* Python file, you have to add it to :file:`CMakeLists.txt` and rebuild the workspace.
+
+The Benefits of Simulation
+**************************
+
+In the real world it might be hard to tell if the depth of your vehicle calculated from pressure measurements is close to the real depth of the vehicle. In simulation we can compare the results with the ground truth information we get from the simulator itself. The topic name in our case is :file:`/bluerov/ground_truth/state` and has the type :file:`nav_msgs/Odometry`.
