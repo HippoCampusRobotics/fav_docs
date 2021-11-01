@@ -94,6 +94,14 @@ At the Lab
 
 #. Before lifting the BlueROV into the water, we will do a vaccuum test together. After the test, **do not forget to close the vents!**
 
+   .. image:: /res/images/vaccuum_test.gif
+      :width: 40%
+   .. image:: /res/images/vent_plugs.jpg
+      :width: 40%
+
+   Vaccuum test and vent caps saying "OK".
+
+
 #. To test the network setup, open two terminals to publish and echo ROS topics.
 
    .. tabs::
@@ -128,7 +136,7 @@ At the Lab
 
 .. note:: 
 
-   Feel free to ask questions at any time! 
+   **Feel free to ask questions at any time!** 
    Let us know if you need any equipment (measuring tape, scale, weights, stick, ...). If you're looking for something we might not have at hand immediately, please ask beforehand.
 
 
