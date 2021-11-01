@@ -9,70 +9,6 @@ Let us start where we have left off in the previous :ref:`tutorials/ros:ROS`  se
 
 We have a package called :code:`awesome_package`. And we have node called :code:`motor_command_sender.py`. To get a working example, we have to add two things. The first thing is, we need to modify the node slightly, to *arm* the vehicle. This means, we have to tell the PX4-Autopilot that it is now allowed to actuate the motors. The other thing we have to take care of, is the Gazebo part. So we need to start Gazebo and spawn our model of the BlueROV.
 
-Arm The Vehicle
-***************
-The following code is for most parts identical to the one in the previous :ref:`tutorials/ros:ROS` section. The :code:`arm_vehicle()` method now ensures that the vehicle will get armed.
-
-.. code-block:: python
-   :linenos:
-   
-   #!/usr/bin/env python
-   import rospy
-   import math
-   from mavros_msgs.msg import MotorSetpoint
-   from mavros_msgs.srv import CommandBool
-
-
-   class MyFirstNode():
-      def __init__(self):
-         rospy.init_node("motor_command_sender")
-         self.setpoint_pub = rospy.Publisher("mavros/setpoint_motor/setpoint",
-                                             MotorSetpoint,
-                                             queue_size=1)
-         self.arm_vehicle()
-
-      def arm_vehicle(self):
-         # wait until the arming serivce becomes available
-         rospy.wait_for_service("mavros/cmd/arming")
-         # connect to the service
-         arm = rospy.ServiceProxy("mavros/cmd/arming", CommandBool)
-         # call the service to arm the vehicle until service call was successfull
-         while not arm(True).success:
-               rospy.logwarn("Could not arm vehicle. Keep trying.")
-               rospy.sleep(1.0)
-         rospy.loginfo("Armed successfully.")
-
-      def run(self):
-         rate = rospy.Rate(30.0)
-
-         while not rospy.is_shutdown():
-               msg = MotorSetpoint()
-               msg.header.stamp = rospy.Time.now()
-               # since the bluerov has 8 motors, the setpoint list holds 8 values
-               t = rospy.get_time()
-               msg.setpoint[0] = 0
-               msg.setpoint[1] = 0
-               msg.setpoint[2] = 0
-               msg.setpoint[3] = 0
-               msg.setpoint[4] = 0.2 * math.sin(t)
-               msg.setpoint[5] = -0.2 * math.sin(t)
-               msg.setpoint[6] = -0.2 * math.sin(t)
-               msg.setpoint[7] = 0.2 * math.sin(t)
-
-               self.setpoint_pub.publish(msg)
-
-               rate.sleep()
-
-
-   def main():
-      node = MyFirstNode()
-      node.run()
-
-
-   if __name__ == "__main__":
-      main()
-
-
 
 Create A Launch Setup
 *********************
@@ -89,23 +25,26 @@ It could look like this:
    :linenos:
 
    <launch>
-      <!-- launch the motor_command_sender node-->
-      <node name="motor_command_sender" pkg="awesome_package" type="motor_command_sender.py"/>
+      <arg name="vehicle_name" default="bluerov" />
 
       <!-- start the gazebo simulator and an empty world -->
       <include file="$(find bluerov_sim)/launch/gazebo_base.launch" />
       
-      <!-- Spawn the vehicle. You can use the args to set the spawn pose-->
-      <include file="$(find bluerov_sim)/launch/spawn_vehicle.launch">
-         <!-- Set the position-->
-         <arg name="x" value="0.0" />
-         <arg name="y" value="0.0" />
-         <arg name="z" value="-0.2"/>
-         <!-- Set roll, pitch, yaw-->
-         <arg name="R" value="0.0" />
-         <arg name="P" value="0.0" />
-         <arg name="Y" value="0.0" />
-      </include>
+      <group ns="$(arg vehicle_name)">
+        <!-- Spawn the vehicle. You can use the args to set the spawn pose-->
+        <include file="$(find bluerov_sim)/launch/spawn_vehicle.launch">
+           <!-- Set the position-->
+           <arg name="x" value="0.0" />
+           <arg name="y" value="0.0" />
+           <arg name="z" value="-0.2"/>
+           <!-- Set roll, pitch, yaw-->
+           <arg name="R" value="0.0" />
+           <arg name="P" value="0.0" />
+           <arg name="Y" value="0.0" />
+        </include>
+        <!-- launch the motor_command_sender node-->
+        <node name="motor_command_sender" pkg="awesome_package" type="motor_command_sender.py"/>
+      </group>
    </launch>
 
 To start a the setup run:
@@ -119,7 +58,7 @@ The result should look similar to:
 .. image:: /res/images/gazebo_awesome_package.gif
 
 Get Sensor Data
-===============
+***************
 
 At this point we know the basics of actuating the vehicle. But to know how we want to actuate the vehicle, we might depend on some sensor input. 
 
@@ -142,6 +81,8 @@ The source code might look like this:
 
    def pressure_callback(pressure_msg, publisher):
       pascal_per_meter = 1.0e4
+      # what kind of pressure data do we get? relative/absolute? What about
+      # atmospheric pressure?
       depth = -pressure_msg.fluid_pressure / pascal_per_meter
       depth_msg = Float32()
       depth_msg.data = depth
@@ -183,5 +124,47 @@ or use the :code:`rqt` topic monitor or simply in the command line:
 
 .. code-block:: sh
 
-   rostopic echo /depth
+   rostopic echo bluerov/depth
 
+Names and Namespaces
+====================
+
+
+Namespaces
+**********
+
+The concept of names and namespaces is explained in detail in the `ROS Wiki <http://wiki.ros.org/Names>`__. 
+
+You can start nodes or load parameters in namespaces (you can also have nested namespaces). This means the namespace gets prepended to the node's name. We already used this in the above launchfile. Every node (and also every node in included launchfiles) inside the :code:`<group ns="$(arg vehicle_name)">` is launched inside a namespace. In this case the namespace's name is determined by the argument :code:`vehicle_name`. The default value of :code:`vehicle_name` is :code:`bluerov`. This means the name of the :code:`motor_command_sender` node launched in line 20 will become :code:`/bluerov/motor_command_sender`.
+
+Names
+*****
+
+If you have a node subscribing or publishing or subscribing to/from a topic, you have to specify the topic name. You can do this in three different ways:
+
+Global
+   .. code-block:: python
+
+      pub = rospy.Publisher("/my_robot/pose", PoseStamped)
+   
+   A topic name with a leading :file:`/` will be resolved globally. This means it does not matter if the node was launched in a namespace or not. The resulting topic name will be exactly :file:`/my_robot/pose`.
+
+Relative
+   .. code-block:: python
+
+      pub = rospy.Publisher("position", PoseStamped)
+
+   A topic without leading :file:`/` will be relative. This means if the node was launched in a namespace, the namespace will get prepended. So for example if the node was launched in the namespace :file:`my_robot`, the resolved topic name will become :file:`/my_robot/position`. In case the node was not launched inside any namespace, nothing will get prependended to the topic name. It will be just :file:`/position`.
+
+Private
+   .. code-block:: python
+
+      rospy.init_node("my_controller")
+      pub = rospy.Publisher("~debug", DebugMessage)
+
+   Private topics are similar to relative ones. The topic name start with :file:`~`. The namespace will get prepended, if it has been specified. Additionally the name of the node will also be prepended in any case. So if the node with the name :file:`my_controller` has been started in the namespace :file:`my_robot`, the resolved topic name will be :file:`/my_robot/my_controller/debug`. Without a namespace it would be :file:`/my_controller/debug`.
+
+BlueROV
+*******
+
+You will only work with a single robot. Still it is nice to have things clean and start everything at least in the :file:`bluerov` namespace (as shown in the above example launchfile by launching your nodes inside the :code:`<group>`-tag with the ns attribute specified). Generally avoid global topic names to avoid topic name collision, if you do not have a very specific reason to use them. Example: if you have a controller subscribing to a setpoint topic, it might be a good idea to use a private name :code:`"~setpoint"`. This way you avoid topic name conflicts in case you have another controller also subscribing to a setpoint topic.
