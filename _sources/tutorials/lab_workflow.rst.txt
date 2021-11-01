@@ -118,7 +118,7 @@ At the Lab
 
 #. We have a big TV screen at the lab. You can use it (we have HDMI and DisplayPort) for plotting data etc. so that everyone can see.
 
-#. If you record data via :code:`rosbag`, do not include camera images (or if you need camera data, include just one topic). Camera images can overload the network. You can exclude topics matching regular expresions with :code:`-x`.
+#. If you record data via :code:`rosbag`, do not include camera images (or if you need camera data, include just one topic). Camera images can overload the network. You can exclude topics matching regular expressions with :code:`-x`.
    For example
 
    .. code-block:: sh
