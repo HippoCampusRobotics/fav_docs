@@ -1,6 +1,8 @@
 Simulation
 ##########
 
+.. attention:: This section is not meant to be a walkthrough guide for the first assignment. Please do not copy-paste it. Its purpose is to demonstrate, how to interact with the simulated BlueROV in the Gazebo simulation environment in an easy to follow manner.
+
 
 (Minimal) Example
 =================
