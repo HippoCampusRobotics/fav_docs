@@ -7,6 +7,12 @@ In this section you will:
 * write a node in Python
 * run a node via :code:`rosrun`
 
+.. attention::
+
+   The following tutorial **is not meant as a step-by-step solution for the first assignment.** These are just **toy examples** to demonstrate how to use ROS and interact with the simulated BlueROV *in an easy to follow manner*. Therefore, we do not claim that these code snippets are complete and we use some funny names at times. Please do **not** copy-paste them.
+
+
+
 Create A Package
 ================
 
@@ -161,7 +167,7 @@ For our first node we add the highlighted line to the :file:`CMakeLists.txt`.
 Make sure you UNcomment these lines -> remove the :code:`#` characeters. Every time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`catkin build` and to be super save you might also want to resource your workspace setup with :code:`source ~/.bashrc`.
 
 
-If you want to run a Python programm, normally you would use a command like :code:`python /path/to/your/file/python_file.py`. This would work for our node too. But instead of running our node by entering :code:`python ~/fav/catkin_ws/src/awesome_package/nodes/motor_command_sender.py`, where we have to explicitly tell Python where it can find our file :file:`motor_command_sender.py`, we can use :code:`rosrun`. One of the advantages of :code:`rosrun` is, that we do not have to know, where the program/node is, that we want to run. 
+If you want to run a Python programm, normally you would use a command like :code:`python /path/to/your/file/python_file.py`. This would work for our node, too. But instead of running our node by entering :code:`python ~/fav/catkin_ws/src/awesome_package/nodes/motor_command_sender.py`, where we have to explicitly tell Python where it can find our file :file:`motor_command_sender.py`, we can use :code:`rosrun`. One of the advantages of :code:`rosrun` is that we do not have to know, where the program/node is that we want to run. 
 
 The general usage of the :code:`rosrun` command is :code:`rosrun <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`motor_command_sender.py` it would be:
 
@@ -191,13 +197,13 @@ The paths of your packages get updated. To apply these updated paths, run:
 
 .. note:: Every time we create a new package we need to build our Catkin workspace with :code:`catkin build` and apply the updated package paths with :code:`source ~/.bashrc`.
 
-Nodes also require the ROS Master to run. Open two terminals (for example by splitting VS Code's internal terminal). In the first start the ROS master with 
+Nodes also require the ROS Master to run. Open two terminals (for example by splitting VS Code's internal terminal). In the first one, start the ROS master with 
 
 .. code-block:: sh
 
    roscore
 
-In the second start the node via :code:`rosrun`:
+In the second one, start the node via :code:`rosrun`:
 
 .. code-block:: sh
 
