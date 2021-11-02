@@ -95,6 +95,10 @@
 <li><p>write a node in Python</p></li>
 <li><p>run a node via <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code></p></li>
 </ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The following tutorial <strong>is not meant as a step-by-step solution for the first assignment.</strong> These are just <strong>toy examples</strong> to demonstrate how to use ROS and interact with the simulated BlueROV <em>in an easy to follow manner</em>. Therefore, we do not claim that these code snippets are complete and we use some funny names at times. Please do <strong>not</strong> copy-paste them.</p>
+</div>
 <div class="section" id="create-a-package">
 <h2>Create A Package<a class="headerlink" href="#create-a-package" title="Permalink to this headline"></a></h2>
 <p>If you have completed all the installation instructions in <a class="reference internal" href="../installation/install_ros.html#install-ros"><span class="std std-ref">Install ROS</span></a>, you have already created a Catkin workspace at <code class="file docutils literal notranslate"><span class="pre">~/fav/catkin_ws</span></code>. The workspace contains several directories:</p>
@@ -219,7 +223,7 @@
 </pre></div>
 </div>
 <p>Make sure you UNcomment these lines -&gt; remove the <code class="code docutils literal notranslate"><span class="pre">#</span></code> characeters. Every time you modify the <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> rebuild your workspace with <code class="code docutils literal notranslate"><span class="pre">catkin</span> <span class="pre">build</span></code> and to be super save you might also want to resource your workspace setup with <code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code>.</p>
-<p>If you want to run a Python programm, normally you would use a command like <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/your/file/python_file.py</span></code>. This would work for our node too. But instead of running our node by entering <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">~/fav/catkin_ws/src/awesome_package/nodes/motor_command_sender.py</span></code>, where we have to explicitly tell Python where it can find our file <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code>, we can use <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>. One of the advantages of <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> is, that we do not have to know, where the program/node is, that we want to run.</p>
+<p>If you want to run a Python programm, normally you would use a command like <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/your/file/python_file.py</span></code>. This would work for our node, too. But instead of running our node by entering <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">~/fav/catkin_ws/src/awesome_package/nodes/motor_command_sender.py</span></code>, where we have to explicitly tell Python where it can find our file <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code>, we can use <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>. One of the advantages of <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> is that we do not have to know, where the program/node is that we want to run.</p>
 <p>The general usage of the <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> command is <code class="code docutils literal notranslate"><span class="pre">rosrun</span> <span class="pre">&lt;package_name&gt;</span> <span class="pre">&lt;executable_name&gt;</span></code>. So for our <code class="file docutils literal notranslate"><span class="pre">awesome_package</span></code> and its <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code> it would be:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package motor_command_sender.py
 </pre></div>
@@ -244,11 +248,11 @@
 <p class="admonition-title">Note</p>
 <p>Every time we create a new package we need to build our Catkin workspace with <code class="code docutils literal notranslate"><span class="pre">catkin</span> <span class="pre">build</span></code> and apply the updated package paths with <code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code>.</p>
 </div>
-<p>Nodes also require the ROS Master to run. Open two terminals (for example by splitting VS Code’s internal terminal). In the first start the ROS master with</p>
+<p>Nodes also require the ROS Master to run. Open two terminals (for example by splitting VS Code’s internal terminal). In the first one, start the ROS master with</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roscore
 </pre></div>
 </div>
-<p>In the second start the node via <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>:</p>
+<p>In the second one, start the node via <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package motor_command_sender.py
 </pre></div>
 </div>
