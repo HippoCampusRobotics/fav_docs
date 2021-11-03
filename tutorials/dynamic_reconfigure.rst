@@ -284,6 +284,8 @@ Launch the ROS master
 run the node in another terminal
 
 .. code-block:: sh
+   
+   rosrun toy_example my_controller.py
 
 You will get an output like this:
 
@@ -295,11 +297,7 @@ You will get an output like this:
    integral_lower_limit: -0.2
    integral_upper_limit: 0.2
    integrator_active: False
-   ---
-
-.. code-block:: sh
-
-   rosrun toy_example my_controller.py
+   --- 
 
 run :code:`rqt` in another terminal and open the :file:`plugins/configuration/dynamic_reconfigure` plugin.
 
