@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Reconfigure &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ROS Resources" href="../resources.html" />
+    <link rel="prev" title="Lab Workflow" href="lab_workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ros.html">ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation.html">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dynamic Reconfigure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scenario">Scenario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-file">Config File</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-config-file">Create a Config File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config-file-boilerplate">Config File Boilerplate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-parameters">Add Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-config-file-to-cmakelists-txt">Add Config File to CMakeLists.txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebuild-the-workspace">Rebuild the Workspace</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-a-reconfigurable-node">Writing a Reconfigurable Node</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-the-code">Write the Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamically-reconfigure-a-node">Dynamically Reconfigure a Node</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment1.html">Assignment 1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+      <li>Dynamic Reconfigure</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/master/tutorials/dynamic_reconfigure.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="dynamic-reconfigure">
+<h1>Dynamic Reconfigure<a class="headerlink" href="#dynamic-reconfigure" title="Permalink to this headline"></a></h1>
+<p>Change parameters on the fly during runtime with the help of <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> and never ever restart your whole setup to tune your hardcoded parameters 🥳 . You can find the API documentation and another tutorial guide in the <a class="reference external" href="http://wiki.ros.org/dynamic_reconfigure">ROS wiki</a>.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>a ROS package for which you want to use <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code></p></li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>In this example this package will be called <code class="file docutils literal notranslate"><span class="pre">toy_example</span></code>. Replace occurences of this package name with your own package name. Do <strong>not</strong> copy-paste.</p>
+</div>
+</div>
+<div class="section" id="scenario">
+<h2>Scenario<a class="headerlink" href="#scenario" title="Permalink to this headline"></a></h2>
+<p>Imagine we have something like a PID-Controller and we want to change the gains and maybe some other parameters as well while the node is running. Things we would like to configure could be:
+* PID gains
+* limits for the integral term (there are many more anti-windup strategies. Use your preferred search engine for some inspiration.)
+* Activate/Deactivate the integrator so the integrator is not accumulating control errors while the controller is not active.</p>
+</div>
+<div class="section" id="config-file">
+<h2>Config File<a class="headerlink" href="#config-file" title="Permalink to this headline"></a></h2>
+<p>Config files define the parameters we use for a <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> service. In the following sections we will create such a config file and add some parameters.</p>
+<div class="section" id="create-a-config-file">
+<h3>Create a Config File<a class="headerlink" href="#create-a-config-file" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p>Create a directory called <code class="file docutils literal notranslate"><span class="pre">cfg</span></code> for your package.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-R1VJ" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-R1VJ" name="R1VJ" role="tab" tabindex="0">GUI</button><button aria-controls="panel-0-VGVybWluYWw=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-VGVybWluYWw=" name="VGVybWluYWw=" role="tab" tabindex="-1">Terminal</button></div><div aria-labelledby="tab-0-R1VJ" class="sphinx-tabs-panel group-tab" id="panel-0-R1VJ" name="R1VJ" role="tabpanel" tabindex="0"><img alt="../_images/dyn_create_cfg_dir.gif" src="../_images/dyn_create_cfg_dir.gif" />
+</div><div aria-labelledby="tab-0-VGVybWluYWw=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-VGVybWluYWw=" name="VGVybWluYWw=" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/catkin_ws/src/toy_example <span class="o">&amp;&amp;</span> mkdir cfg
+</pre></div>
+</div>
+</div></div>
+</li>
+<li><p>Create a config file with a meaningful name.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-R1VJ" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-R1VJ" name="R1VJ" role="tab" tabindex="0">GUI</button><button aria-controls="panel-1-VGVybWluYWw=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-VGVybWluYWw=" name="VGVybWluYWw=" role="tab" tabindex="-1">Terminal</button></div><div aria-labelledby="tab-1-R1VJ" class="sphinx-tabs-panel group-tab" id="panel-1-R1VJ" name="R1VJ" role="tabpanel" tabindex="0"><img alt="../_images/dyn_create_cfg_file.gif" src="../_images/dyn_create_cfg_file.gif" />
+</div><div aria-labelledby="tab-1-VGVybWluYWw=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-VGVybWluYWw=" name="VGVybWluYWw=" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>touch PidControl.cfg
+</pre></div>
+</div>
+</div></div>
+</li>
+</ol>
+</div>
+<div class="section" id="config-file-boilerplate">
+<h3>Config File Boilerplate<a class="headerlink" href="#config-file-boilerplate" title="Permalink to this headline"></a></h3>
+<p>Replace <code class="code docutils literal notranslate"><span class="pre">&quot;toy_example&quot;</span></code> with the name of your package.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">PidControl.cfg</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="ch">#!/usr/bin/env python</span>
+<span class="lineno"> 2 </span><span class="n">PACKAGE</span> <span class="o">=</span> <span class="s2">&quot;toy_example&quot;</span>
+<span class="lineno"> 3 </span>
+<span class="lineno"> 4 </span><span class="kn">from</span> <span class="nn">dynamic_reconfigure.parameter_generator_catkin</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span><span class="n">gen</span> <span class="o">=</span> <span class="n">ParameterGenerator</span><span class="p">()</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span><span class="c1"># here wee need to add our reconfigure parameters</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span><span class="n">exit</span><span class="p">(</span><span class="n">gen</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">PACKAGE</span><span class="p">,</span> <span class="s2">&quot;my_control_node&quot;</span><span class="p">,</span> <span class="s2">&quot;PidControl&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">&quot;my_control_node&quot;</span></code> is the name of a node that could use this <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> configuration. It is used for docs generation only and can be whatever we like. The last parameter <code class="code docutils literal notranslate"><span class="pre">&quot;PidControl&quot;</span></code> determines the name of the generated Python or C++ code. This will be relevant when we import the generated python file in our node. <code class="code docutils literal notranslate"><span class="pre">Config.py</span></code> will always be appended. So in our case the generated python file name will be <code class="file docutils literal notranslate"><span class="pre">PidControlConfig.py</span></code></p>
+</div>
+<div class="section" id="add-parameters">
+<h3>Add Parameters<a class="headerlink" href="#add-parameters" title="Permalink to this headline"></a></h3>
+<p>We can use different parameter types:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">int_t</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">double_t</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">str_t</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">bool_t</span></code></p></li>
+</ul>
+<p>Even <code class="code docutils literal notranslate"><span class="pre">enums</span></code> are possible but we will leave this out for now. For the PID gains and for the integral limits we use <code class="code docutils literal notranslate"><span class="pre">double_t</span></code>. For activating/deactivating the integrator of the PID control we use <code class="code docutils literal notranslate"><span class="pre">bool_t</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="ch">#!/usr/bin/env python</span>
+<span class="lineno"> 2 </span><span class="n">PACKAGE</span> <span class="o">=</span> <span class="s2">&quot;toy_example&quot;</span>
+<span class="lineno"> 3 </span>
+<span class="lineno"> 4 </span><span class="kn">from</span> <span class="nn">dynamic_reconfigure.parameter_generator_catkin</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span><span class="n">gen</span> <span class="o">=</span> <span class="n">ParameterGenerator</span><span class="p">()</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span><span class="c1"># here wee need to add our reconfigure parameters</span>
+<span class="lineno"> 9 </span><span class="n">gen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;p_gain&quot;</span><span class="p">,</span> <span class="n">paramtype</span><span class="o">=</span><span class="n">double_t</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Proportional gain&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="lineno">10 </span><span class="n">gen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;i_gain&quot;</span><span class="p">,</span> <span class="n">paramtype</span><span class="o">=</span><span class="n">double_t</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Integral gain.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="lineno">11 </span><span class="n">gen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;d_gain&quot;</span><span class="p">,</span> <span class="n">paramtype</span><span class="o">=</span><span class="n">double_t</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Derivative gain.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="lineno">12 </span><span class="n">gen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;integral_lower_limit&quot;</span><span class="p">,</span> <span class="n">paramtype</span><span class="o">=</span><span class="n">double_t</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Integral lower limit.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="lineno">13 </span><span class="n">gen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;integral_upper_limit&quot;</span><span class="p">,</span> <span class="n">paramtype</span><span class="o">=</span><span class="n">double_t</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Integral upper limit.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="lineno">14 </span><span class="n">gen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;integrator_active&quot;</span><span class="p">,</span> <span class="n">paramtype</span><span class="o">=</span><span class="n">bool_t</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Activate or deactivate the integrator.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="lineno">15 </span>
+<span class="lineno">16 </span><span class="n">exit</span><span class="p">(</span><span class="n">gen</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">PACKAGE</span><span class="p">,</span> <span class="s2">&quot;toy_example&quot;</span><span class="p">,</span> <span class="s2">&quot;PidControl.cfg&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The values for <code class="code docutils literal notranslate"><span class="pre">min</span></code> and <code class="code docutils literal notranslate"><span class="pre">max</span></code> are optional. If you do not want to/cannot specify them, set them to <code class="code docutils literal notranslate"><span class="pre">None</span></code> or omit them completely.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The parameter name must be a valid identifier. Do not use spaces or leading numbers.</p>
+</div>
+</div>
+<div class="section" id="add-config-file-to-cmakelists-txt">
+<h3>Add Config File to CMakeLists.txt<a class="headerlink" href="#add-config-file-to-cmakelists-txt" title="Permalink to this headline"></a></h3>
+<p>We have to modify <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> to tell catkin to build our <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> configuration. Find <code class="code docutils literal notranslate"><span class="pre">generate_dynamic_reconfigure_options()</span></code> and uncomment it or just add it manually.</p>
+<img alt="../_images/dyn_cmakelists.gif" src="../_images/dyn_cmakelists.gif" />
+</div>
+<div class="section" id="rebuild-the-workspace">
+<h3>Rebuild the Workspace<a class="headerlink" href="#rebuild-the-workspace" title="Permalink to this headline"></a></h3>
+<p>Build</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/catkin_ws <span class="o">&amp;&amp;</span> catkin build
+</pre></div>
+</div>
+<p>Resource <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-a-reconfigurable-node">
+<h2>Writing a Reconfigurable Node<a class="headerlink" href="#writing-a-reconfigurable-node" title="Permalink to this headline"></a></h2>
+<div class="section" id="preparation">
+<h3>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline"></a></h3>
+<p>Create the python file.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-R1VJ" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-R1VJ" name="R1VJ" role="tab" tabindex="0">GUI</button><button aria-controls="panel-2-VGVybWluYWw=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-VGVybWluYWw=" name="VGVybWluYWw=" role="tab" tabindex="-1">Terminal</button></div><div aria-labelledby="tab-2-R1VJ" class="sphinx-tabs-panel group-tab" id="panel-2-R1VJ" name="R1VJ" role="tabpanel" tabindex="0"><img alt="../_images/dyn_create_node.gif" src="../_images/dyn_create_node.gif" />
+</div><div aria-labelledby="tab-2-VGVybWluYWw=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-VGVybWluYWw=" name="VGVybWluYWw=" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/catkin_ws/src/toy_example
+mkdir nodes
+touch my_controller.py
+</pre></div>
+</div>
+</div></div>
+<p>Make it exectubale.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>chmod +x ~/fav/catkin_ws/src/toy_example/nodes/my_controller.py
+</pre></div>
+</div>
+<p>Add the node to <code class="code docutils literal notranslate"><span class="pre">catkin_install_python()</span></code>.</p>
+<img alt="../_images/dyn_install_python.gif" src="../_images/dyn_install_python.gif" />
+<p>Build the workspace</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/catkin_ws <span class="o">&amp;&amp;</span> catkin build
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-the-code">
+<h3>Write the Code<a class="headerlink" href="#write-the-code" title="Permalink to this headline"></a></h3>
+<p>Starting from a basic node setup:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">my_controller.py</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="ch">#!/usr/bin/env python</span>
+<span class="lineno"> 2 </span><span class="kn">import</span> <span class="nn">rospy</span>
+<span class="lineno"> 3 </span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="k">class</span> <span class="nc">MyControlNode</span><span class="p">():</span>
+<span class="lineno"> 6 </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="lineno"> 7 </span>        <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;my_controller&quot;</span><span class="p">)</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="lineno">10 </span>        <span class="n">r</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno">11 </span>        <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+<span class="lineno">12 </span>            <span class="n">r</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+<span class="lineno">13 </span>
+<span class="lineno">14 </span>
+<span class="lineno">15 </span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="lineno">16 </span>    <span class="n">node</span> <span class="o">=</span> <span class="n">MyControlNode</span><span class="p">()</span>
+<span class="lineno">17 </span>    <span class="n">node</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="lineno">18 </span>
+<span class="lineno">19 </span>
+<span class="lineno">20 </span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="lineno">21 </span>    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>We will import the <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> server and our <code class="code docutils literal notranslate"><span class="pre">PidControlConfig</span></code> we created before. Similar to writing a <code class="code docutils literal notranslate"><span class="pre">rospy.Subscriber</span></code> we set a callback for <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code>. Each time the configuration gets changed the callback will be executed.</p>
+<p>In this example we won’t implement a PID controller. The node will only store the configuration parameters in variables and print them for demonstration purpose.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">my_controller.py</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="ch">#!/usr/bin/env python</span>
+<span class="lineno"> 2 </span><span class="kn">import</span> <span class="nn">rospy</span>
+<span class="lineno"> 3 </span><span class="kn">from</span> <span class="nn">dynamic_reconfigure.server</span> <span class="kn">import</span> <span class="n">Server</span>
+<span class="lineno"> 4 </span><span class="kn">from</span> <span class="nn">toy_example.cfg</span> <span class="kn">import</span> <span class="n">PidControlConfig</span>
+<span class="lineno"> 5 </span><span class="kn">import</span> <span class="nn">threading</span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span><span class="k">class</span> <span class="nc">MyControlNode</span><span class="p">():</span>
+<span class="lineno"> 9 </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="lineno">10 </span>        <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;my_controller&quot;</span><span class="p">)</span>
+<span class="lineno">11 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">data_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">()</span>
+<span class="lineno">12 </span>        <span class="c1"># the assigned values do not matter. They get overwritten by</span>
+<span class="lineno">13 </span>        <span class="c1"># dynamic_reconfigure as soon as the dynamic_reconfigure server is</span>
+<span class="lineno">14 </span>        <span class="c1"># created.</span>
+<span class="lineno">15 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">p_gain</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno">16 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">i_gain</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno">17 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">d_gain</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno">18 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">integrator_active</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="lineno">19 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">integral_lower_limit</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno">20 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">integral_upper_limit</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="lineno">21 </span>
+<span class="lineno">22 </span>        <span class="bp">self</span><span class="o">.</span><span class="n">dyn_server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="n">PidControlConfig</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_pid_dyn_reconfigure</span><span class="p">)</span>
+<span class="lineno">23 </span>
+<span class="lineno">24 </span>    <span class="k">def</span> <span class="nf">on_pid_dyn_reconfigure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+<span class="lineno">25 </span>        <span class="c1"># the config parameters are provided as dictionary. The keys are the</span>
+<span class="lineno">26 </span>        <span class="c1"># parameter names we specified in cfg/PidControl.cfg</span>
+<span class="lineno">27 </span>
+<span class="lineno">28 </span>        <span class="c1"># use data_lock to avoid parallel modifications of the variables</span>
+<span class="lineno">29 </span>        <span class="c1"># from different threads (here the main thread running the loop in the</span>
+<span class="lineno">30 </span>        <span class="c1"># run() method and the thread runing the dynamic_reconfigure callback).</span>
+<span class="lineno">31 </span>        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_lock</span><span class="p">:</span>
+<span class="lineno">32 </span>            <span class="bp">self</span><span class="o">.</span><span class="n">p_gain</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;p_gain&quot;</span><span class="p">]</span>
+<span class="lineno">33 </span>            <span class="bp">self</span><span class="o">.</span><span class="n">i_gain</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;i_gain&quot;</span><span class="p">]</span>
+<span class="lineno">34 </span>            <span class="bp">self</span><span class="o">.</span><span class="n">d_gain</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;d_gain&quot;</span><span class="p">]</span>
+<span class="lineno">35 </span>            <span class="bp">self</span><span class="o">.</span><span class="n">integral_lower_limit</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;integral_lower_limit&quot;</span><span class="p">]</span>
+<span class="lineno">36 </span>            <span class="bp">self</span><span class="o">.</span><span class="n">integral_upper_limit</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;integral_upper_limit&quot;</span><span class="p">]</span>
+<span class="lineno">37 </span>            <span class="bp">self</span><span class="o">.</span><span class="n">integrator_active</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;integrator_active&quot;</span><span class="p">]</span>
+<span class="lineno">38 </span>        <span class="k">return</span> <span class="n">config</span>
+<span class="lineno">39 </span>
+<span class="lineno">40 </span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="lineno">41 </span>        <span class="n">r</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno">42 </span>        <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+<span class="lineno">43 </span>            <span class="c1"># use data_lock to avoid parallel modifications of the variables</span>
+<span class="lineno">44 </span>            <span class="c1"># from different threads (here the main thread running this loop</span>
+<span class="lineno">45 </span>            <span class="c1"># and the thread runing the dynamic_reconfigure callback)</span>
+<span class="lineno">46 </span>            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_lock</span><span class="p">:</span>
+<span class="lineno">47 </span>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p_gain: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">i_gain: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">d_gain: </span><span class="si">{}</span><span class="s2">&quot;</span>
+<span class="lineno">48 </span>                      <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">integral_lower_limit: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">integral_upper_limit: </span><span class="si">{}</span><span class="s2">&quot;</span>
+<span class="lineno">49 </span>                      <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">integrator_active: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">---&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="lineno">50 </span>                          <span class="bp">self</span><span class="o">.</span><span class="n">p_gain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_gain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_gain</span><span class="p">,</span>
+<span class="lineno">51 </span>                          <span class="bp">self</span><span class="o">.</span><span class="n">integral_lower_limit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">integral_upper_limit</span><span class="p">,</span>
+<span class="lineno">52 </span>                          <span class="bp">self</span><span class="o">.</span><span class="n">integrator_active</span><span class="p">))</span>
+<span class="lineno">53 </span>            <span class="n">r</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+<span class="lineno">54 </span>
+<span class="lineno">55 </span>
+<span class="lineno">56 </span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="lineno">57 </span>    <span class="n">node</span> <span class="o">=</span> <span class="n">MyControlNode</span><span class="p">()</span>
+<span class="lineno">58 </span>    <span class="n">node</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="lineno">59 </span>
+<span class="lineno">60 </span>
+<span class="lineno">61 </span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="lineno">62 </span>    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dynamically-reconfigure-a-node">
+<h2>Dynamically Reconfigure a Node<a class="headerlink" href="#dynamically-reconfigure-a-node" title="Permalink to this headline"></a></h2>
+<p>Launch the ROS master</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roscore
+</pre></div>
+</div>
+<p>run the node in another terminal</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>You will get an output like this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>p_gain: <span class="m">1</span>.0
+i_gain: <span class="m">0</span>.0
+d_gain: <span class="m">0</span>.0
+integral_lower_limit: -0.2
+integral_upper_limit: <span class="m">0</span>.2
+integrator_active: False
+---
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun toy_example my_controller.py
+</pre></div>
+</div>
+<p>run <code class="code docutils literal notranslate"><span class="pre">rqt</span></code> in another terminal and open the <code class="file docutils literal notranslate"><span class="pre">plugins/configuration/dynamic_reconfigure</span></code> plugin.</p>
+<img alt="../_images/dyn_rqt_plugin_open.png" src="../_images/dyn_rqt_plugin_open.png" />
+<p>If our node is running but the <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> plugin does not show it, click refresh. Select the node you want to reconfigure on the left side. The <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> options for all selected nodes will be shown. In our case we only have the <code class="code docutils literal notranslate"><span class="pre">my_controller</span></code> node.</p>
+<img alt="../_images/dyn_rqt_plugin_usage.png" src="../_images/dyn_rqt_plugin_usage.png" />
+<p>We can change values by moving the sliders or entering them directly in the corresponding boxes (changing values with infinite limits via sliders is a bad idea).</p>
+<p>If we look at the terminal output of our node, we should see changes in the printed values reflecting the changes we do in the <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> plugin.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lab_workflow.html" class="btn btn-neutral float-left" title="Lab Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../resources.html" class="btn btn-neutral float-right" title="ROS Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
