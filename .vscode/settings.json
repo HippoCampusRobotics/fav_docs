@@ -1,6 +1,6 @@
 {
     "restructuredtext.confPath": "${workspaceFolder}",
-    "python.pythonPath": "${workspaceFolder}/venv/bin/python",
+    "python.pythonPath": "./venv/bin/python",
     "editor.wordWrap": "on",
     "restructuredtext.languageServer.disabled": false,
     "restructuredtext.preview.scrollEditorWithPreview": false,
