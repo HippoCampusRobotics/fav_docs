@@ -14,6 +14,7 @@ Scenario
 ********
 
 Imagine we have something like a PID-Controller and we want to change the gains and maybe some other parameters as well while the node is running. Things we would like to configure could be:
+
 * PID gains
 * limits for the integral term (there are many more anti-windup strategies. Use your preferred search engine for some inspiration.)
 * Activate/Deactivate the integrator so the integrator is not accumulating control errors while the controller is not active.
