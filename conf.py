@@ -15,13 +15,11 @@
 # sys.path.insert(0, os.path.abspath('.'))
 import sphinx_rtd_theme
 
-
 # -- Project information -----------------------------------------------------
 
 project = 'Formulas and Vehicles'
 copyright = '2021, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -29,10 +27,8 @@ author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx.ext.githubpages",
-    "sphinx.ext.autosectionlabel",
-    "sphinx.ext.todo",
-    "sphinx_tabs.tabs"
+    "sphinx.ext.githubpages", "sphinx.ext.autosectionlabel", "sphinx.ext.todo",
+    "sphinx_tabs.tabs", "sphinxemoji.sphinxemoji"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -48,7 +44,8 @@ rst_prolog = """
 .. |br| raw:: html
 
    <br />
-   
+
+.. |partying_face| unicode:: U+1F973
 """
 # -- Options for HTML output -------------------------------------------------
 
@@ -60,13 +57,14 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = []
+html_static_path = ["_static"]
 html_context = {
-        "display_github": True,
-        "github_user": "HippoCampusRobotics",
-        "github_repo": "fav_docs",
-        "github_version": "master/"
+    "display_github": True,
+    "github_user": "HippoCampusRobotics",
+    "github_repo": "fav_docs",
+    "github_version": "master/"
 }
+html_css_files = ["css/custom.css"]
 
 [extensions]
 show_authors = True
