@@ -103,7 +103,7 @@ Even :code:`enums` are possible but we will leave this out for now. For the PID 
    gen.add(name="integral_upper_limit", paramtype=double_t, level=0, description="Integral upper limit.", default=0.2, min=-1.0, max=1.0)
    gen.add(name="integrator_active", paramtype=bool_t, level=0, description="Activate or deactivate the integrator.", default=False)
 
-   exit(gen.generate(PACKAGE, "toy_example", "PidControl.cfg"))
+   exit(gen.generate(PACKAGE, "toy_example", "PidControl"))
 
 
 
