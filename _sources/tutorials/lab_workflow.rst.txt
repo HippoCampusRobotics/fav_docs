@@ -22,23 +22,23 @@ The following steps can be prepared at home before coming to the lab.
 
       .. code-tab:: sh Simulation
 
-         ROS_HOSTNAME="$(hostname --short).local"
+         export ROS_HOSTNAME="$(hostname --short).local"
 
          # Your simulation/home setup
-         ROS_MASTER_URI="http://$(hostname --short).local:11311"
+         export ROS_MASTER_URI="http://$(hostname --short).local:11311"
 
          # Your realworld/lab setup
          #ROS_MASTER_URI="http://hippo-celsius.local:11311"
 
       .. code-tab:: sh Lab
 
-         ROS_HOSTNAME="$(hostname --short).local"
+         export ROS_HOSTNAME="$(hostname --short).local"
 
          # Your simulation/home setup
-         #ROS_MASTER_URI="http://$(hostname --short).local:11311"
+         #export ROS_MASTER_URI="http://$(hostname --short).local:11311"
 
          # Your realworld/lab setup
-         ROS_MASTER_URI="http://hippo-celsius.local:11311"
+         export ROS_MASTER_URI="http://hippo-celsius.local:11311"
 
    .. note:: As always, run :code:`source ~/.bashrc` to apply these changes.
 

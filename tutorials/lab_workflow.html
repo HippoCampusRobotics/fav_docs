@@ -95,22 +95,22 @@
 <ol class="arabic">
 <li><p>Set the <code class="code docutils literal notranslate"><span class="pre">ROS_MASTER_URI</span></code> and <code class="code docutils literal notranslate"><span class="pre">ROS_HOSTNAME</span></code> environment variables in <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code>. You can have both configurations, for your simulation setup and your experiment setup and comment out the one you are not using with <code class="code docutils literal notranslate"><span class="pre">#</span></code>.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-U2ltdWxhdGlvbg==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-U2ltdWxhdGlvbg==" name="U2ltdWxhdGlvbg==" role="tab" tabindex="0">Simulation</button><button aria-controls="panel-0-TGFi" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-TGFi" name="TGFi" role="tab" tabindex="-1">Lab</button></div><div aria-labelledby="tab-0-U2ltdWxhdGlvbg==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-U2ltdWxhdGlvbg==" name="U2ltdWxhdGlvbg==" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">ROS_HOSTNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>hostname --short<span class="k">)</span><span class="s2">.local&quot;</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-U2ltdWxhdGlvbg==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-U2ltdWxhdGlvbg==" name="U2ltdWxhdGlvbg==" role="tab" tabindex="0">Simulation</button><button aria-controls="panel-0-TGFi" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-TGFi" name="TGFi" role="tab" tabindex="-1">Lab</button></div><div aria-labelledby="tab-0-U2ltdWxhdGlvbg==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-U2ltdWxhdGlvbg==" name="U2ltdWxhdGlvbg==" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ROS_HOSTNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>hostname --short<span class="k">)</span><span class="s2">.local&quot;</span>
 
 <span class="c1"># Your simulation/home setup</span>
-<span class="nv">ROS_MASTER_URI</span><span class="o">=</span><span class="s2">&quot;http://</span><span class="k">$(</span>hostname --short<span class="k">)</span><span class="s2">.local:11311&quot;</span>
+<span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span><span class="s2">&quot;http://</span><span class="k">$(</span>hostname --short<span class="k">)</span><span class="s2">.local:11311&quot;</span>
 
 <span class="c1"># Your realworld/lab setup</span>
 <span class="c1">#ROS_MASTER_URI=&quot;http://hippo-celsius.local:11311&quot;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-TGFi" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-TGFi" name="TGFi" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">ROS_HOSTNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>hostname --short<span class="k">)</span><span class="s2">.local&quot;</span>
+</div><div aria-labelledby="tab-0-TGFi" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-TGFi" name="TGFi" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ROS_HOSTNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>hostname --short<span class="k">)</span><span class="s2">.local&quot;</span>
 
 <span class="c1"># Your simulation/home setup</span>
-<span class="c1">#ROS_MASTER_URI=&quot;http://$(hostname --short).local:11311&quot;</span>
+<span class="c1">#export ROS_MASTER_URI=&quot;http://$(hostname --short).local:11311&quot;</span>
 
 <span class="c1"># Your realworld/lab setup</span>
-<span class="nv">ROS_MASTER_URI</span><span class="o">=</span><span class="s2">&quot;http://hippo-celsius.local:11311&quot;</span>
+<span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span><span class="s2">&quot;http://hippo-celsius.local:11311&quot;</span>
 </pre></div>
 </div>
 </div></div>
