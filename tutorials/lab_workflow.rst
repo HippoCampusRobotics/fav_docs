@@ -28,7 +28,7 @@ The following steps can be prepared at home before coming to the lab.
          export ROS_MASTER_URI="http://$(hostname --short).local:11311"
 
          # Your realworld/lab setup
-         #ROS_MASTER_URI="http://hippo-celsius.local:11311"
+         #export ROS_MASTER_URI="http://hippo-celsius.local:11311"
 
       .. code-tab:: sh Lab
 
