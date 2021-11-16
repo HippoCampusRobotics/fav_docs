@@ -3,7 +3,7 @@ Assignment 3
 
 .. attention:: 
 
-   Please update the :code:`bluerov_sim` package.
+   Please update the :code:`bluerov_sim` package. We have prepared a launch file for you to start with: :file:`assignment_3.launch`
 
 
 .. Get the Code
