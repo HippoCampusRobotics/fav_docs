@@ -22,7 +22,7 @@ Welcome to Formulas and Vehicles's documentation!
    tutorials
    resources
    assignment1
-
+   assignment3
 
 
 Indices and tables
