@@ -16,10 +16,11 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Assignment 1" href="assignment1.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,7 +39,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Class Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Setup</a></li>
@@ -46,6 +47,12 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">ROS Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment 1</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#range-sensor-in-simulation">Range Sensor in Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taking-it-further">Taking it Further</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-final-remarks">Some Final Remarks</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -74,39 +81,25 @@
              
   <div class="section" id="assignment-3">
 <h1>Assignment 3<a class="headerlink" href="#assignment-3" title="Permalink to this headline"></a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Remember to regularly update your local repositories as described in the previous section. In case we make major changes, we’ll send a slack reminder to update.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Please update the <code class="code docutils literal notranslate"><span class="pre">bluerov_sim</span></code> package.</p>
 </div>
-<div class="section" id="get-the-code">
-<h2>Get the Code<a class="headerlink" href="#get-the-code" title="Permalink to this headline"></a></h2>
-<p>You will need to update your <code class="code docutils literal notranslate"><span class="pre">bluerov_sim</span></code> package, for example by:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roscd bluerov_sim <span class="o">&amp;&amp;</span> git pull
-</pre></div>
-</div>
-<p>We have prepared a <code class="code docutils literal notranslate"><span class="pre">range_sensor</span></code> package that will publish the range measurements in a topic <code class="code docutils literal notranslate"><span class="pre">/ranges</span></code>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/FormulasAndVehicles/range_sensor.git ~/fav/catkin_ws/src/range_sensor
-</pre></div>
-</div>
-<p>To install missing dependencies:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/catkin_ws <span class="o">&amp;&amp;</span> rosdep install --from-paths src --ignore-src -r -y
-</pre></div>
-</div>
-<p>Don’t forget to rebuild your catkin workspace after downloading these packages.</p>
-</div>
+<p>In this assignment, you will implement an algorithm for autonmous navigation within a confined environment. This will include a localization method and a path tracking controller.</p>
+<p>Again, keep in mind that the best controller isn’t any good if your position data is rubbish. Set your priorities accordingly.</p>
 <div class="section" id="range-sensor-in-simulation">
 <h2>Range Sensor in Simulation<a class="headerlink" href="#range-sensor-in-simulation" title="Permalink to this headline"></a></h2>
 <p>We are not actually using simulated camera images and running the AprilTag algorithm in simulation. Rather, we have written a Gazebo Plugin that simulates the range measurements to the four given anchors. This has the benefit of reducing the computational burden.</p>
-<p>The range sensor plugin has a few parameters we encourage you to play with. In the <code class="code docutils literal notranslate"><span class="pre">bluerov_sim</span></code> package you can find the *.sdf file defining our BlueROV2 model for Gazebo: <code class="code docutils literal notranslate"><span class="pre">models/uuv_bluerov2_heavy/uuv_bluerov2_heavy.sdf</span></code></p>
+<p>This range sensor plugin has a few parameters we encourage you to play with. In the <code class="code docutils literal notranslate"><span class="pre">bluerov_sim</span></code> package you can find the *.sdf file defining our BlueROV2 model for Gazebo: <code class="code docutils literal notranslate"><span class="pre">models/uuv_bluerov2_heavy/uuv_bluerov2_heavy.sdf</span></code></p>
 <p>The range sensor plugin parameters can be found here:</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&quot;range_sensor_plugin&quot;</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_range_sensor_plugin.so&quot;</span><span class="nt">&gt;</span>
    <span class="nt">&lt;robotNamespace</span> <span class="nt">/&gt;</span>
    <span class="nt">&lt;pubRate&gt;</span>7.0<span class="nt">&lt;/pubRate&gt;</span>
-   <span class="nt">&lt;rangeNoiseStd&gt;</span>0.1<span class="nt">&lt;/rangeNoiseStd&gt;</span>
+   <span class="nt">&lt;rangeNoiseStd&gt;</span>0.01<span class="nt">&lt;/rangeNoiseStd&gt;</span>
    <span class="nt">&lt;fovCamera&gt;</span>100<span class="nt">&lt;/fovCamera&gt;</span>
    <span class="nt">&lt;viewingAngle&gt;</span>140<span class="nt">&lt;/viewingAngle&gt;</span>
-   <span class="nt">&lt;dropProb&gt;</span>0.05<span class="nt">&lt;/dropProb&gt;</span>
-   <span class="nt">&lt;maxDetectionDist&gt;</span>4.0<span class="nt">&lt;/maxDetectionDist&gt;</span>
+   <span class="nt">&lt;dropProb&gt;</span>0.02<span class="nt">&lt;/dropProb&gt;</span>
+   <span class="nt">&lt;maxDetectionDist&gt;</span>5.0<span class="nt">&lt;/maxDetectionDist&gt;</span>
    <span class="nt">&lt;distDropProbExponent&gt;</span>2.0<span class="nt">&lt;/distDropProbExponent&gt;</span>
 <span class="nt">&lt;/plugin&gt;</span>
 </pre></div>
@@ -123,12 +116,6 @@
 <div class="math notranslate nohighlight">
 \[p_{\text{drop}}(\text{dist}) = \frac{1}{\text{maxDist}^{n}} \cdot \text{dist}^{n}\]</div>
 <p>You can use these parameters to test your algorithm in different situations and prepare for reality with varying degrees of pessimism.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>When you implement your localization and problems arise, you might want to turn off the noise to test whether your algorithm is working at all.</p>
-</div>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
 <p>The range sensor’s position for the simulation is defined in the <code class="code docutils literal notranslate"><span class="pre">uuv_bluerov2_heavy.sdf</span></code> file as well (relative to the body frame <code class="code docutils literal notranslate"><span class="pre">base_link</span></code>):</p>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;range_sensor_link&quot;</span><span class="nt">&gt;</span>
    <span class="nt">&lt;pose&gt;</span>0.2 0 0.1 0 0 0<span class="nt">&lt;/pose&gt;</span>
@@ -136,24 +123,28 @@
 <span class="nt">&lt;/link&gt;</span>
 </pre></div>
 </div>
-<p>This hasn’t been measured precisely (one of us looked at the BlueROV2 and squinted their eyes…) and you will probably want to make sure this position is adaptable in your code, if you define it somewhere.</p>
+<p>This hasn’t been measured precisely (one of us looked at the BlueROV2 and squinted their eyes…) and you will probably want to make sure this position is adaptable in your code, if you define (and use) it somewhere.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When you implement your localization and problems arise, you might want to turn off the noise to test whether your algorithm is working at all.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the experiment, we are reusing four AprilTags that are already used on the floor on the other side of the tank. Therefore, if the BlueROV gets completely lost, you might get false measurements. However, if you keep the four tags on the wall within the camera’s field of view, this shouldn’t be a problem.</p>
 </div>
 </div>
 <div class="section" id="taking-it-further">
 <h2>Taking it Further<a class="headerlink" href="#taking-it-further" title="Permalink to this headline"></a></h2>
-<p>In the following, we collected a few hints for you. They are supposed to help you dive deeper into the simulation.</p>
-<p>In general, we encourage you to use our <code class="code docutils literal notranslate"><span class="pre">keyboard_control</span></code> node for convenient testing.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your localization algorithm. Keep in mind that velocities are given in the world frame “map”. Our docs section <a class="reference internal" href="resources.html#coordinate-transformations"><span class="std std-ref">Coordinate Transformations</span></a> includes some pointers for where to look.</p>
-</div>
+<p>In the following, we collected a few hints for you. They are supposed to help you dive deeper into the simulation (if you want to).</p>
+<p>In general, we encourage you to use our <code class="code docutils literal notranslate"><span class="pre">keyboard_control</span></code> node for convenient testing of your localization.
+Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your algorithm.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>The <code class="code docutils literal notranslate"><span class="pre">tf.transformations</span></code> library helps you deal with quaternions. Check the <a class="reference external" href="http://docs.ros.org/en/melodic/api/tf/html/python/transformations.html">API</a> .</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>You can access IMU data in the topic <code class="code docutils literal notranslate"><span class="pre">mavros/imu/data</span></code>, this has already been filtered by PX4’s own estimator.</p>
+<p>You can access IMU data in the topic <code class="code docutils literal notranslate"><span class="pre">bluerov/mavros/imu/data</span></code>, this has already been filtered by the FCU’s on-board estimator.</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -191,8 +182,7 @@
 <p>In this assignment you will do different things, including implementing a self-localization algorithm for the BlueROV2 and a controller to autonomously navigate inside the tank. Think about your code structure and package structure to ensure (re-)usability.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>Please do not change code (apart from playing with parameters purely for your simulation, of course) in our repositories, namely <code class="code docutils literal notranslate"><span class="pre">bluerov_sim</span></code> and <code class="code docutils literal notranslate"><span class="pre">range_sensor</span></code>. There are some adjustments missing for the experiment that we are working hard on, so you will have to be able to pull our uploaded code from Github.
-Instead, create your own packages.</p>
+<p>Please do not change code (apart from playing with parameters purely for your simulation, of course) in our repositories, namely <code class="code docutils literal notranslate"><span class="pre">bluerov_sim</span></code>. Instead, create your own packages.</p>
 </div>
 </div>
 </div>
@@ -200,7 +190,9 @@ Instead, create your own packages.</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="assignment1.html" class="btn btn-neutral float-left" title="Assignment 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

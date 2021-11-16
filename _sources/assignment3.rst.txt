@@ -1,52 +1,56 @@
 Assignment 3
 ############
 
-.. note:: 
+.. attention:: 
 
-   Remember to regularly update your local repositories as described in the previous section. In case we make major changes, we'll send a slack reminder to update.
-
-
-Get the Code
-============
-
-You will need to update your :code:`bluerov_sim` package, for example by:
-
-.. code-block:: sh
-
-   roscd bluerov_sim && git pull
+   Please update the :code:`bluerov_sim` package.
 
 
-We have prepared a :code:`range_sensor` package that will publish the range measurements in a topic :code:`/ranges`:
+.. Get the Code
+.. ============
 
-.. code-block:: sh
-
-   git clone https://github.com/FormulasAndVehicles/range_sensor.git ~/fav/catkin_ws/src/range_sensor
-
-To install missing dependencies:
-
-.. code-block:: sh
-
-   cd ~/fav/catkin_ws && rosdep install --from-paths src --ignore-src -r -y
-
-
-Don't forget to rebuild your catkin workspace after downloading these packages.
-
-.. We have made some adjustments to the PX4-Autopilot firmware running on the Flight Control Unit as well, so we need to update this:
+.. You will need to update your :code:`bluerov_sim` package, for example by:
 
 .. .. code-block:: sh
 
-..    cd ~/fav/fav_PX4-Autopilot && git pull
+..    roscd bluerov_sim && git pull
 
-.. And to rebuild the code, execute in the firmware's directory:
+
+.. We have prepared a :code:`range_sensor` package that will publish the range measurements in a topic :code:`/ranges`:
 
 .. .. code-block:: sh
 
-..    DONT_RUN=1 make clean 
-..    DONT_RUN=1 make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
+..    git clone https://github.com/FormulasAndVehicles/range_sensor.git ~/fav/catkin_ws/src/range_sensor
 
-.. .. note::
+.. To install missing dependencies:
 
-..    If you got an internal compiler error last time you built the firmware, this will probably happen again. Just repeat the build command a few times until it works.
+.. .. code-block:: sh
+
+..    cd ~/fav/catkin_ws && rosdep install --from-paths src --ignore-src -r -y
+
+
+.. Don't forget to rebuild your catkin workspace after downloading these packages.
+
+.. .. We have made some adjustments to the PX4-Autopilot firmware running on the Flight Control Unit as well, so we need to update this:
+
+.. .. .. code-block:: sh
+
+.. ..    cd ~/fav/fav_PX4-Autopilot && git pull
+
+.. .. And to rebuild the code, execute in the firmware's directory:
+
+.. .. .. code-block:: sh
+
+.. ..    DONT_RUN=1 make clean 
+.. ..    DONT_RUN=1 make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
+
+.. .. .. note::
+
+.. ..    If you got an internal compiler error last time you built the firmware, this will probably happen again. Just repeat the build command a few times until it works.
+
+In this assignment, you will implement an algorithm for autonmous navigation within a confined environment. This will include a localization method and a path tracking controller. 
+
+Again, keep in mind that the best controller isn't any good if your position data is rubbish. Set your priorities accordingly.
 
 
 Range Sensor in Simulation
@@ -54,7 +58,7 @@ Range Sensor in Simulation
 
 We are not actually using simulated camera images and running the AprilTag algorithm in simulation. Rather, we have written a Gazebo Plugin that simulates the range measurements to the four given anchors. This has the benefit of reducing the computational burden.
 
-The range sensor plugin has a few parameters we encourage you to play with. In the :code:`bluerov_sim` package you can find the \*.sdf file defining our BlueROV2 model for Gazebo: :code:`models/uuv_bluerov2_heavy/uuv_bluerov2_heavy.sdf`
+This range sensor plugin has a few parameters we encourage you to play with. In the :code:`bluerov_sim` package you can find the \*.sdf file defining our BlueROV2 model for Gazebo: :code:`models/uuv_bluerov2_heavy/uuv_bluerov2_heavy.sdf`
 
 The range sensor plugin parameters can be found here:
 
@@ -63,11 +67,11 @@ The range sensor plugin parameters can be found here:
    <plugin name="range_sensor_plugin" filename="libgazebo_range_sensor_plugin.so">
       <robotNamespace />
       <pubRate>7.0</pubRate>
-      <rangeNoiseStd>0.1</rangeNoiseStd>
+      <rangeNoiseStd>0.01</rangeNoiseStd>
       <fovCamera>100</fovCamera>
       <viewingAngle>140</viewingAngle>
-      <dropProb>0.05</dropProb>
-      <maxDetectionDist>4.0</maxDetectionDist>
+      <dropProb>0.02</dropProb>
+      <maxDetectionDist>5.0</maxDetectionDist>
       <distDropProbExponent>2.0</distDropProbExponent>
    </plugin>
 
@@ -86,34 +90,33 @@ We compute this probability according to the following equation, where the **dis
 
 You can use these parameters to test your algorithm in different situations and prepare for reality with varying degrees of pessimism.
 
+The range sensor's position for the simulation is defined in the :code:`uuv_bluerov2_heavy.sdf` file as well (relative to the body frame :code:`base_link`):
+
+.. code-block:: XML
+   
+   <link name="range_sensor_link">
+      <pose>0.2 0 0.1 0 0 0</pose>
+      ...
+   </link>
+
+This hasn't been measured precisely (one of us looked at the BlueROV2 and squinted their eyes...) and you will probably want to make sure this position is adaptable in your code, if you define (and use) it somewhere.
+
+
 .. hint::
 
    When you implement your localization and problems arise, you might want to turn off the noise to test whether your algorithm is working at all. 
 
-.. hint::
+.. note::
 
-   The range sensor's position for the simulation is defined in the :code:`uuv_bluerov2_heavy.sdf` file as well (relative to the body frame :code:`base_link`):
-
-   .. code-block:: XML
-      
-      <link name="range_sensor_link">
-         <pose>0.2 0 0.1 0 0 0</pose>
-         ...
-      </link>
-
-   This hasn't been measured precisely (one of us looked at the BlueROV2 and squinted their eyes...) and you will probably want to make sure this position is adaptable in your code, if you define it somewhere.
-
+   For the experiment, we are reusing four AprilTags that are already used on the floor on the other side of the tank. Therefore, if the BlueROV gets completely lost, you might get false measurements. However, if you keep the four tags on the wall within the camera's field of view, this shouldn't be a problem.
 
 Taking it Further
 =================
 
-In the following, we collected a few hints for you. They are supposed to help you dive deeper into the simulation.
+In the following, we collected a few hints for you. They are supposed to help you dive deeper into the simulation (if you want to).
 
-In general, we encourage you to use our :code:`keyboard_control` node for convenient testing.
-
-.. note::
-
-   Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your localization algorithm. Keep in mind that velocities are given in the world frame "map". Our docs section :ref:`resources:Coordinate transformations` includes some pointers for where to look.
+In general, we encourage you to use our :code:`keyboard_control` node for convenient testing of your localization.
+Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your algorithm. 
 
 .. hint:: 
 
@@ -121,7 +124,7 @@ In general, we encourage you to use our :code:`keyboard_control` node for conven
 
 .. hint::
 
-   You can access IMU data in the topic :code:`mavros/imu/data`, this has already been filtered by PX4's own estimator.
+   You can access IMU data in the topic :code:`bluerov/mavros/imu/data`, this has already been filtered by the FCU's on-board estimator.
 
 .. hint::
 
@@ -170,8 +173,7 @@ In this assignment you will do different things, including implementing a self-l
 
 .. attention::
 
-   Please do not change code (apart from playing with parameters purely for your simulation, of course) in our repositories, namely :code:`bluerov_sim` and :code:`range_sensor`. There are some adjustments missing for the experiment that we are working hard on, so you will have to be able to pull our uploaded code from Github.
-   Instead, create your own packages.
+   Please do not change code (apart from playing with parameters purely for your simulation, of course) in our repositories, namely :code:`bluerov_sim`. Instead, create your own packages.
 
 
 
