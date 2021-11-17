@@ -50,7 +50,7 @@ Assignment 2
 
 .. ..    If you got an internal compiler error last time you built the firmware, this will probably happen again. Just repeat the build command a few times until it works.
 
-In this assignment, you will implement an algorithm for autonmous navigation within a confined environment. This will include a localization method and a path tracking controller. 
+In this assignment, you will implement an algorithm for autonomous navigation within a confined environment. This will include a localization method and a path tracking controller. 
 
 Again, keep in mind that the best controller isn't any good if your position data is rubbish. Set your priorities accordingly.
 
