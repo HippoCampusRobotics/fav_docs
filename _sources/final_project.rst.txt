@@ -1,24 +1,29 @@
 Final Project
 #############
 
-.. attention:: 
+.. .. attention:: 
 
-   Please make sure to update your local repository.
+..    Please make sure to update your local repository.
 
-   .. code-block:: sh
+..    .. code-block:: sh
 
-      cd ~/fav/catkin_ws/src/bluerov_sim 
+..       cd ~/fav/catkin_ws/src/bluerov_sim 
 
-   To pull our changes, execute:
+..    To pull our changes, execute:
 
-   .. code-block:: sh
+..    .. code-block:: sh
 
-      git pull origin --ff-only
+..       git pull origin --ff-only
+
+This section presents some additional features to our simulation environment. It should give you an idea on how to add models to the Gazebo world for your final project.
+
+Additionally, note that you can use the position data of our localization algorithm in experiment. This will allow you to focus on other tasks.
+
 
 New Gazebo World
 ================
 
-There is a new world-file in :file:`bluerov_sim` called :file:`tank_with_tags.world`. It is a predefined world, that contains a model of the tank with apriltags on the floor, similiar to the real tank at the institute.
+There is a new world-file in :file:`bluerov_sim` called :file:`tank_with_tags.world`. It is a predefined world that contains a model of the tank with AprilTags on the floor, similiar to the real tank at the institute.
 
 To load this world, when we launch Gazebo, we can include the :file:`gazebo_tags.launch` instead of the :file:`gazebo_base.launch` launch file.
 
@@ -28,12 +33,12 @@ A complete launch setup is provided in :file:`example_apriltag_world.launch`.
 
    roslaunch bluerov_sim example_apriltag_world.launch
 
-It launches Gazebo with the apriltags in the tank and spawns the BlueROV.
+It launches Gazebo with the AprilTags in the tank and spawns the BlueROV.
 
-New BlueROV2 Model
-==================
+BlueROV2 Model including Cameras
+================================
 
-There is a new model of the BlueROV2, that has two cameras. To spawn this variant of the vehicle, pass the :code:`camera` argument to the :file:`spawn_vehicle.launch` launch file and set it to true.
+There is a new model of the BlueROV2 that has two cameras. To spawn this variant of the vehicle, pass the :code:`camera` argument to the :file:`spawn_vehicle.launch` launch file and set it to true.
 
 .. image:: /res/images/gazebo_camera.png
 
@@ -79,12 +84,12 @@ Line 9 creates a :code:`camera` argument (that can be specified via commandline 
 New AprilTag Models
 ===================
 
-In :file:`bluerov_sim/models` there are many new apriltag models. 128 models in total now to be precise. IDs 0 to 63 are used for the tags on the floor. 
+In :file:`bluerov_sim/models` there are many new AprilTag models. 128 models in total now to be precise. IDs 0 to 63 are used for the tags on the floor.
 
 Modify Gazebo Worlds
 ====================
 
-In general you have to options to get your models into a Gazebo world. Either you use predefined world files like the already mentioned :file:`tank_with_tags.world` and specify the models you want to include (lines 22-24).
+In general you have two options to get your models into a Gazebo world. Either you use predefined world files like the already mentioned :file:`tank_with_tags.world` and specify the models you want to include (lines 22-24).
 
 .. code-block:: xml
    :linenos:
