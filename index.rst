@@ -23,7 +23,7 @@ Welcome to Formulas and Vehicles's documentation!
    resources
    assignment1
    assignment3
-
+   final_project
 
 Indices and tables
 ==================
