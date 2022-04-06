@@ -205,6 +205,14 @@
 <h3>Add Config File to CMakeLists.txt<a class="headerlink" href="#add-config-file-to-cmakelists-txt" title="Permalink to this headline"></a></h3>
 <p>We have to modify <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> to tell catkin to build our <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> configuration. Find <code class="code docutils literal notranslate"><span class="pre">generate_dynamic_reconfigure_options()</span></code> and uncomment it or just add it manually.</p>
 <img alt="../_images/dyn_cmakelists.gif" src="../_images/dyn_cmakelists.gif" />
+<p>Additionally, we have to tell catkin that <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> is a necessary package to build our <code class="code docutils literal notranslate"><span class="pre">&quot;toy_example&quot;</span></code> package. For this, add <code class="code docutils literal notranslate"><span class="pre">dynamic_reconfigure</span></code> in the <code class="code docutils literal notranslate"><span class="pre">find_package()</span></code> option in <code class="file docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span>
+   <span class="s">dynamic_reconfigure</span>
+   <span class="c"># add other package dependencies here</span>
+   <span class="c"># ...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="rebuild-the-workspace">
 <h3>Rebuild the Workspace<a class="headerlink" href="#rebuild-the-workspace" title="Permalink to this headline"></a></h3>
