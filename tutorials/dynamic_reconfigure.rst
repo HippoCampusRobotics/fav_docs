@@ -118,6 +118,16 @@ We have to modify :file:`CMakeLists.txt` to tell catkin to build our :code:`dyna
 
 .. image:: /res/images/dyn_cmakelists.gif
 
+Additionally, we have to tell catkin that :code:`dynamic_reconfigure` is a necessary package to build our :code:`"toy_example"` package. For this, add :code:`dynamic_reconfigure` in the :code:`find_package()` option in :file:`CMakeLists.txt`:
+
+.. code-block:: cmake
+
+   find_package(catkin REQUIRED COMPONENTS
+      dynamic_reconfigure
+      # add other package dependencies here
+      # ...
+   )
+
 Rebuild the Workspace
 #####################
 
