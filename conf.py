@@ -28,7 +28,7 @@ author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 # ones.
 extensions = [
     "sphinx.ext.githubpages", "sphinx.ext.autosectionlabel", "sphinx.ext.todo",
-    "sphinx_tabs.tabs", "sphinxemoji.sphinxemoji"
+    "sphinx_tabs.tabs", "sphinxemoji.sphinxemoji", "sphinx-favicon"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -70,3 +70,7 @@ html_css_files = ["css/custom.css"]
 show_authors = True
 todo_include_todos = True
 autosectionlabel_prefix_document = True
+
+favicons = [
+    "bluerov.svg",
+]
