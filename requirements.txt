@@ -1,4 +1,6 @@
-sphinx>=4.2
+sphinx>=4.2,<5
 sphinx_rtd_theme==1.0
 sphinx-tabs
 sphinxemoji
+sphinx-favicon
+docutils<0.18
