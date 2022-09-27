@@ -3,9 +3,9 @@ Class Overview
 
 .. attention::
 
-    We will host **a preliminary info session** in-person on Tuesday, Oct 12th, at 16:15 in M 0571 and via Zoom. We are looking forward to meeting you! :)
+    The date of **the preliminary info session** will be announced shortly. We are looking forward to meeting you! :)
 
-    Zoom Link: `https://tuhh.zoom.us/j/87901509456?pwd=NFNUWENBOWtRL0phUk9FTldkUDI4Zz09 <https://tuhh.zoom.us/j/87901509456?pwd=NFNUWENBOWtRL0phUk9FTldkUDI4Zz09>`_.
+    
 
 General Information
 ###################
@@ -48,9 +48,6 @@ Format and Schedule
 The class will be held in a hybrid format including Zoom and in-person pitch lectures as well as practical lab experiments.
 Pitch lectures in the first half of the course will be held on Tuesday afternoons at 16:15 until approximately 18:15.
 
-.. figure:: /res/images/schedule.png
-    
-    Schedule.
 
 Registration
 ############
