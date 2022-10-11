@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'Formulas and Vehicles'
-copyright = '2021, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
+copyright = '2022, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 
 # -- General configuration ---------------------------------------------------
