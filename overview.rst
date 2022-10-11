@@ -3,8 +3,8 @@ Class Overview
 
 .. attention::
 
-    The date of **the preliminary info session** will be held on **Tuesday 18.10.2022** starting at 16:15 in Room M-0.571. The strongly encourage joining us in-person. However, it will be streamed additionally via Zoom https://tuhh.zoom.us/j/89259785937?pwd=c213SGZ6dDlaQ2xYd1JsNGIrVHJDUT09 with Meeting-ID: 892 5978 5937 and Code: 2022 .  
- We are looking forward to meeting you! :)
+    We will host a **preliminary info session** on **Tuesday 18.10.2022** starting at 16:15 in Room M-0.571. We strongly encourage joining us in-person.       However, it will be streamed additionally via Zoom https://tuhh.zoom.us/j/89259785937?pwd=c213SGZ6dDlaQ2xYd1JsNGIrVHJDUT09 with Meeting-ID: 892 5978       5937 and Code: 2022.  
+    We are looking forward to meeting you! :)
 
     
 
