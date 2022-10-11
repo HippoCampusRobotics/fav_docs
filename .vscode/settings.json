@@ -6,5 +6,9 @@
     "restructuredtext.preview.scrollEditorWithPreview": false,
     "restructuredtext.preview.scrollPreviewWithEditor": false,
     "cmake.configureOnOpen": false,
-    "python.formatting.provider": "yapf"
+    "python.formatting.provider": "yapf",
+    "esbonio.sphinx.confDir": "${workspaceFolder}",
+    "[restructuredtext]": {
+        "editor.tabSize": 3
+    }
 }

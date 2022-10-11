@@ -10,4 +10,5 @@ The following pages are meant to help you start writing your own code and eventu
    tutorials/ros
    tutorials/simulation
    tutorials/lab_workflow
+   tutorials/recording_rosbags
    tutorials/dynamic_reconfigure
