@@ -21,8 +21,8 @@ Welcome to Formulas and Vehicles's documentation!
    the_robot
    tutorials
    resources
-   assignment1
-   assignment3
+   assignment_depth_control
+   assignment_loc_and_control
    final_project
 
 Indices and tables
