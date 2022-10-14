@@ -58,5 +58,5 @@ Students who are interested in participating in this class register via StudIP (
 
 .. note::
 
-    Unfortunately, we have to limit the number of spots in this class. In case the number of registered students exceeds our capacity, we will go through a selection. The final acceptance will be sent out w/c Oct 25th.
+    Unfortunately, we have to limit the number of spots in this class. In case the number of registered students exceeds our capacity, we will go through a selection. The final acceptance will be sent out w/c Oct 24th.
 
