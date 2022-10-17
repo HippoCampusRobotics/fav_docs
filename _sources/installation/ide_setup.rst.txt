@@ -90,4 +90,4 @@ Formatting
 
 There are tools out there to help you keep your code neat and clean, called formatters. In the provided :file:`settings.json` file a formatter has been already selected. To apply formatting on your currently active file hit :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`I`.
 
-.. note:: Formatting can only be applied if your code is sintactically correct.
+.. note:: Formatting can only be applied if your code is syntactically correct.

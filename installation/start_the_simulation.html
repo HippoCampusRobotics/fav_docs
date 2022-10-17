@@ -48,12 +48,8 @@
 <li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install_firmware.html">Install Firmware</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ide_setup.html">IDE Setup</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Start The Simulation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-fun-part">The Fun Part</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Start The Simulation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
@@ -91,21 +87,20 @@
 <p>Now that we have everything prepared, i.e.:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="install_ros.html#install-ros"><span class="std std-ref">Installation of ROS</span></a></p></li>
-<li><p><a class="reference internal" href="install_firmware.html#install-firmware"><span class="std std-ref">Installation of PX4</span></a></p></li>
 </ul>
 <p>we can eventually start to work with ROS and the Gazebo simulator.</p>
-<p>At the time being there are 3 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">bluerov_sim</span></code> package.</p>
+<p>At the time being there are 4 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">fav_sim</span></code> package.</p>
 <dl class="simple">
-<dt>gazebo_base.launch</dt><dd><p>Launches gazebo with the basic world file in <code class="file docutils literal notranslate"><span class="pre">bluerov_sim/worlds/base.world</span></code></p>
+<dt>gazebo_empty_world.launch</dt><dd><p>Launches gazebo with the basic world file in <code class="file docutils literal notranslate"><span class="pre">fav_sim/worlds/base.world</span></code>.</p>
 </dd>
-<dt>spawn_vehicle.launch</dt><dd><p>Spawns the BlueROV model. The model files are in <code class="file docutils literal notranslate"><span class="pre">bluerov_sim/models/uuv_bluerov2_heavy</span></code></p>
+<dt>spawn_vehicle.launch</dt><dd><p>Spawns the BlueROV model. The model files are in <code class="file docutils literal notranslate"><span class="pre">fav_sim/models/bluerov</span></code></p>
 </dd>
-<dt>keyboard_control.launch</dt><dd><p>Includes both the above mentioned launchfiles and also starts a node to control the BlueROV.</p>
+<dt>keyboard_control.launch</dt><dd><p>Includes the <code class="file docutils literal notranslate"><span class="pre">spawn_vehicle.launch</span></code> file and starts a node to control the BlueROV via keyboard input.</p>
 </dd>
 </dl>
 <p>To test that everything is set up correctly open two terminals (for example by using the integrated terminal in VS Code and hitting the <strong>split terminal</strong> button.</p>
 <p>In the first terminal, enter:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch bluerov_sim gazebo_base.launch
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim gazebo_apriltag_tank_world.launch
 </pre></div>
 </div>
 <p>This should launch Gazebo. Wait until an empty world is visible.</p>
@@ -114,33 +109,15 @@
 <p>In some rare cases the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you started Gazebo and try again.</p>
 </div>
 <p>In the second enter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">bluerov_sim</span> <span class="n">spawn_vehicle</span><span class="o">.</span><span class="n">launch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">fav_sim</span> <span class="n">keyboard_control</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
-<p>You should see a model of the BlueROV appearing in your Gazebo window.</p>
+<p>This will spawn the BlueROV and creates a small window for keyboard control:</p>
+<img alt="../_images/keyboard_control_qt.png" src="../_images/keyboard_control_qt.png" />
+<p>Make sure you have the keyboard control window in the foreground so the keyboard inputs get captured.</p>
+<p>You can use the sliders to scale the thruster output for the different actuation channels to your liking.</p>
+<p>Useful keys are <kbd class="kbd docutils literal notranslate">W</kbd>, <kbd class="kbd docutils literal notranslate">A</kbd>, <kbd class="kbd docutils literal notranslate">S</kbd>, <kbd class="kbd docutils literal notranslate">D</kbd>, <kbd class="kbd docutils literal notranslate">Left</kbd>, <kbd class="kbd docutils literal notranslate">Right</kbd>, <kbd class="kbd docutils literal notranslate">Up</kbd>, <kbd class="kbd docutils literal notranslate">Down</kbd>. Use them and find out out what they are doing :-)</p>
 <p>Stop everything by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in both terminals.</p>
-<div class="section" id="the-fun-part">
-<h2>The Fun Part<a class="headerlink" href="#the-fun-part" title="Permalink to this headline"></a></h2>
-<p>If you are reading this and did not skip essential parts of the setup instructions we are ready to have some fun.</p>
-<p>Launch the third of the mentioned launchfiles:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch bluerov_sim keyboard_control.launch
-</pre></div>
-</div>
-<p>This will start Gazebo, spawn the BlueROV and creates a small window for keyboard control.</p>
-<p>Make sure you have the keyboard control window active:</p>
-<img alt="../_images/keyboard_control.png" src="../_images/keyboard_control.png" />
-<p>The controls are:</p>
-<dl class="simple">
-<dt>W/S:</dt><dd><p>Move forward/backwards.</p>
-</dd>
-<dt>A/D:</dt><dd><p>Move left/right.</p>
-</dd>
-<dt>Up/Down:</dt><dd><p>Move upwards/downwards.</p>
-</dd>
-<dt>Q/E:</dt><dd><p>Turn left/right.</p>
-</dd>
-</dl>
-<p>With the number keys you can decrease/increase the speed of movements.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The keyboard control window reads your keyboard input. If the window is not the active one, the vehicle will not react to your input!</p>
@@ -149,7 +126,7 @@
 <p class="admonition-title">Hint</p>
 <p>For assignment 0 it is not required to read the further sections. But if you like to continue, feel free to do so.</p>
 </div>
-</div>
+<p>If you are done, you can stop everything by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in both terminals.</p>
 </div>
 
 
