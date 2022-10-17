@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Build
-        uses: ammaraskar/sphinx-action@main
+        uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "./"
       
@@ -31,7 +31,7 @@ jobs:
           git add .
           git commit -m "Update documentation" -a || true
       - name: Push changes
-        uses: ad-m/github-push-action@main
+        uses: ad-m/github-push-action@master
         with:
           branch: gh-pages
           directory: gh-pages
