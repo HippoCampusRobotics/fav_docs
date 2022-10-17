@@ -122,8 +122,8 @@ For new terminal session your catkin workspace is sourced automatically since we
 
    If you are using :code:`zsh` instead of :code:`bash`, you need to adjust the above commands. You will also have pay attention and adjust some commands in the following parts of this setup guide.
 
-Get The First Catkin Package
-============================
+Get The First Catkin Packages
+=============================
 
 #. Make sure you are inside your catkin workspace:
 
@@ -135,7 +135,7 @@ Get The First Catkin Package
 
    .. code-block:: bash
 
-      git clone https://github.com/FormulasAndVehicles/bluerov_sim.git src/bluerov_sim
+      git clone https://github.com/FormulasAndVehicles/fav.git ~/fav/catkin_ws/src/fav
 
 #. Let ROS resolve the package's dependencies
 
@@ -159,3 +159,18 @@ Get The First Catkin Package
 
          source ~/.bashrc
 
+Test the Setup
+==============
+
+Execute the following command
+
+.. code-block:: sh
+
+   roslaunch fav_sim gazebo_apriltag_tank_world.launch
+
+
+and :code:`gazebo` should launch after a few seconds and look this:
+
+.. image:: /res/images/gazebo_tags.png
+
+If the :code:`gazebo` window stays black, enter :kbd:`Ctrl` + :kbd:`C` in the terminal in which you executed the command above and try it again.
