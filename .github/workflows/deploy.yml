@@ -2,16 +2,16 @@ name: "Sphinx Build"
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@main
 
       - name: Build
-        uses: ammaraskar/sphinx-action@master
+        uses: ammaraskar/sphinx-action@main
         with:
           docs-folder: "./"
       
@@ -31,7 +31,7 @@ jobs:
           git add .
           git commit -m "Update documentation" -a || true
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@main
         with:
           branch: gh-pages
           directory: gh-pages
