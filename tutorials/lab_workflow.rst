@@ -1,6 +1,8 @@
 Lab Workflow
 ============
 
+.. todo:: This section needs rework. It is not up to date for FaV 2022!
+
 Time for experiments!
 
 .. .. image:: /res/images/peanut_butter_jelly.gif
