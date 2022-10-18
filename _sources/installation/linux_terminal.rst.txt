@@ -5,6 +5,10 @@ During the following setup procedure you will have to use the terminal. This sec
 
 For those of you not quite that familiar with Linux and/or the terminal and the command line, this section will give you some useful hints.
 
+Open a Terminal
+===============
+Open a terminal with :kbd:`Ctrl` + :kbd:`Alt` + :kbd:`T`.
+
 In many cases it will be necessary/convenient to have multiple terminal sessions. So its recommendable to install :code:`terminator`, to have multiple terminals multiplexed in a single window. Install it with the following command:
 
 .. code-block:: sh
