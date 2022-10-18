@@ -39,7 +39,7 @@ Finally, you will develop and propose solution concepts based on the topics cove
 
 .. raw:: html
     
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Y8lTh7BTH_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/KTxX9foiolA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 *Example of a Final Project from last year*.
 
