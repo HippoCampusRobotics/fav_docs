@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Install Firmware" href="install_firmware.html" />
+    <link rel="next" title="IDE Setup" href="ide_setup.html" />
     <link rel="prev" title="Virtual Machine" href="virtual_machine.html" /> 
 </head>
 
@@ -51,10 +51,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-up-catkin-workspace">Set Up Catkin Workspace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-the-first-catkin-package">Get The First Catkin Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-first-catkin-packages">Get The First Catkin Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-the-setup">Test the Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="install_firmware.html">Install Firmware</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ide_setup.html">IDE Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="start_the_simulation.html">Start The Simulation</a></li>
 </ul>
@@ -194,8 +194,8 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span cla
 <p>If you are using <code class="code docutils literal notranslate"><span class="pre">zsh</span></code> instead of <code class="code docutils literal notranslate"><span class="pre">bash</span></code>, you need to adjust the above commands. You will also have pay attention and adjust some commands in the following parts of this setup guide.</p>
 </div>
 </div>
-<div class="section" id="get-the-first-catkin-package">
-<h2>Get The First Catkin Package<a class="headerlink" href="#get-the-first-catkin-package" title="Permalink to this headline"></a></h2>
+<div class="section" id="get-the-first-catkin-packages">
+<h2>Get The First Catkin Packages<a class="headerlink" href="#get-the-first-catkin-packages" title="Permalink to this headline"></a></h2>
 <ol class="arabic">
 <li><p>Make sure you are inside your catkin workspace:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/fav/catkin_ws
@@ -203,7 +203,19 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span cla
 </div>
 </li>
 <li><p>Clone <code class="file docutils literal notranslate"><span class="pre">bluerov_sim</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/FormulasAndVehicles/bluerov_sim.git src/bluerov_sim
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/FormulasAndVehicles/fav.git ~/fav/catkin_ws/src/fav
+</pre></div>
+</div>
+<p>At this stage make sure your directory structure looks similar to this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/home/YOUR_USER_NAME/fav/catkin_ws
+├── build
+├── devel
+├── logs
+└── src
+    └── fav
+        ├── fav_gazebo_plugins
+        ├── fav_msgs
+        └── fav_sim
 </pre></div>
 </div>
 </li>
@@ -231,6 +243,16 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span cla
 </li>
 </ol>
 </div>
+<div class="section" id="test-the-setup">
+<h2>Test the Setup<a class="headerlink" href="#test-the-setup" title="Permalink to this headline"></a></h2>
+<p>Execute the following command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim gazebo_apriltag_tank_world.launch
+</pre></div>
+</div>
+<p>and <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> should launch after a few seconds and look this:</p>
+<img alt="../_images/gazebo_tags.png" src="../_images/gazebo_tags.png" />
+<p>If the <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> window stays black, enter <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you executed the command above and try it again.</p>
+</div>
 </div>
 
 
@@ -238,7 +260,7 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span cla
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="virtual_machine.html" class="btn btn-neutral float-left" title="Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="install_firmware.html" class="btn btn-neutral float-right" title="Install Firmware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ide_setup.html" class="btn btn-neutral float-right" title="IDE Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
