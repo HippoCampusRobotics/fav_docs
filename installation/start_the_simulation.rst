@@ -11,14 +11,42 @@ we can eventually start to work with ROS and the Gazebo simulator.
 
 At the time being there are 4 launchfiles that come with the :file:`fav_sim` package.
 
+.. code-block:: sh
+   :emphasize-lines: 7, 11-14
+
+   /home/YOUR_USER_NAME/fav/catkin_ws/src/fav
+   ├── fav_gazebo_plugins
+   │   ├── include
+   │   └── src
+   ├── fav_msgs
+   │   └── msg
+   └── fav_sim
+      ├── config
+      ├── include
+      ├── launch
+      │   ├── gazebo_apriltag_tank_world.launch
+      │   ├── gazebo_empty_world.launch
+      │   ├── keyboard_control.launch
+      │   └── spawn_vehicle.launch
+      ├── models
+      ├── nodes
+      ├── res
+      ├── src
+      └── worlds
+
+
+
 gazebo_empty_world.launch
    Launches gazebo with the basic world file in :file:`fav_sim/worlds/base.world`.
 
+gazebo_apriltag_tank_world.launch
+   Equivalent to :file:`gazebo_empty_world.launch` but also includes a tank with an apriltag pattern on the ground.
+
 spawn_vehicle.launch
-   Spawns the BlueROV model. The model files are in :file:`fav_sim/models/bluerov`
+   Spawns the BlueROV model. The model files are in :file:`fav_sim/models/bluerov`. This launch setup requires :code:`gazebo` to be already running. Otherwise no no vehicle can be spawned.
 
 keyboard_control.launch
-   Includes the :file:`spawn_vehicle.launch` file and starts a node to control the BlueROV via keyboard input.
+   Starts a node to control the BlueROV via keyboard input. This launch setup requires :code:`gazebo` to be running and an already spawned BlueROV vehicle. Otherwise no vehicle can be controlled.
 
 To test that everything is set up correctly open two terminals (for example by using the integrated terminal in VS Code and hitting the **split terminal** button.
 
@@ -36,9 +64,17 @@ In the second enter:
 
 .. code-block::
 
+   roslaunch fav_sim spawn_vehicle.launch
+
+This will spawn the BlueROV. 
+
+Lastly run in another terminal:
+
+.. code-block:: sh
+
    roslaunch fav_sim keyboard_control.launch
 
-This will spawn the BlueROV and creates a small window for keyboard control:
+This creates a small window for keyboard control.
 
 .. image:: /res/images/keyboard_control_qt.png
 
@@ -47,13 +83,11 @@ Make sure you have the keyboard control window in the foreground so the keyboard
 
 You can use the sliders to scale the thruster output for the different actuation channels to your liking.
 
-Useful keys are :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D`, :kbd:`Left`, :kbd:`Right`, :kbd:`Up`, :kbd:`Down`. Use them and find out out what they are doing :-)
+Useful keys are :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D`, :kbd:`Left`, :kbd:`Right`, :kbd:`Up`, :kbd:`Down`. Use them and find out out what they are doing |partying_face|.
 
-Stop everything by hitting :kbd:`Ctrl` + :kbd:`C` in both terminals.
+Stop everything by hitting :kbd:`Ctrl` + :kbd:`C` in all terminals in which you have started launch setups.
 
 .. note:: The keyboard control window reads your keyboard input. If the window is not the active one, the vehicle will not react to your input!
 
 
 .. hint:: For assignment 0 it is not required to read the further sections. But if you like to continue, feel free to do so.
-
-If you are done, you can stop everything by hitting :kbd:`Ctrl` + :kbd:`C` in both terminals.
