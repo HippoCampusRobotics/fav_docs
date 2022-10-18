@@ -1,6 +1,8 @@
 ROS
 ###
 
+.. todo:: This section needs rework. It is not up to date for FaV 2022!
+
 In this section you will:
 
 * create a new Catkin package
@@ -45,7 +47,7 @@ Open :file:`~/fav/catkin_ws` with VS Code. Press :kbd:`Ctrl` + :kbd:`Shift` + :k
 
 .. image:: /res/images/vscode_new_catkin_package.png
 
-You will be asked to enter a name and dependencies (I think "awesome_package" is quite a nice name for an example package). You can skip the dependencies for now and leave the field empty.
+You will be asked to enter a name and dependencies (I think :file:`awesome_package` is quite a nice name for an example package, but it is **not** for a real one!). You can skip the dependencies for now and leave the field empty.
 
 .. seealso:: For more details on dependencies see the `ROS Wiki <http://wiki.ros.org/ROS/Tutorials/CreatingPackage>`_.
 
