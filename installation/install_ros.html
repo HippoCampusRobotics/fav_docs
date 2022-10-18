@@ -206,6 +206,18 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span cla
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/FormulasAndVehicles/fav.git ~/fav/catkin_ws/src/fav
 </pre></div>
 </div>
+<p>At this stage make sure your directory structure looks similar to this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/home/YOUR_USER_NAME/fav/catkin_ws
+├── build
+├── devel
+├── logs
+└── src
+    └── fav
+        ├── fav_gazebo_plugins
+        ├── fav_msgs
+        └── fav_sim
+</pre></div>
+</div>
 </li>
 <li><p>Let ROS resolve the package’s dependencies</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep install --from-paths src --ignore-src -r -y
