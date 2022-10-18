@@ -184,7 +184,7 @@ If you are willing to wait, let's say, 3.0 seconds, execute the following comman
 
 .. code-block:: sh
 
-   sudo sed -i 's/DEFAULT_TIMEOUT_SIGINT.*/DEFAULT_TIMEOUT_SIGINT = 3.0/' /opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py 
+   sudo sed -i 's/DEFAULT_TIMEOUT_SIGINT\s*=\s*15\.0.*/DEFAULT_TIMEOUT_SIGINT = 3\.0/' /opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py 
 
 
 Execute the following command
