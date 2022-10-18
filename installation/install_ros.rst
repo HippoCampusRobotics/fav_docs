@@ -137,6 +137,22 @@ Get The First Catkin Packages
 
       git clone https://github.com/FormulasAndVehicles/fav.git ~/fav/catkin_ws/src/fav
 
+   At this stage make sure your directory structure looks similar to this:
+
+   .. code-block:: sh
+      
+      /home/YOUR_USER_NAME/fav/catkin_ws
+      ├── build
+      ├── devel
+      ├── logs
+      └── src
+          └── fav
+              ├── fav_gazebo_plugins
+              ├── fav_msgs
+              └── fav_sim
+
+
+
 #. Let ROS resolve the package's dependencies
 
    .. code-block:: bash
