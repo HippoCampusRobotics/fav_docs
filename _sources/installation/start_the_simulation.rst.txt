@@ -5,48 +5,20 @@ Now that we have everything prepared, i.e.:
 
 * :ref:`Installation of ROS<installation/install_ros:Install ROS>` 
 
-.. * :ref:`Installation of PX4 <installation/install_firmware:Install Firmware>`
+* :ref:`Installation of PX4 <installation/install_firmware:Install Firmware>`
 
 we can eventually start to work with ROS and the Gazebo simulator.
 
-At the time being there are 4 launchfiles that come with the :file:`fav_sim` package.
+At the time being there are 3 launchfiles that come with the :file:`bluerov_sim` package.
 
-.. code-block:: sh
-   :emphasize-lines: 7, 11-14
-
-   /home/YOUR_USER_NAME/fav/catkin_ws/src/fav
-   ├── fav_gazebo_plugins
-   │   ├── include
-   │   └── src
-   ├── fav_msgs
-   │   └── msg
-   └── fav_sim
-      ├── config
-      ├── include
-      ├── launch
-      │   ├── gazebo_apriltag_tank_world.launch
-      │   ├── gazebo_empty_world.launch
-      │   ├── keyboard_control.launch
-      │   └── spawn_vehicle.launch
-      ├── models
-      ├── nodes
-      ├── res
-      ├── src
-      └── worlds
-
-
-
-gazebo_empty_world.launch
-   Launches gazebo with the basic world file in :file:`fav_sim/worlds/base.world`.
-
-gazebo_apriltag_tank_world.launch
-   Equivalent to :file:`gazebo_empty_world.launch` but also includes a tank with an apriltag pattern on the ground.
+gazebo_base.launch
+   Launches gazebo with the basic world file in :file:`bluerov_sim/worlds/base.world`
 
 spawn_vehicle.launch
-   Spawns the BlueROV model. The model files are in :file:`fav_sim/models/bluerov`. This launch setup requires :code:`gazebo` to be already running. Otherwise no no vehicle can be spawned.
+   Spawns the BlueROV model. The model files are in :file:`bluerov_sim/models/uuv_bluerov2_heavy`
 
 keyboard_control.launch
-   Starts a node to control the BlueROV via keyboard input. This launch setup requires :code:`gazebo` to be running and an already spawned BlueROV vehicle. Otherwise no vehicle can be controlled.
+   Includes both the above mentioned launchfiles and also starts a node to control the BlueROV.
 
 To test that everything is set up correctly open two terminals (for example by using the integrated terminal in VS Code and hitting the **split terminal** button.
 
@@ -54,7 +26,7 @@ In the first terminal, enter:
 
 .. code-block:: sh
 
-   roslaunch fav_sim gazebo_apriltag_tank_world.launch
+   roslaunch bluerov_sim gazebo_base.launch
 
 This should launch Gazebo. Wait until an empty world is visible.
 
@@ -64,28 +36,44 @@ In the second enter:
 
 .. code-block::
 
-   roslaunch fav_sim spawn_vehicle.launch
+   roslaunch bluerov_sim spawn_vehicle.launch
 
-This will spawn the BlueROV. 
+You should see a model of the BlueROV appearing in your Gazebo window.
 
-Lastly run in another terminal:
+Stop everything by hitting :kbd:`Ctrl` + :kbd:`C` in both terminals.
+
+The Fun Part
+============
+
+If you are reading this and did not skip essential parts of the setup instructions we are ready to have some fun.
+
+Launch the third of the mentioned launchfiles:
 
 .. code-block:: sh
 
-   roslaunch fav_sim keyboard_control.launch
+   roslaunch bluerov_sim keyboard_control.launch
 
-This creates a small window for keyboard control.
+This will start Gazebo, spawn the BlueROV and creates a small window for keyboard control.
 
-.. image:: /res/images/keyboard_control_qt.png
+Make sure you have the keyboard control window active:
 
+.. image:: /res/images/keyboard_control.png
 
-Make sure you have the keyboard control window in the foreground so the keyboard inputs get captured.
+The controls are:
 
-You can use the sliders to scale the thruster output for the different actuation channels to your liking.
+W/S:
+   Move forward/backwards.
 
-Useful keys are :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D`, :kbd:`Left`, :kbd:`Right`, :kbd:`Up`, :kbd:`Down`. Use them and find out out what they are doing |partying_face|.
+A/D:
+   Move left/right.
 
-Stop everything by hitting :kbd:`Ctrl` + :kbd:`C` in all terminals in which you have started launch setups.
+Up/Down:
+   Move upwards/downwards.
+
+Q/E:
+   Turn left/right.
+
+With the number keys you can decrease/increase the speed of movements.
 
 .. note:: The keyboard control window reads your keyboard input. If the window is not the active one, the vehicle will not react to your input!
 
