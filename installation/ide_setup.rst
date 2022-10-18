@@ -61,7 +61,7 @@ Most likely you will be asked to reload the window to apply the changes. You can
 
 .. image:: /res/images/vscode_reload_window.png
 
-.. note:: Sometimes it might not be enough to reload the window. So if you want to be super safe just restart VS Code completly.
+.. note:: Sometimes it might not be enough to reload the window. So if you want to be super safe just restart VS Code completely.
 
 Useful Hints
 ============
@@ -81,13 +81,13 @@ The integrated terminal has two tabs that are probably of most interest for you:
 
 .. image:: /res/images/vscode_terminal_problems.png
 
-In the **PROBLEMS** tab you can apply a filter to only show problems for the currently active files. The following image shows problems of several kinds. For example a syntax error due to a missing colon in line 11 or a rather cosmetic problem in line 62 that exceeds the specified line length of 80 characters.
+In the **PROBLEMS** tab you can apply a filter to only show problems for the currently active files. The following image shows problems of several kinds. For example, a syntax error due to a missing colon in line 11 or a rather cosmetic problem in line 62 that exceeds the specified line length of 80 characters.
 
 .. image:: /res/images/vscode_problems_tab.png
 
 Formatting
 **********
 
-There are tools out there to help you keep your code neat and clean, called formatters. In the provided :file:`settings.json` file a formatter has been already selected. To apply formatting on your currently active file hit :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`I`.
+There are tools out there to help you keep your code neat and clean, called formatters. In the provided :file:`settings.json` file a formatter has been already selected. To apply formatting on your currently active file, hit :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`I`.
 
 .. note:: Formatting can only be applied if your code is syntactically correct.
