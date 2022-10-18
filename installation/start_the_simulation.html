@@ -89,7 +89,7 @@
 <li><p><a class="reference internal" href="install_ros.html#install-ros"><span class="std std-ref">Installation of ROS</span></a></p></li>
 </ul>
 <p>we can eventually start to work with ROS and the Gazebo simulator.</p>
-<p>At the time being there are 4 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">fav_sim</span></code> package.</p>
+<p>At the time being, there are 4 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">fav_sim</span></code> package.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/home/YOUR_USER_NAME/fav/catkin_ws/src/fav
 ├── fav_gazebo_plugins
 │   ├── include
@@ -114,14 +114,14 @@
 <dl class="simple">
 <dt>gazebo_empty_world.launch</dt><dd><p>Launches gazebo with the basic world file in <code class="file docutils literal notranslate"><span class="pre">fav_sim/worlds/base.world</span></code>.</p>
 </dd>
-<dt>gazebo_apriltag_tank_world.launch</dt><dd><p>Equivalent to <code class="file docutils literal notranslate"><span class="pre">gazebo_empty_world.launch</span></code> but also includes a tank with an apriltag pattern on the ground.</p>
+<dt>gazebo_apriltag_tank_world.launch</dt><dd><p>Equivalent to <code class="file docutils literal notranslate"><span class="pre">gazebo_empty_world.launch</span></code> but also includes a tank with an AprilTag pattern on the ground.</p>
 </dd>
-<dt>spawn_vehicle.launch</dt><dd><p>Spawns the BlueROV model. The model files are in <code class="file docutils literal notranslate"><span class="pre">fav_sim/models/bluerov</span></code>. This launch setup requires <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> to be already running. Otherwise no no vehicle can be spawned.</p>
+<dt>spawn_vehicle.launch</dt><dd><p>Spawns the BlueROV model. The model files are in <code class="file docutils literal notranslate"><span class="pre">fav_sim/models/bluerov</span></code>. This launch setup requires <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> to be already running. Otherwise no vehicle can be spawned.</p>
 </dd>
 <dt>keyboard_control.launch</dt><dd><p>Starts a node to control the BlueROV via keyboard input. This launch setup requires <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> to be running and an already spawned BlueROV vehicle. Otherwise no vehicle can be controlled.</p>
 </dd>
 </dl>
-<p>To test that everything is set up correctly open two terminals (for example by using the integrated terminal in VS Code and hitting the <strong>split terminal</strong> button.</p>
+<p>To test that everything is set up correctly, open two terminals (for example by using the integrated terminal in VS Code and hitting the <strong>split terminal</strong> button.</p>
 <p>In the first terminal, enter:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim gazebo_apriltag_tank_world.launch
 </pre></div>
@@ -129,14 +129,14 @@
 <p>This should launch Gazebo. Wait until an empty world is visible.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In some rare cases the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you started Gazebo and try again.</p>
+<p>In some rare cases, the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you started Gazebo and try again.</p>
 </div>
 <p>In the second enter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">fav_sim</span> <span class="n">spawn_vehicle</span><span class="o">.</span><span class="n">launch</span>
 </pre></div>
 </div>
 <p>This will spawn the BlueROV.</p>
-<p>Lastly run in another terminal:</p>
+<p>Lastly, run in another terminal:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim keyboard_control.launch
 </pre></div>
 </div>
@@ -144,7 +144,7 @@
 <img alt="../_images/keyboard_control_qt.png" src="../_images/keyboard_control_qt.png" />
 <p>Make sure you have the keyboard control window in the foreground so the keyboard inputs get captured.</p>
 <p>You can use the sliders to scale the thruster output for the different actuation channels to your liking.</p>
-<p>Useful keys are <kbd class="kbd docutils literal notranslate">W</kbd>, <kbd class="kbd docutils literal notranslate">A</kbd>, <kbd class="kbd docutils literal notranslate">S</kbd>, <kbd class="kbd docutils literal notranslate">D</kbd>, <kbd class="kbd docutils literal notranslate">Left</kbd>, <kbd class="kbd docutils literal notranslate">Right</kbd>, <kbd class="kbd docutils literal notranslate">Up</kbd>, <kbd class="kbd docutils literal notranslate">Down</kbd>. Use them and find out out what they are doing 🥳.</p>
+<p>Useful keys are <kbd class="kbd docutils literal notranslate">W</kbd>, <kbd class="kbd docutils literal notranslate">A</kbd>, <kbd class="kbd docutils literal notranslate">S</kbd>, <kbd class="kbd docutils literal notranslate">D</kbd>, <kbd class="kbd docutils literal notranslate">Left</kbd>, <kbd class="kbd docutils literal notranslate">Right</kbd>, <kbd class="kbd docutils literal notranslate">Up</kbd>, <kbd class="kbd docutils literal notranslate">Down</kbd>. Use them and find out what they are doing 🥳.</p>
 <p>Stop everything by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in all terminals in which you have started launch setups.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -152,7 +152,7 @@
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>For assignment 0 it is not required to read the further sections. But if you like to continue, feel free to do so.</p>
+<p>For assignment 0, it is not required to read the further sections. But if you like to continue, feel free to do so.</p>
 </div>
 </div>
 
