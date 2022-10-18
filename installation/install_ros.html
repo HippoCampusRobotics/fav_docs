@@ -250,7 +250,7 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc <span cla
 <p>If launching gazebo from ROS, ROS is not able to kill the gazebo node without escalating to <strong>SIGTERM</strong>. This happens after a 15s timeout. If you do not have the time to wait for so long, you can modifiy <code class="file docutils literal notranslate"><span class="pre">/opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py</span></code> and change <code class="code docutils literal notranslate"><span class="pre">DEFAULT_TIMEOUT_SIGINT</span></code> to some value you are willing to wait.</p>
 </div>
 <p>If you are willing to wait, let’s say, 3.0 seconds, execute the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo sed -i <span class="s1">&#39;s/DEFAULT_TIMEOUT_SIGINT.*/DEFAULT_TIMEOUT_SIGINT = 3.0/&#39;</span> /opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo sed -i <span class="s1">&#39;s/DEFAULT_TIMEOUT_SIGINT\s*=\s*15\.0.*/DEFAULT_TIMEOUT_SIGINT = 3\.0/&#39;</span> /opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py
 </pre></div>
 </div>
 <p>Execute the following command</p>
