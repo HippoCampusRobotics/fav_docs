@@ -51,6 +51,6 @@ Localization Module
 -------------------
 
 Additionally, the lower enclosure of the robot contains our localization module consisting of a camera and a second RaspberryPi, which is connected to the first one via Ethernet.
-The camera is directed at the tank's floor, which is equipped with AprilTags at known locations. The detected AprilTags in the camera image can be used to localize the robot relative to the tags. More on this `here <https://ras.papercept.net/proceedings/IROS20/1220.pdf>`_.
+The camera is directed at the tank's floor, which is equipped with AprilTags at known locations. The detected AprilTags in the camera image can be used to localize the robot relative to the tags. More on this `here <https://ieeexplore.ieee.org/document/9341051>`_.
 
  
