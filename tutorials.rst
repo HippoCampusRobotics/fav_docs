@@ -9,6 +9,7 @@ The following pages are meant to help you start writing your own code and eventu
 
    tutorials/ros_package
    tutorials/ros_launch_setup
+   tutorials/ros_names_and_namespaces
    tutorials/rqt_multiplot
    tutorials/lab_workflow
    tutorials/recording_rosbags
