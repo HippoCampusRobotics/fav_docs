@@ -38,11 +38,11 @@ where :code:`(.*)` stands for an arbitrary number of arbitrary characters. This 
    While a temporary binary file is created when :code:`rosbag record` is called, the final file isn't written until stopping the recording using :kbd:`Ctrl` + :kbd:`C`.
    Always make sure to properly end your recording!
 
-.. image:: /res/images/rosbag_record.gif
-   :width: 60%
-   :align: center
-
-
+.. asciinema:: /res/asciinema/rosbag_record.cast
+   :speed: 2
+   :start-at: 1
+   :idle-time-limit: 1
+   :poster: npt:0:01
    
 Checking and playing  back bag files
 ====================================
