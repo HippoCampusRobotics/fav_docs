@@ -1,8 +1,6 @@
 Lab Workflow
 ============
 
-.. todo:: This section needs rework. It is not up to date for FaV 2022!
-
 Time for experiments!
 
 .. .. image:: /res/images/peanut_butter_jelly.gif
@@ -44,55 +42,17 @@ The following steps can be prepared at home before coming to the lab.
 
    .. note:: As always, run :code:`source ~/.bashrc` to apply these changes.
 
-#. Make sure you do not **arm** the vehicle. In the lab we will arm the vehicle manually for you. If your :file:`bluerov_sim` is up-to-date, there is a dedicated :file:`auto_arm_node` in :file:`~/fav/catkin_ws/src/bluerov_sim/nodes`. If that is the case, you do not need to worry about anything as the vehicle only gets auto-armed in the simulation. Otherwise please update the :file:`bluerov_sim` package.
-
-#. Adapt your launch setup so that gazebo will not be started. We do not need gazebo since we are working with the real robot. Either change your launchfile you used for the simulation or (**recommended**) create a modified copy. For example, you could create a :code:`keyboard_control_sim.launch` and a :code:`keyboard_control_lab.launch` in your depth controller package. The highlighted lines are removed for the lab setup.
-   
-   .. tabs::
-
-      .. code-tab:: xml Simulation
-         :emphasize-lines: 4,7-9
-      
-         <launch>
-            <arg name="vehicle_name" default="bluerov" />
-
-            <include file="$(find bluerov_sim)/launch/gazebo_base.launch" />
-            <group ns="$(arg vehicle_name)">
-
-               <include file="$(find bluerov_sim)/launch/spawn_vehicle.launch">
-                     <arg name="z" value="-0.2" />
-               </include>
-
-               <node name="keyboard" pkg="bluerov_sim" type="keyboard_control.py" output="screen" />
-               <node name="mixer" pkg="bluerov_sim" type="mixer.py" />
-            </group>
-
-         </launch>
-
-      .. code-tab:: xml Lab
-
-         <launch>
-            <arg name="vehicle_name" default="bluerov" />
-
-            <group ns="$(arg vehicle_name)">
-
-               <node name="keyboard" pkg="bluerov_sim" type="keyboard_control.py" output="screen" />
-               <node name="mixer" pkg="bluerov_sim" type="mixer.py" />
-            </group>
-
-         </launch>
+#. Do not start the simulation/gazebo while you are connected to our network. Otherwise we will have some unpleasant topic collision between the simulated vehicle and the real BlueROV in our lab.
 
 #. It's best if one of you brings a **fully prepared software setup on your own laptop**. The real experiment will take less computing power since you are not running the simulation environment. If you cannot do this, let us know **in time** and we will prepare a laptop for you to use. 
 
 #. The setup can include a prepared settings file for :code:`rqt_multiplot`.
 
-
-
 At the Lab
 **********
 
 
-#. The first time you're at the lab, we will give you an overview of the robot and its sensors. We will take care of connecting the battery and starting all ROS nodes and software running on the vehicle. Additionally, we will also arm the vehicle for you (once it's in the water).
+#. The first time you're at the lab, we will give you an overview of the robot and its sensors. We will take care of connecting the battery and starting all ROS nodes and software running on the vehicle. Additionally, we will provide you with push buttons to enable/disable the BlueROV's thrusters. It can be quite handy to be able to quickly switch off the thrusters.
 
 #. Before lifting the BlueROV into the water, we will do a vaccuum test together. After the test, **do not forget to close the vents!**
 
@@ -104,19 +64,7 @@ At the Lab
    Vaccuum test and vent caps saying "OK".
 
 
-#. To test the network setup, open two terminals to publish and echo ROS topics.
-
-   .. tabs::
-
-      .. code-tab:: sh publish
-
-         rostopic pub -r 1 /test std_msgs/String "hello from laptop"
-
-      .. code-tab:: sh echo
-
-         rostopic echo /test
-   
-   We will prepare an equivalent setup on our machine. If you receive our messages saying "hello from celsius" and we receive messages saying "hello from laptop", everything is fine.
+#. We check if your network setup is working properly.
 
 #. We have a big TV screen at the lab. You can use it (we have HDMI and DisplayPort) for plotting data etc. so that everyone can see.
 

@@ -131,7 +131,7 @@ Get The First Catkin Packages
 
       cd ~/fav/catkin_ws
 
-#. Clone :file:`bluerov_sim`
+#. Clone the :file:`fav` repository
 
    .. code-block:: bash
 
