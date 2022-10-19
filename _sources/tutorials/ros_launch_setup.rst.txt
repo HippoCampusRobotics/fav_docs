@@ -142,15 +142,11 @@ By now we might get worried by the increasing number of needed terminal windows.
 
  
 Create A Launch Setup
-*********************
+=====================
 
-.. todo:: The following sections need rework. They are not up to date for FaV 2022!
-
-Create a new launchfile. You could name it :file:`first_simulation.launch` for example:
+Create a new launchfile. You could name it :file:`setpoint.launch` for example:
 
 .. image:: /res/images/create_launchfile.gif
-
-The launchfile has to start the :file:`motor_command_sender` node, the Gazebo simulation and spawns the BlueROV.
 
 It could look like this:
 
@@ -160,42 +156,106 @@ It could look like this:
    <launch>
       <arg name="vehicle_name" default="bluerov" />
 
-      <!-- start the gazebo simulator and an empty world -->
-      <include file="$(find bluerov_sim)/launch/gazebo_base.launch" />
-      
+      <!-- start the simulation -->
+      <include file="$(find fav_sim)/launch/simulation.launch" pass_all_args="true" />
+
       <group ns="$(arg vehicle_name)">
-        <!-- Spawn the vehicle. You can use the args to set the spawn pose-->
-        <include file="$(find bluerov_sim)/launch/spawn_vehicle.launch">
-           <!-- Set the position-->
-           <arg name="x" value="0.0" />
-           <arg name="y" value="0.0" />
-           <arg name="z" value="-0.2"/>
-           <!-- Set roll, pitch, yaw-->
-           <arg name="R" value="0.0" />
-           <arg name="P" value="0.0" />
-           <arg name="Y" value="0.0" />
-        </include>
-        <!-- launch the motor_command_sender node-->
-        <node name="motor_command_sender" pkg="awesome_package" type="motor_command_sender.py"/>
+         <!-- start the setpoint publisher node -->
+         <node name="setpoint_publisher" pkg="awesome_package" type="setpoint_publisher.py" />
       </group>
+      
+      <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" />
    </launch>
 
-To start the setup, run:
+Explanation
+===========
+
+Let's take a detailed look what we have here.
+
+Arguments
+*********
+
+.. code-block:: xml
+   :lineno-start: 2
+   :linenos:
+
+   <arg name="vehicle_name" default="bluerov" />
+
+Declares an argument named :code:`vehicle_name` and assigns the default value :code:`"bluerov"`. We will use this argument to set the namespace of the nodes to be launched. To overwrite this argument without having to modify the launch file, we can simply append :code:`vehicle_name:="A_NEW_VALUE"` to the :code:`roslaunch` command.
+
+Include Files
+*************
+
+.. code-block:: xml
+   :lineno-start: 5
+   :linenos:
+
+   <include file="$(find fav_sim)/launch/simulation.launch" pass_all_args="true" />
+
+We can include other launch files. It is literally the same as copy pasting the content of the specified file right inside our own launch file. Furthermore we have the special syntax :code:`$(find fav_sim)` here. We do not have to know the full path to the launch file. We can use :code:`$(find)`` to get the path to ros packages. In case the :code:`pass_all_args` attribute is set to :code:`true`, all arguments in our launch file get passed to the included launch file. Otherwise this would not be the case.
+
+Groups and Nodes
+****************
+
+.. code-block:: xml
+   :lineno-start: 7
+   :linenos:
+
+   <group ns="$(arg vehicle_name)">
+      <!-- launch the motor_command_sender node-->
+      <node name="setpoint_publisher" pkg="awesome_package" type="setpoint_publisher.py" />
+   </group>
+
+Two things here. We can delcare groups and assign a namespace to everything that is inside this group by settings the :code:`ns` attribute. To use the arguments we have declared in the launch file or pass in via the command line, we use :code:`$(arg parameter_name)` so in our case :code:`$(arg vehicle_name)`. To start the :code:`setpoint_publisher` node we use the :code:`<node>` tag. The :code:`name` attribute overwrites the node's name set in the sourcode by :code:`rospy.init_node("setpoint_publisher")`. :code:`pkg` is the name of the package where the node is located. And :code:`type` is the file name of the executable.
+
+.. code-block:: xml
+   :lineno-start: 12
+   :linenos:
+
+   <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" />
+
+This starts the :code:`rqt_graph` tool directly in our launch setup. This way we do not have to start it in another terminal to see the nodegraph. 
+
+Launch the Setup
+================
+
+So this launch file produces the exact same setup we have created in the section :ref:`tutorials/ros_launch_setup:having fun with open-loop control` before. The advantage is, we can start it with a single command:
 
 .. code-block:: sh
 
-   roslaunch awesome_package first_simulation.launch
+   roslaunch awesome_package setpoint.launch
 
-The result should look similar to:
+Really looks the same, doesn't it? Now stop everything and try to assign the :code:`vehicle_name` parameter from the command line.
+
+.. code-block:: sh
+
+   roslaunch awesome_package setpoint.launch vehicle_name:=roflcopter
+
+Everything will still be connected just fine. The only difference is, that every node is running inside the :file:`/roflcopter` namespace.
+
+Taking the Next Step
+====================
+
+We can also pass arguments to the launch file that are not declared in the file we are launching directly. Remember that we set :code:`pass_all_args` to true when including :file:`simulation.launch`? Inside :file:`simulation.launch` the file :file:`spawn_vehicle.launch` is included and all arguments are passed as well. 
+
+.. image:: /res/images/spawn_vehicle.png
+
+There are arguments :code:`x`, :code:`y` and :code:`z` declared for the spawning position of the vehicle and :code:`R`, :code:`P` and :code:`Y` for the orientation. We can pass arguments all the way down to this launch file. So we can modify the spawning position of the vehicle by running
+
+.. code-block:: sh
+
+   roslaunch awesome_package setpoint.launch x:=4 z:=-3
+
+Maybe it is necessary to rate the camera inside gazebo to find the BlueROV in its new position.
 
 Get Sensor Data
-***************
+===============
 
 At this point we know the basics of actuating the vehicle. But to know how we want to actuate the vehicle, we might depend on some sensor input. 
 
-The BlueROV has a pressure sensor. The output of the pressure sensor is published under the :file:`pressure` topic.
+The BlueROV has a pressure sensor. The output of the pressure sensor is published under the :file:`pressure` topic inside the vehicle's namespace. So by default the topic name will be :file:`/bluerov/pressure`.
 
-Theoretically we could use the :file:`motor_command_sender.py` and modify its code to subscribe to the :file:`pressure` topic. But to keep things modular and separated, we add a new node to the :file:`awesome_package`. Let's name it :file:`depth_calculator.py`. 
+Theoretically we could use the :file:`setpoint_publisher.py` and modify its code to subscribe to the :file:`pressure` topic. But to keep things modular and separated, we add a new node to the :file:`awesome_package`. Let's name it :file:`depth_calculator.py`. You could argue that having a complete program only calculating the depth coordinate of the vehicle from pressure data might seem like a bit overkill. But let's see the :file:`depth_calculator` as some specific case of a state estimation. And this can get complex very quickly. Therefore it is a good idea to solve separate problems in separate nodes.
 
 .. note:: Keep in mind, you have to make every node executable! See :ref:`tutorials/ros_package:Write A Node`.
 
@@ -231,7 +291,9 @@ The source code might look like this:
    if __name__ == "__main__":
       main()
 
-We can add this node to our launchfile by adding the following snippet:
+.. hint:: Confused on how you should know what the structure of a FluidPressure message is and how to access its data? Simply search for "ros fluidpressure" and you will find the `message definition <http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/FluidPressure.html>`_. Message fields are accessed by a dot operator.
+
+We can add this node to our launchfile by adding the following snippet inside the :code:`<group>`` tag:
 
 .. code-block:: xml
    
@@ -241,11 +303,13 @@ And launch the setup:
 
 .. code-block:: sh
 
-   roslaunch awesome_package first_simulation.launch
+   roslaunch awesome_package setpoint.launch
 
-We can check that the nodes are properly connected in the :code:`rqt` node graph:
+We can check that the nodes are properly connected in the graph:
 
 .. image:: /res/images/rqt_graph.png
+
+.. note:: Refresh the node graph with the refresh button in the upper left corner to make sure the graph is up-to-date.
 
 And to inspect the data, we can plot it in :code:`rqt_multiplot` 
 
@@ -257,47 +321,9 @@ or use the :code:`rqt` topic monitor or simply in the command line:
 
    rostopic echo bluerov/depth
 
-Names and Namespaces
-====================
+We can see that the data is noisy. And in the real world data is *always* noisy. But depenending on the scenario there is a wide range of filtering methods available. One could compute a moving average over the last :math:`n` data points, a very simple software first order lowpass filter or maybe even something more advanced like a Kalman filter. But the possibilites are ofcourse not limited to those approaches.
 
+The Missing Link
+================
 
-Namespaces
-**********
-
-The concept of names and namespaces is explained in detail in the `ROS Wiki <http://wiki.ros.org/Names>`__. 
-
-You can start nodes or load parameters in namespaces (you can also have nested namespaces). This means that the namespace gets prepended to the node's name. We already used this in the above launchfile. Every node (and also every node in included launchfiles) inside the :code:`<group ns="$(arg vehicle_name)">` is launched inside a namespace. In this case the namespace's name is determined by the argument :code:`vehicle_name`. The default value of :code:`vehicle_name` is :code:`bluerov`. This means the name of the :code:`motor_command_sender` node launched in line 20 will become :code:`/bluerov/motor_command_sender`.
-
-Names
-*****
-
-If you have a node subscribing or publishing to/from a topic, you have to specify the topic name. You can do this in three different ways:
-
-Global
-   .. code-block:: python
-
-      pub = rospy.Publisher("/my_robot/pose", PoseStamped)
-   
-   A topic name with a leading :file:`/` will be resolved globally. This means that it does not matter if the node was launched in a namespace or not. The resulting topic name will be exactly :file:`/my_robot/pose`.
-
-Relative
-   .. code-block:: python
-
-      pub = rospy.Publisher("position", PoseStamped)
-
-   A topic without leading :file:`/` will be relative. This means that, if the node was launched in a namespace, the namespace will get prepended. So for example if the node was launched in the namespace :file:`my_robot`, the resolved topic name will become :file:`/my_robot/position`. In case the node was not launched inside any namespace, nothing will get prependended to the topic name. It will be just :file:`/position`.
-
-Private
-   .. code-block:: python
-
-      rospy.init_node("my_controller")
-      pub = rospy.Publisher("~debug", DebugMessage)
-
-   Private topics are similar to relative ones. The topic name start with :file:`~`. The namespace will get prepended if it has been specified. Additionally the name of the node will also be prepended in any case. So if the node with the name :file:`my_controller` has been started in the namespace :file:`my_robot`, the resolved topic name will be :file:`/my_robot/my_controller/debug`. Without a namespace it would be :file:`/my_controller/debug`.
-
-BlueROV
-*******
-
-You will only work with a single robot. Still it is nice to have things clean and start everything at least in the :file:`bluerov` namespace (as shown in the above example launchfile by launching your nodes inside the :code:`<group>`-tag with the ns attribute specified). 
-
-Generally, avoid global topic names to avoid topic name collision if you do not have a very specific reason to use them. Example: if you have a controller subscribing to a setpoint topic, it might be a good idea to use a private name :code:`"~setpoint"`. This way you avoid topic name conflicts in case you have another controller also subscribing to a setpoint topic.
+So now we have a :code:`depth_calculator` computing the depth of the BluerROV in some way and we have a :code:`setpoint_publisher` publishing vertical thrust values to move the BlueROV. What about renaming the :code:`depth_calculator` to :code:`depth_estimator` and make the :code:`setpoint_publisher` a :code:`depth_controller`? Maybe a :code:`depth_controller` should subscribe to a setpoint topic as well as to the current depth?
