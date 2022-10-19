@@ -7,6 +7,8 @@
   <title>Start The Simulation &mdash; Formulas and Vehicles  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -17,6 +19,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -89,7 +92,7 @@
 <li><p><a class="reference internal" href="install_ros.html#install-ros"><span class="std std-ref">Installation of ROS</span></a></p></li>
 </ul>
 <p>we can eventually start to work with ROS and the Gazebo simulator.</p>
-<p>At the time being, there are 4 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">fav_sim</span></code> package.</p>
+<p>At the time being, there are 5 launchfiles that come with the <code class="file docutils literal notranslate"><span class="pre">fav_sim</span></code> package.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/home/YOUR_USER_NAME/fav/catkin_ws/src/fav
 ├── fav_gazebo_plugins
 │   ├── include
@@ -103,6 +106,7 @@
 <span class="hll">   │   ├── gazebo_apriltag_tank_world.launch
 </span><span class="hll">   │   ├── gazebo_empty_world.launch
 </span><span class="hll">   │   ├── keyboard_control.launch
+</span><span class="hll">   │   ├── simulation.launch
 </span><span class="hll">   │   └── spawn_vehicle.launch
 </span>   ├── models
    ├── nodes
@@ -118,24 +122,21 @@
 </dd>
 <dt>spawn_vehicle.launch</dt><dd><p>Spawns the BlueROV model. The model files are in <code class="file docutils literal notranslate"><span class="pre">fav_sim/models/bluerov</span></code>. This launch setup requires <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> to be already running. Otherwise no vehicle can be spawned.</p>
 </dd>
+<dt>simulation.launch</dt><dd><p>Includes <code class="file docutils literal notranslate"><span class="pre">gazebo_apriltag_tank_world.launch</span></code> and <code class="file docutils literal notranslate"><span class="pre">spawn_vehicle.launch</span></code>. So instead of starting the others separately, it is possible to just launch this launch file.</p>
+</dd>
 <dt>keyboard_control.launch</dt><dd><p>Starts a node to control the BlueROV via keyboard input. This launch setup requires <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> to be running and an already spawned BlueROV vehicle. Otherwise no vehicle can be controlled.</p>
 </dd>
 </dl>
 <p>To test that everything is set up correctly, open two terminals (for example by using the integrated terminal in VS Code and hitting the <strong>split terminal</strong> button.</p>
 <p>In the first terminal, enter:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim gazebo_apriltag_tank_world.launch
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim simulation.launch
 </pre></div>
 </div>
-<p>This should launch Gazebo. Wait until an empty world is visible.</p>
+<p>This should launch the simulation environment (gazebo) and spawn the BlueROV robot model.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In some rare cases, the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you started Gazebo and try again.</p>
 </div>
-<p>In the second enter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">fav_sim</span> <span class="n">spawn_vehicle</span><span class="o">.</span><span class="n">launch</span>
-</pre></div>
-</div>
-<p>This will spawn the BlueROV.</p>
 <p>Lastly, run in another terminal:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim keyboard_control.launch
 </pre></div>

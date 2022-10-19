@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />    <link rel="icon" href="../_static/bluerov.svg" type="image/svg+xml">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROS Launch Setup &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="RQt Multiplot" href="rqt_multiplot.html" />
+    <link rel="prev" title="ROS Package" href="ros_package.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ros_package.html">ROS Package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ROS Launch Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-we-start">Before We Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#having-fun-with-open-loop-control">Having Fun with Open-Loop Control</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-launch-setup">Create A Launch Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-sensor-data">Get Sensor Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#names-and-namespaces">Names and Namespaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#names">Names</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bluerov">BlueROV</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rqt_multiplot.html">RQt Multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recording_rosbags.html">Recording Data Using Bag Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+      <li>ROS Launch Setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/master/tutorials/ros_launch_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ros-launch-setup">
+<h1>ROS Launch Setup<a class="headerlink" href="#ros-launch-setup" title="Permalink to this headline"></a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The following tutorial <strong>is not meant as a step-by-step solution for the first assignment.</strong> These are just <strong>toy examples</strong> to demonstrate how to use ROS and interact with the simulated BlueROV <em>in an easy to follow manner</em>. Therefore, we do not claim that these code snippets are complete and we use some funny names at times. Please do <strong>not</strong> copy-paste them.</p>
+</div>
+<div class="section" id="before-we-start">
+<h2>Before We Start<a class="headerlink" href="#before-we-start" title="Permalink to this headline"></a></h2>
+<p>So, before we start to create a super cool launch setup and have some super fancy nodes doing exciting stuff, lets take a step back and have another look on the keyboard-control setup from the setup instructions. Let us relaunch this setup and open just another terminal to run</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rqt_graph
+</pre></div>
+</div>
+<p>Make sure to select Nodes/Topics(all) in the upper left corner and refresh the view. This should yield a graph like</p>
+<img alt="../_images/keyboard_control_node_graph.png" src="../_images/keyboard_control_node_graph.png" />
+<p>You can see the different nodes <code class="file docutils literal notranslate"><span class="pre">/bluerov/keyboard</span></code>, <code class="file docutils literal notranslate"><span class="pre">/bluerov/mixer</span></code> and <code class="file docutils literal notranslate"><span class="pre">/bluerov/esc_commander</span></code> (we are not interested in the <code class="file docutils literal notranslate"><span class="pre">gazebo</span></code> node and will simply ignore it) inside ellipses and topics inside rectangles. Since all these nodes live inside the <code class="file docutils literal notranslate"><span class="pre">/bluerov</span></code> namespace and use relative topic names, everything has the <code class="file docutils literal notranslate"><span class="pre">/bluerov</span></code> prefix (more on this later).</p>
+<p>The <code class="file docutils literal notranslate"><span class="pre">esc_commander</span></code> node is the interface between the ESCs which drive the thrusters and our ROS domain. It receives messages of the type <code class="file docutils literal notranslate"><span class="pre">fav_msgs/ThrusterSetpoint</span></code> on the <code class="file docutils literal notranslate"><span class="pre">thruster_setpoint</span></code> topic. That should be familiar to all of us from the previous tutorial and our dummy example with the <code class="code docutils literal notranslate"><span class="pre">setpoint_publisher.py</span></code>. The message definition can be looked up in <code class="file docutils literal notranslate"><span class="pre">~/fav/catkin_ws/src/fav/fav_msgs/msg/ThrusterSetpoint.msg</span></code> and is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">std_msgs</span><span class="o">/</span><span class="n">Header</span> <span class="n">header</span>
+<span class="n">float64</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>It contains the field <code class="code docutils literal notranslate"><span class="pre">data</span></code> that is an <code class="code docutils literal notranslate"><span class="pre">double</span></code> array of length 8. Each entry corresponds to a thruster.</p>
+<p>Now let’s imagine the <code class="code docutils literal notranslate"><span class="pre">mixer</span></code> node in the above graph would not exist and the <code class="file docutils literal notranslate"><span class="pre">keyboard</span></code> node would have to publish messages of type <code class="file docutils literal notranslate"><span class="pre">fav_msgs/ThrusterSetpoint</span></code> directly. This would imply that the <code class="file docutils literal notranslate"><span class="pre">keyboard</span></code> node would have to know about the specific thruster configuration of our BlueROV to work. To move the vehicle forward when pressing <kbd class="kbd docutils literal notranslate">W</kbd>, the <code class="file docutils literal notranslate"><span class="pre">keyboard</span></code> node would need to know that the first four motors are the only ones in horizontal direction and that they are configured in a way that all of them need to spin in positive direction to move the vehicle forward.</p>
+<p>To add a layer of abstraction we have the <code class="file docutils literal notranslate"><span class="pre">mixer</span></code> node. What <code class="file docutils literal notranslate"><span class="pre">keyboard</span></code> actually wants to do is to say “the user pressed <kbd class="kbd docutils literal notranslate">W</kbd>, so move forward (i.e. set a positive value for thrust)” and from there on it is in the <code class="file docutils literal notranslate"><span class="pre">mixer</span></code>’s responsibility to translate this to actual setpoints for the specific thrusters that participate in the forward movement of the vehicle.</p>
+<p>Basically, we divided a bigger problem into two smaller problems. In this case this can be especially handy, because also a controller we might program at some later stage, does not need to have knowledge of specific thrusters/actuators. It can directly output commands corresponding to the actuated degrees of freedom of the BlueROV. And since all degrees of freedom of the vehicle are actuated, we can control all degrees of directly 🥳.</p>
+<p>Mathematically the <code class="file docutils literal notranslate"><span class="pre">mixer</span></code> node computes the following equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}t_0\\\vdots\\t_7\end{bmatrix} = \boldsymbol{M} \begin{bmatrix}\textrm{roll}\\\textrm{pitch}\\\textrm{yaw}\\\textrm{thrust}\\\textrm{vertical thrust}\\\textrm{lateral thrust}\\0\\0\\\end{bmatrix},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(t_0\)</span> to <span class="math notranslate nohighlight">\(t_7\)</span> are the direct thruster setpoints.</p>
+</div>
+<div class="section" id="having-fun-with-open-loop-control">
+<h2>Having Fun with Open-Loop Control<a class="headerlink" href="#having-fun-with-open-loop-control" title="Permalink to this headline"></a></h2>
+<p>Let us start where we have left off in the previous <a class="reference internal" href="ros_package.html#ros-package"><span class="std std-ref">ROS Package</span></a>  section.</p>
+<p>We have a package called <code class="code docutils literal notranslate"><span class="pre">awesome_package</span></code>. And we have a node called <code class="code docutils literal notranslate"><span class="pre">setpoint_publisher.py</span></code>. Since we know about the <code class="file docutils literal notranslate"><span class="pre">mixer</span></code> now, we want to use it and have to modify our <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher.py</span></code> to publish to the actuation topics instead of publishing directly to the <code class="file docutils literal notranslate"><span class="pre">thruster_setpoint</span></code> topic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="ch">#!/usr/bin/env python</span>
+<span class="lineno"> 2 </span><span class="kn">import</span> <span class="nn">rospy</span>  <span class="c1"># this is the python interface for ROS</span>
+<span class="lineno"> 3 </span><span class="kn">import</span> <span class="nn">math</span>  <span class="c1"># needed to use the trigonometric functions sin and cos</span>
+<span class="lineno"> 4 </span><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Float64</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span><span class="k">class</span> <span class="nc">MyFirstNode</span><span class="p">():</span>
+<span class="lineno"> 8 </span>   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="lineno"> 9 </span>      <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;setpoint_publisher&quot;</span><span class="p">)</span>
+<span class="lineno">10 </span>      <span class="bp">self</span><span class="o">.</span><span class="n">vertical_thrust_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;vertical_thrust&quot;</span><span class="p">,</span>
+<span class="lineno">11 </span>                                                   <span class="n">Float64</span><span class="p">,</span>
+<span class="lineno">12 </span>                                                   <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno">13 </span>
+<span class="lineno">14 </span>   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="lineno">15 </span>      <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mf">30.0</span><span class="p">)</span>
+<span class="lineno">16 </span>
+<span class="lineno">17 </span>      <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+<span class="lineno">18 </span>            <span class="n">msg</span> <span class="o">=</span> <span class="n">Float64</span><span class="p">()</span>
+<span class="lineno">19 </span>            <span class="n">t</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
+<span class="lineno">20 </span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="lineno">21 </span>            <span class="bp">self</span><span class="o">.</span><span class="n">vertical_thrust_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="lineno">22 </span>            <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+<span class="lineno">23 </span>
+<span class="lineno">24 </span>
+<span class="lineno">25 </span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="lineno">26 </span>   <span class="n">node</span> <span class="o">=</span> <span class="n">MyFirstNode</span><span class="p">()</span>
+<span class="lineno">27 </span>   <span class="n">node</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="lineno">28 </span>
+<span class="lineno">29 </span>
+<span class="lineno">30 </span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="lineno">31 </span>   <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We do not created a new package or a new node, so we do not have to rebuild the workspace to apply the changes. But make sure you have saved the file after making these changes!</p>
+<p>Make sure no nodes/launch setups are currently running. Otherwise stop them with <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the corresponding terminals.</p>
+<p>Start the simulation environment</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim simulation.launch
+</pre></div>
+</div>
+<p>Lastly start our <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher</span></code> node:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package setpoint_publisher.py
+</pre></div>
+</div>
+<p>And you see… nothing. This will probably not be the last time things do not work out as expected. So let us investigate what might be the problem. Remember <code class="code docutils literal notranslate"><span class="pre">rqt_graph</span></code>? Great tool to see how nodes are connected (or not).</p>
+<p>The command should yield something like this:</p>
+<img alt="../_images/rqt_graph_setpoint_publisher_fail.png" src="../_images/rqt_graph_setpoint_publisher_fail.png" />
+<p>Make sure to uncheck <strong>Dead sinks</strong> and <strong>Leaf Topics</strong>. Since the <code class="file docutils literal notranslate"><span class="pre">gazebo</span></code> and <code class="file docutils literal notranslate"><span class="pre">gazebo_gui</span></code> node are not relevant for our example, we can hide them by inserting <code class="code docutils literal notranslate"><span class="pre">-/gazebo,-/gazebo_gui</span></code> in the first text box. Also make sure <strong>Nodes/Topics (all)</strong> in the upper left corner and refresh the view.</p>
+<p>Do you recognize how every node but our poor <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher</span></code> lives inside the <code class="file docutils literal notranslate"><span class="pre">/bluerov</span></code> box? Now we will interact with namespaces for the first time. There are three distinct ways to declare topic names. They are either <em>global</em>, <em>relative</em>, or <em>private</em>.</p>
+<p>In our node we declared the topic name to be <em>relative</em>. But how can we tell? Because there is no leading <code class="file docutils literal notranslate"><span class="pre">/</span></code> or <code class="file docutils literal notranslate"><span class="pre">~</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno">9 </span><span class="bp">self</span><span class="o">.</span><span class="n">vertical_thrust_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;vertical_thrust&quot;</span><span class="p">,</span> <span class="n">Float64</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But what does it mean? It means the effective topic name will not necessarily be exactly <code class="file docutils literal notranslate"><span class="pre">vertical_thrust</span></code>. This depends on the namespace of our node. Since we did not specify any namespace during <code class="code docutils literal notranslate"><span class="pre">rosrun</span> <span class="pre">awesome_package</span> <span class="pre">setpoint_publisher.py</span></code>, the topic will be resolved as <code class="file docutils literal notranslate"><span class="pre">/vertical_thrust</span></code>. The <code class="file docutils literal notranslate"><span class="pre">mixer</span></code> node living inside the <code class="file docutils literal notranslate"><span class="pre">/bluerov</span></code> namespace subscribes to the relative topic <code class="file docutils literal notranslate"><span class="pre">vertical_thrust</span></code>. Due to the namespace this will resolve as <code class="file docutils literal notranslate"><span class="pre">/bluerov/vertical_thrust</span></code>. That is the reason why our node is not connected to the <code class="code docutils literal notranslate"><span class="pre">mixer</span></code>.</p>
+<p>How to fix it, you may ask? We simply push our node into the <code class="file docutils literal notranslate"><span class="pre">/bluerov</span></code> namespace. This makes sense because our node is part of our BlueROV setup. Another ‘fix’ would be to prepend <code class="file docutils literal notranslate"><span class="pre">bluerov/</span></code> to the topic name of our publisher. But in this specific scenario I would rather call it botch. So let us push this node to the right namespace already! Just append <code class="code docutils literal notranslate"><span class="pre">__ns:=bluerov</span></code> to the <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> command.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package setpoint_publisher __ns:<span class="o">=</span>bluerov
+</pre></div>
+</div>
+<p>This tells our node to live inside the <code class="file docutils literal notranslate"><span class="pre">bluerov</span></code> namespace.</p>
+<p>Refresh our view of <code class="code docutils literal notranslate"><span class="pre">rqt_graph</span></code> by clicking the refresh button in the upper left corner and you will see, we have a beautifully connected graph!</p>
+<img alt="../_images/rqt_graph_setpoint_publisher_success.png" src="../_images/rqt_graph_setpoint_publisher_success.png" />
+<p>We can now admire our moving robot in the simulation:</p>
+<img alt="../_images/gazebo_awesome_package.gif" src="../_images/gazebo_awesome_package.gif" />
+<p>By now we might get worried by the increasing number of needed terminal windows. Imagine we want to start additional nodes. Do we really need a separate terminal for each of them? Of course not! Launch files to the rescue!</p>
+<div class="section" id="create-a-launch-setup">
+<h3>Create A Launch Setup<a class="headerlink" href="#create-a-launch-setup" title="Permalink to this headline"></a></h3>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>The following sections need rework. They are not up to date for FaV 2022!</p>
+</div>
+<p>Create a new launchfile. You could name it <code class="file docutils literal notranslate"><span class="pre">first_simulation.launch</span></code> for example:</p>
+<img alt="../_images/create_launchfile.gif" src="../_images/create_launchfile.gif" />
+<p>The launchfile has to start the <code class="file docutils literal notranslate"><span class="pre">motor_command_sender</span></code> node, the Gazebo simulation and spawns the BlueROV.</p>
+<p>It could look like this:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="nt">&lt;launch&gt;</span>
+<span class="lineno"> 2 </span>   <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;vehicle_name&quot;</span> <span class="na">default=</span><span class="s">&quot;bluerov&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno"> 3 </span>
+<span class="lineno"> 4 </span>   <span class="c">&lt;!-- start the gazebo simulator and an empty world --&gt;</span>
+<span class="lineno"> 5 </span>   <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find bluerov_sim)/launch/gazebo_base.launch&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span>   <span class="nt">&lt;group</span> <span class="na">ns=</span><span class="s">&quot;$(arg vehicle_name)&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 8 </span>     <span class="c">&lt;!-- Spawn the vehicle. You can use the args to set the spawn pose--&gt;</span>
+<span class="lineno"> 9 </span>     <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find bluerov_sim)/launch/spawn_vehicle.launch&quot;</span><span class="nt">&gt;</span>
+<span class="lineno">10 </span>        <span class="c">&lt;!-- Set the position--&gt;</span>
+<span class="lineno">11 </span>        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;x&quot;</span> <span class="na">value=</span><span class="s">&quot;0.0&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno">12 </span>        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;y&quot;</span> <span class="na">value=</span><span class="s">&quot;0.0&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno">13 </span>        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;z&quot;</span> <span class="na">value=</span><span class="s">&quot;-0.2&quot;</span><span class="nt">/&gt;</span>
+<span class="lineno">14 </span>        <span class="c">&lt;!-- Set roll, pitch, yaw--&gt;</span>
+<span class="lineno">15 </span>        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;R&quot;</span> <span class="na">value=</span><span class="s">&quot;0.0&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno">16 </span>        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;P&quot;</span> <span class="na">value=</span><span class="s">&quot;0.0&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno">17 </span>        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;Y&quot;</span> <span class="na">value=</span><span class="s">&quot;0.0&quot;</span> <span class="nt">/&gt;</span>
+<span class="lineno">18 </span>     <span class="nt">&lt;/include&gt;</span>
+<span class="lineno">19 </span>     <span class="c">&lt;!-- launch the motor_command_sender node--&gt;</span>
+<span class="lineno">20 </span>     <span class="nt">&lt;node</span> <span class="na">name=</span><span class="s">&quot;motor_command_sender&quot;</span> <span class="na">pkg=</span><span class="s">&quot;awesome_package&quot;</span> <span class="na">type=</span><span class="s">&quot;motor_command_sender.py&quot;</span><span class="nt">/&gt;</span>
+<span class="lineno">21 </span>   <span class="nt">&lt;/group&gt;</span>
+<span class="lineno">22 </span><span class="nt">&lt;/launch&gt;</span>
+</pre></div>
+</div>
+<p>To start the setup, run:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch awesome_package first_simulation.launch
+</pre></div>
+</div>
+<p>The result should look similar to:</p>
+</div>
+<div class="section" id="get-sensor-data">
+<h3>Get Sensor Data<a class="headerlink" href="#get-sensor-data" title="Permalink to this headline"></a></h3>
+<p>At this point we know the basics of actuating the vehicle. But to know how we want to actuate the vehicle, we might depend on some sensor input.</p>
+<p>The BlueROV has a pressure sensor. The output of the pressure sensor is published under the <code class="file docutils literal notranslate"><span class="pre">pressure</span></code> topic.</p>
+<p>Theoretically we could use the <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code> and modify its code to subscribe to the <code class="file docutils literal notranslate"><span class="pre">pressure</span></code> topic. But to keep things modular and separated, we add a new node to the <code class="file docutils literal notranslate"><span class="pre">awesome_package</span></code>. Let’s name it <code class="file docutils literal notranslate"><span class="pre">depth_calculator.py</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind, you have to make every node executable! See <a class="reference internal" href="ros_package.html#write-a-node"><span class="std std-ref">Write A Node</span></a>.</p>
+</div>
+<p>The source code might look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="ch">#!/usr/bin/env python</span>
+<span class="lineno"> 2 </span><span class="kn">import</span> <span class="nn">rospy</span>
+<span class="lineno"> 3 </span><span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">FluidPressure</span>
+<span class="lineno"> 4 </span><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Float32</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span><span class="k">def</span> <span class="nf">pressure_callback</span><span class="p">(</span><span class="n">pressure_msg</span><span class="p">,</span> <span class="n">publisher</span><span class="p">):</span>
+<span class="lineno"> 8 </span>   <span class="n">pascal_per_meter</span> <span class="o">=</span> <span class="mf">1.0e4</span>
+<span class="lineno"> 9 </span>   <span class="c1"># what kind of pressure data do we get? relative/absolute? What about</span>
+<span class="lineno">10 </span>   <span class="c1"># atmospheric pressure?</span>
+<span class="lineno">11 </span>   <span class="n">depth</span> <span class="o">=</span> <span class="o">-</span><span class="n">pressure_msg</span><span class="o">.</span><span class="n">fluid_pressure</span> <span class="o">/</span> <span class="n">pascal_per_meter</span>
+<span class="lineno">12 </span>   <span class="n">depth_msg</span> <span class="o">=</span> <span class="n">Float32</span><span class="p">()</span>
+<span class="lineno">13 </span>   <span class="n">depth_msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">depth</span>
+<span class="lineno">14 </span>   <span class="n">publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">depth_msg</span><span class="p">)</span>
+<span class="lineno">15 </span>
+<span class="lineno">16 </span>
+<span class="lineno">17 </span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="lineno">18 </span>   <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;depth_calculator&quot;</span><span class="p">)</span>
+<span class="lineno">19 </span>   <span class="n">depth_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;depth&quot;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno">20 </span>   <span class="n">pressure_sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="n">FluidPressure</span><span class="p">,</span>
+<span class="lineno">21 </span>                                    <span class="n">pressure_callback</span><span class="p">,</span> <span class="n">depth_pub</span><span class="p">)</span>
+<span class="lineno">22 </span>   <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<span class="lineno">23 </span>
+<span class="lineno">24 </span>
+<span class="lineno">25 </span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="lineno">26 </span>   <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can add this node to our launchfile by adding the following snippet:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span> <span class="na">name=</span><span class="s">&quot;depth_calculator&quot;</span> <span class="na">pkg=</span><span class="s">&quot;awesome_package&quot;</span> <span class="na">type=</span><span class="s">&quot;depth_calculator.py&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>And launch the setup:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch awesome_package first_simulation.launch
+</pre></div>
+</div>
+<p>We can check that the nodes are properly connected in the <code class="code docutils literal notranslate"><span class="pre">rqt</span></code> node graph:</p>
+<img alt="../_images/rqt_graph.png" src="../_images/rqt_graph.png" />
+<p>And to inspect the data, we can plot it in <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code></p>
+<img alt="../_images/depth_multiplot.png" src="../_images/depth_multiplot.png" />
+<p>or use the <code class="code docutils literal notranslate"><span class="pre">rqt</span></code> topic monitor or simply in the command line:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rostopic <span class="nb">echo</span> bluerov/depth
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="names-and-namespaces">
+<h2>Names and Namespaces<a class="headerlink" href="#names-and-namespaces" title="Permalink to this headline"></a></h2>
+<div class="section" id="namespaces">
+<h3>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline"></a></h3>
+<p>The concept of names and namespaces is explained in detail in the <a class="reference external" href="http://wiki.ros.org/Names">ROS Wiki</a>.</p>
+<p>You can start nodes or load parameters in namespaces (you can also have nested namespaces). This means that the namespace gets prepended to the node’s name. We already used this in the above launchfile. Every node (and also every node in included launchfiles) inside the <code class="code docutils literal notranslate"><span class="pre">&lt;group</span> <span class="pre">ns=&quot;$(arg</span> <span class="pre">vehicle_name)&quot;&gt;</span></code> is launched inside a namespace. In this case the namespace’s name is determined by the argument <code class="code docutils literal notranslate"><span class="pre">vehicle_name</span></code>. The default value of <code class="code docutils literal notranslate"><span class="pre">vehicle_name</span></code> is <code class="code docutils literal notranslate"><span class="pre">bluerov</span></code>. This means the name of the <code class="code docutils literal notranslate"><span class="pre">motor_command_sender</span></code> node launched in line 20 will become <code class="code docutils literal notranslate"><span class="pre">/bluerov/motor_command_sender</span></code>.</p>
+</div>
+<div class="section" id="names">
+<h3>Names<a class="headerlink" href="#names" title="Permalink to this headline"></a></h3>
+<p>If you have a node subscribing or publishing to/from a topic, you have to specify the topic name. You can do this in three different ways:</p>
+<dl>
+<dt>Global</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/my_robot/pose&quot;</span><span class="p">,</span> <span class="n">PoseStamped</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A topic name with a leading <code class="file docutils literal notranslate"><span class="pre">/</span></code> will be resolved globally. This means that it does not matter if the node was launched in a namespace or not. The resulting topic name will be exactly <code class="file docutils literal notranslate"><span class="pre">/my_robot/pose</span></code>.</p>
+</dd>
+<dt>Relative</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="n">PoseStamped</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A topic without leading <code class="file docutils literal notranslate"><span class="pre">/</span></code> will be relative. This means that, if the node was launched in a namespace, the namespace will get prepended. So for example if the node was launched in the namespace <code class="file docutils literal notranslate"><span class="pre">my_robot</span></code>, the resolved topic name will become <code class="file docutils literal notranslate"><span class="pre">/my_robot/position</span></code>. In case the node was not launched inside any namespace, nothing will get prependended to the topic name. It will be just <code class="file docutils literal notranslate"><span class="pre">/position</span></code>.</p>
+</dd>
+<dt>Private</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;my_controller&quot;</span><span class="p">)</span>
+<span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;~debug&quot;</span><span class="p">,</span> <span class="n">DebugMessage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Private topics are similar to relative ones. The topic name start with <code class="file docutils literal notranslate"><span class="pre">~</span></code>. The namespace will get prepended if it has been specified. Additionally the name of the node will also be prepended in any case. So if the node with the name <code class="file docutils literal notranslate"><span class="pre">my_controller</span></code> has been started in the namespace <code class="file docutils literal notranslate"><span class="pre">my_robot</span></code>, the resolved topic name will be <code class="file docutils literal notranslate"><span class="pre">/my_robot/my_controller/debug</span></code>. Without a namespace it would be <code class="file docutils literal notranslate"><span class="pre">/my_controller/debug</span></code>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="bluerov">
+<h3>BlueROV<a class="headerlink" href="#bluerov" title="Permalink to this headline"></a></h3>
+<p>You will only work with a single robot. Still it is nice to have things clean and start everything at least in the <code class="file docutils literal notranslate"><span class="pre">bluerov</span></code> namespace (as shown in the above example launchfile by launching your nodes inside the <code class="code docutils literal notranslate"><span class="pre">&lt;group&gt;</span></code>-tag with the ns attribute specified).</p>
+<p>Generally, avoid global topic names to avoid topic name collision if you do not have a very specific reason to use them. Example: if you have a controller subscribing to a setpoint topic, it might be a good idea to use a private name <code class="code docutils literal notranslate"><span class="pre">&quot;~setpoint&quot;</span></code>. This way you avoid topic name conflicts in case you have another controller also subscribing to a setpoint topic.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ros_package.html" class="btn btn-neutral float-left" title="ROS Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rqt_multiplot.html" class="btn btn-neutral float-right" title="RQt Multiplot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />    <link rel="icon" href="../_static/bluerov.svg" type="image/svg+xml">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thruster Configuration &mdash; Formulas and Vehicles  documentation</title>
+  <title>RQt Multiplot &mdash; Formulas and Vehicles  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Available Sensors" href="sensors.html" />
-    <link rel="prev" title="The Robot" href="../the_robot.html" /> 
+    <link rel="next" title="Lab Workflow" href="lab_workflow.html" />
+    <link rel="prev" title="ROS Launch Setup" href="ros_launch_setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,12 +47,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Setup</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../the_robot.html">The Robot</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Thruster Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensors.html">Available Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ros_package.html">ROS Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_launch_setup.html">ROS Launch Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RQt Multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recording_rosbags.html">Recording Data Using Bag Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
 </ul>
 
@@ -70,10 +74,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../the_robot.html">The Robot</a> &raquo;</li>
-      <li>Thruster Configuration</li>
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+      <li>RQt Multiplot</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/master/the_robot/thruster_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/master/tutorials/rqt_multiplot.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -81,20 +85,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="thruster-configuration">
-<h1>Thruster Configuration<a class="headerlink" href="#thruster-configuration" title="Permalink to this headline"></a></h1>
-<p>The BlueROV2 in the Heavy Configuration has eight thrusters, mounted in a way that allows to actuate all six degrees of freedom (3 translatory and 3 rotational). You can visit the <a class="reference external" href="https://bluerobotics.com/store/rov/bluerov2/">Blue Robotics website</a> to get a detailed description of the vehicle.</p>
-<p>The vehicles’s coordinate frame follows the ROS conventions, i.e. x-axis points forward, y-axis left, z-axis up.</p>
-<p>Four of the eight thrusters have their axis in parallel to the horizontal (x-y) plane. The other four are in parallel to the vehicle’s z-axis.</p>
-<p>In the following schematic, green thrusters have counterclockwise propellers, blue ones have clockwise propellers.</p>
-<p>The red arrows indicate the direction of thrust if the thrusters receive positive setpoints. The red triangle points in the forward direction of the vehicle.</p>
-<p>All motors are turning in counterclockwise direction for positive setpoints.</p>
-<a class="reference internal image-reference" href="../_images/klopsi_top_view.jpg"><img alt="../_images/klopsi_top_view.jpg" src="../_images/klopsi_top_view.jpg" style="width: 40%;" /></a>
-<a class="reference internal image-reference" href="../_images/bluerov2.svg"><img alt="../_images/bluerov2.svg" src="../_images/bluerov2.svg" width="40%" /></a>
-<p>If you are interested in the characteristics of the thrusters, also visit the <a class="reference external" href="https://bluerobotics.com/store/thrusters/t100-t200-thrusters/t200-thruster/">BlueRobotics website</a>. There are performance charts available.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The ESC PWM values in the charts are normalized to motor commands in range [-1..1].</p>
+  <div class="section" id="rqt-multiplot">
+<h1>RQt Multiplot<a class="headerlink" href="#rqt-multiplot" title="Permalink to this headline"></a></h1>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Write this section!</p>
 </div>
 </div>
 
@@ -102,8 +97,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../the_robot.html" class="btn btn-neutral float-left" title="The Robot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="sensors.html" class="btn btn-neutral float-right" title="Available Sensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ros_launch_setup.html" class="btn btn-neutral float-left" title="ROS Launch Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lab_workflow.html" class="btn btn-neutral float-right" title="Lab Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

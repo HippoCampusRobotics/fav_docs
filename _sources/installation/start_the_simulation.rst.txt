@@ -9,10 +9,10 @@ Now that we have everything prepared, i.e.:
 
 we can eventually start to work with ROS and the Gazebo simulator.
 
-At the time being, there are 4 launchfiles that come with the :file:`fav_sim` package.
+At the time being, there are 5 launchfiles that come with the :file:`fav_sim` package.
 
 .. code-block:: sh
-   :emphasize-lines: 7, 11-14
+   :emphasize-lines: 7, 11-15
 
    /home/YOUR_USER_NAME/fav/catkin_ws/src/fav
    ├── fav_gazebo_plugins
@@ -27,6 +27,7 @@ At the time being, there are 4 launchfiles that come with the :file:`fav_sim` pa
       │   ├── gazebo_apriltag_tank_world.launch
       │   ├── gazebo_empty_world.launch
       │   ├── keyboard_control.launch
+      │   ├── simulation.launch
       │   └── spawn_vehicle.launch
       ├── models
       ├── nodes
@@ -45,6 +46,9 @@ gazebo_apriltag_tank_world.launch
 spawn_vehicle.launch
    Spawns the BlueROV model. The model files are in :file:`fav_sim/models/bluerov`. This launch setup requires :code:`gazebo` to be already running. Otherwise no vehicle can be spawned.
 
+simulation.launch
+   Includes :file:`gazebo_apriltag_tank_world.launch` and :file:`spawn_vehicle.launch`. So instead of starting the others separately, it is possible to just launch this launch file.
+
 keyboard_control.launch
    Starts a node to control the BlueROV via keyboard input. This launch setup requires :code:`gazebo` to be running and an already spawned BlueROV vehicle. Otherwise no vehicle can be controlled.
 
@@ -54,19 +58,11 @@ In the first terminal, enter:
 
 .. code-block:: sh
 
-   roslaunch fav_sim gazebo_apriltag_tank_world.launch
+   roslaunch fav_sim simulation.launch
 
-This should launch Gazebo. Wait until an empty world is visible.
+This should launch the simulation environment (gazebo) and spawn the BlueROV robot model.
 
 .. note:: In some rare cases, the Gazebo window will stay black. If this is the case, quit by hitting :kbd:`Ctrl` + :kbd:`C` in the terminal in which you started Gazebo and try again.
-
-In the second enter:
-
-.. code-block::
-
-   roslaunch fav_sim spawn_vehicle.launch
-
-This will spawn the BlueROV. 
 
 Lastly, run in another terminal:
 
