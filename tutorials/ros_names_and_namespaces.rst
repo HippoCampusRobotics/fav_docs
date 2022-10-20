@@ -34,11 +34,11 @@ Private
       rospy.init_node("my_controller")
       pub = rospy.Publisher("~debug", DebugMessage)
 
-   Private topics are similar to relative ones. The topic name start with :file:`~`. The namespace will get prepended if it has been specified. Additionally the name of the node will also be prepended in any case. So if the node with the name :file:`my_controller` has been started in the namespace :file:`my_robot`, the resolved topic name will be :file:`/my_robot/my_controller/debug`. Without a namespace it would be :file:`/my_controller/debug`.
+   Private topics are similar to relative ones. The topic name start with :file:`~`. The namespace will get prepended if it has been specified. Additionally, the name of the node will also be prepended in any case. So if the node with the name :file:`my_controller` has been started in the namespace :file:`my_robot`, the resolved topic name will be :file:`/my_robot/my_controller/debug`. Without a namespace it would be :file:`/my_controller/debug`.
 
 BlueROV
 *******
 
-You will only work with a single robot. Still it is nice to have things clean and start everything at least in the :file:`bluerov` namespace (as shown in the above example launchfile by launching your nodes inside the :code:`<group>`-tag with the ns attribute specified). 
+You will only work with a single robot. Still, it is nice to have things clean and start everything at least in the :file:`bluerov` namespace (as shown in the above example launchfile by launching your nodes inside the :code:`<group>`-tag with the ns attribute specified). 
 
 Generally, avoid global topic names to avoid topic name collision if you do not have a very specific reason to use them. Example: if you have a controller subscribing to a setpoint topic, it might be a good idea to use a private name :code:`"~setpoint"`. This way you avoid topic name conflicts in case you have another controller also subscribing to a setpoint topic.

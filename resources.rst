@@ -62,6 +62,8 @@ Recording and playing back data
 
 In case you want to then plot your data in, for example, Matlab, converting your ROSbags to \*.csv files will be useful. 
 I like `this tool <https://github.com/AtsushiSakai/rosbag_to_csv>`_ for that purpose, but there are other options out there.
+
+We now also have a tutorial available in the section :ref:`tutorials/recording_rosbags:Recording Data Using Bag Files`.
    
 Coordinate Transformations
 ==========================
