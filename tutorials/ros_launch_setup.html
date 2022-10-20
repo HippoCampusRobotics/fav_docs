@@ -171,10 +171,14 @@
 <p>We do not created a new package or a new node, so we do not have to rebuild the workspace to apply the changes. But make sure you have saved the file after making these changes!</p>
 <p>Make sure no nodes/launch setups are currently running. Otherwise stop them with <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the corresponding terminals.</p>
 <p>Start the simulation environment</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim simulation.launch
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim gazebo_apriltag_tank_world.launch
 </pre></div>
 </div>
-<p>Lastly start our <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher</span></code> node:</p>
+<p>spawn the vehicle</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim spawn_vehicle.launch
+</pre></div>
+</div>
+<p>and lastly start our <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher</span></code> node:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package setpoint_publisher.py
 </pre></div>
 </div>

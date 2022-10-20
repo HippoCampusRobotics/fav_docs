@@ -129,10 +129,15 @@
 </dl>
 <p>To test that everything is set up correctly, open two terminals (for example by using the integrated terminal in VS Code and hitting the <strong>split terminal</strong> button.</p>
 <p>In the first terminal, enter:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim simulation.launch
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim gazebo_apriltag_tank_world.launch
 </pre></div>
 </div>
-<p>This should launch the simulation environment (gazebo) and spawn the BlueROV robot model.</p>
+<p>This should launch the simulation environment (gazebo).</p>
+<p>In a second terminal:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim spawn_vehicle.launch
+</pre></div>
+</div>
+<p>This will spawn the BlueROV robot model.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In some rare cases, the Gazebo window will stay black. If this is the case, quit by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you started Gazebo and try again.</p>

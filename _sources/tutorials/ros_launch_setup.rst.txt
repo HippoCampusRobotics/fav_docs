@@ -93,9 +93,15 @@ Start the simulation environment
 
 .. code-block:: sh
 
-   roslaunch fav_sim simulation.launch
+   roslaunch fav_sim gazebo_apriltag_tank_world.launch
 
-Lastly start our :file:`setpoint_publisher` node:
+spawn the vehicle
+
+.. code-block:: sh
+
+   roslaunch fav_sim spawn_vehicle.launch
+
+and lastly start our :file:`setpoint_publisher` node:
 
 .. code-block:: sh
 
