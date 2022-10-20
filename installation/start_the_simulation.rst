@@ -58,9 +58,17 @@ In the first terminal, enter:
 
 .. code-block:: sh
 
-   roslaunch fav_sim simulation.launch
+   roslaunch fav_sim gazebo_apriltag_tank_world.launch
 
-This should launch the simulation environment (gazebo) and spawn the BlueROV robot model.
+This should launch the simulation environment (gazebo).
+
+In a second terminal:
+
+.. code-block:: sh
+
+   roslaunch fav_sim spawn_vehicle.launch
+
+This will spawn the BlueROV robot model.
 
 .. note:: In some rare cases, the Gazebo window will stay black. If this is the case, quit by hitting :kbd:`Ctrl` + :kbd:`C` in the terminal in which you started Gazebo and try again.
 
