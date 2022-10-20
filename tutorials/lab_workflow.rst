@@ -42,7 +42,7 @@ The following steps can be prepared at home before coming to the lab.
 
    .. note:: As always, run :code:`source ~/.bashrc` to apply these changes.
 
-#. Do not start the simulation/gazebo while you are connected to our network. Otherwise we will have some unpleasant topic collision between the simulated vehicle and the real BlueROV in our lab.
+#. Do not **ever** start the simulation/gazebo while you are connected to our network. Otherwise we will have some unpleasant topic collision between the simulated vehicle and the real BlueROV in our lab.
 
 #. It's best if one of you brings a **fully prepared software setup on your own laptop**. The real experiment will take less computing power since you are not running the simulation environment. If you cannot do this, let us know **in time** and we will prepare a laptop for you to use. 
 
@@ -76,6 +76,8 @@ At the Lab
       rosbag record -a -x "(.*)camera(.*)"
    
    should exclude all topics containing :file:`camera`.
+   You can find more information in our section :ref:`tutorials/recording_rosbags:Recording Data Using Bag Files`.
+
 
 #. And after all, if nothing is working, a few debugging tips: 
    

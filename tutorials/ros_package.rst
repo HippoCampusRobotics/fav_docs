@@ -65,7 +65,7 @@ Since Catkin expects packages to be in the :file:`src` directory, we have to mak
 
 That's it. You have just created your first catkin package.
 
-If you have (and you should) opened your Catkin workspace in VS Code, your workspace could look like in the following image (for the screenshot the newly created package was named :file:`pressure_example`):
+If you have (and you should) opened your Catkin workspace in VS Code, your workspace could look like in the following image:
 
 .. image:: /res/images/vscode_catkin_overview.png
 
@@ -76,7 +76,7 @@ In general, you have the choice to write nodes either in Python or in C++. For t
 
 Before we can write a node, we create a :file:`nodes/` directory to keep things neat and clean. It is not strictly required (ROS will find your node as long as it is in your package, no matter in which subdirectory it is), but it complies with conventions.
 
-Right click :file:`awesome_package` and choose **New Folder** and name it :file:`nodes`. Right click :file:`nodes` and choose **New File**. Name it :file:`motor_command_sender.py`. It should open automatically.
+Right click :file:`awesome_package` and choose **New Folder** and name it :file:`nodes`. Right click :file:`nodes` and choose **New File**. Name it :file:`setpoint_publisher.py`. It should open automatically.
 
 .. image:: /res/images/vscode_create_node.gif
 
@@ -191,13 +191,13 @@ Without any comments the :file:`CMakeLists.txt` will look as simple as this:
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
    )
 
-If you want to run a Python programm, normally you would use a command like :code:`python /path/to/your/file/python_file.py`. This would work for our node, too. But instead of running our node by entering :code:`python ~/fav/catkin_ws/src/awesome_package/nodes/setpoint_publisher.py`, where we have to explicitly tell Python where it can find our file :file:`setpoint_publisher.py`, we can use :code:`rosrun`. One of the advantages of :code:`rosrun` is that we do not have to know, where the program/node is that we want to run. 
+If you want to run a Python programm, normally you would use a command like :code:`python /path/to/your/file/python_file.py`. This would work for our node, too. But instead of running our node by entering :code:`python ~/fav/catkin_ws/src/awesome_package/nodes/setpoint_publisher.py`, where we have to explicitly tell Python where it can find our file :file:`setpoint_publisher.py`, we can use :code:`rosrun`. One of the advantages of :code:`rosrun` is that we do not have to know where the program/node is that we want to run. 
 
-The general usage of the :code:`rosrun` command is :code:`rosrun <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`motor_command_sender.py` it would be:
+The general usage of the :code:`rosrun` command is :code:`rosrun <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`setpoint_publisher.py` it would be:
 
 .. code-block:: sh
 
-   rosrun awesome_package motor_command_sender.py
+   rosrun awesome_package setpoint_publisher.py
 
 If you try to do so right now, you will likely get an error message:
 
@@ -239,11 +239,11 @@ In the second one, start the node via :code:`rosrun`:
 
 .. code-block:: sh
 
-   rosrun awesome_package motor_command_sender.py
+   rosrun awesome_package setpoint_publisher.py
 
 .. image:: /res/images/rosrun_setpoint_publisher.gif
 
-.. hint:: You can use :kbd:`Tab` to use the shell's ability to auto-complete your commands. If the auto-completion is unambigous a single hit will suffice. If there is more than one auto-complete option, hit :kbd:`Tab` twice to show the different options. 
+.. hint:: You can use :kbd:`Tab` to use the shell's ability to auto-complete your commands. If the auto-completion is unambigous, a single hit will suffice. If there is more than one auto-complete option, hit :kbd:`Tab` twice to show the different options. 
 
 .. hint:: Just to remind you: you stop running programs in a terminal by the shortcut :kbd:`Ctrl` + :kbd:`C`.
 
@@ -282,7 +282,7 @@ To see what messages the node is actually publishing, we use :code:`rostopic ech
 
 .. note:: I added :code:`-n 1` at the end of the command to echo only a single message. If you omit this argument, :code:`rostopic echo` will continue to print messages until you stop it with :kbd:`Ctrl` + :kbd:`C`. 
 
-These to commands are great to get at least some insights on what is going on during the execution of our node. But most of us will find it rather cumbersome to evaluate the echoed data in realtime. I mean, would you claim to be able to see that the echoed data is actually the output of a sine function? So some proper plotting tool might come in handy here.
+These two commands are great to get at least some insights on what is going on during the execution of our node. But most of us will find it rather cumbersome to evaluate the echoed data in realtime. I mean, would you claim to be able to see that the echoed data is actually the output of a sine function? So some proper plotting tool might come in handy here.
 
 We can use :code:`rqt_multiplot` to visualize the data. The following screenshot shows the thruster setpoints for the first two motors.
 

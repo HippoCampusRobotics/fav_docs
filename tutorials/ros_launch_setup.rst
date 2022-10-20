@@ -33,7 +33,7 @@ Now let's imagine the :code:`mixer` node in the above graph would not exist and 
 
 To add a layer of abstraction we have the :file:`mixer` node. What :file:`keyboard` actually wants to do is to say "the user pressed :kbd:`W`, so move forward (i.e. set a positive value for thrust)" and from there on it is in the :file:`mixer`'s responsibility to translate this to actual setpoints for the specific thrusters that participate in the forward movement of the vehicle.
 
-Basically, we divided a bigger problem into two smaller problems. In this case this can be especially handy, because also a controller we might program at some later stage, does not need to have knowledge of specific thrusters/actuators. It can directly output commands corresponding to the actuated degrees of freedom of the BlueROV. And since all degrees of freedom of the vehicle are actuated, we can control all degrees of directly |partying_face|.
+Basically, we divided a bigger problem into two smaller problems. In this case, this can be especially handy because also a controller we might program at some later stage does not need to have knowledge of specific thrusters/actuators. It can directly output commands corresponding to the actuated degrees of freedom of the BlueROV. And since all degrees of freedom of the vehicle are actuated, we can control all degrees of directly |partying_face|.
 
 Mathematically the :file:`mixer` node computes the following equation:
 
@@ -107,7 +107,7 @@ The command should yield something like this:
 
 .. image:: /res/images/rqt_graph_setpoint_publisher_fail.png
 
-Make sure to uncheck **Dead sinks** and **Leaf Topics**. Since the :file:`gazebo` and :file:`gazebo_gui` node are not relevant for our example, we can hide them by inserting :code:`-/gazebo,-/gazebo_gui` in the first text box. Also make sure **Nodes/Topics (all)** in the upper left corner and refresh the view.
+Make sure to uncheck **Dead sinks** and **Leaf Topics**. Since the :file:`gazebo` and :file:`gazebo_gui` node are not relevant for our example, we can hide them by inserting :code:`-/gazebo,-/gazebo_gui` in the first text box. Also make sure **Nodes/Topics (all)** is selected in the upper left corner and refresh the view.
 
 Do you recognize how every node but our poor :file:`setpoint_publisher` lives inside the :file:`/bluerov` box? Now we will interact with namespaces for the first time. There are three distinct ways to declare topic names. They are either *global*, *relative*, or *private*. 
 
@@ -192,7 +192,7 @@ Include Files
 
    <include file="$(find fav_sim)/launch/simulation.launch" pass_all_args="true" />
 
-We can include other launch files. It is literally the same as copy pasting the content of the specified file right inside our own launch file. Furthermore we have the special syntax :code:`$(find fav_sim)` here. We do not have to know the full path to the launch file. We can use :code:`$(find)`` to get the path to ros packages. In case the :code:`pass_all_args` attribute is set to :code:`true`, all arguments in our launch file get passed to the included launch file. Otherwise this would not be the case.
+We can include other launch files. It is literally the same as copy pasting the content of the specified file right inside our own launch file. Furthermore, we have the special syntax :code:`$(find fav_sim)` here. We do not have to know the full path to the launch file. We can use :code:`$(find)` to get the path to ros packages. In case the :code:`pass_all_args` attribute is set to :code:`true`, all arguments in our launch file get passed to the included launch file. Otherwise this would not be the case.
 
 Groups and Nodes
 ****************
@@ -206,7 +206,7 @@ Groups and Nodes
       <node name="setpoint_publisher" pkg="awesome_package" type="setpoint_publisher.py" />
    </group>
 
-Two things here. We can delcare groups and assign a namespace to everything that is inside this group by settings the :code:`ns` attribute. To use the arguments we have declared in the launch file or pass in via the command line, we use :code:`$(arg parameter_name)` so in our case :code:`$(arg vehicle_name)`. To start the :code:`setpoint_publisher` node we use the :code:`<node>` tag. The :code:`name` attribute overwrites the node's name set in the sourcode by :code:`rospy.init_node("setpoint_publisher")`. :code:`pkg` is the name of the package where the node is located. And :code:`type` is the file name of the executable.
+Two things here. We can declare groups and assign a namespace to everything that is inside this group by settings the :code:`ns` attribute. To use the arguments we have declared in the launch file or pass in via the command line, we use :code:`$(arg parameter_name)` so in our case :code:`$(arg vehicle_name)`. To start the :code:`setpoint_publisher` node, we use the :code:`<node>` tag. The :code:`name` attribute overwrites the node's name set in the sourcode by :code:`rospy.init_node("setpoint_publisher")`. :code:`pkg` is the name of the package where the node is located. And :code:`type` is the file name of the executable.
 
 .. code-block:: xml
    :lineno-start: 12
@@ -229,9 +229,9 @@ Really looks the same, doesn't it? Now stop everything and try to assign the :co
 
 .. code-block:: sh
 
-   roslaunch awesome_package setpoint.launch vehicle_name:=roflcopter
+   roslaunch awesome_package setpoint.launch vehicle_name:=klopsi
 
-Everything will still be connected just fine. The only difference is, that every node is running inside the :file:`/roflcopter` namespace.
+Everything will still be connected just fine. The only difference is, that every node is running inside the :file:`/klopsi` namespace.
 
 Taking the Next Step
 ====================
@@ -246,7 +246,7 @@ There are arguments :code:`x`, :code:`y` and :code:`z` declared for the spawning
 
    roslaunch awesome_package setpoint.launch x:=4 z:=-3
 
-Maybe it is necessary to rate the camera inside gazebo to find the BlueROV in its new position.
+Maybe it is necessary to rotate the camera inside gazebo to find the BlueROV in its new position.
 
 Get Sensor Data
 ===============
@@ -255,7 +255,7 @@ At this point we know the basics of actuating the vehicle. But to know how we wa
 
 The BlueROV has a pressure sensor. The output of the pressure sensor is published under the :file:`pressure` topic inside the vehicle's namespace. So by default the topic name will be :file:`/bluerov/pressure`.
 
-Theoretically we could use the :file:`setpoint_publisher.py` and modify its code to subscribe to the :file:`pressure` topic. But to keep things modular and separated, we add a new node to the :file:`awesome_package`. Let's name it :file:`depth_calculator.py`. You could argue that having a complete program only calculating the depth coordinate of the vehicle from pressure data might seem like a bit overkill. But let's see the :file:`depth_calculator` as some specific case of a state estimation. And this can get complex very quickly. Therefore it is a good idea to solve separate problems in separate nodes.
+Theoretically, we could use the :file:`setpoint_publisher.py` and modify its code to subscribe to the :file:`pressure` topic. But to keep things modular and separated, we add a new node to the :file:`awesome_package`. Let's name it :file:`depth_calculator.py`. You could argue that having a complete program only calculating the depth coordinate of the vehicle from pressure data might seem like a bit overkill. But let's see the :file:`depth_calculator` as some specific case of a state estimation. And this can get complex very quickly. Therefore, it is a good idea to solve separate problems in separate nodes.
 
 .. note:: Keep in mind, you have to make every node executable! See :ref:`tutorials/ros_package:Write A Node`.
 
@@ -321,7 +321,7 @@ or use the :code:`rqt` topic monitor or simply in the command line:
 
    rostopic echo bluerov/depth
 
-We can see that the data is noisy. And in the real world data is *always* noisy. But depenending on the scenario there is a wide range of filtering methods available. One could compute a moving average over the last :math:`n` data points, a very simple software first order lowpass filter or maybe even something more advanced like a Kalman filter. But the possibilites are ofcourse not limited to those approaches.
+We can see that the data is noisy. And in the real world data is *always* noisy. But depending on the scenario, there is a wide range of filtering methods available. One could compute a moving average over the last :math:`n` data points, a very simple software first order lowpass filter or maybe even something more advanced like a Kalman filter or a particle filter. But the possibilites are of course not limited to those approaches.
 
 The Missing Link
 ================
