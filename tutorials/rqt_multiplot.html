@@ -52,7 +52,17 @@
 <li class="toctree-l2"><a class="reference internal" href="ros_package.html">ROS Package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ros_launch_setup.html">ROS Launch Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ros_names_and_namespaces.html">Names and Namespaces</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">RQt Multiplot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RQt Multiplot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multiplot-configuration">Multiplot Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-subplots">Adding subplots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-curve">Adding a curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plotting-data-over-time">Plotting data over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axis-scale">Axis scale</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#multiplot-config-files">Multiplot Config Files</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recording_rosbags.html">Recording Data Using Bag Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
@@ -88,9 +98,73 @@
              
   <div class="section" id="rqt-multiplot">
 <h1>RQt Multiplot<a class="headerlink" href="#rqt-multiplot" title="Permalink to this headline"></a></h1>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>Write this section!</p>
+<p>Plotting data is crucial for analyzing (and debugging…) your setup.
+A very simple tool is <a class="reference external" href="http://wiki.ros.org/rqt_plot">rqt_plot</a>.
+However, <code class="code docutils literal notranslate"><span class="pre">rqt_plot</span></code> is excrutiatingly annoying to use. Downsides are: you can only plot data over time and it’s very hard to configure, not ideal at all!</p>
+<p>Therefore, we highly recommend you use <a class="reference external" href="http://wiki.ros.org/rqt_multiplot">rqt_multiplot</a>.</p>
+<ol class="arabic">
+<li><p>To install Multiplot, run</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-noetic-rqt-multiplot
+</pre></div>
+</div>
+</li>
+<li><p>To tell rqt about this new plugin, run</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rqt --force-discover
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Now, you will be able to use the <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> plugin from the <code class="code docutils literal notranslate"><span class="pre">rqt</span></code> GUI. However, the GUI might look a bit overwhelming. If you prefer to launch your tools (<code class="code docutils literal notranslate"><span class="pre">rqt_graph</span></code>, <code class="code docutils literal notranslate"><span class="pre">rqt_topic</span></code>, …) in seperate windows, execute</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rqt_multiplot
+</pre></div>
+</div>
+<p>As the name says, <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> can show multiple plots at the same time, like subfigures.</p>
+<div class="section" id="multiplot-configuration">
+<h2>Multiplot Configuration<a class="headerlink" href="#multiplot-configuration" title="Permalink to this headline"></a></h2>
+<div class="section" id="adding-subplots">
+<h3>Adding subplots<a class="headerlink" href="#adding-subplots" title="Permalink to this headline"></a></h3>
+<p>You can add subfigures by changing the number of plots in the top left corner, as shown below. Be careful when decreasing number of subfigures, all configurations are lost when the subfigure is deleted.</p>
+<img alt="../_images/multiplot_add_subfigures.gif" src="../_images/multiplot_add_subfigures.gif" />
+</div>
+<div class="section" id="adding-a-curve">
+<h3>Adding a curve<a class="headerlink" href="#adding-a-curve" title="Permalink to this headline"></a></h3>
+<p>For adding a curve to your plot, click the little settings icon in the top right corner of the (sub)figure.</p>
+<img alt="../_images/multiplot_add_new_curve.gif" src="../_images/multiplot_add_new_curve.gif" />
+<p>When adding new curves, you might need to press play (or stop and play again) to actually start displaying the data, as shown in the gif above.</p>
+<p>You can also copy-paste curves, if you want to plot very similar data. This can be an absolute gamechanger in setting up plots 🥳!</p>
+<img alt="../_images/multiplot_copy_paste_curve.gif" src="../_images/multiplot_copy_paste_curve.gif" />
+<p>Of course, <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> and <kbd class="kbd docutils literal notranslate">V</kbd> also work.</p>
+</div>
+<div class="section" id="plotting-data-over-time">
+<h3>Plotting data over time<a class="headerlink" href="#plotting-data-over-time" title="Permalink to this headline"></a></h3>
+<p>When plotting data over time, you have two options. You can either use the time stamp in a message’s header, or the message receipt time, see below. We recommend always using the message receipt time, especially since not every message type includes a header. You just need to check the box as shown below.</p>
+<img alt="../_images/multiplot_timestamp_vs_receipt_time.png" src="../_images/multiplot_timestamp_vs_receipt_time.png" />
+</div>
+<div class="section" id="axis-scale">
+<h3>Axis scale<a class="headerlink" href="#axis-scale" title="Permalink to this headline"></a></h3>
+<p>You can change the axis scale to <em>relative</em> to only display messages from a certain amount of time (e.g. the last 100 seconds: -100 to 0).
+Similarly, you can set absolute limits for your axes.</p>
+<img alt="../_images/multiplot_axis_scale.png" src="../_images/multiplot_axis_scale.png" />
+<img alt="../_images/multiplot_change_axis.gif" src="../_images/multiplot_change_axis.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I have also changed the <em>pen width</em> to 3 in this gif here. That’s a good pen width so that you can see the lines on the big TV screen in our lab. We like to be able to see what you’re doing, too, and we’re all blind (and hate botchy setups)…</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Keep things neat and give plots and curves proper names!</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Theoretically, <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> offers the option of exporting plots. Feel free to use this for your own documentation/notes/research diary. However, we do not want to see these exported plots in your submitted papers. (Correctly scaled) matlab plots or plots directly from Tikz are so much more readable! Also more aesthetically pleasing…</p>
+</div>
+</div>
+</div>
+<div class="section" id="multiplot-config-files">
+<h2>Multiplot Config Files<a class="headerlink" href="#multiplot-config-files" title="Permalink to this headline"></a></h2>
+<p>Even though <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> is a lot nicer to configure than <code class="code docutils literal notranslate"><span class="pre">rqt_plot</span></code>, it still takes time. Therefore, you <em>really</em> should save your configuration.</p>
+<img alt="../_images/multiplot_save_config.gif" src="../_images/multiplot_save_config.gif" />
+<p>As always, give your config files meaningful names. We recommend preparing one for the lab sessions, too. This will save a lot of precious time!</p>
 </div>
 </div>
 

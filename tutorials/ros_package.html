@@ -147,7 +147,7 @@
 </pre></div>
 </div>
 <p>That’s it. You have just created your first catkin package.</p>
-<p>If you have (and you should) opened your Catkin workspace in VS Code, your workspace could look like in the following image (for the screenshot the newly created package was named <code class="file docutils literal notranslate"><span class="pre">pressure_example</span></code>):</p>
+<p>If you have (and you should) opened your Catkin workspace in VS Code, your workspace could look like in the following image:</p>
 <img alt="../_images/vscode_catkin_overview.png" src="../_images/vscode_catkin_overview.png" />
 </div>
 </div>
@@ -155,7 +155,7 @@
 <h2>Write A Node<a class="headerlink" href="#write-a-node" title="Permalink to this headline"></a></h2>
 <p>In general, you have the choice to write nodes either in Python or in C++. For the sake of simplicity we recommend Python. If you haven’t already worked with one of these languages, in some regards Python might feel similiar to Matlab.</p>
 <p>Before we can write a node, we create a <code class="file docutils literal notranslate"><span class="pre">nodes/</span></code> directory to keep things neat and clean. It is not strictly required (ROS will find your node as long as it is in your package, no matter in which subdirectory it is), but it complies with conventions.</p>
-<p>Right click <code class="file docutils literal notranslate"><span class="pre">awesome_package</span></code> and choose <strong>New Folder</strong> and name it <code class="file docutils literal notranslate"><span class="pre">nodes</span></code>. Right click <code class="file docutils literal notranslate"><span class="pre">nodes</span></code> and choose <strong>New File</strong>. Name it <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code>. It should open automatically.</p>
+<p>Right click <code class="file docutils literal notranslate"><span class="pre">awesome_package</span></code> and choose <strong>New Folder</strong> and name it <code class="file docutils literal notranslate"><span class="pre">nodes</span></code>. Right click <code class="file docutils literal notranslate"><span class="pre">nodes</span></code> and choose <strong>New File</strong>. Name it <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher.py</span></code>. It should open automatically.</p>
 <img alt="../_images/vscode_create_node.gif" src="../_images/vscode_create_node.gif" />
 <p>We have to make the Python file executable. To do so, enter the following command in your terminal (for example the integrated one in VS Code):</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>chmod +x ~/fav/catkin_ws/src/awesome_package/nodes/setpoint_publisher.py
@@ -259,9 +259,9 @@
 </pre></div>
 </div>
 </div>
-<p>If you want to run a Python programm, normally you would use a command like <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/your/file/python_file.py</span></code>. This would work for our node, too. But instead of running our node by entering <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">~/fav/catkin_ws/src/awesome_package/nodes/setpoint_publisher.py</span></code>, where we have to explicitly tell Python where it can find our file <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher.py</span></code>, we can use <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>. One of the advantages of <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> is that we do not have to know, where the program/node is that we want to run.</p>
-<p>The general usage of the <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> command is <code class="code docutils literal notranslate"><span class="pre">rosrun</span> <span class="pre">&lt;package_name&gt;</span> <span class="pre">&lt;executable_name&gt;</span></code>. So for our <code class="file docutils literal notranslate"><span class="pre">awesome_package</span></code> and its <code class="file docutils literal notranslate"><span class="pre">motor_command_sender.py</span></code> it would be:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package motor_command_sender.py
+<p>If you want to run a Python programm, normally you would use a command like <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/your/file/python_file.py</span></code>. This would work for our node, too. But instead of running our node by entering <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">~/fav/catkin_ws/src/awesome_package/nodes/setpoint_publisher.py</span></code>, where we have to explicitly tell Python where it can find our file <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher.py</span></code>, we can use <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>. One of the advantages of <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> is that we do not have to know where the program/node is that we want to run.</p>
+<p>The general usage of the <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code> command is <code class="code docutils literal notranslate"><span class="pre">rosrun</span> <span class="pre">&lt;package_name&gt;</span> <span class="pre">&lt;executable_name&gt;</span></code>. So for our <code class="file docutils literal notranslate"><span class="pre">awesome_package</span></code> and its <code class="file docutils literal notranslate"><span class="pre">setpoint_publisher.py</span></code> it would be:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package setpoint_publisher.py
 </pre></div>
 </div>
 <p>If you try to do so right now, you will likely get an error message:</p>
@@ -286,13 +286,13 @@
 </pre></div>
 </div>
 <p>In the second one, start the node via <code class="code docutils literal notranslate"><span class="pre">rosrun</span></code>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package motor_command_sender.py
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun awesome_package setpoint_publisher.py
 </pre></div>
 </div>
 <img alt="../_images/rosrun_setpoint_publisher.gif" src="../_images/rosrun_setpoint_publisher.gif" />
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>You can use <kbd class="kbd docutils literal notranslate">Tab</kbd> to use the shell’s ability to auto-complete your commands. If the auto-completion is unambigous a single hit will suffice. If there is more than one auto-complete option, hit <kbd class="kbd docutils literal notranslate">Tab</kbd> twice to show the different options.</p>
+<p>You can use <kbd class="kbd docutils literal notranslate">Tab</kbd> to use the shell’s ability to auto-complete your commands. If the auto-completion is unambigous, a single hit will suffice. If there is more than one auto-complete option, hit <kbd class="kbd docutils literal notranslate">Tab</kbd> twice to show the different options.</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -317,7 +317,7 @@
 <p class="admonition-title">Note</p>
 <p>I added <code class="code docutils literal notranslate"><span class="pre">-n</span> <span class="pre">1</span></code> at the end of the command to echo only a single message. If you omit this argument, <code class="code docutils literal notranslate"><span class="pre">rostopic</span> <span class="pre">echo</span></code> will continue to print messages until you stop it with <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd>.</p>
 </div>
-<p>These to commands are great to get at least some insights on what is going on during the execution of our node. But most of us will find it rather cumbersome to evaluate the echoed data in realtime. I mean, would you claim to be able to see that the echoed data is actually the output of a sine function? So some proper plotting tool might come in handy here.</p>
+<p>These two commands are great to get at least some insights on what is going on during the execution of our node. But most of us will find it rather cumbersome to evaluate the echoed data in realtime. I mean, would you claim to be able to see that the echoed data is actually the output of a sine function? So some proper plotting tool might come in handy here.</p>
 <p>We can use <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> to visualize the data. The following screenshot shows the thruster setpoints for the first two motors.</p>
 <img alt="../_images/rqt_multiplot.png" src="../_images/rqt_multiplot.png" />
 <p>General information to <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> can be found in the <a class="reference external" href="http://wiki.ros.org/rqt_multiplot">ROS Wiki</a> and some step-by-step instructions in the section <a class="reference internal" href="rqt_multiplot.html#rqt-multiplot"><span class="std std-ref">RQt Multiplot</span></a>.</p>

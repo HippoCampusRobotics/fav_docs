@@ -125,7 +125,7 @@
 <p>As always, run <code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> to apply these changes.</p>
 </div>
 </li>
-<li><p>Do not start the simulation/gazebo while you are connected to our network. Otherwise we will have some unpleasant topic collision between the simulated vehicle and the real BlueROV in our lab.</p></li>
+<li><p>Do not <strong>ever</strong> start the simulation/gazebo while you are connected to our network. Otherwise we will have some unpleasant topic collision between the simulated vehicle and the real BlueROV in our lab.</p></li>
 <li><p>It’s best if one of you brings a <strong>fully prepared software setup on your own laptop</strong>. The real experiment will take less computing power since you are not running the simulation environment. If you cannot do this, let us know <strong>in time</strong> and we will prepare a laptop for you to use.</p></li>
 <li><p>The setup can include a prepared settings file for <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code>.</p></li>
 </ol>
@@ -146,7 +146,8 @@ For example</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosbag record -a -x <span class="s2">&quot;(.*)camera(.*)&quot;</span>
 </pre></div>
 </div>
-<p>should exclude all topics containing <code class="file docutils literal notranslate"><span class="pre">camera</span></code>.</p>
+<p>should exclude all topics containing <code class="file docutils literal notranslate"><span class="pre">camera</span></code>.
+You can find more information in our section <a class="reference internal" href="recording_rosbags.html#recording-data-using-bag-files"><span class="std std-ref">Recording Data Using Bag Files</span></a>.</p>
 </li>
 <li><p>And after all, if nothing is working, a few debugging tips:</p>
 <ul class="simple">
