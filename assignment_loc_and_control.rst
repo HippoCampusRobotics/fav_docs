@@ -3,9 +3,13 @@ Assignment 2 - Localization and Control
 
 .. attention:: 
 
-   Please update the :code:`bluerov_sim` package. 
+   Please update the :code:`fav` repository. 
+
+   .. code-block:: sh
+
+      cd ~/fav/catkin_ws/src/fav && git pull
    
-   We have prepared a **launch file** for you to start with: :file:`assignment_2.launch`
+   We have prepared a new launchfile for you to start with: :file:`gazebo_assignment2.launch`. Use this launchfile instead of :file:`gazebo_apriltag_tank_world.launch` in order to include the simulated range sensor.
 
 
 .. Get the Code
@@ -60,31 +64,31 @@ Range Sensor in Simulation
 
 We are not actually using simulated camera images and running the AprilTag algorithm in simulation. Rather, we have written a Gazebo Plugin that simulates the range measurements to the four given anchors. This has the benefit of reducing the computational burden.
 
-This range sensor plugin has a few parameters we encourage you to play with. In the :code:`bluerov_sim` package you can find the \*.sdf file defining our BlueROV2 model for Gazebo: :code:`models/uuv_bluerov2_heavy/uuv_bluerov2_heavy.sdf`
+Range Sensor parameters
+-----------------------
+
+This range sensor plugin has a few parameters we encourage you to play with. In the :code:`fav_sim` package you can find the \*.xacro file defining our BlueROV2 model for Gazebo: :code:`models/range_sensor/urdf/range_sensor_params.xacro`.
 
 The range sensor plugin parameters can be found here:
 
 .. code-block:: XML
 
-   <plugin name="range_sensor_plugin" filename="libgazebo_range_sensor_plugin.so">
-      <robotNamespace />
-      <pubRate>7.0</pubRate>
-      <rangeNoiseStd>0.01</rangeNoiseStd>
-      <fovCamera>100</fovCamera>
-      <viewingAngle>140</viewingAngle>
-      <dropProb>0.02</dropProb>
-      <maxDetectionDist>5.0</maxDetectionDist>
-      <distDropProbExponent>2.0</distDropProbExponent>
-   </plugin>
+    <xacro:property name="noise_stddev" value="0.01" />
+    <xacro:property name="drop_probability" value="0.02" />
+    <xacro:property name="max_detection_distance" value="5.0" />
+    <xacro:property name="drop_probability_exponent" value="2.0" />
+    <xacro:property name="max_viewing_angle" value="140.0" />
+    <xacro:property name="max_fov_angle" value="90.0" />
 
-* **pubRate**: The publishing rate for the range measurements.
-* **rangeNoiseStd**: We add white, Gaussian noise on the distance measurements, this sets the standard deviation.
-* **fovCamera**: The camera's field of view (fov) angle.
-* **viewingAngle**: The viewing angle at which a tag is still detectable.
-* **dropProb**: The probability a single distance measurement is dropped.
-* **maxDetectionDist** and **distDropProbExponent**: We compute an additional probability that a tag measurement will be dropped which increases with increasing distance to the tag. This is independent of the general **dropProb**.
 
-We compute this probability according to the following equation, where the **distDropProbExponent** is n:
+* **noise_stddev**: We add white, Gaussian noise on the distance measurements, this sets the standard deviation.
+* **rangeNoiseStd**: 
+* **drop_probability**: The probability a single distance measurement is dropped.
+* **max_detection_distance** and **drop_probability_exponent**: We compute an additional probability that a tag measurement will be dropped which increases with increasing distance to the tag. This is independent of the general **drop_probability**.
+* **max_viewing_angle**: Angle limit between x-axis of the robot (the camera) and the normal axis of the detected tag.
+* **max_fov_angle**: The camera's field of view (fov) angle. Tags outside this cone won't be detected.
+
+We compute this probability according to the following equation, where the **drop_probability_exponent** is n:
 
 .. math::
 
@@ -92,16 +96,18 @@ We compute this probability according to the following equation, where the **dis
 
 You can use these parameters to test your algorithm in different situations and prepare for reality with varying degrees of pessimism.
 
-The range sensor's position for the simulation is defined in the :code:`uuv_bluerov2_heavy.sdf` file as well (relative to the body frame :code:`base_link`):
+Range Sensor Position
+---------------------
+
+The range sensor's position for the simulation is defined in the :code:`models/bluerov/urdf/bluerov_params.xacro` file (relative to the body frame :code:`base_link`):
 
 .. code-block:: XML
    
-   <link name="range_sensor_link">
-      <pose>0.2 0 0.1 0 0 0</pose>
-      ...
-   </link>
+    <xacro:property name="range_sensor_position" value="0.2 0 0.1" />
+    <xacro:property name="range_sensor_orientation" value="${radians(0)} ${radians(0)} ${radians(0)}" />
 
-This hasn't been measured precisely (one of us looked at the BlueROV2 and squinted their eyes...) and you will probably want to make sure this position is adaptable in your code, if you define (and use) it somewhere.
+
+This hasn't been measured precisely (one of us looked at the BlueROV2 and squinted their eyes to estimate the front camera's position...) and you will probably want to make sure this position is adaptable in your code, if you define (and use) it somewhere.
 
 
 .. hint::
@@ -124,45 +130,37 @@ Feel free to use the rest of the Gazebo ground truth data, for example the posit
 
    The :code:`tf.transformations` library helps you deal with quaternions. Check the `API <http://docs.ros.org/en/melodic/api/tf/html/python/transformations.html>`_ .
 
-.. hint::
+.. .. hint::
 
-   You can access IMU data in the topic :code:`bluerov/mavros/imu/data`, this has already been filtered by the FCU's on-board estimator.
+..    You can access IMU data in the topic :code:`bluerov/mavros/imu/data`, this has already been filtered by the FCU's on-board estimator.
 
 .. hint::
 
    As you have noticed in the first experiment, the real BlueROV2 behaves differently to the simulated one. The fact that we've never done a proper parameter identification doesn't help. Priorities... the simulation works perfectly fine for testing and evaluating your algorithms. 
    
-   However, if you want to adjust how the BlueROV2 is behaving in simulation, you can find some parameters in the sdf file, too. You'll be mostly interested in our :code:`uuv_plugin`, where you can change the linear and angular damping, and the buoyancy:
+   However, if you want to adjust how the BlueROV2 is behaving in simulation, you can find some parameters in the :file:`bluerov_params.xacro` file, too. You'll be mostly interested in the linear and angular damping, and the buoyancy:
 
    .. code-block:: XML
       
-      <plugin name="uuv_plugin" filename="libgazebo_uuv_plugin.so">
-            ...
-            <dampingLinear>7 7 7</dampingLinear>
-            <dampingAngular>0.3 0.3 0.3</dampingAngular>
-            ...
-            <buoyancy>
-                <link_name>base_link</link_name>
-                <origin>0 0 0.01</origin>
-                <compensation>1.001</compensation>
-                <height_scale_limit>0.05</height_scale_limit>
-            </buoyancy>
-        </plugin>
+      <xacro:property name="damping_linear" value="7 7 7" />
+      <xacro:property name="damping_angular" value="0.3 0.3 0.3" />
+      <xacro:property name="buoyancy_compensation" value="1.001" />
+      <xacro:property name="buoyancy_origin" value="0 0 0.005" />
 
 
-.. hint::
+.. .. hint::
 
-   Similarly to the BlueROV2 sdf file, there's an sdf file for the tank, where the AprilTag models are included. If you're curious about trying other tag positions (or orientations), you can do this here:
+..    Similarly to the BlueROV2 sdf file, there's an sdf file for the tank, where the AprilTag models are included. If you're curious about trying other tag positions (or orientations), you can do this here:
 
-   .. code-block:: XML
+..    .. code-block:: XML
       
-      <include>
-         <name>tag_1</name>
-         <uri>model://tag36_11_00000</uri>
-         <pose>0.5 3.35 -0.5 1.57079632679 -0.0 0.0</pose>
-      </include>
+..       <include>
+..          <name>tag_1</name>
+..          <uri>model://tag36_11_00000</uri>
+..          <pose>0.5 3.35 -0.5 1.57079632679 -0.0 0.0</pose>
+..       </include>
 
-.. .. attention::
+.. .. .. attention::
 
 ..    The given anchor positions might still change in the real experiment. We'll keep the rectangular shape, but can't guarantee we will get the distances to be exactly what was announced. Make the positions easily adjustable in your code.
 
@@ -175,7 +173,7 @@ In this assignment you will do different things, including implementing a self-l
 
 .. attention::
 
-   Please do not change code (apart from playing with parameters purely for your simulation, of course) in our repositories, namely :code:`bluerov_sim`. Instead, create your own packages.
+   Please do not change code (apart from playing with parameters purely for your simulation, of course) in our repositories, namely :code:`fav_sim`. Instead, create your own packages.
 
 
 

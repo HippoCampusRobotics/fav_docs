@@ -22,6 +22,7 @@ Welcome to Formulas and Vehicles's documentation!
    tutorials
    resources
    assignment_depth_control
+   assignment_loc_and_control
 
 
 Indices and tables
