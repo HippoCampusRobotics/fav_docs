@@ -57,6 +57,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#bluerov2-model-with-simulated-cameras">BlueROV2 Model with Simulated Cameras</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#apriltag-models">AprilTag Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modify-gazebo-worlds">Modify Gazebo Worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apriltag-detection">AprilTag Detection</a></li>
 </ul>
 </li>
 </ul>
@@ -212,6 +213,73 @@
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>There is, of course, documentation available on how to create sdf models. See for example the list of <a class="reference external" href="https://classic.gazebosim.org/tutorials/browse">official gazebo tutorials</a>.</p>
+</div>
+</div>
+<div class="section" id="apriltag-detection">
+<h2>AprilTag Detection<a class="headerlink" href="#apriltag-detection" title="Permalink to this headline"></a></h2>
+<p>Might be/probably is relevant for many of you. In general, you do not have to worry about the actual detection pipeline so much. In the Lab <strong>we</strong> will start the tag detection and image pipeline for you. In the simulation, the apriltag detection gets started automagically if the corresponding camera is enabled.</p>
+<p>A slight difference between simulation and the lab is the camera distortion. Since we do not simulate distortion, no undistortion is needed. And for the lab, well, there we have some serious distortion we have to get rid of. So the node graph will not look exactly the same, but will still give you the same output: the tag detections.</p>
+<p>The node graph containing both pipelines, for the vertical and the front camera. For debugging in the lab, it is often useful to look at the tag detection image. For the simulation the detection rate is actually quite good, so it will probably not that useful.</p>
+<img alt="_images/apriltag_pipeline_gazebo.png" src="_images/apriltag_pipeline_gazebo.png" />
+<p>The detection messages, containing the pose of the detected tags expressed in the corresponding camera frame, has the type <code class="code docutils literal notranslate"><span class="pre">AprilTagDetectionArray</span></code>. Please visit the <a class="reference external" href="http://docs.ros.org/en/noetic/api/apriltag_ros/html/msg/AprilTagDetectionArray.html">documentation</a> for the details on the data fields.</p>
+<p>An example how to access the data fields of the tag detections, is provided below. It is assumed, the node is started in the <code class="file docutils literal notranslate"><span class="pre">bluerov</span></code> namespace.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">rospy</span>  <span class="c1"># this is the python interface for ROS</span>
+<span class="kn">from</span> <span class="nn">apriltag_ros.msg</span> <span class="kn">import</span> <span class="n">AprilTagDetectionArray</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Pose</span>
+
+
+<span class="k">class</span> <span class="nc">Node</span><span class="p">():</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;example_node&quot;</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">detection_sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;vertical_camera/tag_detections&#39;</span><span class="p">,</span>
+                                             <span class="n">AprilTagDetectionArray</span><span class="p">,</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">on_detections</span><span class="p">)</span>
+
+   <span class="k">def</span> <span class="nf">on_detections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">AprilTagDetectionArray</span><span class="p">):</span>
+      <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Detected {len(msg.detections)} tags.&#39;</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
+            <span class="c1"># there are only multiple ids, if we specify tag bundles.</span>
+            <span class="c1"># since we only have standalone tags, only a single id will be in</span>
+            <span class="c1"># the id array.</span>
+            <span class="n">tag_id</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># same for the size as for the id</span>
+            <span class="n">tag_size</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">frame</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span>
+
+            <span class="c1"># yeah, many .pose...</span>
+            <span class="n">pose</span><span class="p">:</span> <span class="n">Pose</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span>
+               <span class="sa">f</span><span class="s1">&#39;Tag </span><span class="si">{tag_id}</span><span class="s1"> with size </span><span class="si">{tag_size:.4f}</span><span class="s1"> relative to </span><span class="si">{frame}</span><span class="s1">: </span><span class="se">\n</span><span class="s1">&#39;</span>
+               <span class="sa">f</span><span class="s1">&#39;pos: </span><span class="si">{p.x:.2f}</span><span class="s1"> | </span><span class="si">{p.y:.2f}</span><span class="s1"> | </span><span class="si">{p.z:.2f}</span><span class="se">\n</span><span class="s1">&#39;</span>
+               <span class="sa">f</span><span class="s1">&#39;q: </span><span class="si">{q.w:.3f}</span><span class="s1"> | </span><span class="si">{q.x:.3f}</span><span class="s1"> | </span><span class="si">{q.y:.3f}</span><span class="s1"> | </span><span class="si">{q.z:.3f}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">()</span>
+   <span class="n">node</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+   <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An example for the tag configuration is given in <code class="file docutils literal notranslate"><span class="pre">fav_sim/config/tags_front_camera.yaml</span></code> and <code class="file docutils literal notranslate"><span class="pre">fav_sim/config/tags_vertical_camera.yaml</span></code>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It is better to not modify these configuration files, but to create new ones and tell the launch file about it:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim simulation.launch use_vertical_camera:<span class="o">=</span><span class="nb">true</span> tag_file_vertical_camera:<span class="o">=</span>/my/custom/path/to/some/tags.yaml
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the lab session just send us your custom <code class="file docutils literal notranslate"><span class="pre">.yaml</span></code> file for the tags and we will set up the apriltag pipeline for you. Since our localization relies on the vertical camera, you probably do not want to change the setup for this camera.</p>
 </div>
 </div>
 </div>
