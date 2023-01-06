@@ -99,8 +99,8 @@
 </pre></div>
 </div>
 </div>
-<p>This section presents some additional features of our simulation environment. It should give you an idea on how to add models to the Gazebo world for your final project.</p>
-<p>Additionally, note that you can use the position data of our localization algorithm in experiment. This will allow you to focus on other tasks.</p>
+<p>This section presents some additional features of our simulation environment. It should give you an idea on how to add models to the Gazebo world for your final project. As an <em>example</em> model, we will include a new AprilTag in the world. Additionally, we will look at the AprilTag detection algorithm.</p>
+<p>Moreover, note that you can use the position and orientation data of our localization algorithm in experiment. This will allow you to focus on other tasks.</p>
 <div class="section" id="default-world">
 <h2>Default World<a class="headerlink" href="#default-world" title="Permalink to this headline"></a></h2>
 <p>Probably the default world you want to start off with is <code class="file docutils literal notranslate"><span class="pre">tank_with_tags.world</span></code>. You already know the corresponding launch command from assignment 1.</p>
@@ -110,7 +110,8 @@
 </div>
 <div class="section" id="bluerov2-model-with-simulated-cameras">
 <h2>BlueROV2 Model with Simulated Cameras<a class="headerlink" href="#bluerov2-model-with-simulated-cameras" title="Permalink to this headline"></a></h2>
-<p>The good old description files for the BlueROV have changed. Optional cameras have been added. To enable them, we have the two launch arguments <code class="code docutils literal notranslate"><span class="pre">use_front_camera</span></code> and <code class="code docutils literal notranslate"><span class="pre">use_vertical_camera</span></code> available. Their default value is <code class="code docutils literal notranslate"><span class="pre">false</span></code>. To enable them, spawn the vehicle as follows:</p>
+<p>So far, we haven’t actually used simulated cameras on the BlueROV. Instead of simulating a camera image and running the actual AprilTag detection algorithm on this, we have simulated our ‘range’ measurements. This had the benefit of reduced computational burden.</p>
+<p>We have added optional simulated camera sensors to the BlueROV description files. To enable them, we have the two launch arguments <code class="code docutils literal notranslate"><span class="pre">use_front_camera</span></code> and <code class="code docutils literal notranslate"><span class="pre">use_vertical_camera</span></code> available. Their default value is <code class="code docutils literal notranslate"><span class="pre">false</span></code>. To enable them, spawn the vehicle as follows:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch fav_sim spawn_vehicle.launch use_front_camera:<span class="o">=</span><span class="nb">true</span> use_vertical_camera:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
@@ -139,6 +140,7 @@
 </pre></div>
 </div>
 <img alt="_images/gazebo_camera.png" src="_images/gazebo_camera.png" />
+<p>The camera images automatically are puplished in the topic: <code class="code docutils literal notranslate"><span class="pre">/bluerov/front_camera/image_raw</span></code> and <code class="code docutils literal notranslate"><span class="pre">/bluerov/vertical_camera/image_raw</span></code>, for the front and the vertical camera, respectively.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Feel free to modify the camera parameters in <code class="file docutils literal notranslate"><span class="pre">fav/fav_sim/models/camera/urdf/camera_macro.xacro</span></code>, if you feel like you need to.</p>
@@ -187,7 +189,7 @@
 </div>
 <p>Or you spawn models during runtime (like it is done for the BlueROV model for example). The <code class="file docutils literal notranslate"><span class="pre">gazebo_ros</span></code> package provides functionality for this.</p>
 <p>Simply start the node in your launch file and pass it the path to the model’s sdf-file you want to spawn. You can also define the initial pose.</p>
-<p>To spawn the AprilTag with ID 127 you can add the following lines to your launch file.</p>
+<p>To spawn the AprilTag with ID 127, you can add the following lines to your launch file.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nt">&lt;node</span> <span class="na">name=</span><span class="s">&quot;choose_arbitrary_name&quot;</span> <span class="na">pkg=</span><span class="s">&quot;gazebo_ros&quot;</span> <span class="na">type=</span><span class="s">&quot;spawn_model&quot;</span>
 <span class="lineno">2 </span>    <span class="na">args=</span><span class="s">&quot;-sdf -file $(find fav_sim)/models/sdf_models/tag36_11_00127/model.sdf</span>
 <span class="lineno">3 </span><span class="s">          -model tag_127</span>
@@ -217,12 +219,17 @@
 </div>
 <div class="section" id="apriltag-detection">
 <h2>AprilTag Detection<a class="headerlink" href="#apriltag-detection" title="Permalink to this headline"></a></h2>
-<p>Might be/probably is relevant for many of you. In general, you do not have to worry about the actual detection pipeline so much. In the Lab <strong>we</strong> will start the tag detection and image pipeline for you. In the simulation, the apriltag detection gets started automagically if the corresponding camera is enabled.</p>
+<p>Might be/probably is relevant for many of you. In general, you do not have to worry about the actual detection pipeline so much. In the Lab <strong>we</strong> will start the tag detection and image pipeline for you. In the simulation, the AprilTag detection gets started automagically if the corresponding camera is enabled.</p>
 <p>A slight difference between simulation and the lab is the camera distortion. Since we do not simulate distortion, no undistortion is needed. And for the lab, well, there we have some serious distortion we have to get rid of. So the node graph will not look exactly the same, but will still give you the same output: the tag detections.</p>
-<p>The node graph containing both pipelines, for the vertical and the front camera. For debugging in the lab, it is often useful to look at the tag detection image. For the simulation the detection rate is actually quite good, so it will probably not that useful.</p>
+<p>Depicted below is the node graph containing both pipelines, for the vertical and the front camera. For debugging in the lab, it is often useful to look at the tag detection image. Here, you can see which tags are being detected.
+In simulation, however, all tags within the camera’s field of view should be detected. Keep in mind that detection performance in simulation is not an indicator for how well your tags will be seen in real life.</p>
 <img alt="_images/apriltag_pipeline_gazebo.png" src="_images/apriltag_pipeline_gazebo.png" />
-<p>The detection messages, containing the pose of the detected tags expressed in the corresponding camera frame, has the type <code class="code docutils literal notranslate"><span class="pre">AprilTagDetectionArray</span></code>. Please visit the <a class="reference external" href="http://docs.ros.org/en/noetic/api/apriltag_ros/html/msg/AprilTagDetectionArray.html">documentation</a> for the details on the data fields.</p>
-<p>An example how to access the data fields of the tag detections, is provided below. It is assumed, the node is started in the <code class="file docutils literal notranslate"><span class="pre">bluerov</span></code> namespace.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even though we only used distance measurements in the localization assignment, the AprilTag algorithm actually provides us with a full pose estimate of each detected tag <em>relative to the camera</em>.</p>
+</div>
+<p>The detection messages, containing the pose of the detected tags expressed in the corresponding camera frame, have the type <code class="code docutils literal notranslate"><span class="pre">AprilTagDetectionArray</span></code>. Please visit the <a class="reference external" href="http://docs.ros.org/en/noetic/api/apriltag_ros/html/msg/AprilTagDetectionArray.html">documentation</a> for the details on the data fields.</p>
+<p>An example how to access the data fields of the tag detections, is provided below. It is assumed that the node is started in the <code class="file docutils literal notranslate"><span class="pre">bluerov</span></code> namespace.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">rospy</span>  <span class="c1"># this is the python interface for ROS</span>
 <span class="kn">from</span> <span class="nn">apriltag_ros.msg</span> <span class="kn">import</span> <span class="n">AprilTagDetectionArray</span>
@@ -238,16 +245,20 @@
 
    <span class="k">def</span> <span class="nf">on_detections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">AprilTagDetectionArray</span><span class="p">):</span>
       <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Detected {len(msg.detections)} tags.&#39;</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
-            <span class="c1"># there are only multiple ids, if we specify tag bundles.</span>
-            <span class="c1"># since we only have standalone tags, only a single id will be in</span>
-            <span class="c1"># the id array.</span>
+
+      <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>  <span class="c1"># iterate over all detections</span>
+
+            <span class="c1"># A &#39;detection&#39; only contains multiple IDs if it is a tag bundle consisting of</span>
+            <span class="c1"># multiple tags. Since we haven&#39;t defined tag bundles, and are only detecting</span>
+            <span class="c1"># single, i.e. &#39;standalone&#39;, tags, only a single id will be in the published id array.</span>
             <span class="n">tag_id</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
             <span class="c1"># same for the size as for the id</span>
             <span class="n">tag_size</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
             <span class="n">frame</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span>
 
-            <span class="c1"># yeah, many .pose...</span>
+            <span class="c1"># yeah, a lot of &#39;.pose&#39; ...</span>
             <span class="n">pose</span><span class="p">:</span> <span class="n">Pose</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span>
             <span class="n">p</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span>
             <span class="n">q</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span>
@@ -269,6 +280,8 @@
    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>The AprilTag algorithm only detects known tags. You need to speficy all tags that you want to detect within a config file. The relevant information for the algorithm is the tag’s ID and the tag’s size.</p>
+<p>While you can use different tag sizes simultaneously, you cannot mix different tag families. We use tag family 36h11, and therefore you will need to stick to tags from this family.</p>
 <p>An example for the tag configuration is given in <code class="file docutils literal notranslate"><span class="pre">fav_sim/config/tags_front_camera.yaml</span></code> and <code class="file docutils literal notranslate"><span class="pre">fav_sim/config/tags_vertical_camera.yaml</span></code>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -279,7 +292,11 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For the lab session just send us your custom <code class="file docutils literal notranslate"><span class="pre">.yaml</span></code> file for the tags and we will set up the apriltag pipeline for you. Since our localization relies on the vertical camera, you probably do not want to change the setup for this camera.</p>
+<p>For the lab session just send us your custom <code class="file docutils literal notranslate"><span class="pre">.yaml</span></code> file for the tags and we will set up the apriltag pipeline for you. <strong>Since our localization relies on the vertical camera, you probably do not want to change the setup for this camera!</strong></p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>When you use additional AprilTags, you will need to bring your own tags to the lab. You can easily waterproof them by laminating your printed out tags. There is a laminator at the printer room in Building L. Note that opening times are very limited!</p>
 </div>
 </div>
 </div>

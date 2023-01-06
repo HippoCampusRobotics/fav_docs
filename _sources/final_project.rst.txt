@@ -15,9 +15,9 @@ Final Project
 
       git pull origin --ff-only
 
-This section presents some additional features of our simulation environment. It should give you an idea on how to add models to the Gazebo world for your final project.
+This section presents some additional features of our simulation environment. It should give you an idea on how to add models to the Gazebo world for your final project. As an *example* model, we will include a new AprilTag in the world. Additionally, we will look at the AprilTag detection algorithm.
 
-Additionally, note that you can use the position data of our localization algorithm in experiment. This will allow you to focus on other tasks.
+Moreover, note that you can use the position and orientation data of our localization algorithm in experiment. This will allow you to focus on other tasks. 
 
 
 Default World
@@ -33,7 +33,9 @@ Probably the default world you want to start off with is :file:`tank_with_tags.w
 BlueROV2 Model with Simulated Cameras
 =====================================
 
-The good old description files for the BlueROV have changed. Optional cameras have been added. To enable them, we have the two launch arguments :code:`use_front_camera` and :code:`use_vertical_camera` available. Their default value is :code:`false`. To enable them, spawn the vehicle as follows:
+So far, we haven't actually used simulated cameras on the BlueROV. Instead of simulating a camera image and running the actual AprilTag detection algorithm on this, we have simulated our 'range' measurements. This had the benefit of reduced computational burden.
+
+We have added optional simulated camera sensors to the BlueROV description files. To enable them, we have the two launch arguments :code:`use_front_camera` and :code:`use_vertical_camera` available. Their default value is :code:`false`. To enable them, spawn the vehicle as follows:
 
 .. code-block:: sh
 
@@ -67,8 +69,9 @@ See :file:`spawn_vehicle.launch` for reference:
       </group>
    </launch>
 
-
 .. image:: /res/images/gazebo_camera.png
+
+The camera images automatically are puplished in the topic: :code:`/bluerov/front_camera/image_raw` and :code:`/bluerov/vertical_camera/image_raw`, for the front and the vertical camera, respectively.
 
 .. hint:: Feel free to modify the camera parameters in :file:`fav/fav_sim/models/camera/urdf/camera_macro.xacro`, if you feel like you need to.
 
@@ -123,7 +126,7 @@ Or you spawn models during runtime (like it is done for the BlueROV model for ex
 
 Simply start the node in your launch file and pass it the path to the model's sdf-file you want to spawn. You can also define the initial pose.
 
-To spawn the AprilTag with ID 127 you can add the following lines to your launch file.
+To spawn the AprilTag with ID 127, you can add the following lines to your launch file.
 
 .. code-block:: xml
    :linenos:
@@ -163,18 +166,23 @@ This exectues the model spawner.
 AprilTag Detection
 ==================
 
-Might be/probably is relevant for many of you. In general, you do not have to worry about the actual detection pipeline so much. In the Lab **we** will start the tag detection and image pipeline for you. In the simulation, the apriltag detection gets started automagically if the corresponding camera is enabled.
+Might be/probably is relevant for many of you. In general, you do not have to worry about the actual detection pipeline so much. In the Lab **we** will start the tag detection and image pipeline for you. In the simulation, the AprilTag detection gets started automagically if the corresponding camera is enabled.
 
 A slight difference between simulation and the lab is the camera distortion. Since we do not simulate distortion, no undistortion is needed. And for the lab, well, there we have some serious distortion we have to get rid of. So the node graph will not look exactly the same, but will still give you the same output: the tag detections.
 
-The node graph containing both pipelines, for the vertical and the front camera. For debugging in the lab, it is often useful to look at the tag detection image. For the simulation the detection rate is actually quite good, so it will probably not that useful.
+Depicted below is the node graph containing both pipelines, for the vertical and the front camera. For debugging in the lab, it is often useful to look at the tag detection image. Here, you can see which tags are being detected. 
+In simulation, however, all tags within the camera's field of view should be detected. Keep in mind that detection performance in simulation is not an indicator for how well your tags will be seen in real life.
 
 .. image:: /res/images/apriltag_pipeline_gazebo.png
 
 
-The detection messages, containing the pose of the detected tags expressed in the corresponding camera frame, has the type :code:`AprilTagDetectionArray`. Please visit the `documentation <http://docs.ros.org/en/noetic/api/apriltag_ros/html/msg/AprilTagDetectionArray.html>`__ for the details on the data fields.  
+.. note:: 
 
-An example how to access the data fields of the tag detections, is provided below. It is assumed, the node is started in the :file:`bluerov` namespace.
+   Even though we only used distance measurements in the localization assignment, the AprilTag algorithm actually provides us with a full pose estimate of each detected tag *relative to the camera*.
+
+The detection messages, containing the pose of the detected tags expressed in the corresponding camera frame, have the type :code:`AprilTagDetectionArray`. Please visit the `documentation <http://docs.ros.org/en/noetic/api/apriltag_ros/html/msg/AprilTagDetectionArray.html>`__ for the details on the data fields.  
+
+An example how to access the data fields of the tag detections, is provided below. It is assumed that the node is started in the :file:`bluerov` namespace.
 
 .. code-block:: python
 
@@ -193,16 +201,20 @@ An example how to access the data fields of the tag detections, is provided belo
 
       def on_detections(self, msg: AprilTagDetectionArray):
          rospy.loginfo(f'Detected {len(msg.detections)} tags.')
-         for detection in msg.detections:
-               # there are only multiple ids, if we specify tag bundles.
-               # since we only have standalone tags, only a single id will be in
-               # the id array.
+
+         for detection in msg.detections:  # iterate over all detections
+
+               # A 'detection' only contains multiple IDs if it is a tag bundle consisting of
+               # multiple tags. Since we haven't defined tag bundles, and are only detecting
+               # single, i.e. 'standalone', tags, only a single id will be in the published id array.
                tag_id = detection.id[0]
+
                # same for the size as for the id
                tag_size = detection.size[0]
+
                frame = detection.pose.header.frame_id
 
-               # yeah, many .pose...
+               # yeah, a lot of '.pose' ...
                pose: Pose = detection.pose.pose.pose
                p = pose.position
                q = pose.orientation
@@ -224,7 +236,13 @@ An example how to access the data fields of the tag detections, is provided belo
       main()
 
 
-An example for the tag configuration is given in :file:`fav_sim/config/tags_front_camera.yaml` and :file:`fav_sim/config/tags_vertical_camera.yaml`.
+The AprilTag algorithm only detects known tags. You need to speficy all tags that you want to detect within a config file. The relevant information for the algorithm is the tag's ID and the tag's size.
+
+While you can use different tag sizes simultaneously, you cannot mix different tag families. We use tag family 36h11, and therefore you will need to stick to tags from this family.
+
+An example for the tag configuration is given in :file:`fav_sim/config/tags_front_camera.yaml` and :file:`fav_sim/config/tags_vertical_camera.yaml`. 
+
+
 
 .. hint:: 
 
@@ -236,4 +254,11 @@ An example for the tag configuration is given in :file:`fav_sim/config/tags_fron
 
 .. note:: 
 
-   For the lab session just send us your custom :file:`.yaml` file for the tags and we will set up the apriltag pipeline for you. Since our localization relies on the vertical camera, you probably do not want to change the setup for this camera.
+   For the lab session just send us your custom :file:`.yaml` file for the tags and we will set up the apriltag pipeline for you. **Since our localization relies on the vertical camera, you probably do not want to change the setup for this camera!**
+
+
+.. attention:: 
+
+   When you use additional AprilTags, you will need to bring your own tags to the lab. You can easily waterproof them by laminating your printed out tags. There is a laminator at the printer room in Building L. Note that opening times are very limited!
+
+   
