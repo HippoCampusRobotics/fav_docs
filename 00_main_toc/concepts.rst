@@ -13,7 +13,7 @@ Concepts
 
 In this class, you will get in touch with the whole robotics pipeline. Starting from sensing, over planning to control and actuation, you will be developing suitable algorithms to tackle chosen challenges.
 
-We will be using the `ROS <https://www.ros.org/>`_  framework. To evaluate the algorithms and solutions before deploying the real robot, we rely on :code:`gazebo` as simulation environment, where you can interact with the vehicle just as you would with a real vehicle.
+We will be using the `ROS 2 <https://docs.ros.org/en/humble/index.html/>`__  framework. To evaluate the algorithms and solutions before deploying the real robot, we rely on :code:`gazebo` as simulation environment, where you can interact with the vehicle just as you would with a real vehicle.
 This enables using the exact same code for both simulation and real world experiment.
 
 .. image:: /res/images/gazebo_vs_experiment.gif
@@ -22,10 +22,10 @@ Keywords
 ########
 
 Gazebo
-   `Gazebo <http://gazebosim.org/>`_ is the standalone simulator that computes the physical behaviour of the objects in the simulation. It also generates sensor data or renders camera images of simulated camera sensors. :code:`gazebo` itself is independent of ROS. Maybe it is the easiest to view :code:`gazebo` as a drop-in replacement for the real world robot, so we can work on our algorithms without beeing in the lab all day.
+   `Gazebo <https://gazebosim.org/docs/fortress>`_ is the standalone simulator that computes the physical behaviour of the objects in the simulation. It also generates sensor data or renders camera images of simulated camera sensors. :code:`gazebo` itself is independent of ROS. Maybe it is the easiest to view :code:`gazebo` as a drop-in replacement for the real world robot, so we can work on our algorithms without beeing in the lab all day.
 
-ROS
-   ROS is the framework we use in this course. So probably most of the time (if not all) is spent on developing/implementing algorithms and letting them interact via the communication capabilities ROS provides. Imagine ROS as some advanced message passing library. So instead of writing a single rather complex program, that handles *all* of our problems, we can use ROS to write multiple small programs that can communicate with each other via messages and solve only particular tasks.
+ROS 2
+   ROS 2 is the framework we use in this course. So probably most of the time (if not all) is spent on developing/implementing algorithms and letting them interact via the communication capabilities ROS 2 provides. Imagine ROS as some advanced message passing library. So instead of writing a single rather complex program, that handles *all* of our problems, we can use ROS to write multiple small programs that can communicate with each other via messages and solve only particular tasks.
 
 
 Hardware Architecture
