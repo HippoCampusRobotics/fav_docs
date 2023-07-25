@@ -15,16 +15,16 @@ Welcome to Formulas and Vehicles's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   overview
-   concepts
-   installation
-   the_robot
-   tutorials
-   depth_estimator_example
-   resources
-   assignment_depth_control
-   assignment_loc_and_control
-   final_project
+   00_main_toc/overview
+   00_main_toc/concepts
+   00_main_toc/installation
+   00_main_toc/the_robot
+   00_main_toc/tutorials
+   00_main_toc/depth_estimator_example
+   00_main_toc/resources
+   00_main_toc/assignment_depth_control
+   00_main_toc/assignment_loc_and_control
+   00_main_toc/final_project
 
 
 Indices and tables

@@ -54,7 +54,7 @@ Now, you will be able to use the Multiplot plugin from the rqt GUI.
 RViz
 ****
 `RViz <http://wiki.ros.org/rviz>`_  is an awesome tool for 3D visualization, but can take some time getting used to it. RViz can visualize different robot coordinate frames, for coordinate transformations in ROS, look here: 
-:ref:`resources:Coordinate transformations`
+:ref:`00_main_toc/resources:Coordinate transformations`
 
 Recording and playing back data
 ===============================

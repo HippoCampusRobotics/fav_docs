@@ -7,9 +7,9 @@ Installation and Setup
 .. toctree::
    :maxdepth: 1
 
-   installation/linux_terminal
-   installation/install_ubuntu
-   installation/virtual_machine
-   installation/install_ros
-   installation/ide_setup
-   installation/start_the_simulation
+   /installation/linux_terminal
+   /installation/install_ubuntu
+   /installation/virtual_machine
+   /installation/install_ros
+   /installation/ide_setup
+   /installation/start_the_simulation
