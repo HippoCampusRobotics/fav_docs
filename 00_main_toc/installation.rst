@@ -11,5 +11,6 @@ Installation and Setup
    /installation/install_ubuntu
    /installation/virtual_machine
    /installation/install_ros
+   /installation/workspace_setup
    /installation/ide_setup
    /installation/start_the_simulation

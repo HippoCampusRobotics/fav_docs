@@ -1,7 +1,7 @@
 Install ROS
 ###########
 
-The `ROS Wiki <http://wiki.ros.org/noetic/Installation/Ubuntu>`_ provides a complete installation guide. The following instructions are a summary of their article.
+The `ROS documentation <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>`_ provides a complete installation guide. The following instructions are a summary of their article.
 
 .. attention:: 
 
@@ -14,36 +14,50 @@ The `ROS Wiki <http://wiki.ros.org/noetic/Installation/Ubuntu>`_ provides a comp
    
    If you encounter them after running anything related to :code:`apt`: no worries. Just wait until the backgroud updates are finished.
 
+.. hint:: We use copy-buttons, i.e. a copy-button appears when you hover over a code-block. This makes copy-pasting easier than manually selecting the code-block.
+
 Preparation
 ===========
+
+#. Make sure you have a UTF-8 supported locale with
+   
+   .. code-block:: sh
+      
+      locale
+   
+   If not, refer to the `ROS documentation <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html#set-locale>`__.
+
+#. Enable universe repository
+   
+   .. code-block:: sh
+      
+      sudo apt install software-properties-common \
+      && sudo add-apt-repository universe
+
+#. Add the key
+
+   .. code-block:: sh
+
+      sudo apt update && sudo apt install curl -y \
+      && sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
 #. Add sources
 
    .. code-block:: sh
 
-      sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-
-#. Add key
-
-   .. code-block:: sh
-
-      sudo apt install curl # if you haven't already installed curl
-      curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 
-#. Update index
+
+
+#. Update
+
+   .. warning:: This is critial!
+   
 
    .. code-block:: sh
 
-      sudo apt update
-
-
-#. Make sure your package are up to date!(**!!!**)
-
-   .. code-block:: sh
-
-      sudo apt upgrade -y
-
+      sudo apt update && sudo apt upgrade -y
 
 Installation
 ============
@@ -52,150 +66,43 @@ Installation
 
    .. code-block:: sh
 
-      sudo apt install ros-noetic-desktop-full
+      sudo apt install ros-humble-desktop-full
 
 #. Install build dependencies
 
    .. code-block:: sh
 
-      sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-
-#. Install catkin-tools
-
-   .. code-block:: sh
-
-      sudo apt install python3-catkin-tools python3-osrf-pycommon
+      sudo apt install ros-dev-tools python3-pip python3-rosdep
 
 #. Set up :code:`rosdep`
 
    .. code-block:: sh
 
-      sudo rosdep init
+      sudo rosdep init && rosdep update
+
+#. Source the ROS installation
 
    .. code-block:: sh
 
-      rosdep update
+      echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 
-Set Up Catkin Workspace
-=======================
+#. Apply the changes to your :file:`.bashrc`
 
-#. Source your ROS installation
-
-   .. code-block:: sh
-
-      source /opt/ros/noetic/setup.bash
-
-#. Create workspace
+   Either close and reopen all open terminals or run the following command in **all** terminals:
 
    .. code-block:: sh
 
-      mkdir -p ~/fav/catkin_ws/src && cd ~/fav/catkin_ws
+      . ~/.bashrc
 
-#. Initialize workspace
+A Brief Test
+============
 
-   .. code-block:: sh
-
-      catkin init
-
-#. Build empty workspace
-
-   .. code-block:: sh
-
-      catkin build
-
-To automatically source your catkin workspace, execute the following command:
+Managed to follow the instructions until here? To give you a bit of a good feeling, we try to run the following command
 
 .. code-block:: sh
 
-   echo 'source /opt/ros/noetic/setup.bash' >> ~/.bashrc
-   echo 'source $HOME/fav/catkin_ws/devel/setup.bash' >> ~/.bashrc
+   ros2 run turtlesim turtlesim_node
 
-To apply these changes, execute:
+A window appears? Lucky you! If not try to figure out what went wrong or ask your favorite research associate for help.
 
-.. code-block:: sh
-
-   source ~/.bashrc
-
-For new terminal session your catkin workspace is sourced automatically since we added the instruction to do so to the :file:`.bashrc` file.
-
-.. attention::
-
-   If you are using :code:`zsh` instead of :code:`bash`, you need to adjust the above commands. You will also have pay attention and adjust some commands in the following parts of this setup guide.
-
-Get The First Catkin Packages
-=============================
-
-#. Make sure you are inside your catkin workspace:
-
-   .. code-block:: bash
-
-      cd ~/fav/catkin_ws
-
-#. Clone the :file:`fav` repository
-
-   .. code-block:: bash
-
-      git clone https://github.com/FormulasAndVehicles/fav.git ~/fav/catkin_ws/src/fav
-
-   At this stage make sure your directory structure looks similar to this:
-
-   .. code-block:: sh
-      
-      /home/YOUR_USER_NAME/fav/catkin_ws
-      ├── build
-      ├── devel
-      ├── logs
-      └── src
-          └── fav
-              ├── fav_gazebo_plugins
-              ├── fav_msgs
-              └── fav_sim
-
-
-
-#. Let ROS resolve the package's dependencies
-
-   .. code-block:: bash
-
-      rosdep install --from-paths src --ignore-src -r -y
-
-#. Rebuild your workspace
-
-   .. code-block:: bash
-
-      catkin build
-
-#. Apply changes of your environment variables by either
-
-   * starting a new terminal session (remember that this means :file:`~/.bashrc` gets sourced automatically as mentioned before).
-
-   * sourcing :file:`~/.bashrc` manually by executing
-
-      .. code-block:: bash
-
-         source ~/.bashrc
-
-Test the Setup
-==============
-
-.. hint:: If launching gazebo from ROS, ROS is not able to kill the gazebo node without escalating to **SIGTERM**. This happens after a 15s timeout. If you do not have the time to wait for so long, you can modifiy :file:`/opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py` and change :code:`DEFAULT_TIMEOUT_SIGINT` to some value you are willing to wait.
-
-If you are willing to wait, let's say, 3.0 seconds, execute the following command:
-
-.. code-block:: sh
-
-   sudo sed -i 's/DEFAULT_TIMEOUT_SIGINT\s*=\s*15\.0.*/DEFAULT_TIMEOUT_SIGINT = 3\.0/' /opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py 
-
-
-Execute the following command
-
-.. code-block:: sh
-
-   roslaunch fav_sim gazebo_apriltag_tank_world.launch
-
-
-and :code:`gazebo` should launch after a few seconds and look this:
-
-.. image:: /res/images/gazebo_tags.png
-
-If the :code:`gazebo` window stays black, enter :kbd:`Ctrl` + :kbd:`C` in the terminal in which you executed the command above and try it again.
+You can stop the program with :kbd:`Ctrl` + :kbd:`C`.
