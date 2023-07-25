@@ -1,7 +1,7 @@
 IDE Setup
 #########
 
-For this class we recommend Visual Studio Code. Of course you can use any IDE you like and that works for you. The `ROS Wiki <http://wiki.ros.org/IDEs>`_ lists several options how to use IDEs with ROS.
+For this class we recommend Visual Studio Code. Of course, you can use any IDE you like and that works for you.
 
 Installation
 ============
@@ -27,26 +27,69 @@ We provide a basic version of both the above mentioned files.
 
       mkdir ~/fav/catkin_ws/.vscode && cd ~/fav/catkin_ws/.vscode
 
+Create the following files:
 
-#. Get the files
+.. code-block:: json
+   :caption: extensions.json
 
-   .. code-block:: sh
+   {
+       "recommendations": [
+            // generate docstring snippets for python
+	    	"njpwerner.autodocstring",
+            // python language support
+	    	"ms-python.python",
+            // cpp language support
+	    	"ms-vscode.cpptools",
+            // yaml language support
+	    	"redhat.vscode-yaml",
+            // ROS extension
+	    	"ms-iot.vscode-ros",
+            // xml language support
+	    	"redhat.vscode-xml",
+            // syntax support for cmake files
+	    	"twxs.cmake",
+            // generate doxygen comments
+	    	"cschlosser.doxdocgen"
+	    ]
+   }
 
-      wget https://gist.githubusercontent.com/lennartalff/d530ffca7affc6340a4d58c360548d5d/raw/c186a94331f4d70ed9af54ecd4e5a4bfeb9fc07e/extensions.json
-      wget https://gist.githubusercontent.com/lennartalff/d530ffca7affc6340a4d58c360548d5d/raw/c186a94331f4d70ed9af54ecd4e5a4bfeb9fc07e/settings.json
+.. code-block:: json
+   :caption: settings.json
 
-These files contain the following content:
+   {
+        "python.languageServer": "Pylance",
+        "python.formatting.provider": "yapf",
+        "python.formatting.yapfArgs": [
+            "--style={based_on_style: pep8, column_limit: 80}"
+        ],
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled": true,
+        "python.linting.flake8Args": [
+            "--max-line-length=80"
+        ],
+        "python.analysis.completeFunctionParens": true,
+        "clang-format.language.cpp.enable": true,
+        "autoDocstring.docstringFormat": "google",
+        "files.insertFinalNewline": true,
+        "yaml.format.enable": true,
+        "yaml.validate": true,
+        // use google style per default
+        "C_Cpp.clang_format_fallbackStyle": "Google",
+        // never fall back to tag parser
+                "C_Cpp.intelliSenseEngineFallback": "disabled",
+        "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+        // use compile_commands.json specified in c_cpp_properties.json
+        "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true
+    }
 
-.. raw:: html
+Open the Workspace
+==================
 
-   <script src="https://gist.github.com/lennartalff/d530ffca7affc6340a4d58c360548d5d.js"></script>
+.. code-block:: sh
 
-Open The Catkin Workspace 
-=========================
-
-Open the :file:`~/fav/catkin_ws` directory in VS Code:
-
-.. image:: /res/images/vscode_open_folder.png
+   cd ~/fav/ros2 \
+   && code .
 
 
 If you followed the instructions in the previous section and created the :file:`.vscode` directory and put the :file:`settings.json` and :file:`extensions.json` into it, you probably get a message prompt informing you that there are extension recommendations. These recommendations are based on the :file:`extensions.json`. Install the extensions:
