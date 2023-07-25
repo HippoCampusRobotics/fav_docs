@@ -28,7 +28,7 @@ author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 # ones.
 extensions = [
     "sphinx.ext.githubpages", "sphinx.ext.autosectionlabel", "sphinx.ext.todo",
-    "sphinx_tabs.tabs", "sphinxemoji.sphinxemoji", "sphinx-favicon", "sphinxcontrib.asciinema", "sphinx.ext.mathjax"
+    "sphinx_tabs.tabs", "sphinxemoji.sphinxemoji", "sphinx_favicon", "sphinxcontrib.asciinema", "sphinx.ext.mathjax",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
