@@ -13,5 +13,5 @@ Our BlueROV2 has been upgraded to the so-called `Heavy Configuration <https://bl
 .. toctree::
    :maxdepth: 1
 
-   the_robot/thruster_configuration
-   the_robot/sensors
+   /the_robot/thruster_configuration
+   /the_robot/sensors
