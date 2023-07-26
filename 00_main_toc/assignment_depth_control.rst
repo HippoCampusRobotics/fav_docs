@@ -26,7 +26,7 @@ You will design a depth controller for the BlueROV2. We have prepared an empty R
 
 This package already includes an *example* node for publishing depth setpoints.
 
-To actuate the BlueROV's thrusters, you will need a mixer module. You can use the mixer module from :file:`fav_sim` in :file:`src/simple_mixer_node.cpp`. This node is already included in the :file:`spawn_vehicle.launch` launchfile. Head over to :ref:`the_robot:The Robot` for a more detailed description of the BlueROV2 and its thruster configuration.
+To actuate the BlueROV's thrusters, you will need a mixer module. You can use the mixer module from :file:`fav_sim` in :file:`src/simple_mixer_node.cpp`. This node is already included in the :file:`spawn_vehicle.launch` launchfile. Head over to :ref:`00_main_toc/the_robot:The Robot` for a more detailed description of the BlueROV2 and its thruster configuration.
 
 .. note::
    Remember to rebuild your catkin workspace after downloading or creating new packages. 

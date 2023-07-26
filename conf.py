@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'Formulas and Vehicles'
-copyright = '2022, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
+copyright = '2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 
 # -- General configuration ---------------------------------------------------
@@ -27,8 +27,17 @@ author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx.ext.githubpages", "sphinx.ext.autosectionlabel", "sphinx.ext.todo",
-    "sphinx_tabs.tabs", "sphinxemoji.sphinxemoji", "sphinx-favicon", "sphinxcontrib.asciinema", "sphinx.ext.mathjax"
+    "sphinx.ext.githubpages",
+    "sphinx.ext.autosectionlabel",
+    "sphinx.ext.todo",
+    "sphinx_tabs.tabs",
+    "sphinxemoji.sphinxemoji",
+    "sphinx_favicon",
+    "sphinxcontrib.asciinema",
+    "sphinx.ext.mathjax",
+    "sphinx_copybutton",
+    "sphinxcontrib.jquery",
+    "sphinx_multiversion",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -62,7 +71,7 @@ html_context = {
     "display_github": True,
     "github_user": "HippoCampusRobotics",
     "github_repo": "fav_docs",
-    "github_version": "master/"
+    "github_version": "main/"
 }
 html_css_files = ["css/custom.css"]
 
