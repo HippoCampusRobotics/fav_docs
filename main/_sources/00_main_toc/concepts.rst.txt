@@ -16,7 +16,15 @@ In this class, you will get in touch with the whole robotics pipeline. Starting 
 We will be using the `ROS 2 <https://docs.ros.org/en/humble/index.html/>`__  framework. To evaluate the algorithms and solutions before deploying the real robot, we rely on :code:`gazebo` as simulation environment, where you can interact with the vehicle just as you would with a real vehicle.
 This enables using the exact same code for both simulation and real world experiment.
 
-.. image:: /res/images/gazebo_vs_experiment.gif
+.. raw:: html
+
+   <div>
+     <video autoplay loop muted style="width:100%;">
+      <source src="../_static/videos/gazebo_vs_experiment.mp4" type="video/mp4">
+      test
+     </video>
+   </div>
+
 
 Keywords
 ########
