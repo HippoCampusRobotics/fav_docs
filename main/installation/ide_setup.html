@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDE Setup &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Start The Simulation" href="start_the_simulation.html" />
+    <link rel="prev" title="Workspace Setup" href="workspace_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/concepts.html">Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../00_main_toc/installation.html">Installation and Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace_setup.html">Workspace Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IDE Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vs-code-project-configuration">VS Code Project Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-the-workspace">Open the Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-hints">Useful Hints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#integrated-terminal">Integrated Terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatting">Formatting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start_the_simulation.html">Start The Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../00_main_toc/installation.html">Installation and Setup</a></li>
+      <li class="breadcrumb-item active">IDE Setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/installation/ide_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ide-setup">
+<h1>IDE Setup<a class="headerlink" href="#ide-setup" title="Permalink to this heading"></a></h1>
+<p>For this class we recommend Visual Studio Code. Of course, you can use any IDE you like and that works for you.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<p>Ubuntu has <code class="code docutils literal notranslate"><span class="pre">snap</span></code> preinstalled so probably the easiest way to install VS Code is to execute</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>--classic<span class="w"> </span>code
+</pre></div>
+</div>
+<p>For more detailed instructions and alternative installation options see the <a class="reference external" href="https://code.visualstudio.com/docs/setup/linux">VS Code Documentation</a>.</p>
+</section>
+<section id="vs-code-project-configuration">
+<h2>VS Code Project Configuration<a class="headerlink" href="#vs-code-project-configuration" title="Permalink to this heading"></a></h2>
+<p>If you open a folder with VS Code you can have project specific settings stored in a <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory. The basic configuration files are the <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> and the <code class="file docutils literal notranslate"><span class="pre">extensions.json</span></code>. There might be some other fies present in a <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory depending on the extensions installed.</p>
+<p>We provide a basic version of both the above mentioned files.</p>
+<ol class="arabic">
+<li><p>Create the <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>~/fav/catkin_ws/.vscode<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/fav/catkin_ws/.vscode
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Create the following files:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">extensions.json</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;recommendations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="c1">// generate docstring snippets for python</span>
+<span class="w">             </span><span class="s2">&quot;njpwerner.autodocstring&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="c1">// python language support</span>
+<span class="w">             </span><span class="s2">&quot;ms-python.python&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="c1">// cpp language support</span>
+<span class="w">             </span><span class="s2">&quot;ms-vscode.cpptools&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="c1">// yaml language support</span>
+<span class="w">             </span><span class="s2">&quot;redhat.vscode-yaml&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="c1">// ROS extension</span>
+<span class="w">             </span><span class="s2">&quot;ms-iot.vscode-ros&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="c1">// xml language support</span>
+<span class="w">             </span><span class="s2">&quot;redhat.vscode-xml&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="c1">// syntax support for cmake files</span>
+<span class="w">             </span><span class="s2">&quot;twxs.cmake&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="c1">// generate doxygen comments</span>
+<span class="w">             </span><span class="s2">&quot;cschlosser.doxdocgen&quot;</span>
+<span class="w">         </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">settings.json</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;python.languageServer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pylance&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;python.formatting.provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yapf&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;python.formatting.yapfArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="s2">&quot;--style={based_on_style: pep8, column_limit: 80}&quot;</span>
+<span class="w">     </span><span class="p">],</span>
+<span class="w">     </span><span class="nt">&quot;python.linting.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;python.linting.pylintEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;python.linting.flake8Enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;python.linting.flake8Args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="s2">&quot;--max-line-length=80&quot;</span>
+<span class="w">     </span><span class="p">],</span>
+<span class="w">     </span><span class="nt">&quot;python.analysis.completeFunctionParens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;clang-format.language.cpp.enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;autoDocstring.docstringFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;google&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;files.insertFinalNewline&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;yaml.format.enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;yaml.validate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="c1">// use google style per default</span>
+<span class="w">     </span><span class="nt">&quot;C_Cpp.clang_format_fallbackStyle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Google&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="c1">// never fall back to tag parser</span>
+<span class="w">             </span><span class="nt">&quot;C_Cpp.intelliSenseEngineFallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;disabled&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;C_Cpp.codeAnalysis.clangTidy.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">     </span><span class="c1">// use compile_commands.json specified in c_cpp_properties.json</span>
+<span class="w">     </span><span class="nt">&quot;C_Cpp.codeAnalysis.clangTidy.useBuildPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="open-the-workspace">
+<h2>Open the Workspace<a class="headerlink" href="#open-the-workspace" title="Permalink to this heading"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/ros2<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>code<span class="w"> </span>.
+</pre></div>
+</div>
+<p>If you followed the instructions in the previous section and created the <code class="file docutils literal notranslate"><span class="pre">.vscode</span></code> directory and put the <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> and <code class="file docutils literal notranslate"><span class="pre">extensions.json</span></code> into it, you probably get a message prompt informing you that there are extension recommendations. These recommendations are based on the <code class="file docutils literal notranslate"><span class="pre">extensions.json</span></code>. Install the extensions:</p>
+<img alt="../_images/vscode_recommended_extensions.png" src="../_images/vscode_recommended_extensions.png" />
+<p>If you did not get the prompt you can install the recommendations by switching to the extensions tab, enter <code class="code docutils literal notranslate"><span class="pre">&#64;recommended</span></code> and hit the cloud icon in the <strong>WORKSPACE RECOMMENDATIONS</strong> section:</p>
+<img alt="../_images/vscode_install_recommended.png" src="../_images/vscode_install_recommended.png" />
+<p>Most likely you will be asked to reload the window to apply the changes. You can also manually reload the window with <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">P</kbd> and enter <code class="code docutils literal notranslate"><span class="pre">reload</span></code>:</p>
+<img alt="../_images/vscode_reload_window.png" src="../_images/vscode_reload_window.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes it might not be enough to reload the window. So if you want to be super safe just restart VS Code completely.</p>
+</div>
+</section>
+<section id="useful-hints">
+<h2>Useful Hints<a class="headerlink" href="#useful-hints" title="Permalink to this heading"></a></h2>
+<section id="integrated-terminal">
+<h3>Integrated Terminal<a class="headerlink" href="#integrated-terminal" title="Permalink to this heading"></a></h3>
+<p>If the integrated terminal of VS Code is not visible by default you can activate it by <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">´</kbd> or via the menu bar:</p>
+<img alt="../_images/vscode_view_terminal.png" src="../_images/vscode_view_terminal.png" />
+<p>The integrated terminal has two tabs that are probably of most interest for you:</p>
+<ul class="simple">
+<li><p>The <strong>TERMINAL</strong> tab with the terminal itself, which is as you would expect a quite ordinary terminal. You can open new terminals by clicking the plus symbol and switch between the terminal via the dropdown menu. Or you can split the terminal to have multiple terminals next to each other.</p></li>
+<li><p>The <strong>PROBLEMS</strong> tab in which problems concerning your open source code are shown.</p></li>
+</ul>
+<img alt="../_images/vscode_terminal_problems.png" src="../_images/vscode_terminal_problems.png" />
+<p>In the <strong>PROBLEMS</strong> tab you can apply a filter to only show problems for the currently active files. The following image shows problems of several kinds. For example, a syntax error due to a missing colon in line 11 or a rather cosmetic problem in line 62 that exceeds the specified line length of 80 characters.</p>
+<img alt="../_images/vscode_problems_tab.png" src="../_images/vscode_problems_tab.png" />
+</section>
+<section id="formatting">
+<h3>Formatting<a class="headerlink" href="#formatting" title="Permalink to this heading"></a></h3>
+<p>There are tools out there to help you keep your code neat and clean, called formatters. In the provided <code class="file docutils literal notranslate"><span class="pre">settings.json</span></code> file a formatter has been already selected. To apply formatting on your currently active file, hit <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">I</kbd>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Formatting can only be applied if your code is syntactically correct.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="workspace_setup.html" class="btn btn-neutral float-left" title="Workspace Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="start_the_simulation.html" class="btn btn-neutral float-right" title="Start The Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="ide_setup.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

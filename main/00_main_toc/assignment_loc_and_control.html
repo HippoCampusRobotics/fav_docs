@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 2 - Localization and Control &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Final Project" href="final_project.html" />
+    <link rel="prev" title="Assignment 1 - Depth Control" href="assignment_depth_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 2 - Localization and Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#range-sensor-in-simulation">Range Sensor in Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#range-sensor-parameters">Range Sensor parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#range-sensor-position">Range Sensor Position</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#taking-it-further">Taking it Further</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-final-remarks">Some Final Remarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Assignment 2 - Localization and Control</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/00_main_toc/assignment_loc_and_control.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="assignment-2-localization-and-control">
+<h1>Assignment 2 - Localization and Control<a class="headerlink" href="#assignment-2-localization-and-control" title="Permalink to this heading"></a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Please update the <code class="code docutils literal notranslate"><span class="pre">fav</span></code> repository.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/catkin_ws/src/fav<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+</pre></div>
+</div>
+<p>We have prepared a new launchfile for you to start with: <code class="file docutils literal notranslate"><span class="pre">gazebo_assignment2.launch</span></code>. Use this launchfile instead of <code class="file docutils literal notranslate"><span class="pre">gazebo_apriltag_tank_world.launch</span></code> in order to include the simulated range sensor.</p>
+</div>
+<p>In this assignment, you will implement an algorithm for autonomous navigation within a confined environment. This will include a localization method and a path tracking controller.</p>
+<p>Again, keep in mind that the best controller isn’t any good if your position data is rubbish. Set your priorities accordingly.</p>
+<section id="range-sensor-in-simulation">
+<h2>Range Sensor in Simulation<a class="headerlink" href="#range-sensor-in-simulation" title="Permalink to this heading"></a></h2>
+<p>We are not actually using simulated camera images and running the AprilTag algorithm in simulation. Rather, we have written a Gazebo Plugin that simulates the range measurements to the four given anchors. This has the benefit of reducing the computational burden.</p>
+<section id="range-sensor-parameters">
+<h3>Range Sensor parameters<a class="headerlink" href="#range-sensor-parameters" title="Permalink to this heading"></a></h3>
+<p>This range sensor plugin has a few parameters we encourage you to play with. In the <code class="code docutils literal notranslate"><span class="pre">fav_sim</span></code> package you can find the *.xacro file defining our BlueROV2 model for Gazebo: <code class="code docutils literal notranslate"><span class="pre">models/range_sensor/urdf/range_sensor_params.xacro</span></code>.</p>
+<p>The range sensor plugin parameters can be found here:</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;noise_stddev&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.01&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;drop_probability&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.02&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;max_detection_distance&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;5.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;drop_probability_exponent&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;2.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;max_viewing_angle&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;140.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;max_fov_angle&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;90.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>noise_stddev</strong>: We add white, Gaussian noise on the distance measurements, this sets the standard deviation.</p></li>
+<li><p><strong>rangeNoiseStd</strong>:</p></li>
+<li><p><strong>drop_probability</strong>: The probability a single distance measurement is dropped.</p></li>
+<li><p><strong>max_detection_distance</strong> and <strong>drop_probability_exponent</strong>: We compute an additional probability that a tag measurement will be dropped which increases with increasing distance to the tag. This is independent of the general <strong>drop_probability</strong>.</p></li>
+<li><p><strong>max_viewing_angle</strong>: Angle limit between x-axis of the robot (the camera) and the normal axis of the detected tag.</p></li>
+<li><p><strong>max_fov_angle</strong>: The camera’s field of view (fov) angle. Tags outside this cone won’t be detected.</p></li>
+</ul>
+<p>We compute this probability according to the following equation, where the <strong>drop_probability_exponent</strong> is n:</p>
+<div class="math notranslate nohighlight">
+\[p_{\text{drop}}(\text{dist}) = \frac{1}{\text{maxDist}^{n}} \cdot \text{dist}^{n}\]</div>
+<p>You can use these parameters to test your algorithm in different situations and prepare for reality with varying degrees of pessimism.</p>
+</section>
+<section id="range-sensor-position">
+<h3>Range Sensor Position<a class="headerlink" href="#range-sensor-position" title="Permalink to this heading"></a></h3>
+<p>The range sensor’s position for the simulation is defined in the <code class="code docutils literal notranslate"><span class="pre">models/bluerov/urdf/bluerov_params.xacro</span></code> file (relative to the body frame <code class="code docutils literal notranslate"><span class="pre">base_link</span></code>):</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;range_sensor_position&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.2 0 0.1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;range_sensor_orientation&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;${radians(0)} ${radians(0)} ${radians(0)}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>This hasn’t been measured precisely (one of us looked at the BlueROV2 and squinted their eyes to estimate the front camera’s position…) and you will probably want to make sure this position is adaptable in your code, if you define (and use) it somewhere.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When you implement your localization and problems arise, you might want to turn off the noise to test whether your algorithm is working at all.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the experiment, we are reusing four AprilTags that are already used on the floor on the other side of the tank. Therefore, if the BlueROV gets completely lost, you might get false measurements. However, if you keep the four tags on the wall within the camera’s field of view, this shouldn’t be a problem.</p>
+</div>
+</section>
+</section>
+<section id="taking-it-further">
+<h2>Taking it Further<a class="headerlink" href="#taking-it-further" title="Permalink to this heading"></a></h2>
+<p>In the following, we collected a few hints for you. They are supposed to help you dive deeper into the simulation (if you want to).</p>
+<p>In general, we encourage you to use our <code class="code docutils literal notranslate"><span class="pre">keyboard_control</span></code> node for convenient testing of your localization.
+Feel free to use the rest of the Gazebo ground truth data, for example the position, to evaluate your algorithm.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">tf.transformations</span></code> library helps you deal with quaternions. Check the <a class="reference external" href="http://docs.ros.org/en/melodic/api/tf/html/python/transformations.html">API</a> .</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>As you have noticed in the first experiment, the real BlueROV2 behaves differently to the simulated one. The fact that we’ve never done a proper parameter identification doesn’t help. Priorities… the simulation works perfectly fine for testing and evaluating your algorithms.</p>
+<p>However, if you want to adjust how the BlueROV2 is behaving in simulation, you can find some parameters in the <code class="file docutils literal notranslate"><span class="pre">bluerov_params.xacro</span></code> file, too. You’ll be mostly interested in the linear and angular damping, and the buoyancy:</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;damping_linear&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;7 7 7&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;damping_angular&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.3 0.3 0.3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;buoyancy_compensation&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1.001&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;xacro:property</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;buoyancy_origin&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0 0 0.005&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="some-final-remarks">
+<h2>Some Final Remarks<a class="headerlink" href="#some-final-remarks" title="Permalink to this heading"></a></h2>
+<p>In this assignment you will do different things, including implementing a self-localization algorithm for the BlueROV2 and a controller to autonomously navigate inside the tank. Think about your code structure and package structure to ensure (re-)usability.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Please do not change code (apart from playing with parameters purely for your simulation, of course) in our repositories, namely <code class="code docutils literal notranslate"><span class="pre">fav_sim</span></code>. Instead, create your own packages.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="assignment_depth_control.html" class="btn btn-neutral float-left" title="Assignment 1 - Depth Control" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="final_project.html" class="btn btn-neutral float-right" title="Final Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="assignment_loc_and_control.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Names and Namespaces &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="RQt Multiplot" href="rqt_multiplot.html" />
+    <link rel="prev" title="ROS Launch Setup" href="ros_launch_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/the_robot.html">The Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../00_main_toc/tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ros_package.html">ROS Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_launch_setup.html">ROS Launch Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Names and Namespaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#names">Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bluerov">BlueROV</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rqt_multiplot.html">RQt Multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recording_rosbags.html">Recording Data Using Bag Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../00_main_toc/tutorials.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Names and Namespaces</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/tutorials/ros_names_and_namespaces.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="names-and-namespaces">
+<h1>Names and Namespaces<a class="headerlink" href="#names-and-namespaces" title="Permalink to this heading"></a></h1>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading"></a></h2>
+<p>The concept of names and namespaces is explained in detail in the <a class="reference external" href="http://wiki.ros.org/Names">ROS Wiki</a>.</p>
+<p>You can start nodes or load parameters in namespaces (you can also have nested namespaces). This means that the namespace gets prepended to the node’s name. We already used this in the above launchfile. Every node (and also every node in included launchfiles) inside the <code class="code docutils literal notranslate"><span class="pre">&lt;group</span> <span class="pre">ns=&quot;$(arg</span> <span class="pre">vehicle_name)&quot;&gt;</span></code> is launched inside a namespace. In this case the namespace’s name is determined by the argument <code class="code docutils literal notranslate"><span class="pre">vehicle_name</span></code>. The default value of <code class="code docutils literal notranslate"><span class="pre">vehicle_name</span></code> is <code class="code docutils literal notranslate"><span class="pre">bluerov</span></code>. This means the name of the <code class="code docutils literal notranslate"><span class="pre">motor_command_sender</span></code> node launched in line 20 will become <code class="code docutils literal notranslate"><span class="pre">/bluerov/motor_command_sender</span></code>.</p>
+</section>
+<section id="names">
+<h2>Names<a class="headerlink" href="#names" title="Permalink to this heading"></a></h2>
+<p>If you have a node subscribing or publishing to/from a topic, you have to specify the topic name. You can do this in three different ways:</p>
+<dl>
+<dt>Global</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/my_robot/pose&quot;</span><span class="p">,</span> <span class="n">PoseStamped</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A topic name with a leading <code class="file docutils literal notranslate"><span class="pre">/</span></code> will be resolved globally. This means that it does not matter if the node was launched in a namespace or not. The resulting topic name will be exactly <code class="file docutils literal notranslate"><span class="pre">/my_robot/pose</span></code>.</p>
+</dd>
+<dt>Relative</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="n">PoseStamped</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A topic without leading <code class="file docutils literal notranslate"><span class="pre">/</span></code> will be relative. This means that, if the node was launched in a namespace, the namespace will get prepended. So for example if the node was launched in the namespace <code class="file docutils literal notranslate"><span class="pre">my_robot</span></code>, the resolved topic name will become <code class="file docutils literal notranslate"><span class="pre">/my_robot/position</span></code>. In case the node was not launched inside any namespace, nothing will get prependended to the topic name. It will be just <code class="file docutils literal notranslate"><span class="pre">/position</span></code>.</p>
+</dd>
+<dt>Private</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;my_controller&quot;</span><span class="p">)</span>
+<span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;~debug&quot;</span><span class="p">,</span> <span class="n">DebugMessage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Private topics are similar to relative ones. The topic name start with <code class="file docutils literal notranslate"><span class="pre">~</span></code>. The namespace will get prepended if it has been specified. Additionally, the name of the node will also be prepended in any case. So if the node with the name <code class="file docutils literal notranslate"><span class="pre">my_controller</span></code> has been started in the namespace <code class="file docutils literal notranslate"><span class="pre">my_robot</span></code>, the resolved topic name will be <code class="file docutils literal notranslate"><span class="pre">/my_robot/my_controller/debug</span></code>. Without a namespace it would be <code class="file docutils literal notranslate"><span class="pre">/my_controller/debug</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="bluerov">
+<h2>BlueROV<a class="headerlink" href="#bluerov" title="Permalink to this heading"></a></h2>
+<p>You will only work with a single robot. Still, it is nice to have things clean and start everything at least in the <code class="file docutils literal notranslate"><span class="pre">bluerov</span></code> namespace (as shown in the above example launchfile by launching your nodes inside the <code class="code docutils literal notranslate"><span class="pre">&lt;group&gt;</span></code>-tag with the ns attribute specified).</p>
+<p>Generally, avoid global topic names to avoid topic name collision if you do not have a very specific reason to use them. Example: if you have a controller subscribing to a setpoint topic, it might be a good idea to use a private name <code class="code docutils literal notranslate"><span class="pre">&quot;~setpoint&quot;</span></code>. This way you avoid topic name conflicts in case you have another controller also subscribing to a setpoint topic.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ros_launch_setup.html" class="btn btn-neutral float-left" title="ROS Launch Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rqt_multiplot.html" class="btn btn-neutral float-right" title="RQt Multiplot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="ros_names_and_namespaces.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

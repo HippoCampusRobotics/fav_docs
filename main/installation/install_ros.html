@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install ROS &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Workspace Setup" href="workspace_setup.html" />
+    <link rel="prev" title="Virtual Machine" href="virtual_machine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/concepts.html">Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../00_main_toc/installation.html">Installation and Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install ROS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-brief-test">A Brief Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="workspace_setup.html">Workspace Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide_setup.html">IDE Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start_the_simulation.html">Start The Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../00_main_toc/installation.html">Installation and Setup</a></li>
+      <li class="breadcrumb-item active">Install ROS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/installation/install_ros.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-ros">
+<h1>Install ROS<a class="headerlink" href="#install-ros" title="Permalink to this heading"></a></h1>
+<p>The <a class="reference external" href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html">ROS documentation</a> provides a complete installation guide. The following instructions are a summary of their article.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Since Ubuntu 18.04, Canonical decided it was a good idea to have unattended updates running in the background. This might lead to error messages similiar to:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>E:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>get<span class="w"> </span>lock<span class="w"> </span>/var/lib/dpkg/lock-frontend<span class="w"> </span>-<span class="w"> </span>open<span class="w"> </span><span class="o">(</span><span class="m">11</span>:<span class="w"> </span>Resource<span class="w"> </span>temporarily<span class="w"> </span>unavailable<span class="o">)</span>
+E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>acquire<span class="w"> </span>the<span class="w"> </span>dpkg<span class="w"> </span>frontend<span class="w"> </span>lock<span class="w"> </span><span class="o">(</span>/var/lib/dpkg/lock-frontend<span class="o">)</span>,<span class="w"> </span>is<span class="w"> </span>another<span class="w"> </span>process<span class="w"> </span>using<span class="w"> </span>it?
+</pre></div>
+</div>
+<p>If you encounter them after running anything related to <code class="code docutils literal notranslate"><span class="pre">apt</span></code>: no worries. Just wait until the backgroud updates are finished.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We use copy-buttons, i.e. a copy-button appears when you hover over a code-block. This makes copy-pasting easier than manually selecting the code-block.</p>
+</div>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Make sure you have a UTF-8 supported locale with</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>locale
+</pre></div>
+</div>
+<p>If not, refer to the <a class="reference external" href="https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html#set-locale">ROS documentation</a>.</p>
+</li>
+<li><p>Enable universe repository</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>software-properties-common<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>universe
+</pre></div>
+</div>
+</li>
+<li><p>Add the key</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.key<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/ros-archive-keyring.gpg
+</pre></div>
+</div>
+</li>
+<li><p>Add sources</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/ros2.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</pre></div>
+</div>
+</li>
+<li><p>Update</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is critial!</p>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Install ROS</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-humble-desktop-full
+</pre></div>
+</div>
+</li>
+<li><p>Install build dependencies</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-dev-tools<span class="w"> </span>python3-pip<span class="w"> </span>python3-rosdep
+</pre></div>
+</div>
+</li>
+<li><p>Set up <code class="code docutils literal notranslate"><span class="pre">rosdep</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rosdep<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>update
+</pre></div>
+</div>
+</li>
+<li><p>Source the ROS installation</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source /opt/ros/humble/setup.bash&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</li>
+<li><p>Apply the changes to your <code class="file docutils literal notranslate"><span class="pre">.bashrc</span></code></p>
+<p>Either close and reopen all open terminals or run the following command in <strong>all</strong> terminals:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="a-brief-test">
+<h2>A Brief Test<a class="headerlink" href="#a-brief-test" title="Permalink to this heading"></a></h2>
+<p>Managed to follow the instructions until here? To give you a bit of a good feeling, we try to run the following command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>turtlesim<span class="w"> </span>turtlesim_node
+</pre></div>
+</div>
+<p>A window appears? Lucky you! If not try to figure out what went wrong or ask your favorite research associate for help.</p>
+<p>You can stop the program with <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="virtual_machine.html" class="btn btn-neutral float-left" title="Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="workspace_setup.html" class="btn btn-neutral float-right" title="Workspace Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="install_ros.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

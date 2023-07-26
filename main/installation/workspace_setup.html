@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workspace Setup &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="IDE Setup" href="ide_setup.html" />
+    <link rel="prev" title="Install ROS" href="install_ros.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/concepts.html">Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../00_main_toc/installation.html">Installation and Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Workspace Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-structure">Create the Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#populate-ros2-underlay">Populate ros2_underlay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#px4-msgs">px4_msgs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apriltag-ros">apriltag_ros</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plotjuggler">plotjuggler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#build-ros2-underlay">Build ros2_underlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-ros2-underlay">Source ros2_underlay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#populate-ros2">Populate ros2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-ros2">Build ros2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-bashrc">Check <code class="file docutils literal notranslate"><span class="pre">.bashrc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#final-check">Final Check</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ide_setup.html">IDE Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start_the_simulation.html">Start The Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../00_main_toc/installation.html">Installation and Setup</a></li>
+      <li class="breadcrumb-item active">Workspace Setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/installation/workspace_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="workspace-setup">
+<h1>Workspace Setup<a class="headerlink" href="#workspace-setup" title="Permalink to this heading"></a></h1>
+<section id="create-the-structure">
+<h2>Create the Structure<a class="headerlink" href="#create-the-structure" title="Permalink to this heading"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/fav/ros2/src
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/fav/ros2_underlay/src
+</pre></div>
+</div>
+<p>In ROS we put our code we write (or use) in workspaces. We can have multiple of them and can either use them in combination by overlaying the workspaces or we can have them as completely independent setups and use only a certain selection of them at a time.</p>
+<p>For the class we use the two workspaces <code class="file docutils literal notranslate"><span class="pre">ros2</span></code> and <code class="file docutils literal notranslate"><span class="pre">ros2_underlay</span></code>. As the name suggests, we use <code class="file docutils literal notranslate"><span class="pre">ros2</span></code> as an overlay to <code class="file docutils literal notranslate"><span class="pre">ros2_underlay</span></code>. Of course there is a reasoning behind this.</p>
+<dl class="simple">
+<dt>ros2_underlay</dt><dd><p>We use this workspace for code/packages we want/have to build from source but do not modify them regularly or work with them at all. Outsourcing these packages into a separate workspace speeds up the compilation time of our actual development workspace.</p>
+</dd>
+<dt>ros2</dt><dd><p>This is our development workspace. We put all the packages/code developed during this class here.</p>
+</dd>
+</dl>
+</section>
+<section id="populate-ros2-underlay">
+<h2>Populate ros2_underlay<a class="headerlink" href="#populate-ros2-underlay" title="Permalink to this heading"></a></h2>
+<section id="px4-msgs">
+<h3>px4_msgs<a class="headerlink" href="#px4-msgs" title="Permalink to this heading"></a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/ros2_underlay/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/PX4/px4_msgs.git<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="nb">cd</span><span class="w"> </span>px4_msgs<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>checkout<span class="w"> </span>8a7f3da
+</pre></div>
+</div>
+</section>
+<section id="apriltag-ros">
+<h3>apriltag_ros<a class="headerlink" href="#apriltag-ros" title="Permalink to this heading"></a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/ros2_underlay/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span>ros2-port<span class="w"> </span>https://github.com/wep21/apriltag_ros.git
+</pre></div>
+</div>
+</section>
+<section id="plotjuggler">
+<h3>plotjuggler<a class="headerlink" href="#plotjuggler" title="Permalink to this heading"></a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/ros2_underlay/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/PlotJuggler/plotjuggler_msgs.git<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span><span class="m">1</span>.7.3<span class="w"> </span>https://github.com/PlotJuggler/plotjuggler-ros-plugins.git<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span><span class="m">3</span>.7.1<span class="w"> </span>https://github.com/facontidavide/PlotJuggler.git
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build-ros2-underlay">
+<h2>Build ros2_underlay<a class="headerlink" href="#build-ros2-underlay" title="Permalink to this heading"></a></h2>
+<p>Create an alias for the build command for convenience</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias build_underlay=\&quot;env -i HOME=\$HOME USER=\$USER TERM=xterm-256color bash -l -c &#39;source /opt/ros/humble/setup.bash &amp;&amp; cd \$HOME/fav/ros2_underlay &amp;&amp; colcon build&#39;\&quot;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+<p>Make sure dependencies are installed</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/ros2_underlay<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>-y<span class="w"> </span>--ignore-src
+</pre></div>
+</div>
+<p>Build the workspace (this may take some time!):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>build_underlay
+</pre></div>
+</div>
+<p>Note that you do not have to be inside the respective workspace directory to build by executing the defined alias. Very convenient!</p>
+</section>
+<section id="source-ros2-underlay">
+<h2>Source ros2_underlay<a class="headerlink" href="#source-ros2-underlay" title="Permalink to this heading"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source $HOME/fav/ros2_underlay/install/setup.bash&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</section>
+<section id="populate-ros2">
+<h2>Populate ros2<a class="headerlink" href="#populate-ros2" title="Permalink to this heading"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/ros2/src<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/HippoCampusRobotics/hippo_core.git<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/HippoCampusRobotics/hippo_simulation.git
+</pre></div>
+</div>
+</section>
+<section id="build-ros2">
+<h2>Build ros2<a class="headerlink" href="#build-ros2" title="Permalink to this heading"></a></h2>
+<p>Create an alias for the build command for convenience</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias build_ros=\&quot;env -i HOME=\$HOME USER=\$USER TERM=xterm-256color bash -l -c &#39;source \$HOME/fav/ros2_underlay/install/setup.bash &amp;&amp; cd \$HOME/fav/ros2 &amp;&amp; colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON&#39;\&quot;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+<p>Make sure dependencies are installed</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/ros2<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>-y<span class="w"> </span>--ignore-src
+</pre></div>
+</div>
+<p>Build the workspace (this may take some time!):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>build_ros
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source $HOME/ros2/install/local_setup.bash&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w"> </span><span class="se">\</span>
+<span class="o">&amp;&amp;</span><span class="w"> </span>.<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</section>
+<section id="check-bashrc">
+<h2>Check <code class="file docutils literal notranslate"><span class="pre">.bashrc</span></code><a class="headerlink" href="#check-bashrc" title="Permalink to this heading"></a></h2>
+<p>Your <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code> should look like this this for the last lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>...
+
+
+alias build_ros=&quot;env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c &#39;source $HOME/fav/ros2_underlay/install/setup.bash &amp;&amp; cd $HOME/ros2 &amp;&amp; colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON&#39;&quot;
+alias build_underlay=&quot;env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c &#39;source /opt/ros/humble/setup.bash &amp;&amp; cd $HOME/fav/ros2_underlay &amp;&amp; colcon build&#39;&quot;
+
+source /opt/ros/humble/setup.bash
+source $HOME/fav/ros2_underlay/install/setup.bash
+source $HOME/fav/ros2/install/local_setup.bash
+</pre></div>
+</div>
+</section>
+<section id="final-check">
+<h2>Final Check<a class="headerlink" href="#final-check" title="Permalink to this heading"></a></h2>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Insert something like <code class="code docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">hippo_sim</span> <span class="pre">top_hippocampus_complete.launch.py</span> <span class="pre">fake_state_estimation:=true</span></code> here?</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install_ros.html" class="btn btn-neutral float-left" title="Install ROS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ide_setup.html" class="btn btn-neutral float-right" title="IDE Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="workspace_setup.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

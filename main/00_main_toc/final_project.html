@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final Project &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Assignment 2 - Localization and Control" href="assignment_loc_and_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Final Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#default-world">Default World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bluerov2-model-with-simulated-cameras">BlueROV2 Model with Simulated Cameras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apriltag-models">AprilTag Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modify-gazebo-worlds">Modify Gazebo Worlds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apriltag-detection">AprilTag Detection</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Final Project</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/00_main_toc/final_project.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="final-project">
+<h1>Final Project<a class="headerlink" href="#final-project" title="Permalink to this heading"></a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Please make sure to update your local repository.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/catkin_ws/src/fav
+</pre></div>
+</div>
+<p>To pull our changes, execute:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>--ff-only
+</pre></div>
+</div>
+</div>
+<p>This section presents some additional features of our simulation environment. It should give you an idea on how to add models to the Gazebo world for your final project. As an <em>example</em> model, we will include a new AprilTag in the world. Additionally, we will look at the AprilTag detection algorithm.</p>
+<p>Moreover, note that you can use the position and orientation data of our localization algorithm in experiment. This will allow you to focus on other tasks.</p>
+<section id="default-world">
+<h2>Default World<a class="headerlink" href="#default-world" title="Permalink to this heading"></a></h2>
+<p>Probably the default world you want to start off with is <code class="file docutils literal notranslate"><span class="pre">tank_with_tags.world</span></code>. You already know the corresponding launch command from assignment 1.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch<span class="w"> </span>fav_sim<span class="w"> </span>gazebo_apriltag_tank_world.launch
+</pre></div>
+</div>
+</section>
+<section id="bluerov2-model-with-simulated-cameras">
+<h2>BlueROV2 Model with Simulated Cameras<a class="headerlink" href="#bluerov2-model-with-simulated-cameras" title="Permalink to this heading"></a></h2>
+<p>So far, we haven’t actually used simulated cameras on the BlueROV. Instead of simulating a camera image and running the actual AprilTag detection algorithm on this, we have simulated our ‘range’ measurements. This had the benefit of reduced computational burden.</p>
+<p>We have added optional simulated camera sensors to the BlueROV description files. To enable them, we have the two launch arguments <code class="code docutils literal notranslate"><span class="pre">use_front_camera</span></code> and <code class="code docutils literal notranslate"><span class="pre">use_vertical_camera</span></code> available. Their default value is <code class="code docutils literal notranslate"><span class="pre">false</span></code>. To enable them, spawn the vehicle as follows:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch<span class="w"> </span>fav_sim<span class="w"> </span>spawn_vehicle.launch<span class="w"> </span>use_front_camera:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>use_vertical_camera:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<p>See <code class="file docutils literal notranslate"><span class="pre">spawn_vehicle.launch</span></code> for reference:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">&lt;launch&gt;</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vehicle_name&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;bluerov&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="hll"><span class="linenos"> 3</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;use_front_camera&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="hll"><span class="linenos"> 4</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;use_vertical_camera&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span class="linenos"> 5</span><span class="w">   </span><span class="cm">&lt;!-- position --&gt;</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;x&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.5&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;y&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;z&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;-0.5&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="cm">&lt;!-- roll, pitch, yaw --&gt;</span>
+<span class="linenos">10</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;R&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos">11</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;P&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos">12</span><span class="w">   </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Y&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;1.57&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos">13</span><span class="w">   </span><span class="nt">&lt;group</span><span class="w"> </span><span class="na">ns=</span><span class="s">&quot;$(arg vehicle_name)&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">14</span><span class="w">      </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;robot_description&quot;</span><span class="w"> </span><span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find fav_sim)/models/bluerov/urdf/bluerov.xacro use_front_camera:=$(arg use_front_camera) use_vertical_camera:=$(arg use_vertical_camera)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos">15</span><span class="w">      </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;spawn_urdf&quot;</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;gazebo_ros&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;spawn_model&quot;</span><span class="w"> </span><span class="na">args=</span><span class="s">&quot;-param robot_description -urdf -model $(arg vehicle_name) -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg R) -P $(arg P) -Y $(arg Y)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos">16</span><span class="w">      </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;esc_commander&quot;</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;fav_sim&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;esc_commander&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos">17</span><span class="w">      </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mixer&quot;</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;fav_sim&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;simple_mixer&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">18</span><span class="w">            </span><span class="nt">&lt;rosparam</span><span class="w"> </span><span class="na">command=</span><span class="s">&quot;load&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find fav_sim)/config/mixer_default.yaml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="linenos">19</span><span class="w">      </span><span class="nt">&lt;/node&gt;</span>
+<span class="linenos">20</span><span class="w">   </span><span class="nt">&lt;/group&gt;</span>
+<span class="linenos">21</span><span class="nt">&lt;/launch&gt;</span>
+</pre></div>
+</div>
+<img alt="../_images/gazebo_camera.png" src="../_images/gazebo_camera.png" />
+<p>The camera images automatically are puplished in the topic: <code class="code docutils literal notranslate"><span class="pre">/bluerov/front_camera/image_raw</span></code> and <code class="code docutils literal notranslate"><span class="pre">/bluerov/vertical_camera/image_raw</span></code>, for the front and the vertical camera, respectively.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Feel free to modify the camera parameters in <code class="file docutils literal notranslate"><span class="pre">fav/fav_sim/models/camera/urdf/camera_macro.xacro</span></code>, if you feel like you need to.</p>
+</div>
+</section>
+<section id="apriltag-models">
+<h2>AprilTag Models<a class="headerlink" href="#apriltag-models" title="Permalink to this heading"></a></h2>
+<p>In <code class="file docutils literal notranslate"><span class="pre">fav_sim/models/sdf_models</span></code> there are many AprilTag models. 128 models in total, to be precise. IDs 0 to 90 are used for the tags on the floor.</p>
+</section>
+<section id="modify-gazebo-worlds">
+<h2>Modify Gazebo Worlds<a class="headerlink" href="#modify-gazebo-worlds" title="Permalink to this heading"></a></h2>
+<p>In general, you have two options to get your models into a Gazebo world. Either you use predefined world files like the already mentioned <code class="file docutils literal notranslate"><span class="pre">tank_with_tags.world</span></code> and specify the models you want to include.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="linenos"> 2</span><span class="nt">&lt;sdf</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.6&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 3</span><span class="w">   </span><span class="nt">&lt;world</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base&quot;</span><span class="nt">&gt;</span>
+<span class="linenos"> 4</span><span class="w">      </span><span class="nt">&lt;scene&gt;</span>
+<span class="linenos"> 5</span><span class="w">            </span><span class="nt">&lt;shadows&gt;</span>0<span class="nt">&lt;/shadows&gt;</span>
+<span class="linenos"> 6</span><span class="w">      </span><span class="nt">&lt;/scene&gt;</span>
+<span class="linenos"> 7</span><span class="w">      </span><span class="nt">&lt;include&gt;</span>
+<span class="linenos"> 8</span><span class="w">            </span><span class="nt">&lt;uri&gt;</span>model://sun<span class="nt">&lt;/uri&gt;</span>
+<span class="linenos"> 9</span><span class="w">      </span><span class="nt">&lt;/include&gt;</span>
+<span class="linenos">10</span><span class="w">      </span><span class="cm">&lt;!-- second sun to illuminate Tags --&gt;</span>
+<span class="linenos">11</span><span class="w">      </span><span class="nt">&lt;light</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;directional&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sun2&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">12</span><span class="w">            </span><span class="nt">&lt;cast_shadows&gt;</span>true<span class="nt">&lt;/cast_shadows&gt;</span>
+<span class="linenos">13</span><span class="w">            </span><span class="nt">&lt;pose&gt;</span>0<span class="w"> </span>0<span class="w"> </span>10<span class="w"> </span>0<span class="w"> </span>0<span class="w"> </span>0<span class="nt">&lt;/pose&gt;</span>
+<span class="linenos">14</span><span class="w">            </span><span class="nt">&lt;diffuse&gt;</span>0.8<span class="w"> </span>0.8<span class="w"> </span>0.8<span class="w"> </span>1<span class="nt">&lt;/diffuse&gt;</span>
+<span class="linenos">15</span><span class="w">            </span><span class="nt">&lt;specular&gt;</span>0.2<span class="w"> </span>0.2<span class="w"> </span>0.2<span class="w"> </span>1<span class="nt">&lt;/specular&gt;</span>
+<span class="linenos">16</span><span class="w">            </span><span class="nt">&lt;attenuation&gt;</span>
+<span class="linenos">17</span><span class="w">               </span><span class="nt">&lt;range&gt;</span>1000<span class="nt">&lt;/range&gt;</span>
+<span class="linenos">18</span><span class="w">               </span><span class="nt">&lt;constant&gt;</span>0.9<span class="nt">&lt;/constant&gt;</span>
+<span class="linenos">19</span><span class="w">               </span><span class="nt">&lt;linear&gt;</span>0.01<span class="nt">&lt;/linear&gt;</span>
+<span class="linenos">20</span><span class="w">               </span><span class="nt">&lt;quadratic&gt;</span>0.001<span class="nt">&lt;/quadratic&gt;</span>
+<span class="linenos">21</span><span class="w">            </span><span class="nt">&lt;/attenuation&gt;</span>
+<span class="linenos">22</span><span class="w">            </span><span class="nt">&lt;direction&gt;</span>0.0<span class="w"> </span>1.0<span class="w"> </span>0.0<span class="nt">&lt;/direction&gt;</span>
+<span class="linenos">23</span><span class="w">      </span><span class="nt">&lt;/light&gt;</span>
+<span class="linenos">24</span><span class="w">      </span><span class="nt">&lt;physics</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ode&quot;</span><span class="nt">&gt;</span>
+<span class="linenos">25</span><span class="w">            </span><span class="nt">&lt;max_step_size&gt;</span>0.00400<span class="nt">&lt;/max_step_size&gt;</span>
+<span class="linenos">26</span><span class="w">            </span><span class="nt">&lt;real_time_update_rate&gt;</span>250.0<span class="nt">&lt;/real_time_update_rate&gt;</span>
+<span class="linenos">27</span><span class="w">      </span><span class="nt">&lt;/physics&gt;</span>
+<span class="hll"><span class="linenos">28</span><span class="w">      </span><span class="nt">&lt;include&gt;</span>
+</span><span class="hll"><span class="linenos">29</span><span class="w">            </span><span class="nt">&lt;uri&gt;</span>model://apriltag_tank<span class="nt">&lt;/uri&gt;</span>
+</span><span class="hll"><span class="linenos">30</span><span class="w">      </span><span class="nt">&lt;/include&gt;</span>
+</span><span class="linenos">31</span><span class="w">   </span><span class="nt">&lt;/world&gt;</span>
+<span class="linenos">32</span><span class="nt">&lt;/sdf&gt;</span>
+</pre></div>
+</div>
+<p>Or you spawn models during runtime (like it is done for the BlueROV model for example). The <code class="file docutils literal notranslate"><span class="pre">gazebo_ros</span></code> package provides functionality for this.</p>
+<p>Simply start the node in your launch file and pass it the path to the model’s sdf-file you want to spawn. You can also define the initial pose.</p>
+<p>To spawn the AprilTag with ID 127, you can add the following lines to your launch file.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;choose_arbitrary_name&quot;</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;gazebo_ros&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;spawn_model&quot;</span>
+<span class="linenos">2</span><span class="w">    </span><span class="na">args=</span><span class="s">&quot;-sdf -file $(find fav_sim)/models/sdf_models/tag36_11_00127/model.sdf</span>
+<span class="linenos">3</span><span class="s">          -model tag_127</span>
+<span class="linenos">4</span><span class="s">          -x 0.1 -y 0.3 -z -0.5</span>
+<span class="linenos">5</span><span class="s">          -R 0.9 -P 0.2 -Y 2.4&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>In line 2, we specify the path to the model file we want to include. In line 3 we choose a name shown in Gazebo for the model.</p>
+<p>If you have Gazebo already running, you can run the following commands in a terminal</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">SDF_MODEL</span><span class="o">=</span><span class="k">$(</span>rospack<span class="w"> </span>find<span class="w"> </span>fav_sim<span class="k">)</span>/models/sdf_models/tag36_11_00127/model.sdf
+</pre></div>
+</div>
+<p>This command stores the path to the model file in a environment variable called <code class="code docutils literal notranslate"><span class="pre">SDF_MODEL</span></code>. This is just for convenience. We could also directly substitute <code class="code docutils literal notranslate"><span class="pre">$SDF_MODEL</span></code> with the path in the next command.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosrun<span class="w"> </span>gazebo_ros<span class="w"> </span>spawn_model<span class="w"> </span>-sdf<span class="w"> </span>-file<span class="w"> </span><span class="nv">$SDF_MODEL</span><span class="w"> </span>-model<span class="w"> </span>tag_127-x0.1<span class="w"> </span>-y0.3<span class="w"> </span>-z-0.5<span class="w"> </span>-R0.9<span class="w"> </span>-P0.2<span class="w"> </span>-Y2.4
+</pre></div>
+</div>
+<p>This exectues the model spawner.</p>
+<img alt="../_images/gazebo_spawned_tag.png" src="../_images/gazebo_spawned_tag.png" />
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Even though we spawned one of the existing AprilTag models in this example, we are clearly not limited to the existing models. Feel free to add arbitrary models you like.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>There is, of course, documentation available on how to create sdf models. See for example the list of <a class="reference external" href="https://classic.gazebosim.org/tutorials/browse">official gazebo tutorials</a>.</p>
+</div>
+</section>
+<section id="apriltag-detection">
+<h2>AprilTag Detection<a class="headerlink" href="#apriltag-detection" title="Permalink to this heading"></a></h2>
+<p>Might be/probably is relevant for many of you. In general, you do not have to worry about the actual detection pipeline so much. In the Lab <strong>we</strong> will start the tag detection and image pipeline for you. In the simulation, the AprilTag detection gets started automagically if the corresponding camera is enabled.</p>
+<p>A slight difference between simulation and the lab is the camera distortion. Since we do not simulate distortion, no undistortion is needed. And for the lab, well, there we have some serious distortion we have to get rid of. So the node graph will not look exactly the same, but will still give you the same output: the tag detections.</p>
+<p>Depicted below is the node graph containing both pipelines, for the vertical and the front camera. For debugging in the lab, it is often useful to look at the tag detection image. Here, you can see which tags are being detected.
+In simulation, however, all tags within the camera’s field of view should be detected. Keep in mind that detection performance in simulation is not an indicator for how well your tags will be seen in real life.</p>
+<img alt="../_images/apriltag_pipeline_gazebo.png" src="../_images/apriltag_pipeline_gazebo.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even though we only used distance measurements in the localization assignment, the AprilTag algorithm actually provides us with a full pose estimate of each detected tag <em>relative to the camera</em>.</p>
+</div>
+<p>The detection messages, containing the pose of the detected tags expressed in the corresponding camera frame, have the type <code class="code docutils literal notranslate"><span class="pre">AprilTagDetectionArray</span></code>. Please visit the <a class="reference external" href="http://docs.ros.org/en/noetic/api/apriltag_ros/html/msg/AprilTagDetectionArray.html">documentation</a> for the details on the data fields.</p>
+<p>An example how to access the data fields of the tag detections, is provided below. It is assumed that the node is started in the <code class="file docutils literal notranslate"><span class="pre">bluerov</span></code> namespace.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">rospy</span>  <span class="c1"># this is the python interface for ROS</span>
+<span class="kn">from</span> <span class="nn">apriltag_ros.msg</span> <span class="kn">import</span> <span class="n">AprilTagDetectionArray</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Pose</span>
+
+
+<span class="k">class</span> <span class="nc">Node</span><span class="p">():</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;example_node&quot;</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">detection_sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;vertical_camera/tag_detections&#39;</span><span class="p">,</span>
+                                             <span class="n">AprilTagDetectionArray</span><span class="p">,</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">on_detections</span><span class="p">)</span>
+
+   <span class="k">def</span> <span class="nf">on_detections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">AprilTagDetectionArray</span><span class="p">):</span>
+      <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">detections</span><span class="p">)</span><span class="si">}</span><span class="s1"> tags.&#39;</span><span class="p">)</span>
+
+      <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>  <span class="c1"># iterate over all detections</span>
+
+            <span class="c1"># A &#39;detection&#39; only contains multiple IDs if it is a tag bundle consisting of</span>
+            <span class="c1"># multiple tags. Since we haven&#39;t defined tag bundles, and are only detecting</span>
+            <span class="c1"># single, i.e. &#39;standalone&#39;, tags, only a single id will be in the published id array.</span>
+            <span class="n">tag_id</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># same for the size as for the id</span>
+            <span class="n">tag_size</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">frame</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span>
+
+            <span class="c1"># yeah, a lot of &#39;.pose&#39; ...</span>
+            <span class="n">pose</span><span class="p">:</span> <span class="n">Pose</span> <span class="o">=</span> <span class="n">detection</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span>
+               <span class="sa">f</span><span class="s1">&#39;Tag </span><span class="si">{</span><span class="n">tag_id</span><span class="si">}</span><span class="s1"> with size </span><span class="si">{</span><span class="n">tag_size</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> relative to </span><span class="si">{</span><span class="n">frame</span><span class="si">}</span><span class="s1">: </span><span class="se">\n</span><span class="s1">&#39;</span>
+               <span class="sa">f</span><span class="s1">&#39;pos: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">z</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+               <span class="sa">f</span><span class="s1">&#39;q: </span><span class="si">{</span><span class="n">q</span><span class="o">.</span><span class="n">w</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">q</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">q</span><span class="o">.</span><span class="n">y</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">q</span><span class="o">.</span><span class="n">z</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">()</span>
+   <span class="n">node</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+   <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The AprilTag algorithm only detects known tags. You need to speficy all tags that you want to detect within a config file. The relevant information for the algorithm is the tag’s ID and the tag’s size.</p>
+<p>While you can use different tag sizes simultaneously, you cannot mix different tag families. We use tag family 36h11, and therefore you will need to stick to tags from this family.</p>
+<p>An example for the tag configuration is given in <code class="file docutils literal notranslate"><span class="pre">fav_sim/config/tags_front_camera.yaml</span></code> and <code class="file docutils literal notranslate"><span class="pre">fav_sim/config/tags_vertical_camera.yaml</span></code>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It is better to not modify these configuration files, but to create new ones and tell the launch file about it:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch<span class="w"> </span>fav_sim<span class="w"> </span>simulation.launch<span class="w"> </span>use_vertical_camera:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>tag_file_vertical_camera:<span class="o">=</span>/my/custom/path/to/some/tags.yaml
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the lab session just send us your custom <code class="file docutils literal notranslate"><span class="pre">.yaml</span></code> file for the tags and we will set up the apriltag pipeline for you. <strong>Since our localization relies on the vertical camera, you probably do not want to change the setup for this camera!</strong></p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>When you use additional AprilTags, you will need to bring your own tags to the lab. You can easily waterproof them by laminating your printed out tags. There is a laminator at the printer room in Building L. Note that opening times are very limited!</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="assignment_loc_and_control.html" class="btn btn-neutral float-left" title="Assignment 2 - Localization and Control" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="final_project.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
