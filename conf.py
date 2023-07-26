@@ -83,3 +83,6 @@ autosectionlabel_prefix_document = True
 favicons = [
     "bluerov.svg",
 ]
+
+# ignore tags for multiversion
+smv_tag_whitelist = 'None'
