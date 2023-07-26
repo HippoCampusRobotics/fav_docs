@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install ROS &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="IDE Setup" href="ide_setup.html" />
+    <link rel="prev" title="Virtual Machine" href="virtual_machine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Installation and Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ubuntu.html">Install Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install ROS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-catkin-workspace">Set Up Catkin Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-first-catkin-packages">Get The First Catkin Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-the-setup">Test the Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ide_setup.html">IDE Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start_the_simulation.html">Start The Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../installation.html">Installation and Setup</a></li>
+      <li class="breadcrumb-item active">Install ROS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/installation/install_ros.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-ros">
+<h1>Install ROS<a class="headerlink" href="#install-ros" title="Permalink to this heading"></a></h1>
+<p>The <a class="reference external" href="http://wiki.ros.org/noetic/Installation/Ubuntu">ROS Wiki</a> provides a complete installation guide. The following instructions are a summary of their article.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Since Ubuntu 18.04, Canonical decided it was a good idea to have unattended updates running in the background. This might lead to error messages similiar to:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>E:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>get<span class="w"> </span>lock<span class="w"> </span>/var/lib/dpkg/lock-frontend<span class="w"> </span>-<span class="w"> </span>open<span class="w"> </span><span class="o">(</span><span class="m">11</span>:<span class="w"> </span>Resource<span class="w"> </span>temporarily<span class="w"> </span>unavailable<span class="o">)</span>
+E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>acquire<span class="w"> </span>the<span class="w"> </span>dpkg<span class="w"> </span>frontend<span class="w"> </span>lock<span class="w"> </span><span class="o">(</span>/var/lib/dpkg/lock-frontend<span class="o">)</span>,<span class="w"> </span>is<span class="w"> </span>another<span class="w"> </span>process<span class="w"> </span>using<span class="w"> </span>it?
+</pre></div>
+</div>
+<p>If you encounter them after running anything related to <code class="code docutils literal notranslate"><span class="pre">apt</span></code>: no worries. Just wait until the backgroud updates are finished.</p>
+</div>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Add sources</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add key</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span><span class="c1"># if you haven&#39;t already installed curl</span>
+curl<span class="w"> </span>-s<span class="w"> </span>https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+</pre></div>
+</div>
+</li>
+<li><p>Update index</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+</li>
+<li><p>Make sure your package are up to date!(<strong>!!!</strong>)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Install ROS</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-noetic-desktop-full
+</pre></div>
+</div>
+</li>
+<li><p>Install build dependencies</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-rosdep<span class="w"> </span>python3-rosinstall<span class="w"> </span>python3-rosinstall-generator<span class="w"> </span>python3-wstool<span class="w"> </span>build-essential
+</pre></div>
+</div>
+</li>
+<li><p>Install catkin-tools</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-catkin-tools<span class="w"> </span>python3-osrf-pycommon
+</pre></div>
+</div>
+</li>
+<li><p>Set up <code class="code docutils literal notranslate"><span class="pre">rosdep</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rosdep<span class="w"> </span>init
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosdep<span class="w"> </span>update
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="set-up-catkin-workspace">
+<h2>Set Up Catkin Workspace<a class="headerlink" href="#set-up-catkin-workspace" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Source your ROS installation</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/noetic/setup.bash
+</pre></div>
+</div>
+</li>
+<li><p>Create workspace</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/fav/catkin_ws/src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/fav/catkin_ws
+</pre></div>
+</div>
+</li>
+<li><p>Initialize workspace</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>catkin<span class="w"> </span>init
+</pre></div>
+</div>
+</li>
+<li><p>Build empty workspace</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>catkin<span class="w"> </span>build
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To automatically source your catkin workspace, execute the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source /opt/ros/noetic/setup.bash&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source $HOME/fav/catkin_ws/devel/setup.bash&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+<p>To apply these changes, execute:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+<p>For new terminal session your catkin workspace is sourced automatically since we added the instruction to do so to the <code class="file docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If you are using <code class="code docutils literal notranslate"><span class="pre">zsh</span></code> instead of <code class="code docutils literal notranslate"><span class="pre">bash</span></code>, you need to adjust the above commands. You will also have pay attention and adjust some commands in the following parts of this setup guide.</p>
+</div>
+</section>
+<section id="get-the-first-catkin-packages">
+<h2>Get The First Catkin Packages<a class="headerlink" href="#get-the-first-catkin-packages" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Make sure you are inside your catkin workspace:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/catkin_ws
+</pre></div>
+</div>
+</li>
+<li><p>Clone the <code class="file docutils literal notranslate"><span class="pre">fav</span></code> repository</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FormulasAndVehicles/fav.git<span class="w"> </span>~/fav/catkin_ws/src/fav
+</pre></div>
+</div>
+<p>At this stage make sure your directory structure looks similar to this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/home/YOUR_USER_NAME/fav/catkin_ws
+├──<span class="w"> </span>build
+├──<span class="w"> </span>devel
+├──<span class="w"> </span>logs
+└──<span class="w"> </span>src
+<span class="w">    </span>└──<span class="w"> </span>fav
+<span class="w">        </span>├──<span class="w"> </span>fav_gazebo_plugins
+<span class="w">        </span>├──<span class="w"> </span>fav_msgs
+<span class="w">        </span>└──<span class="w"> </span>fav_sim
+</pre></div>
+</div>
+</li>
+<li><p>Let ROS resolve the package’s dependencies</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-r<span class="w"> </span>-y
+</pre></div>
+</div>
+</li>
+<li><p>Rebuild your workspace</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin<span class="w"> </span>build
+</pre></div>
+</div>
+</li>
+<li><p>Apply changes of your environment variables by either</p>
+<ul>
+<li><p>starting a new terminal session (remember that this means <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code> gets sourced automatically as mentioned before).</p></li>
+<li><p>sourcing <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code> manually by executing</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="test-the-setup">
+<h2>Test the Setup<a class="headerlink" href="#test-the-setup" title="Permalink to this heading"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If launching gazebo from ROS, ROS is not able to kill the gazebo node without escalating to <strong>SIGTERM</strong>. This happens after a 15s timeout. If you do not have the time to wait for so long, you can modifiy <code class="file docutils literal notranslate"><span class="pre">/opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py</span></code> and change <code class="code docutils literal notranslate"><span class="pre">DEFAULT_TIMEOUT_SIGINT</span></code> to some value you are willing to wait.</p>
+</div>
+<p>If you are willing to wait, let’s say, 3.0 seconds, execute the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/DEFAULT_TIMEOUT_SIGINT\s*=\s*15\.0.*/DEFAULT_TIMEOUT_SIGINT = 3\.0/&#39;</span><span class="w"> </span>/opt/ros/noetic/lib/python3/dist-packages/roslaunch/nodeprocess.py
+</pre></div>
+</div>
+<p>Execute the following command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>roslaunch<span class="w"> </span>fav_sim<span class="w"> </span>gazebo_apriltag_tank_world.launch
+</pre></div>
+</div>
+<p>and <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> should launch after a few seconds and look this:</p>
+<img alt="../_images/gazebo_tags.png" src="../_images/gazebo_tags.png" />
+<p>If the <code class="code docutils literal notranslate"><span class="pre">gazebo</span></code> window stays black, enter <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal in which you executed the command above and try it again.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="virtual_machine.html" class="btn btn-neutral float-left" title="Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ide_setup.html" class="btn btn-neutral float-right" title="IDE Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v1.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Tags</dt>
+      <dd><a href="install_ros.html">v1.0</a></dd>
+    </dl>
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../main/installation/install_ros.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

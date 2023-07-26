@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install Firmware &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Install Firmware</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/installation/install_firmware.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-firmware">
+<h1>Install Firmware<a class="headerlink" href="#install-firmware" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The BlueROV used in this class runs the PX4 firmware. For the class we have created a fork of the firmware, please follow the instructions to install it. Most likely you will not get in touch with any of the firmware source code, but still you need to clone and install the corresponding repositories to complete this setup guide.</p>
+</div>
+<section id="set-up-the-workspace">
+<h2>Set Up The Workspace<a class="headerlink" href="#set-up-the-workspace" title="Permalink to this heading"></a></h2>
+<p>By now your directory structure should look like this if you followed the previous ROS installation section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/fav
+└── catkin_ws
+    ├── build
+    ├── devel
+    ├── logs
+    └── src
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p>Clone the Firmware</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/FormulasAndVehicles/PX4-Autopilot.git
+</pre></div>
+</div>
+</li>
+<li><p>Clone MAVLink</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FormulasAndVehicles/mavlink.git<span class="w"> </span>~/fav/catkin_ws/src/mavlink
+</pre></div>
+</div>
+</li>
+<li><p>Clone mavros</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FormulasAndVehicles/mavros.git<span class="w"> </span>~/fav/catkin_ws/src/mavros
+</pre></div>
+</div>
+</li>
+<li><p>Use <code class="code docutils literal notranslate"><span class="pre">rosdep</span></code> to resolve dependencies</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">fav</span><span class="o">/</span><span class="n">catkin_ws</span> <span class="o">&amp;&amp;</span> <span class="n">rosdep</span> <span class="n">install</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">paths</span> <span class="n">src</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">src</span> <span class="o">-</span><span class="n">r</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install GeographicLib dataset</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
+</pre></div>
+</div>
+</li>
+<li><p>Install <code class="code docutils literal notranslate"><span class="pre">xmlstarlet</span></code> and <code class="code docutils literal notranslate"><span class="pre">python3-pip</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xmlstarlet<span class="w"> </span>python3-pip
+</pre></div>
+</div>
+</li>
+<li><p>Install additional dependencies</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libignition-rendering3
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Now your directory structure should look similiar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~/fav
+├── catkin_ws
+│   ├── build
+│   ├── devel
+│   ├── logs
+│   └── src
+│       ├── mavlink
+│       └── mavros
+│       └── bluerov_sim
+└── PX4-Autopilot
+</pre></div>
+</div>
+</section>
+<section id="build-the-catkin-workspace">
+<h2>Build The Catkin Workspace<a class="headerlink" href="#build-the-catkin-workspace" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">catkin_ws</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/catkin_ws
+</pre></div>
+</div>
+</li>
+<li><p>Build the code</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin<span class="w"> </span>build
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="update-gazebo-installation">
+<h2>Update Gazebo Installation<a class="headerlink" href="#update-gazebo-installation" title="Permalink to this heading"></a></h2>
+<p>You might get a build error similar to</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="o">[</span><span class="m">2</span><span class="o">]</span>:<span class="w"> </span>***<span class="w"> </span>No<span class="w"> </span>rule<span class="w"> </span>to<span class="w"> </span>make<span class="w"> </span>target<span class="w"> </span><span class="s1">&#39;/usr/lib/x86_64-linux-gnu/libsdformat9.so.9.5.0&#39;</span>,<span class="w"> </span>needed<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;/home/hippo/fav/catkin_ws/devel/.private/bluerov_sim/lib/libgazebo_range_sensor_plugin.so&#39;</span>.<span class="w">  </span>Stop.
+make<span class="o">[</span><span class="m">2</span><span class="o">]</span>:<span class="w"> </span>***<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>unfinished<span class="w"> </span>jobs....
+In<span class="w"> </span>file<span class="w"> </span>included<span class="w"> </span>from<span class="w"> </span>/home/hippo/fav/catkin_ws/src/bluerov_sim/include/gazebo_range_sensor_plugin.h:6,
+<span class="w">              </span>from<span class="w"> </span>/home/hippo/fav/catkin_ws/src/bluerov_sim/plugins/gazebo_range_sensor_plugin.cpp:1:
+/usr/include/gazebo-11/gazebo/common/Plugin.hh:33:10:<span class="w"> </span>fatal<span class="w"> </span>error:<span class="w"> </span>sdf/sdf.hh:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+<span class="w">   </span><span class="m">33</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="c1">#include &lt;sdf/sdf.hh&gt;</span>
+<span class="w">      </span><span class="p">|</span><span class="w">          </span>^~~~~~~~~~~~
+compilation<span class="w"> </span>terminated.
+</pre></div>
+</div>
+<p>To fix this, uninstall Gazebo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>gazebo11<span class="w"> </span>ros-noetic-gazebo-*
+</pre></div>
+</div>
+<p>And reinstall</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gazebo11<span class="w"> </span>ros-noetic-gazebo-*
+</pre></div>
+</div>
+</section>
+<section id="build-the-px4-firmware">
+<h2>Build The PX4 Firmware<a class="headerlink" href="#build-the-px4-firmware" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">PX4-Autopilot</span></code> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav/PX4-Autopilot
+</pre></div>
+</div>
+</li>
+<li><p>Set up dependencies</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>./Tools/setup/ubuntu.sh<span class="w"> </span>--no-nuttx
+</pre></div>
+</div>
+</li>
+<li><p>Build the code</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DONT_RUN</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>make<span class="w"> </span>-j1<span class="w"> </span>px4_sitl<span class="w"> </span>gazebo_uuv_bluerov2_heavy
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases the <code class="code docutils literal notranslate"><span class="pre">make</span></code> command might fail.
+You might have to execute this again (just once is enough):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libignition-rendering3
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">make</span></code> command might also fail with an internal compiler error. This happens if the build process needs more RAM than is available. Just repeat the build command a few times until it succeeds.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="configure-environment-variables">
+<h2>Configure Environment Variables<a class="headerlink" href="#configure-environment-variables" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Switch into your <code class="file docutils literal notranslate"><span class="pre">fav</span></code> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/fav
+</pre></div>
+</div>
+</li>
+<li><p>Edit your <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code> by executing the following commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot/Tools/setup_gazebo.bash </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot/build/px4_sitl_default &gt; /dev/null&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/PX4-Autopilot/Tools/sitl_gazebo&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</li>
+<li><p>Apply the changes of <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="test-your-setup">
+<h2>Test Your Setup<a class="headerlink" href="#test-your-setup" title="Permalink to this heading"></a></h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Make sure all packages are upgraded by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+</div>
+<p>At this point you can check that your setup is functional by launching the simulation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch<span class="w"> </span>px4<span class="w"> </span>mavros_posix_sitl.launch<span class="w"> </span>vehicle:<span class="o">=</span>uuv_bluerov2_heavy<span class="w"> </span>world:<span class="o">=</span><span class="nv">$HOME</span>/fav/PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
+</pre></div>
+</div>
+<p>After a few seconds something similiar to the following screenshot should appear:</p>
+<img alt="../_images/px4_test_screenshot.png" src="../_images/px4_test_screenshot.png" />
+<p>You can quit the program by hitting <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> in the terminal you have started it. It will take a few seconds to stop all the running processes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Closing the Gazebo GUI will <strong>only</strong> close the Gazebo GUI. All the other started processes will continue running. So please use the above mentioned shortcut to kill them.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v1.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Tags</dt>
+      <dd><a href="install_firmware.html">v1.0</a></dd>
+    </dl>
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../main/installation/install_firmware.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recording Data Using Bag Files &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dynamic Reconfigure" href="dynamic_reconfigure.html" />
+    <link rel="prev" title="Lab Workflow" href="lab_workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ros_package.html">ROS Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_launch_setup.html">ROS Launch Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_names_and_namespaces.html">Names and Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rqt_multiplot.html">RQt Multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Recording Data Using Bag Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recording-bag-files">Recording bag files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-and-playing-back-bag-files">Checking and playing  back bag files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../tutorials.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Recording Data Using Bag Files</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/tutorials/recording_rosbags.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="recording-data-using-bag-files">
+<h1>Recording Data Using Bag Files<a class="headerlink" href="#recording-data-using-bag-files" title="Permalink to this heading"></a></h1>
+<p>You can record data conveniently in bags. More information on bag files can be found <a class="reference external" href="http://wiki.ros.org/Bags">here</a>.
+The standard tool to record and play back bag files is <a class="reference external" href="http://wiki.ros.org/rosbag">rosbag</a>.</p>
+<p>Typically, you want to use this tool from the command-line.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Please check the command-line documentation here: <a class="reference external" href="http://wiki.ros.org/rosbag/Commandline">http://wiki.ros.org/rosbag/Commandline</a>!</p>
+</div>
+<section id="recording-bag-files">
+<h2>Recording bag files<a class="headerlink" href="#recording-bag-files" title="Permalink to this heading"></a></h2>
+<p>You can record data using <code class="code docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">record</span></code>. This subscribes to topics and writes a bag file with the contents of all messages published on those topics.</p>
+<p>To record specific topics, use</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosbag<span class="w"> </span>record<span class="w"> </span>topic1<span class="w"> </span>topic2
+</pre></div>
+</div>
+<p>High bandwidth messages, such as camera images, can overload the network. For this reason, do not record camera images. If you really need camera data, include just a single topic. Due to image processing, our setup includes a lot of camera image topics. Recording all of these topics <strong>will</strong> overload the network.</p>
+<p>You can exclude topics matching regular expressions with <code class="code docutils literal notranslate"><span class="pre">-x</span></code>.
+To record all but the camera topics, execute</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosbag<span class="w"> </span>record<span class="w"> </span>-a<span class="w"> </span>-x<span class="w"> </span><span class="s2">&quot;(.*)camera(.*)&quot;</span>
+</pre></div>
+</div>
+<p>where <code class="code docutils literal notranslate"><span class="pre">(.*)</span></code> stands for an arbitrary number of arbitrary characters. This means that any topic including the substring <code class="code docutils literal notranslate"><span class="pre">camera</span></code> will not be recorded.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>While a temporary binary file is created when <code class="code docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">record</span></code> is called, the final file isn’t written until stopping the recording using <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd>.
+Always make sure to properly end your recording!</p>
+</div>
+<asciinema-player speed="2" start-at="1" idle-time-limit="1" poster="npt:0:01"  src="data:application/json;base64,eyJ2ZXJzaW9uIjogMiwgIndpZHRoIjogODAsICJoZWlnaHQiOiAyNSwgInRpbWVzdGFtcCI6IDE2NjYxOTQwMTgsICJlbnYiOiB7IlNIRUxMIjogIi9iaW4vYmFzaCIsICJURVJNIjogInh0ZXJtIn19ClswLjE2NzkzNywgIm8iLCAiXHUwMDFiXTA7fi9mYXYvY2F0a2luX3dzXHUwMDA3Il0KWzAuMTY4NzMyLCAibyIsICJcclxuIl0KWzAuMTY4Nzc0LCAibyIsICJcdTAwMWJdMjt2c2NvZGVAYXJjaFZlcm1lZXI6fi9mYXYvY2F0a2luX3dzXHUwMDA3XHUwMDFiXTE7fi9mYXYvY2F0a2luX3dzXHUwMDA3Il0KWzAuMTY4ODc2LCAibyIsICJcdTAwMWJbMG1cdTAwMWJbMjdtXHUwMDFiWzI0bVx1MDAxYltKXHUwMDFiWzM0bX4vZmF2L2NhdGtpbl93c1x1MDAxYlszOW1cclxuXHJcdTAwMWJbMzVt4p2vXHUwMDFiWzM5bSBcdTAwMWJbSyJdClswLjE2ODk4NywgIm8iLCAiXHUwMDFiWz8xaFx1MDAxYj0iXQpbMC4xNjkwMjQsICJvIiwgIlx1MDAxYls/MjAwNGgiXQpbMC43OTE0MDcsICJvIiwgInIiXQpbMC45MDg4ODcsICJvIiwgIlxicm8iXQpbMS4wMzg3NDcsICJvIiwgInMiXQpbMS4yNTkwNzksICJvIiwgImIiXQpbMS4zNDQ3NTMsICJvIiwgImEiXQpbMS42NDc5NDEsICJvIiwgImciXQpbMS43NTk0OTUsICJvIiwgIiAiXQpbMi4xMTEsICJvIiwgInIiXQpbMi4yMzQ4NzksICJvIiwgImUiXQpbMi41NTk5NDcsICJvIiwgImMiXQpbMi42ODY4NzQsICJvIiwgIm8iXQpbMi44MTY2MTcsICJvIiwgInIiXQpbMy4zNTcwMDksICJvIiwgImQiXQpbMy41MzI0NzgsICJvIiwgIiAiXQpbMy45OTA5NTQsICJvIiwgIi8iXQpbNC4yNjg4NjksICJvIiwgInQiXQpbNC4zOTU4MDgsICJvIiwgIm8iXQpbNC41MTQ4MjIsICJvIiwgInAiXQpbNC43NDI3OTQsICJvIiwgImkiXQpbNC44NTM1NDEsICJvIiwgImMiXQpbNS40Njc4NzcsICJvIiwgIjEiXQpbNS41NzM5NTksICJvIiwgIiAiXQpbNS45MjU4NTgsICJvIiwgIi8iXQpbNi4yODM4MzUsICJvIiwgInQiXQpbNi4zODg3MzcsICJvIiwgIm8iXQpbNi40NzQ2ODUsICJvIiwgInAiXQpbNi43MjI5MjIsICJvIiwgImkiXQpbNi44MjQ1NDcsICJvIiwgImMiXQpbNy40MzY4NzYsICJvIiwgIjIiXQpbOC4xOTA0MDksICJvIiwgIlx1MDAxYls/MWxcdTAwMWI+Il0KWzguMTkwNTExLCAibyIsICJcdTAwMWJbPzIwMDRsXHJcclxuIl0KWzguMTkwODUxLCAibyIsICJcdTAwMWJdMDtjYXRraW5fd3M6IHJvc2JhZyByZWNvcmQgL3RvcGljMSAvdG9waWMyXHUwMDA3Il0KWzguMTkwOTQyLCAibyIsICJcdTAwMWJdMjtyb3NiYWcgcmVjb3JkIC90b3BpYzEgL3RvcGljMlx1MDAwN1x1MDAxYl0xO3Jvc2JhZ1x1MDAwNyJdCls4LjQwNjM4NCwgIm8iLCAiXHUwMDFiWzBtWyBJTkZPXSBbMTY2NjE5NDAyNi43NDY0MTQwNjJdOiBTdWJzY3JpYmluZyB0byAvdG9waWMxXHUwMDFiWzBtXHJcbiJdCls4LjQwNzYzOSwgIm8iLCAiXHUwMDFiWzBtWyBJTkZPXSBbMTY2NjE5NDAyNi43NDc3MTMwNzFdOiBTdWJzY3JpYmluZyB0byAvdG9waWMyXHUwMDFiWzBtXHJcbiJdCls4LjY2MDE0MSwgIm8iLCAiXHUwMDFiWzBtWyBJTkZPXSBbMTY2NjE5NDAyNy4wMDAxODg4OTYsIDI5OTAuMTI0MDAwMDAwXTogUmVjb3JkaW5nIHRvICcyMDIyLTEwLTE5LTE1LTQwLTI2LmJhZycuXHUwMDFiWzBtXHJcbiJdClsxMC43ODI4MTQsICJvIiwgIl5DIl0KWzExLjA3MjYwMSwgIm8iLCAiXHUwMDFiXTA7fi9mYXYvY2F0a2luX3dzXHUwMDA3Il0KWzExLjA3MzAyMiwgIm8iLCAiXHJcbiJdClsxMS4wNzMwOCwgIm8iLCAiXHUwMDFiXTI7dnNjb2RlQGFyY2hWZXJtZWVyOn4vZmF2L2NhdGtpbl93c1x1MDAwN1x1MDAxYl0xO34vZmF2L2NhdGtpbl93c1x1MDAwNyJdClsxMS4wNzMxMSwgIm8iLCAiXHUwMDFiWzBtXHUwMDFiWzI3bVx1MDAxYlsyNG1cdTAwMWJbSlx1MDAxYlszNG1+L2Zhdi9jYXRraW5fd3NcdTAwMWJbMzltXHJcblxyXHUwMDFiWzM1beKdr1x1MDAxYlszOW0gXHUwMDFiW0siXQpbMTEuMDczMTYsICJvIiwgIlx1MDAxYls/MWhcdTAwMWI9Il0KWzExLjA3MzE5NCwgIm8iLCAiXHUwMDFiWz8yMDA0aCJdClsxMy44ODY2NjQsICJvIiwgIlx1MDAxYls/MjAwNGxcclxyXG4iXQo="></asciinema-player></section>
+<section id="checking-and-playing-back-bag-files">
+<h2>Checking and playing  back bag files<a class="headerlink" href="#checking-and-playing-back-bag-files" title="Permalink to this heading"></a></h2>
+<p>Once you have recorded a bag file, you might want to check its contents.
+Often times, you realize after the experiments that some topic is missing, due to e.g. typos.
+Note that we cannot give you additional lab time if you forgot to record all data, so make sure to check while still in the lab!
+It can be useful to record a test-bag in the beginning for this purpose.</p>
+<p>Use <code class="code docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">info</span></code> to display a human-readable summary of the contents of the bag files.</p>
+<p>Additionally, <code class="code docutils literal notranslate"><span class="pre">rqt</span></code> has a tool to analyze bag files. You can find it under <code class="file docutils literal notranslate"><span class="pre">Plugins/Logging/Bags</span></code>.</p>
+<a class="reference internal image-reference" href="../_images/rqt_bag_tool.gif"><img alt="../_images/rqt_bag_tool.gif" class="align-center" src="../_images/rqt_bag_tool.gif" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/rqt_bag_tool_example.png"><img alt="../_images/rqt_bag_tool_example.png" class="align-center" src="../_images/rqt_bag_tool_example.png" style="width: 80%;" /></a>
+<p>After loading your bag file, you get a list of recorded topics. Moreover, you can see at what times during the recording messages were actually received (displayed in blue here).</p>
+<p>Finally, you can replay bag files using <code class="code docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">play</span></code>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>Never replay rosbag files while the real vehicle is running</strong>. ROS cannot differentiate between messages send live and messages replayed at that moment. While the time stamp may be different, replaying e.g. actuator signals will lead to unexpected behaviour!</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lab_workflow.html" class="btn btn-neutral float-left" title="Lab Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamic_reconfigure.html" class="btn btn-neutral float-right" title="Dynamic Reconfigure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v1.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Tags</dt>
+      <dd><a href="recording_rosbags.html">v1.0</a></dd>
+    </dl>
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../main/tutorials/recording_rosbags.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

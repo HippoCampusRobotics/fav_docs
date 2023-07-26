@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install Ubuntu &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Virtual Machine" href="virtual_machine.html" />
+    <link rel="prev" title="Linux Terminal" href="linux_terminal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../installation.html">Installation and Setup</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux_terminal.html">Linux Terminal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install Ubuntu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-your-disk-partition">Prepare Your Disk Partition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-bootable-usb-stick">Create A Bootable USB stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-fast-startup">Disable Fast Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-secure-boot">Disable Secure Boot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-from-ubuntu-usb-stick">Boot From Ubuntu USB Stick</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-installation-wizard">Start The Installation Wizard</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine.html">Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_ros.html">Install ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide_setup.html">IDE Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start_the_simulation.html">Start The Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../installation.html">Installation and Setup</a></li>
+      <li class="breadcrumb-item active">Install Ubuntu</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/installation/install_ubuntu.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-ubuntu">
+<h1>Install Ubuntu<a class="headerlink" href="#install-ubuntu" title="Permalink to this heading"></a></h1>
+<p>This section should guide you through the process of installing Ubuntu alongisde Windows on your machine. If you prefer to install Ubuntu inside a Virtual Machine, you can skip this section and continue with <a class="reference internal" href="virtual_machine.html#virtual-machine"><span class="std std-ref">Virtual Machine</span></a>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Since we are going to install a new/second operating system on your device, that might be a good opportunity to create a backup just in case anything goes wrong! We are not responsible for any damage or loss of data that might result from any of the following instructions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For those of you who have their windows encrypted with bitlocker you might have to enter your bitlocker key the next time you boot windows after you have installed Ubuntu. You should save your bitlocker key (you can find it <a class="reference external" href="https://account.microsoft.com/devices/">here</a>). Alternatively you can turn off bitlocker encryption.</p>
+</div>
+<section id="prepare-your-disk-partition">
+<h2>Prepare Your Disk Partition<a class="headerlink" href="#prepare-your-disk-partition" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Resize your Windows partition. Hit <kbd class="kbd docutils literal notranslate">Win</kbd> + <kbd class="kbd docutils literal notranslate">R</kbd> and enter <code class="code docutils literal notranslate"><span class="pre">diskmgmt.msc</span></code> and click <strong>OK</strong></p>
+<img alt="../_images/windows_execute.png" src="../_images/windows_execute.png" />
+</li>
+<li><p>Choose the partition on which you want to install Ubuntu (in most cases this will be <code class="file docutils literal notranslate"><span class="pre">(C:)</span></code>.</p></li>
+<li><p>Resize the partition to create unallocated space where we can install Ubuntu. 30GB of free space might be enough for Ubuntu, but we recommend at least 60GB if you can afford it.</p>
+<img alt="../_images/windows_disk_manager.png" src="../_images/windows_disk_manager.png" />
+</li>
+<li><p>The result could look similiar to this:</p>
+<img alt="../_images/windows_disk_manager_result.png" src="../_images/windows_disk_manager_result.png" />
+</li>
+</ol>
+</section>
+<section id="create-a-bootable-usb-stick">
+<h2>Create A Bootable USB stick<a class="headerlink" href="#create-a-bootable-usb-stick" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Download <a class="reference external" href="https://releases.ubuntu.com/20.04/">Ubuntu 20.04 Desktop</a> from the offical Website.</p></li>
+<li><p>Download <a class="reference external" href="https://www.balena.io/etcher/">Etcher</a>.</p></li>
+<li><p>Insert an USB stick with at least 4GB of memory.</p></li>
+<li><p>Start Etcher and select the downloaded Ubuntu image and the inserted USB device as target.</p>
+<img alt="../_images/etcher.png" src="../_images/etcher.png" />
+</li>
+<li><p>Make sure you <strong>really</strong> selected the correct target. Otherwise all your data on the wrongly selected target might get deleted.</p></li>
+<li><p>Click <strong>Flash!</strong>.</p></li>
+</ol>
+</section>
+<section id="disable-fast-startup">
+<h2>Disable Fast Startup<a class="headerlink" href="#disable-fast-startup" title="Permalink to this heading"></a></h2>
+<p>If you want to access your Windows partition from inside Ubuntu, you need to disable Windows’ Fast Startup. Follow <a class="reference external" href="https://help.uaudio.com/hc/en-us/articles/213195423-How-To-Disable-Fast-Startup-in-Windows-10">these instructions</a>, if you want to do so.</p>
+</section>
+<section id="disable-secure-boot">
+<h2>Disable Secure Boot<a class="headerlink" href="#disable-secure-boot" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Reboot your system after flashing is done and enter your BIOS/UEFI during Bootup. To do so, you have to hit a certain key, depending on your hardware. For Dell commputers you probably need to hit <kbd class="kbd docutils literal notranslate">F12</kbd> during the DELL splashscreen. For Lenovo, this key is <kbd class="kbd docutils literal notranslate">Enter</kbd>. This opens a dialog where you can choose to enter your BIOS settings.</p></li>
+<li><p>Find the settings to disable Secure Boot, save your changes and exit the BIOS/UEFI.</p></li>
+</ol>
+</section>
+<section id="boot-from-ubuntu-usb-stick">
+<h2>Boot From Ubuntu USB Stick<a class="headerlink" href="#boot-from-ubuntu-usb-stick" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Reboot and select the medium you want to boot from during the splashscreen (again <kbd class="kbd docutils literal notranslate">F12</kbd> for Dell or <kbd class="kbd docutils literal notranslate">Enter</kbd> for Lenovo). Now you want to boot from the Ubuntu USB stick.</p></li>
+<li><p>In the Grub menu, choose <code class="code docutils literal notranslate"><span class="pre">Ubuntu</span></code> (probably the first option). This will boot Ubuntu from the USB stick after a quick file system check.</p></li>
+</ol>
+</section>
+<section id="start-the-installation-wizard">
+<h2>Start The Installation Wizard<a class="headerlink" href="#start-the-installation-wizard" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Once booted, you will get the option to either <code class="code docutils literal notranslate"><span class="pre">Try</span> <span class="pre">Ubuntu</span></code> or <code class="code docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Ubuntu</span></code> immediately. If you decide to try Ubuntu before installing, you will find an icon for installing Ubuntu on the desktop. Double click it to launch the installation wizard. If you don’t want to try Ubuntu first, you can click on <code class="code docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Ubuntu</span></code> to start the installation wizard.</p></li>
+<li><p>We <em>highly</em> recommend setting the language to <strong>English</strong>.</p></li>
+<li><p>Choose the option to install additional drivers. It is also a good idea to connect to a nearby WiFi or Ethernet.</p>
+<img alt="../_images/ubuntu_additional_drivers.png" src="../_images/ubuntu_additional_drivers.png" />
+</li>
+<li><p>In the last step of the installation, the wizard asks you if you want to install Ubuntu alongside windows because it detects your windows installation and the free disk space we created before. Choose this option and click <strong>Install Now</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <strong>NOT</strong> choose the <strong>Erase disk and install Ubuntu</strong> option! This will delete your Windows installation!</p>
+</div>
+<img alt="../_images/ubuntu_alongside.png" src="../_images/ubuntu_alongside.png" />
+</li>
+<li><p>Reboot.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="linux_terminal.html" class="btn btn-neutral float-left" title="Linux Terminal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="virtual_machine.html" class="btn btn-neutral float-right" title="Virtual Machine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v1.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Tags</dt>
+      <dd><a href="install_ubuntu.html">v1.0</a></dd>
+    </dl>
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../main/installation/install_ubuntu.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

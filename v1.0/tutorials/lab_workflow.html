@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Workflow &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Recording Data Using Bag Files" href="recording_rosbags.html" />
+    <link rel="prev" title="RQt Multiplot" href="rqt_multiplot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../the_robot.html">The Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ros_package.html">ROS Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_launch_setup.html">ROS Launch Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_names_and_namespaces.html">Names and Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rqt_multiplot.html">RQt Multiplot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lab Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#checklist">Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#at-the-lab">At the Lab</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="recording_rosbags.html">Recording Data Using Bag Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../tutorials.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Lab Workflow</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/tutorials/lab_workflow.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lab-workflow">
+<h1>Lab Workflow<a class="headerlink" href="#lab-workflow" title="Permalink to this heading"></a></h1>
+<p>Time for experiments!</p>
+<a class="reference internal image-reference" href="../_images/lab_work1.jpg"><img alt="../_images/lab_work1.jpg" class="align-center" src="../_images/lab_work1.jpg" style="width: 80%;" /></a>
+<section id="checklist">
+<h2>Checklist<a class="headerlink" href="#checklist" title="Permalink to this heading"></a></h2>
+<p>The following steps can be prepared at home before coming to the lab.</p>
+<ol class="arabic">
+<li><p>Set the <code class="code docutils literal notranslate"><span class="pre">ROS_MASTER_URI</span></code> and <code class="code docutils literal notranslate"><span class="pre">ROS_HOSTNAME</span></code> environment variables in <code class="file docutils literal notranslate"><span class="pre">~/.bashrc</span></code>. You can have both configurations, for your simulation setup and your experiment setup and comment out the one you are not using with <code class="code docutils literal notranslate"><span class="pre">#</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-U2ltdWxhdGlvbg==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-U2ltdWxhdGlvbg==" name="U2ltdWxhdGlvbg==" role="tab" tabindex="0">Simulation</button><button aria-controls="panel-0-TGFi" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-TGFi" name="TGFi" role="tab" tabindex="-1">Lab</button></div><div aria-labelledby="tab-0-U2ltdWxhdGlvbg==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-U2ltdWxhdGlvbg==" name="U2ltdWxhdGlvbg==" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_HOSTNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>hostname<span class="w"> </span>--short<span class="k">)</span><span class="s2">.local&quot;</span>
+
+<span class="c1"># Your simulation/home setup</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_MASTER_URI</span><span class="o">=</span><span class="s2">&quot;http://</span><span class="k">$(</span>hostname<span class="w"> </span>--short<span class="k">)</span><span class="s2">.local:11311&quot;</span>
+
+<span class="c1"># Your realworld/lab setup</span>
+<span class="c1">#export ROS_MASTER_URI=&quot;http://hippo-celsius.local:11311&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-TGFi" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-TGFi" name="TGFi" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_HOSTNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>hostname<span class="w"> </span>--short<span class="k">)</span><span class="s2">.local&quot;</span>
+
+<span class="c1"># Your simulation/home setup</span>
+<span class="c1">#export ROS_MASTER_URI=&quot;http://$(hostname --short).local:11311&quot;</span>
+
+<span class="c1"># Your realworld/lab setup</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ROS_MASTER_URI</span><span class="o">=</span><span class="s2">&quot;http://hippo-celsius.local:11311&quot;</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As always, run <code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> to apply these changes.</p>
+</div>
+</li>
+<li><p>Do not <strong>ever</strong> start the simulation/gazebo while you are connected to our network. Otherwise we will have some unpleasant topic collision between the simulated vehicle and the real BlueROV in our lab.</p></li>
+<li><p>It’s best if one of you brings a <strong>fully prepared software setup on your own laptop</strong>. The real experiment will take less computing power since you are not running the simulation environment. If you cannot do this, let us know <strong>in time</strong> and we will prepare a laptop for you to use.</p></li>
+<li><p>The setup can include a prepared settings file for <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code>.</p></li>
+</ol>
+</section>
+<section id="at-the-lab">
+<h2>At the Lab<a class="headerlink" href="#at-the-lab" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>The first time you’re at the lab, we will give you an overview of the robot and its sensors. We will take care of connecting the battery and starting all ROS nodes and software running on the vehicle. Additionally, we will provide you with push buttons to enable/disable the BlueROV’s thrusters. It can be quite handy to be able to quickly switch off the thrusters.</p></li>
+<li><p>Before lifting the BlueROV into the water, we will do a vaccuum test together. After the test, <strong>do not forget to close the vents!</strong></p>
+<a class="reference internal image-reference" href="../_images/vaccuum_test.gif"><img alt="../_images/vaccuum_test.gif" src="../_images/vaccuum_test.gif" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../_images/vent_plugs.jpg"><img alt="../_images/vent_plugs.jpg" src="../_images/vent_plugs.jpg" style="width: 40%;" /></a>
+<p>Vaccuum test and vent caps saying “OK”.</p>
+</li>
+<li><p>We check if your network setup is working properly.</p></li>
+<li><p>We have a big TV screen at the lab. You can use it (we have HDMI and DisplayPort) for plotting data etc. so that everyone can see.</p></li>
+<li><p>If you record data via <code class="code docutils literal notranslate"><span class="pre">rosbag</span></code>, do not include camera images (or if you need camera data, include just one topic). Camera images can overload the network. You can exclude topics matching regular expressions with <code class="code docutils literal notranslate"><span class="pre">-x</span></code>.
+For example</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rosbag<span class="w"> </span>record<span class="w"> </span>-a<span class="w"> </span>-x<span class="w"> </span><span class="s2">&quot;(.*)camera(.*)&quot;</span>
+</pre></div>
+</div>
+<p>should exclude all topics containing <code class="file docutils literal notranslate"><span class="pre">camera</span></code>.
+You can find more information in our section <a class="reference internal" href="recording_rosbags.html#recording-data-using-bag-files"><span class="std std-ref">Recording Data Using Bag Files</span></a>.</p>
+</li>
+<li><p>And after all, if nothing is working, a few debugging tips:</p>
+<ul class="simple">
+<li><p>check the node graph to see if everything is connected (in the correct way)</p></li>
+<li><p>check the topic monitor (Is the data plausible?)</p></li>
+<li><p>check the debug messages published (of course you have prepared some :) )</p></li>
+<li><p>ask us to check our setup (we make mistakes, too)</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Feel free to ask questions at any time!</strong>
+Let us know if you need any equipment (measuring tape, scale, weights, stick, …). If you’re looking for something we might not have at hand immediately, please ask beforehand.</p>
+</div>
+<a class="reference internal image-reference" href="../_images/lab_work2.jpg"><img alt="../_images/lab_work2.jpg" class="align-center" src="../_images/lab_work2.jpg" style="width: 80%;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rqt_multiplot.html" class="btn btn-neutral float-left" title="RQt Multiplot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="recording_rosbags.html" class="btn btn-neutral float-right" title="Recording Data Using Bag Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: v1.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Tags</dt>
+      <dd><a href="lab_workflow.html">v1.0</a></dd>
+    </dl>
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="../../main/tutorials/lab_workflow.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
