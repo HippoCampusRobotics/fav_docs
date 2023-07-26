@@ -20,7 +20,7 @@ This enables using the exact same code for both simulation and real world experi
 
    <div>
      <video autoplay loop muted style="width:100%;">
-      <source src="../_static/videos/gazebo_vs_experiment.mp4" type="video/mp4">
+      <source src="_static/videos/gazebo_vs_experiment.mp4" type="video/mp4">
       test
      </video>
    </div>
