@@ -27,8 +27,15 @@ author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx.ext.githubpages", "sphinx.ext.autosectionlabel", "sphinx.ext.todo",
-    "sphinx_tabs.tabs", "sphinxemoji.sphinxemoji", "sphinx-favicon", "sphinxcontrib.asciinema", "sphinx.ext.mathjax"
+    "sphinx.ext.githubpages",
+    "sphinx.ext.autosectionlabel",
+    "sphinx.ext.todo",
+    "sphinx_tabs.tabs",
+    "sphinxemoji.sphinxemoji",
+    "sphinx_favicon",
+    "sphinxcontrib.asciinema",
+    "sphinx.ext.mathjax",
+    "sphinx_copybutton",
     "sphinxcontrib.jquery",
     "sphinx_multiversion",
 ]
@@ -76,3 +83,6 @@ autosectionlabel_prefix_document = True
 favicons = [
     "bluerov.svg",
 ]
+
+# ignore tags for multiversion
+smv_tag_whitelist = 'None'
