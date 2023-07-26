@@ -11,10 +11,8 @@ jobs:
         uses: actions/checkout@main
 
       - name: Build
-        uses: ammaraskar/sphinx-action@master
-        with:
-          docs-folder: "./"
-          build-command: "sphinx-multiversion . _build/html"
+        run: |
+          python3 -m pip install -r requirements.txt && sphinx-multiversion . _build/html
       
       - name: Upload Artifacts
         uses: actions/upload-artifact@v1
