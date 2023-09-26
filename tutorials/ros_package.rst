@@ -3,10 +3,10 @@ ROS Package
 
 In this section you will:
 
-* create a new Catkin package
+* create a new ros package
 * write a node in :code:`python`
-* run a node via :code:`rosrun`
-* use the tools :code:`rosnode info` and :code:`rostopic echo`
+* run a node via :code:`ros2 run`
+* use the tools :code:`ros2 node info` and :code:`ros2 topic echo`
 
 .. attention::
 
@@ -19,72 +19,154 @@ Create A Package
 
 If you have completed all the installation instructions in :ref:`installation/install_ros:Install ROS`, you have already created a Catkin workspace at :file:`~/fav/catkin_ws`. The workspace contains several directories::
 
-   ~/fav/catkin_ws
+   ~/fav/ros2
    ├── build
-   ├── devel
-   ├── logs
+   ├── install
+   ├── log
    └── src
 
 
 Probably the only one you will be working with is the :file:`src` directory. This is the place where the so called *packages* are. 
 
-For ROS (actually it should be catkin and not ROS, since catkin is the build tool. This is also the reason why we call it catkin workspace and not ROS workspace. But in the end it does not matter if we are somewhat unprecise) to recognize a directory as package it requires two files:
+For our code directories to be recognized as packages, two files are required:
 
 * :file:`package.xml`
 * :file:`CMakeLists.txt`
 
-Otherwise a package is nothing but a normal directory containing arbitrary files and subdirectories. Packages can also be in arbitrary subdirectories, since :code:`catkin` will look for directories containing a :file:`package.xml` recursively to identify packages. An example for this is the :file:`fav` repository you cloned during the setup instructions. The :file:`fav` directory itself is not a package, but contains packages as subdirectories like :file:`fav_sim` or :file:`fav_msgs`.
+Otherwise a package is nothing but a normal directory containing arbitrary files and subdirectories.
+Packages can also be in arbitrary subdirectories, since the build system will look for directories containing a :file:`package.xml` recursively to identify packages.
+An example for this is the :file:`hippo_core` repository you cloned during the setup instructions.
+The :file:`hippo_core` directory itself is not a package, but contains packages as subdirectories like :file:`hippo_common` or :file:`hippo_msgs`.
 
-For this guide it is not necessary to go into details too much, but if you like to know more about packages, you can read the article about packages in the `ROS Wiki <http://wiki.ros.org/ROS/Tutorials/CreatingPackage>`_.
+For this guide it is not necessary to go into details too much.
+But if you like to know more about packages, you can read the article about packages in the `ROS Docs <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html>`_.
 
-There are two ways to create packages in a convenient way. By convenient I mean without worrying about :file:`package.xml` and :file:`CMakeLists.txt` too much. 
+.. hint:: In ROS2 there is the option to create native Python packages. For this class, we stick to the CMake way of organizing packages. Even if we write pure Python packages. So in this regard our instructions differ from the official documentation.
 
-Create A Package With VS Code
-*****************************
-
-Open :file:`~/fav/catkin_ws` with VS Code. Press :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`P` and enter :code:`create catkin package`:
-
-.. image:: /res/images/vscode_new_catkin_package.png
-
-You will be asked to enter a name and dependencies (I think :file:`awesome_package` is quite a nice name for an example package, but it is **not** for a real one!). You can skip the dependencies for now and leave the field empty.
-
-.. seealso:: For more details on dependencies see the `ROS Wiki <http://wiki.ros.org/ROS/Tutorials/CreatingPackage>`__.
-
-Create A Package In The Commandline
-***********************************
-
-Since Catkin expects packages to be in the :file:`src` directory, we have to make sure, we are currently there:
+Go to the :file:`src` directory
 
 .. code-block:: sh
 
-   cd ~/fav/catkin_ws/src
+   cd ~/fav/ros2/src
+
+and create the package directory
 
 .. code-block:: sh
 
-   catkin create pkg awesome_package --catkin-deps rospy fav_msgs
+   mkdir awesome_package
+
+Remember, we need at least :file:`package.xml` and :file:`CMakeLists.txt`.
+Almost minimal examples are presented in the following.
+Take a look at the highlighted lines.
+Replace the project's name with your own package name.
+
+.. code-block:: cmake
+   :linenos:
+   :caption: CMakeLists.txt
+   :emphasize-lines: 2
+
+   cmake_minimum_required(VERSION 3.5)
+   project(awesome_package)
+   find_package(ament_cmake REQUIRED)
+   find_package(ament_cmake_python REQUIRED)
+   find_package(rclpy REQUIRED)
+
+   install(PROGRAMS
+     DESTINATION lib/${PROJECT_NAME}
+   )
+
+   ament_package()
+
+.. code-block:: xml
+   :linenos:
+   :caption: package.xml
+   :emphasize-lines: 4
+
+   <?xml version="1.0"?>
+   <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+   <package format="3">
+     <name>awesome_package</name>
+     <version>0.0.0</version>
+     <description>Our super awesome package</description>
+
+     <maintainer email="someones.mail.address@tuhh.de">Someones name</maintainer>
+
+     <!-- One license tag required, multiple allowed, one license per tag -->
+     <!-- Commonly used license strings: -->
+     <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+     <license>GPLv2</license>
+
+     <url type="website">hippocampusrobotics.github.io/docs</url>
+
+     <author email="someones.mail@tuhh.de">Someones name</author>
+
+     <buildtool_depend>ament_cmake</buildtool_depend>
+     <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+     <depend>rclpy</depend>
+
+     <!-- The export tag contains other, unspecified, tags -->
+     <export>
+       <build_type>ament_cmake</build_type>
+     </export>
+   </package>
 
 That's it. You have just created your first catkin package.
+Your package structure should look similar to::
 
-If you have (and you should) opened your Catkin workspace in VS Code, your workspace could look like in the following image:
+   ~/fav/ros2/src
+   └── awesome_package
+       ├── CMakeLists.txt
+       └── package.xml
 
-.. image:: /res/images/vscode_catkin_overview.png
+We can now build our workspace
+
+.. code-block:: sh
+
+   build_ros
+
+and source the newly created package.
+
+.. code-block:: sh
+
+   . ~/.bashrc
+
+This only needs to be done once a new package is created.
+Nothing bad happens if we are a bit overly cautios regarding sourcing our :file:`.bashrc`.
+But it does nothing good either.
+So we might want to save it up for the cases where it is actually required.
+
+If the commands mentioned above completed without errors, we can check if our newly created is detected correctly.
+The following command should give as the installation path of our package.
+
+.. code-block:: sh
+
+   ros2 pkg prefix awesome_package
+
+In case things did not work out as expected, we might get :code:`Package not found` as response.
+This indicates that we (most likely) messed something up while following the instructions above.
+Double check everything and if this does not fix the problem ask your favorite research associate.
 
 Write A Node
 ============
 
-In general, you have the choice to write nodes either in Python or in C++. For the sake of simplicity we recommend Python. If you haven't already worked with one of these languages, in some regards Python might feel similiar to Matlab.
+In general, you have the choice to write nodes either in Python or in C++.
+For the sake of simplicity we recommend Python.
+If you haven't already worked with one of these languages, in some regards Python might feel similiar to Matlab.
 
-Before we can write a node, we create a :file:`nodes/` directory to keep things neat and clean. It is not strictly required (ROS will find your node as long as it is in your package, no matter in which subdirectory it is), but it complies with conventions.
+Before we can write a node, we create a :file:`nodes/` directory to keep things neat and clean.
+It is not strictly required (ROS will find your node as long as it is in your package, no matter in which subdirectory it is), but it complies with conventions.
 
 Right click :file:`awesome_package` and choose **New Folder** and name it :file:`nodes`. Right click :file:`nodes` and choose **New File**. Name it :file:`setpoint_publisher.py`. It should open automatically.
 
 .. image:: /res/images/vscode_create_node.gif
 
-We have to make the Python file executable. To do so, enter the following command in your terminal (for example the integrated one in VS Code):
+We have to make the Python file executable.
+To do so, enter the following command in your terminal (for example the integrated one in VS Code):
 
 .. code-block:: sh
 
-   chmod +x ~/fav/catkin_ws/src/awesome_package/nodes/setpoint_publisher.py
+   chmod +x ~/fav/ros2/src/awesome_package/nodes/setpoint_publisher.py
 
 .. hint:: Just in case the integrated terminal is not opened: You can open it with :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`\``.
 
@@ -101,27 +183,27 @@ The first line of your node needs to be:
 .. code-block:: python
    :linenos:
 
-   #!/usr/bin/env python
+   #!/usr/bin/env python3
 
 so your system knows your file should be executed as a Python file.
 
 Your first node could look like:
 
+.. todo:: Replace this snippet with correct ros2 code
+
 .. code-block:: python
    :linenos:
 
-   #!/usr/bin/env python
-   import rospy  # this is the python interface for ROS
+   #!/usr/bin/env python3
+   from rclpy.node import Node  # import the node class from the ros client library
    import math  # needed to use the trigonometric functions sin and cos
-   from fav_msgs.msg import ThrusterSetpoint  # this is a ROS message class
+   from hippo_msgs.msg import ActuatorControls  # this is a ROS message class
 
 
-   class MyFirstNode():
+   class MyFirstNode(Node):
       def __init__(self):
-         rospy.init_node("setpoint_publisher")
-         self.setpoint_pub = rospy.Publisher("thruster_setpoint",
-                                             ThrusterSetpoint,
-                                             queue_size=1)
+         super().__init__(node_name='setpoint_publisher') 
+         self.setpoint_pub = self.create_publisher(ActuatorControl, 'thruster_controls', 1)
 
       def run(self):
          rate = rospy.Rate(30.0)
@@ -157,91 +239,46 @@ Your first node could look like:
 Run A Node
 ==========
 
-.. attention:: For each node we have to modify the :file:`CMakeLists.txt` of the corresponding package. Add the node's path relative to the package's root to the :code:`catkin_install_python()` call.
+.. attention:: For each node we have to modify the :file:`CMakeLists.txt` of the corresponding package. Add the node's path relative to the package's root to the :code:`install()` call.
 
 For our first node we add the highlighted line to the :file:`CMakeLists.txt`.
 
 .. code-block:: cmake
    :emphasize-lines: 2
 
-   catkin_install_python(PROGRAMS
+   install(PROGRAMS
      nodes/setpoint_publisher.py
-     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-
-Make sure you **uncomment** these lines -> remove the :code:`#` characeters. Every time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`catkin build` and to be super save you might also want to resource your workspace setup with :code:`source ~/.bashrc`.
-
-.. hint:: The :file:`CMakeLists.txt` might look much less intimidating if you delete all the comments.
-
-Without any comments the :file:`CMakeLists.txt` will look as simple as this:
-
-.. code-block:: cmake
-   :caption: Minimal version of CMakeLists.txt
-
-   cmake_minimum_required(VERSION 3.0.2)
-   project(awesome_package)
-
-   find_package(catkin REQUIRED)
-
-   catkin_package()
-
-   include_directories()
-
-   catkin_install_python(PROGRAMS
-   nodes/setpoint_publisher.py
-   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+     DESTINATION lib/${PROJECT_NAME}
    )
 
-If you want to run a Python programm, normally you would use a command like :code:`python /path/to/your/file/python_file.py`. This would work for our node, too. But instead of running our node by entering :code:`python ~/fav/catkin_ws/src/awesome_package/nodes/setpoint_publisher.py`, where we have to explicitly tell Python where it can find our file :file:`setpoint_publisher.py`, we can use :code:`rosrun`. One of the advantages of :code:`rosrun` is that we do not have to know where the program/node is that we want to run. 
+**Every** time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`catkin build` and to be super save you might also want to resource your workspace setup with :code:`. ~/.bashrc`.
 
-The general usage of the :code:`rosrun` command is :code:`rosrun <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`setpoint_publisher.py` it would be:
+If you want to run a Python program, normally you would use a command like :code:`python3 /path/to/your/file/python_file.py`.
+This would work for our node, too.
+But instead of running our node by entering :code:`python ~/fav/ros2/src/awesome_package/nodes/setpoint_publisher.py`, where we have to explicitly tell Python where it can find our file :file:`setpoint_publisher.py`, we can use :code:`ros2 run`. One of the advantages of :code:`ros2 run` is that we do not have to know where the program/node is that we want to run.
+The command finds the source file on its own.
 
-.. code-block:: sh
-
-   rosrun awesome_package setpoint_publisher.py
-
-If you try to do so right now, you will likely get an error message:
-
-.. asciinema:: /res/asciinema/rosrun_fail.cast
-   :speed: 2
-   :start-at: 1
-   :idle-time-limit: 1
-   :poster: npt:0:01
-
-We created a Catkin package, but we haven't told ROS of it yet. To do so, we rebuild our Catkin workspace:
+The general usage of the :code:`ros2 run` command is :code:`ros2 run <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`setpoint_publisher.py` it would be:
 
 .. code-block:: sh
 
-   catkin build
+   ros2 run awesome_package setpoint_publisher.py
 
-.. note:: You have to execute :code:`catkin build` from within your Catkin workspace. So always make sure you are in the :file:`~/fav/catkin_ws` directory.
+If you try to do so right now, you will likely get an error message :code:`No executable found`.
 
-.. asciinema:: /res/asciinema/catkin_build.cast
-   :speed: 2
-   :start-at: 1
-   :idle-time-limit: 1
-   :poster: npt:0:01
-
-The paths of your packages get updated. To apply these updated paths, run:
+We created a package, but we haven't built our workspace since we modified :code:`CMakeLists.txt` (remember, that we are supposed to rebuild our workspace each time we modify this file?).
 
 .. code-block:: sh
 
-   source ~/.bashrc
+   build_ros
 
-.. note:: Every time we create a new package, or create a new node in an existing package, we need to build our Catkin workspace with :code:`catkin build` and apply the updated package paths with :code:`source ~/.bashrc`. 
+.. note:: Every time we create a new package, or create a new node in an existing package, we need to build our Catkin workspace with :code:`build_ros` and apply the updated package paths with :code:`. ~/.bashrc`. 
 
-Nodes also require the ROS Master to run. Open two terminals (for example by splitting VS Code's internal terminal). In the first one, start the ROS master with 
-
-.. code-block:: sh
-
-   roscore
-
-In the second one, start the node via :code:`rosrun`:
+Now, we should be ready to finally run our code
 
 .. code-block:: sh
 
-   rosrun awesome_package setpoint_publisher.py
-
-.. image:: /res/images/rosrun_setpoint_publisher.gif
+   ros2 run awesome_package setpoint_publisher.py
 
 .. hint:: You can use :kbd:`Tab` to use the shell's ability to auto-complete your commands. If the auto-completion is unambigous, a single hit will suffice. If there is more than one auto-complete option, hit :kbd:`Tab` twice to show the different options. 
 
@@ -249,15 +286,22 @@ In the second one, start the node via :code:`rosrun`:
 
 In the node's source code you can see that the sent thruster setpoints are :code:`sin` and :code:`cos` signals.
 
-We have started the :code:`setpoint_publisher.py` node but since it just publishes ROS messages, we can't see any output in the terminals. We can use command line tools :code:`rosnode` and :code:`rostopic` to get some insights on what is going on in the background hidden from our curious eyes. With :code:`rosnode info /name/of/our/node` we can get various information on our node. For example what publications and what subscriptions it has. Or in other words: what are topics the node wants to receive data on and what are topics it ouputs data on.
+We have started the :code:`setpoint_publisher.py` node but since it just publishes ROS messages, we can't see any output in the terminals.
+We can use command line tools :code:`ros2 node` and :code:`ros2 topic` to get some insights on what is going on in the background hidden from our curious eyes.
+With :code:`ros2 node info /name/of/our/node` we can get various information on our node. For example what publications and what subscriptions it has.
+Or in other words: what are the topics the node wants to receive data on and what are the topics it ouputs data on.
 
-.. asciinema:: /res/asciinema/rosnode_info.cast
-   :speed: 2
-   :start-at: 1
-   :idle-time-limit: 1
-   :poster: npt:0:01
+.. .. asciinema:: /res/asciinema/rosnode_info.cast
+..    :speed: 2
+..    :start-at: 1
+..    :idle-time-limit: 1
+..    :poster: npt:0:01
 
-.. hint:: Again, we can use :kbd:`Tab` to auto-complete the node name after we have started writing the first few characters. Start using this feature if you haven't already! 
+.. hint::
+   Again, we can use :kbd:`Tab` to auto-complete the node name after we have started writing the first few characters.
+   Start using this feature if you haven't already! 
+
+.. todo:: Continue to change stuff for ROS2 from here on!
 
 We see the publications :file:`/rosout` and :file:`/thruster_setpoint`. Every node publishes to :file:`/rosout` for logging, so we are not interested in it for now. But the node publishes :file:`/thruster_setpoint` with the message type :file:`fav_msgs/ThrusterSetpoint` because we told it to do so. Rember these lines from the :file:`setpoint_publisher.py`?
 
