@@ -189,51 +189,67 @@ so your system knows your file should be executed as a Python file.
 
 Your first node could look like:
 
-.. todo:: Replace this snippet with correct ros2 code
-
 .. code-block:: python
    :linenos:
 
    #!/usr/bin/env python3
-   from rclpy.node import Node  # import the node class from the ros client library
-   import math  # needed to use the trigonometric functions sin and cos
-   from hippo_msgs.msg import ActuatorControls  # this is a ROS message class
+
+   import math
+   import rclpy
+   from rclpy.node import Node
+   from hippo_msgs.msg import ActuatorControls
 
 
    class MyFirstNode(Node):
-      def __init__(self):
-         super().__init__(node_name='setpoint_publisher') 
-         self.setpoint_pub = self.create_publisher(ActuatorControl, 'thruster_controls', 1)
 
-      def run(self):
-         rate = rospy.Rate(30.0)
+       # the __init__ function gets called, when we create the object, i.e.
+       # run something like
+       #
+       # node = MyFirstNode()
+       def __init__(self):
+           # we initialize the rclpy Node with a unique name
+           super().__init__(node_name='my_first_node')
 
-         while not rospy.is_shutdown():
-               msg = ThrusterSetpoint()
-               msg.header.stamp = rospy.Time.now()
-               # since the bluerov has 8 thrusters, the setpoint list holds 8 values
-               t = rospy.get_time()
-               msg.data[0] = 0.2 * math.sin(t)
-               msg.data[1] = -0.2 * math.sin(t)
-               msg.data[2] = 0.2 * math.cos(t)
-               msg.data[3] = -0.2 * math.cos(t)
-               msg.data[4] = 0.4 * math.sin(t)
-               msg.data[5] = -0.4 * math.sin(t)
-               msg.data[6] = 0.4 * math.cos(t)
-               msg.data[7] = -0.4 * math.cos(t)
+           # create a publisher. we need to specify the message type and the topic
+           # name. The last argument specifies the queue length
+           self.my_publisher = self.create_publisher(ActuatorControls,
+                                                     'thruster_controls', 1)
+           self.timer = self.create_timer(1 / 50, self.on_timer)
 
-               self.setpoint_pub.publish(msg)
+       def on_timer(self):
+           self.publish_my_msg()
 
-               rate.sleep()
+       def publish_my_msg(self):
+           # create the message object
+           msg = ActuatorControls()
+           now = self.get_clock().now()
+           msg.header.stamp = now.to_msg()
+           # get the time as floating point number in seconds
+           t = now.nanoseconds * 1e-9
+
+           # the list holds 8 values for the 8 thrusters of the bluerov
+           msg.control[0] = 0.2 * math.sin(t)
+           msg.control[1] = -0.2 * math.sin(t)
+           msg.control[2] = 0.2 * math.cos(t)
+           msg.control[3] = -0.2 * math.cos(t)
+           msg.control[4] = 0.4 * math.sin(t)
+           msg.control[5] = -0.4 * math.sin(t)
+           msg.control[6] = 0.4 * math.cos(t)
+           msg.control[7] = -0.4 * math.cos(t)
+
+           # publish the message with the publisher we created during the object
+           # initialization
+           self.my_publisher.publish(msg)
 
 
    def main():
-      node = MyFirstNode()
-      node.run()
+       rclpy.init()
+       node = MyFirstNode()
+       rclpy.spin(node)
 
 
-   if __name__ == "__main__":
-      main()
+   if __name__ == '__main__':
+       main()
 
 
 Run A Node
