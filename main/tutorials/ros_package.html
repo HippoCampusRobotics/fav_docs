@@ -154,8 +154,8 @@ But if you like to know more about packages, you can read the article about pack
 Almost minimal examples are presented in the following.
 Take a look at the highlighted lines.
 Replace the project’s name with your own package name.</p>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">CMakeLists.txt</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">CMakeLists.txt</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.5</span><span class="p">)</span>
 <span class="hll"><span class="linenos"> 2</span><span class="nb">project</span><span class="p">(</span><span class="s">awesome_package</span><span class="p">)</span>
 </span><span class="linenos"> 3</span><span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
@@ -170,8 +170,8 @@ Replace the project’s name with your own package name.</p>
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">package.xml</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">package.xml</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="linenos"> 2</span><span class="cp">&lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;</span>
 <span class="linenos"> 3</span><span class="nt">&lt;package</span><span class="w"> </span><span class="na">format=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
@@ -263,50 +263,64 @@ To do so, enter the following command in your terminal (for example the integrat
 </div>
 <p>so your system knows your file should be executed as a Python file.</p>
 <p>Your first node could look like:</p>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>Replace this snippet with correct ros2 code</p>
-</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python3</span>
-<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>  <span class="c1"># import the node class from the ros client library</span>
-<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">math</span>  <span class="c1"># needed to use the trigonometric functions sin and cos</span>
-<span class="linenos"> 4</span><span class="kn">from</span> <span class="nn">hippo_msgs.msg</span> <span class="kn">import</span> <span class="n">ActuatorControls</span>  <span class="c1"># this is a ROS message class</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="k">class</span> <span class="nc">MyFirstNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-<span class="linenos"> 8</span>   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 9</span>      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node_name</span><span class="o">=</span><span class="s1">&#39;setpoint_publisher&#39;</span><span class="p">)</span>
-<span class="linenos">10</span>      <span class="bp">self</span><span class="o">.</span><span class="n">setpoint_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">ActuatorControl</span><span class="p">,</span> <span class="s1">&#39;thruster_controls&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span>   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">13</span>      <span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mf">30.0</span><span class="p">)</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span>      <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
-<span class="linenos">16</span>            <span class="n">msg</span> <span class="o">=</span> <span class="n">ThrusterSetpoint</span><span class="p">()</span>
-<span class="linenos">17</span>            <span class="n">msg</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="linenos">18</span>            <span class="c1"># since the bluerov has 8 thrusters, the setpoint list holds 8 values</span>
-<span class="linenos">19</span>            <span class="n">t</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
-<span class="linenos">20</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">21</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">22</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">23</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">24</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">25</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">26</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">27</span>            <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="linenos">28</span>
-<span class="linenos">29</span>            <span class="bp">self</span><span class="o">.</span><span class="n">setpoint_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="linenos">30</span>
-<span class="linenos">31</span>            <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
-<span class="linenos">32</span>
-<span class="linenos">33</span>
-<span class="linenos">34</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-<span class="linenos">35</span>   <span class="n">node</span> <span class="o">=</span> <span class="n">MyFirstNode</span><span class="p">()</span>
-<span class="linenos">36</span>   <span class="n">node</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="linenos">37</span>
-<span class="linenos">38</span>
-<span class="linenos">39</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<span class="linenos">40</span>   <span class="n">main</span><span class="p">()</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">math</span>
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">rclpy</span>
+<span class="linenos"> 5</span><span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">hippo_msgs.msg</span> <span class="kn">import</span> <span class="n">ActuatorControls</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">class</span> <span class="nc">MyFirstNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="c1"># the __init__ function gets called, when we create the object, i.e.</span>
+<span class="linenos">12</span>    <span class="c1"># run something like</span>
+<span class="linenos">13</span>    <span class="c1">#</span>
+<span class="linenos">14</span>    <span class="c1"># node = MyFirstNode()</span>
+<span class="linenos">15</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">16</span>        <span class="c1"># we initialize the rclpy Node with a unique name</span>
+<span class="linenos">17</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node_name</span><span class="o">=</span><span class="s1">&#39;my_first_node&#39;</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>        <span class="c1"># create a publisher. we need to specify the message type and the topic</span>
+<span class="linenos">20</span>        <span class="c1"># name. The last argument specifies the queue length</span>
+<span class="linenos">21</span>        <span class="bp">self</span><span class="o">.</span><span class="n">my_publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">ActuatorControls</span><span class="p">,</span>
+<span class="linenos">22</span>                                                  <span class="s1">&#39;thruster_controls&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">50</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">)</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>    <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">publish_my_msg</span><span class="p">()</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span>    <span class="k">def</span> <span class="nf">publish_my_msg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">29</span>        <span class="c1"># create the message object</span>
+<span class="linenos">30</span>        <span class="n">msg</span> <span class="o">=</span> <span class="n">ActuatorControls</span><span class="p">()</span>
+<span class="linenos">31</span>        <span class="n">now</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="linenos">32</span>        <span class="n">msg</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
+<span class="linenos">33</span>        <span class="c1"># get the time as floating point number in seconds</span>
+<span class="linenos">34</span>        <span class="n">t</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">nanoseconds</span> <span class="o">*</span> <span class="mf">1e-9</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span>        <span class="c1"># the list holds 8 values for the 8 thrusters of the bluerov</span>
+<span class="linenos">37</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">38</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">39</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">40</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">41</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">42</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">43</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">44</span>        <span class="n">msg</span><span class="o">.</span><span class="n">control</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>        <span class="c1"># publish the message with the publisher we created during the object</span>
+<span class="linenos">47</span>        <span class="c1"># initialization</span>
+<span class="linenos">48</span>        <span class="bp">self</span><span class="o">.</span><span class="n">my_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span>
+<span class="linenos">51</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos">52</span>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="linenos">53</span>    <span class="n">node</span> <span class="o">=</span> <span class="n">MyFirstNode</span><span class="p">()</span>
+<span class="linenos">54</span>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="linenos">55</span>
+<span class="linenos">56</span>
+<span class="linenos">57</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos">58</span>    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -363,7 +377,7 @@ Or in other words: what are the topics the node wants to receive data on and wha
 <p>Again, we can use <kbd class="kbd docutils literal notranslate">Tab</kbd> to auto-complete the node name after we have started writing the first few characters.
 Start using this feature if you haven’t already!</p>
 </div>
-<div class="admonition-todo admonition" id="id2">
+<div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Continue to change stuff for ROS2 from here on!</p>
 </div>
