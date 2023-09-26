@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link href="../_static/bluerov.svg" rel="icon" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plotting &mdash; Formulas and Vehicles  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-player_2.6.1.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/asciinema-custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/asciinema-player_2.6.1.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab Workflow" href="lab_workflow.html" />
+    <link rel="prev" title="Names and Namespaces" href="ros_names_and_namespaces.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Formulas and Vehicles
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/the_robot.html">The Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../00_main_toc/tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ros_package.html">ROS Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_launch_setup.html">ROS Launch Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ros_names_and_namespaces.html">Names and Namespaces</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multiplot-configuration">Multiplot Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-subplots">Adding subplots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-a-curve">Adding a curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plotting-data-over-time">Plotting data over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axis-scale">Axis scale</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#multiplot-config-files">Multiplot Config Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recording_rosbags.html">Recording Data Using Bag Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_main_toc/final_project.html">Final Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Formulas and Vehicles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../00_main_toc/tutorials.html">Tutorials</a></li>
+      <li class="breadcrumb-item active">Plotting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/HippoCampusRobotics/fav_docs/blob/main/tutorials/plotting.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plotting">
+<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading"></a></h1>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>replace rqt_multiplot with plotjuggler.
+add also hints on how to properly plot bag files?</p>
+</div>
+<p>Plotting data is crucial for analyzing (and debugging…) your setup.
+A very simple tool is <a class="reference external" href="http://wiki.ros.org/rqt_plot">rqt_plot</a>.
+However, <code class="code docutils literal notranslate"><span class="pre">rqt_plot</span></code> is excrutiatingly annoying to use. Downsides are: you can only plot data over time and it’s very hard to configure, not ideal at all!</p>
+<p>Therefore, we highly recommend you use <a class="reference external" href="http://wiki.ros.org/rqt_multiplot">rqt_multiplot</a>.</p>
+<ol class="arabic">
+<li><p>To install Multiplot, run</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-noetic-rqt-multiplot
+</pre></div>
+</div>
+</li>
+<li><p>To tell rqt about this new plugin, run</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rqt<span class="w"> </span>--force-discover
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Now, you will be able to use the <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> plugin from the <code class="code docutils literal notranslate"><span class="pre">rqt</span></code> GUI. However, the GUI might look a bit overwhelming. If you prefer to launch your tools (<code class="code docutils literal notranslate"><span class="pre">rqt_graph</span></code>, <code class="code docutils literal notranslate"><span class="pre">rqt_topic</span></code>, …) in seperate windows, execute</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rqt_multiplot
+</pre></div>
+</div>
+<p>As the name says, <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> can show multiple plots at the same time, like subfigures.</p>
+<section id="multiplot-configuration">
+<h2>Multiplot Configuration<a class="headerlink" href="#multiplot-configuration" title="Permalink to this heading"></a></h2>
+<section id="adding-subplots">
+<h3>Adding subplots<a class="headerlink" href="#adding-subplots" title="Permalink to this heading"></a></h3>
+<p>You can add subfigures by changing the number of plots in the top left corner, as shown below. Be careful when decreasing number of subfigures, all configurations are lost when the subfigure is deleted.</p>
+<img alt="../_images/multiplot_add_subfigures.gif" src="../_images/multiplot_add_subfigures.gif" />
+</section>
+<section id="adding-a-curve">
+<h3>Adding a curve<a class="headerlink" href="#adding-a-curve" title="Permalink to this heading"></a></h3>
+<p>For adding a curve to your plot, click the little settings icon in the top right corner of the (sub)figure.</p>
+<img alt="../_images/multiplot_add_new_curve.gif" src="../_images/multiplot_add_new_curve.gif" />
+<p>When adding new curves, you might need to press play (or stop and play again) to actually start displaying the data, as shown in the gif above.</p>
+<p>You can also copy-paste curves, if you want to plot very similar data. This can be an absolute gamechanger in setting up plots 🥳!</p>
+<img alt="../_images/multiplot_copy_paste_curve.gif" src="../_images/multiplot_copy_paste_curve.gif" />
+<p>Of course, <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">C</kbd> and <kbd class="kbd docutils literal notranslate">V</kbd> also work.</p>
+</section>
+<section id="plotting-data-over-time">
+<h3>Plotting data over time<a class="headerlink" href="#plotting-data-over-time" title="Permalink to this heading"></a></h3>
+<p>When plotting data over time, you have two options. You can either use the time stamp in a message’s header, or the message receipt time, see below. We recommend always using the message receipt time, especially since not every message type includes a header. You just need to check the box as shown below.</p>
+<img alt="../_images/multiplot_timestamp_vs_receipt_time.png" src="../_images/multiplot_timestamp_vs_receipt_time.png" />
+</section>
+<section id="axis-scale">
+<h3>Axis scale<a class="headerlink" href="#axis-scale" title="Permalink to this heading"></a></h3>
+<p>You can change the axis scale to <em>relative</em> to only display messages from a certain amount of time (e.g. the last 100 seconds: -100 to 0).
+Similarly, you can set absolute limits for your axes.</p>
+<img alt="../_images/multiplot_axis_scale.png" src="../_images/multiplot_axis_scale.png" />
+<img alt="../_images/multiplot_change_axis.gif" src="../_images/multiplot_change_axis.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I have also changed the <em>pen width</em> to 3 in this gif here. That’s a good pen width so that you can see the lines on the big TV screen in our lab. We like to be able to see what you’re doing, too, and we’re all blind (and hate botchy setups)…</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Keep things neat and give plots and curves proper names!</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Theoretically, <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> offers the option of exporting plots. Feel free to use this for your own documentation/notes/research diary. However, we do not want to see these exported plots in your submitted papers. (Correctly scaled) matlab plots or plots directly from Tikz are so much more readable! Also more aesthetically pleasing…</p>
+</div>
+</section>
+</section>
+<section id="multiplot-config-files">
+<h2>Multiplot Config Files<a class="headerlink" href="#multiplot-config-files" title="Permalink to this heading"></a></h2>
+<p>Even though <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> is a lot nicer to configure than <code class="code docutils literal notranslate"><span class="pre">rqt_plot</span></code>, it still takes time. Therefore, you <em>really</em> should save your configuration.</p>
+<img alt="../_images/multiplot_save_config.gif" src="../_images/multiplot_save_config.gif" />
+<p>As always, give your config files meaningful names. We recommend preparing one for the lab sessions, too. This will save a lot of precious time!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ros_names_and_namespaces.html" class="btn btn-neutral float-left" title="Names and Namespaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lab_workflow.html" class="btn btn-neutral float-right" title="Lab Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Other Versions</span>
+    v: main
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Branches</dt>
+      <dd><a href="plotting.html">main</a></dd>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

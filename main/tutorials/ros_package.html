@@ -65,7 +65,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ros_launch_setup.html">ROS Launch Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ros_names_and_namespaces.html">Names and Namespaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rqt_multiplot.html">RQt Multiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html">Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab_workflow.html">Lab Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recording_rosbags.html">Recording Data Using Bag Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dynamic_reconfigure.html">Dynamic Reconfigure</a></li>
@@ -154,8 +154,8 @@ But if you like to know more about packages, you can read the article about pack
 Almost minimal examples are presented in the following.
 Take a look at the highlighted lines.
 Replace the project’s name with your own package name.</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">CMakeLists.txt</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">CMakeLists.txt</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.5</span><span class="p">)</span>
 <span class="hll"><span class="linenos"> 2</span><span class="nb">project</span><span class="p">(</span><span class="s">awesome_package</span><span class="p">)</span>
 </span><span class="linenos"> 3</span><span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
@@ -170,8 +170,8 @@ Replace the project’s name with your own package name.</p>
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">package.xml</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">package.xml</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="linenos"> 2</span><span class="cp">&lt;?xml-model href=&quot;http://download.ros.org/schema/package_format3.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;</span>
 <span class="linenos"> 3</span><span class="nt">&lt;package</span><span class="w"> </span><span class="na">format=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
@@ -403,11 +403,7 @@ I mean, would you claim to be able to see that the echoed data is actually the o
 So some proper plotting tool might come in handy here.</p>
 <p>We can use <code class="code docutils literal notranslate"><span class="pre">plotjuggler</span></code> to visualize the data. The following screenshot shows the thruster setpoints for the first two motors.</p>
 <img alt="../_images/plotjuggler_first_node.png" src="../_images/plotjuggler_first_node.png" />
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>replace the references to rqt_multiplot with references to plotjuggler</p>
-</div>
-<p>General information to <code class="code docutils literal notranslate"><span class="pre">rqt_multiplot</span></code> can be found in the <a class="reference external" href="http://wiki.ros.org/rqt_multiplot">ROS Wiki</a> and some step-by-step instructions in the section <a class="reference internal" href="rqt_multiplot.html#rqt-multiplot"><span class="std std-ref">RQt Multiplot</span></a>.</p>
+<p>General information to <code class="code docutils literal notranslate"><span class="pre">plotjuggler</span></code> can be found on the <a class="reference external" href="https://facontidavide.github.io/PlotJuggler/visualization_howto/index.html">GitHub Page</a> and some step-by-step instructions in the section <a class="reference internal" href="plotting.html#plotting"><span class="std std-ref">Plotting</span></a>.</p>
 </section>
 </section>
 
