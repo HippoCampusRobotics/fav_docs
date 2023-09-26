@@ -267,7 +267,8 @@ For our first node we add the highlighted line to the :file:`CMakeLists.txt`.
      DESTINATION lib/${PROJECT_NAME}
    )
 
-**Every** time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`catkin build` and to be super save you might also want to resource your workspace setup with :code:`. ~/.bashrc`.
+**Every** time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`build_ros` and to be super save you might also want to resource your workspace setup with :code:`. ~/.bashrc`.
+The latter is only required if we added a new node.
 
 If you want to run a Python program, normally you would use a command like :code:`python3 /path/to/your/file/python_file.py`.
 This would work for our node, too.
@@ -288,7 +289,7 @@ We created a package, but we haven't built our workspace since we modified :code
 
    build_ros
 
-.. note:: Every time we create a new package, or create a new node in an existing package, we need to build our Catkin workspace with :code:`build_ros` and apply the updated package paths with :code:`. ~/.bashrc`. 
+.. note:: Every time we create a new package, or create a new node in an existing package, we need to build our workspace with :code:`build_ros` and apply the updated package paths with :code:`. ~/.bashrc`. 
 
 Now, we should be ready to finally run our code
 
@@ -307,45 +308,55 @@ We can use command line tools :code:`ros2 node` and :code:`ros2 topic` to get so
 With :code:`ros2 node info /name/of/our/node` we can get various information on our node. For example what publications and what subscriptions it has.
 Or in other words: what are the topics the node wants to receive data on and what are the topics it ouputs data on.
 
-.. .. asciinema:: /res/asciinema/rosnode_info.cast
-..    :speed: 2
-..    :start-at: 1
-..    :idle-time-limit: 1
-..    :poster: npt:0:01
+To get a list of all nodes, we run
 
-.. hint::
-   Again, we can use :kbd:`Tab` to auto-complete the node name after we have started writing the first few characters.
-   Start using this feature if you haven't already! 
+.. code-block:: sh
 
-.. todo:: Continue to change stuff for ROS2 from here on!
+   ros2 node list
 
-We see the publications :file:`/rosout` and :file:`/thruster_setpoint`. Every node publishes to :file:`/rosout` for logging, so we are not interested in it for now. But the node publishes :file:`/thruster_setpoint` with the message type :file:`fav_msgs/ThrusterSetpoint` because we told it to do so. Rember these lines from the :file:`setpoint_publisher.py`?
+which in our case should yield::
 
-.. code-block:: python
-   :lineno-start: 9
-   :linenos:
+   /my_first_node
 
-      rospy.init_node("setpoint_publisher")
-      self.setpoint_pub = rospy.Publisher("thruster_setpoint",
-                                          ThrusterSetpoint,
-                                          queue_size=1)
+To get more information on this node, we run
 
-Line 9 tells ROS to create a node with the name :code:`"setpoint_publisher"` and in line 10 we create a publisher with the topic name :code:`"thruster_setpoint"` and the message type :code:`ThrusterSetpoint`.
+.. code-block:: sh
 
-To see what messages the node is actually publishing, we use :code:`rostopic echo /the/topic/name/to/echo`.
+   ros2 node info /my_first_node
 
-.. asciinema:: /res/asciinema/rostopic_echo.cast
+which in turn yields
+
+.. asciinema:: /res/asciinema/ros2_node_info.cast
    :speed: 2
    :start-at: 1
    :idle-time-limit: 1
    :poster: npt:0:01
 
-.. note:: I added :code:`-n 1` at the end of the command to echo only a single message. If you omit this argument, :code:`rostopic echo` will continue to print messages until you stop it with :kbd:`Ctrl` + :kbd:`C`. 
+.. hint::
+   Again, we can use :kbd:`Tab` to auto-complete the node name after we have started writing the first few characters.
+   Start using this feature if you haven't already! 
 
-These two commands are great to get at least some insights on what is going on during the execution of our node. But most of us will find it rather cumbersome to evaluate the echoed data in realtime. I mean, would you claim to be able to see that the echoed data is actually the output of a sine function? So some proper plotting tool might come in handy here.
+The first two publishers are internally created by ROS2. We do not care about them for now. The last publisher is the one we have created with the program that we have written.
 
-We can use :code:`rqt_multiplot` to visualize the data. The following screenshot shows the thruster setpoints for the first two motors.
+To see what messages the node is actually publishing, we use :code:`ros2 topic echo /the/topic/name/to/echo`.
 
-.. image:: /res/images/rqt_multiplot.png
+.. asciinema:: /res/asciinema/ros2_topic_echo.cast
+   :speed: 2
+   :start-at: 1
+   :idle-time-limit: 1
+   :poster: npt:0:01
+
+.. note:: We ad :code:`--once` at the end of the command to echo only a single message. If you omit this argument, :code:`ros2 topic echo` will continue to print messages until you stop it with :kbd:`Ctrl` + :kbd:`C`. 
+
+These two commands are great to get at least some insights on what is going on during the execution of our node.
+But most of us will find it rather cumbersome to evaluate the echoed data in realtime.
+I mean, would you claim to be able to see that the echoed data is actually the output of a sine function?
+So some proper plotting tool might come in handy here.
+
+We can use :code:`plotjuggler` to visualize the data. The following screenshot shows the thruster setpoints for the first two motors.
+
+.. image:: /res/images/plotjuggler_first_node.png
+
+.. todo:: replace the references to rqt_multiplot with references to plotjuggler
 
 General information to :code:`rqt_multiplot` can be found in the `ROS Wiki <http://wiki.ros.org/rqt_multiplot>`__ and some step-by-step instructions in the section :ref:`tutorials/rqt_multiplot:RQt Multiplot`.
