@@ -168,7 +168,7 @@ To do so, enter the following command in your terminal (for example the integrat
 
    chmod +x ~/fav/ros2/src/awesome_package/nodes/setpoint_publisher.py
 
-.. hint:: Just in case the integrated terminal is not opened: You can open it with :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`\``.
+.. hint:: Just in case the integrated terminal is not open: You can open it with :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`\``.
 
 The general syntax is :code:`chmod +x PATH_TO_THE_FILE`.
 
