@@ -19,14 +19,6 @@ The `ROS documentation <https://docs.ros.org/en/humble/Installation/Ubuntu-Insta
 Preparation
 ===========
 
-#. Make sure you have a UTF-8 supported locale with
-   
-   .. code-block:: sh
-      
-      locale
-   
-   If not, refer to the `ROS documentation <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html#set-locale>`__.
-
 #. Enable universe repository
    
    .. code-block:: sh
