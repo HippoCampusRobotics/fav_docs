@@ -1,5 +1,9 @@
-RQt Multiplot
-#############
+Plotting
+########
+
+.. todo::
+   replace rqt_multiplot with plotjuggler.
+   add also hints on how to properly plot bag files?
 
 Plotting data is crucial for analyzing (and debugging...) your setup.
 A very simple tool is `rqt_plot <http://wiki.ros.org/rqt_plot>`_. 

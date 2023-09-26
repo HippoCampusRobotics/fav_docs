@@ -357,6 +357,4 @@ We can use :code:`plotjuggler` to visualize the data. The following screenshot s
 
 .. image:: /res/images/plotjuggler_first_node.png
 
-.. todo:: replace the references to rqt_multiplot with references to plotjuggler
-
-General information to :code:`rqt_multiplot` can be found in the `ROS Wiki <http://wiki.ros.org/rqt_multiplot>`__ and some step-by-step instructions in the section :ref:`tutorials/rqt_multiplot:RQt Multiplot`.
+General information to :code:`plotjuggler` can be found on the `GitHub Page <https://facontidavide.github.io/PlotJuggler/visualization_howto/index.html>`__ and some step-by-step instructions in the section :ref:`tutorials/plotting:Plotting`.
