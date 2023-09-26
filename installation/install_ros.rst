@@ -16,6 +16,8 @@ The `ROS documentation <https://docs.ros.org/en/humble/Installation/Ubuntu-Insta
 
 .. hint:: We use copy-buttons, i.e. a copy-button appears when you hover over a code-block. This makes copy-pasting easier than manually selecting the code-block.
 
+   .. image:: /res/images/copy-button.png
+
 Preparation
 ===========
 
