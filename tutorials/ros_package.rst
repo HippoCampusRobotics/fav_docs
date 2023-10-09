@@ -112,7 +112,7 @@ Replace the project's name with your own package name.
      </export>
    </package>
 
-That's it. You have just created your first catkin package.
+That's it. You have just created your first package.
 Your package structure should look similar to::
 
    ~/fav/ros2/src
