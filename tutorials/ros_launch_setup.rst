@@ -2,7 +2,6 @@ ROS Launch Setup
 ################
 
 .. attention::
-
    The following tutorial **is not meant as a step-by-step solution for the first assignment.
    **These are just **toy examples** to demonstrate how to use ROS and interact with the simulated BlueROV *in an easy to follow manner*.
    Therefore, we do not claim that these code snippets are complete and we use some funny names at times.
