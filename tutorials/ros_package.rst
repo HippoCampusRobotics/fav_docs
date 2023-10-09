@@ -17,7 +17,8 @@ In this section you will:
 Create A Package
 ================
 
-If you have completed all the installation instructions in :ref:`installation/install_ros:Install ROS`, you have already created a Catkin workspace at :file:`~/fav/catkin_ws`. The workspace contains several directories::
+If you have completed all the installation instructions in :ref:`installation/install_ros:Install ROS`, you have already created a Catkin workspace at :file:`~/fav/ros2`.
+The workspace contains several directories::
 
    ~/fav/ros2
    ├── build
