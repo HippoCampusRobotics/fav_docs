@@ -13,7 +13,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-import sphinx_rtd_theme
+import sphinx_rtd_theme  # noqa: F401
 
 # -- Project information -----------------------------------------------------
 
@@ -37,7 +37,6 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx_copybutton",
     "sphinxcontrib.jquery",
-    "sphinx_multiversion",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -83,6 +82,3 @@ autosectionlabel_prefix_document = True
 favicons = [
     "bluerov.svg",
 ]
-
-# ignore tags for multiversion
-smv_tag_whitelist = 'None'
