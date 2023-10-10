@@ -21,7 +21,7 @@ Our class is based on the challenge-based-learning concept. This means you will 
 
 .. todo:: Following paragraph needs to be adapted to bachelor class
 
-While the first half of the term will consist of **keynote lectures** and **assignments**, the second half of the term is dedicated to the final group projects. In these projects, your group will identify interesting robotics problems of your own choice (e.g. pollution monitoring in harbors) and investigate the related theory and challenges. The lectures are supposed to give you some ideas and starting points.
+While the first half of the term will consist of **keynote lectures** and **assignments**, the second half of the term is dedicated to the final group projects, where you will be given a challenge to solve. The lectures are supposed to give you some ideas and starting points.
 Finally, you will develop and propose solution concepts based on the topics covered.
 
 .. figure:: /res/images/lab_experiment_2.jpg
@@ -44,13 +44,13 @@ Format and Schedule
 .. todo:: verify this is still correct. Still hybrid? Still this schedule?
 
 The class will be held in a hybrid format including Zoom and in-person pitch lectures as well as practical lab experiments.
-Pitch lectures in the first half of the course will be held on Tuesday afternoons at 16:15 until approximately 18:15.
+Pitch lectures in the first half of the course will be held on Fridays from 11:30 to 13:00.
 
 
 Registration
 ############
 
-Students who are interested in participating in this class register via StudIP (TUHH-Students). 
+Students who are interested in participating in this class register via StudIP (TUHH-Students). TODO Link.
 
 .. note::
 
