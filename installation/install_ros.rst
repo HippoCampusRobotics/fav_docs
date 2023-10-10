@@ -1,7 +1,7 @@
 Install ROS
 ###########
 
-The `ROS documentation <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>`_ provides a complete installation guide. The following instructions are a summary of their article.
+The `ROS documentation <https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html>`_ provides a complete installation guide. The following instructions are a summary of their article.
 
 .. attention:: 
 
@@ -60,7 +60,7 @@ Installation
 
    .. code-block:: sh
 
-      sudo apt install ros-humble-desktop-full
+      sudo apt install ros-iron-desktop-full
 
 #. Install build dependencies
 
@@ -78,7 +78,7 @@ Installation
 
    .. code-block:: sh
 
-      echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
+      echo 'source /opt/ros/iron/setup.bash' >> ~/.bashrc
 
 #. Apply the changes to your :file:`.bashrc`
 

@@ -13,7 +13,7 @@ Concepts
 
 In this class, you will get in touch with the whole robotics pipeline. Starting from sensing, over planning to control and actuation, you will be developing suitable algorithms to tackle chosen challenges.
 
-We will be using the `ROS 2 <https://docs.ros.org/en/humble/index.html/>`__  framework. To evaluate the algorithms and solutions before deploying the real robot, we rely on :code:`gazebo` as simulation environment, where you can interact with the vehicle just as you would with a real vehicle.
+We will be using the `ROS 2 <https://docs.ros.org/en/iron/index.html/>`__  framework. To evaluate the algorithms and solutions before deploying the real robot, we rely on :code:`gazebo` as simulation environment, where you can interact with the vehicle just as you would with a real vehicle.
 This enables using the exact same code for both simulation and real world experiment.
 
 .. raw:: html

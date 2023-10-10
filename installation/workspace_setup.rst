@@ -56,7 +56,7 @@ Create an alias for the build command for convenience
 
 .. code-block:: sh
 
-   echo "alias build_underlay=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color bash -l -c 'source /opt/ros/humble/setup.bash && cd \$HOME/fav/ros2_underlay && colcon build'\"" >> ~/.bashrc
+   echo "alias build_underlay=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color bash -l -c 'source /opt/ros/iron/setup.bash && cd \$HOME/fav/ros2_underlay && colcon build'\"" >> ~/.bashrc
    source ~/.bashrc
 
 Make sure dependencies are installed
@@ -64,7 +64,7 @@ Make sure dependencies are installed
 .. code-block:: sh
 
    cd ~/fav/ros2_underlay \
-   && source /opt/ros/humble/setup.bash \
+   && source /opt/ros/iron/setup.bash \
    && rosdep install --from-paths src -y --ignore-src
 
 Build the workspace (this may take some time!):
@@ -131,9 +131,9 @@ Your :file:`~/.bashrc` should look like this this for the last lines:
 
 
    alias build_ros="env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source $HOME/fav/ros2_underlay/install/setup.bash && cd $HOME/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'"
-   alias build_underlay="env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/humble/setup.bash && cd $HOME/fav/ros2_underlay && colcon build'"
+   alias build_underlay="env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/iron/setup.bash && cd $HOME/fav/ros2_underlay && colcon build'"
 
-   source /opt/ros/humble/setup.bash
+   source /opt/ros/iron/setup.bash
    source $HOME/fav/ros2_underlay/install/setup.bash
    source $HOME/fav/ros2/install/local_setup.bash
 
