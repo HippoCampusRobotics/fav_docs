@@ -26,9 +26,7 @@
         <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Concepts" href="concepts.html" />
-    <link rel="prev" title="Welcome to Formulas and Vehicles’s documentation!" href="index.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,22 +49,17 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Class Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-information">General Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#format-and-schedule">Format and Schedule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#registration">Registration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="the_robot.html">The Robot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="depth_estimator_example.html">Depth-Estimator Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">ROS Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="final_project.html">Final Project</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/overview.html">Class Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/installation.html">Installation and Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/the_robot.html">The Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/depth_estimator_example.html">Depth-Estimator Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/resources.html">ROS Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/assignment_depth_control.html">Assignment 1 - Depth Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/assignment_loc_and_control.html">Assignment 2 - Localization and Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_main_toc/final_project.html">Final Project</a></li>
 </ul>
 
         </div>
@@ -95,26 +88,21 @@
              
   <section id="class-overview">
 <h1>Class Overview<a class="headerlink" href="#class-overview" title="Permalink to this heading"></a></h1>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>We will host a <strong>preliminary info session</strong> on <strong>Tuesday 18.10.2022</strong> starting at 16:15 in Room M-0.571. We strongly encourage joining us in-person.
-However, it will be streamed additionally via Zoom <a class="reference external" href="https://tuhh.zoom.us/j/89259785937?pwd=c213SGZ6dDlaQ2xYd1JsNGIrVHJDUT09">https://tuhh.zoom.us/j/89259785937?pwd=c213SGZ6dDlaQ2xYd1JsNGIrVHJDUT09</a> with Meeting-ID: 892 5978 5937 and Code: 2022.
-We are looking forward to meeting you! :)</p>
-</div>
 <section id="general-information">
 <h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this heading"></a></h2>
-<p>In this class, we explore the exciting field of <strong>mobile robotics using the example of underwater robots</strong>. However, everything you will learn in this class will be transferable to any other kind of mobile robot!</p>
-<p>During the class, we will get in touch with the whole robotics pipeline, starting from <strong>sensing</strong> over <strong>perception</strong>, to <strong>planning</strong>, and <strong>control and actuation</strong>. An important focus will lie on gaining <strong>hands-on robotics experience</strong> using real underwater robots in simulation and experiment.
-You will learn about state-of-the-art robotic tools such as ROS/Gazebo and their usage for simulation and experiments.</p>
+<p>In this class, we explore the exciting field of <strong>mobile robotics using the example of underwater robots</strong>.
+However, everything you will learn in this class will be transferable to any other kind of mobile robot!</p>
+<p>During the class, we will get in touch with the whole robotics pipeline, starting from <strong>sensing</strong> over <strong>perception</strong>, to <strong>planning</strong>, and <strong>control and actuation</strong>.
+An important focus will lie on gaining <strong>hands-on robotics experience</strong> using real underwater robots in simulation and experiment.
+You will learn about state-of-the-art robotic tools such as ROS2/Gazebo and their usage for simulation and experiments.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/lab_experiments_both.png"><img alt="_images/lab_experiments_both.png" src="_images/lab_experiments_both.png" style="width: 80%;" /></a>
 <figcaption>
 <p><span class="caption-text">Underwater Robotics Testbed at the Institute of Mechanics and Ocean Engineering.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<p>Our class is based on the challenge-based-learning concept. This means you will explore the challenges in mobile robotics on your own during <strong>several guided assignments</strong> and a <strong>final group project</strong>.</p>
-<p>While the first half of the term will consist of <strong>keynote lectures</strong> and <strong>assignments</strong>, the second half of the term is dedicated to the final group projects. In these projects, your group will identify interesting robotics problems of your own choice (e.g. pollution monitoring in harbors) and investigate the related theory and challenges. The lectures are supposed to give you some ideas and starting points.
-Finally, you will develop and propose solution concepts based on the topics covered.</p>
+<p>Our class is based on the challenge-based-learning concept.
+This means you will explore the challenges in mobile robotics on your own during <strong>several guided assignments</strong> and a <strong>final group project</strong>.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/lab_experiment_2.jpg"><img alt="_images/lab_experiment_2.jpg" src="_images/lab_experiment_2.jpg" style="width: 50%;" /></a>
 <figcaption>
@@ -125,15 +113,16 @@ Finally, you will develop and propose solution concepts based on the topics cove
 </section>
 <section id="format-and-schedule">
 <h2>Format and Schedule<a class="headerlink" href="#format-and-schedule" title="Permalink to this heading"></a></h2>
-<p>The class will be held in a hybrid format including Zoom and in-person pitch lectures as well as practical lab experiments.
-Pitch lectures in the first half of the course will be held on Tuesday afternoons at 16:15 until approximately 18:15.</p>
+<p>There will be in-person pitch lectures as well as practical lab experiments.
+Lectures will be held on friday afternoons at 11:30.</p>
 </section>
 <section id="registration">
 <h2>Registration<a class="headerlink" href="#registration" title="Permalink to this heading"></a></h2>
 <p>Students who are interested in participating in this class register via StudIP (TUHH-Students).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Unfortunately, we have to limit the number of spots in this class. In case the number of registered students exceeds our capacity, we will go through a selection. The final acceptance will be sent out w/c Oct 24th.</p>
+<p>Unfortunately, we have to limit the number of spots in this class.
+In case the number of registered students exceeds our capacity, we will go through a selection.</p>
 </div>
 </section>
 </section>
@@ -141,10 +130,7 @@ Pitch lectures in the first half of the course will be held on Tuesday afternoon
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Formulas and Vehicles’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="concepts.html" class="btn btn-neutral float-right" title="Concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
