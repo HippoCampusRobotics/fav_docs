@@ -1,99 +1,56 @@
 Start The Simulation
 ####################
 
-.. todo:: Needs overhaul for ROS2
-
 Now that we have everything prepared, i.e.:
 
-* :ref:`Installation of ROS<installation/install_ros:Install ROS>` 
-
-.. * :ref:`Installation of PX4 <installation/install_firmware:Install Firmware>`
+* :ref:`installation/install_ros:Install ROS`
+* :ref:`installation/start_the_simulation:Start The Simulation`
 
 we can eventually start to work with ROS and the Gazebo simulator.
 
-At the time being, there are 5 launchfiles that come with the :file:`fav_sim` package.
-
 .. code-block:: sh
-   :emphasize-lines: 7, 11-15
+   :emphasize-lines: 5-6
 
-   /home/YOUR_USER_NAME/fav/catkin_ws/src/fav
-   ├── fav_gazebo_plugins
-   │   ├── include
-   │   └── src
-   ├── fav_msgs
-   │   └── msg
-   └── fav_sim
-      ├── config
-      ├── include
-      ├── launch
-      │   ├── gazebo_apriltag_tank_world.launch
-      │   ├── gazebo_empty_world.launch
-      │   ├── keyboard_control.launch
-      │   ├── simulation.launch
-      │   └── spawn_vehicle.launch
-      ├── models
-      ├── nodes
-      ├── res
-      ├── src
-      └── worlds
+   .
+   ├── fav
+   │   ├── fav
+   │   ├── launch
+   │   │   ├── simulation.launch.py
+   │   │   └── simulation_with_keyboard_control.launch.py
+   │   └── keyboard_control
+   ├── hippo_core
+   │   └── ...
+   └── hippo_simulation
+       └── ...
 
 
+simulation.launch.py
+   Probably you recognize this one.
+   We started this launch file at the end of our workspace setup to verify that everything was working correctly.
 
-gazebo_empty_world.launch
-   Launches gazebo with the basic world file in :file:`fav_sim/worlds/base.world`.
+simulation_with_keyboard_control.launch.py
+   Includes :file:`simulation.launch.py` as child launch file and additionally starts a keyboard control node to remotely control the BlueROV.
 
-gazebo_apriltag_tank_world.launch
-   Equivalent to :file:`gazebo_empty_world.launch` but also includes a tank with an AprilTag pattern on the ground.
-
-spawn_vehicle.launch
-   Spawns the BlueROV model. The model files are in :file:`fav_sim/models/bluerov`. This launch setup requires :code:`gazebo` to be already running. Otherwise no vehicle can be spawned.
-
-simulation.launch
-   Includes :file:`gazebo_apriltag_tank_world.launch` and :file:`spawn_vehicle.launch`. So instead of starting the others separately, it is possible to just launch this launch file.
-
-keyboard_control.launch
-   Starts a node to control the BlueROV via keyboard input. This launch setup requires :code:`gazebo` to be running and an already spawned BlueROV vehicle. Otherwise no vehicle can be controlled.
-
-To test that everything is set up correctly, open two terminals (for example by using the integrated terminal in VS Code and hitting the **split terminal** button.
-
-In the first terminal, enter:
+Did we say, we can remotely control the BlueROV in the simulation? Let's try it!
 
 .. code-block:: sh
 
-   roslaunch fav_sim gazebo_apriltag_tank_world.launch
+   ros2 launch fav simulation_with_keyboard_control.launch.py vehicle_name:=bluerov00
 
-This should launch the simulation environment (gazebo).
-
-In a second terminal:
-
-.. code-block:: sh
-
-   roslaunch fav_sim spawn_vehicle.launch
-
-This will spawn the BlueROV robot model.
-
-.. note:: In some rare cases, the Gazebo window will stay black. If this is the case, quit by hitting :kbd:`Ctrl` + :kbd:`C` in the terminal in which you started Gazebo and try again.
-
-Lastly, run in another terminal:
-
-.. code-block:: sh
-
-   roslaunch fav_sim keyboard_control.launch
-
-This creates a small window for keyboard control.
+Two windows should be created. One is the familiar simulation environment. The second window is for the keyboard control.
 
 .. image:: /res/images/keyboard_control_qt.png
-
 
 Make sure you have the keyboard control window in the foreground so the keyboard inputs get captured.
 
 You can use the sliders to scale the thruster output for the different actuation channels to your liking.
 
-Useful keys are :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D`, :kbd:`Left`, :kbd:`Right`, :kbd:`Up`, :kbd:`Down`. Use them and find out what they are doing |partying_face|.
+Useful keys are :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D`, :kbd:`J`, :kbd:`L`, :kbd:`I`, :kbd:`K`.
+Use them and find out what they are doing |partying_face|.
 
-Stop everything by hitting :kbd:`Ctrl` + :kbd:`C` in all terminals in which you have started launch setups.
+Stop everything by hitting :kbd:`Ctrl` + :kbd:`C` in the terminal in which you launched everything.
+Alternatively, just close one of the windows which should result in everything shutting down as well.
 
 .. note:: The keyboard control window reads your keyboard input. If the window is not the active one, the vehicle will not react to your input!
-
 
 .. hint:: For assignment 0, it is not required to read the further sections. But if you like to continue, feel free to do so.
