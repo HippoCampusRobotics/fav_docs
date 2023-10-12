@@ -22,6 +22,11 @@ ros2
 Populate ros2_underlay
 ======================
 
+.. todo::
+   Those packages are actually not rquired.
+      * px4_msgs can be installed via package.
+      * The pre-compiled package of plotjuggler seems to work wihout problems since iron.
+
 px4_msgs
 ********
 
