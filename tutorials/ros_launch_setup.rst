@@ -7,6 +7,146 @@ ROS Launch Setup
    Therefore, we do not claim that these code snippets are complete and we use some funny names at times.
    Please do **not** copy-paste them. 
 
+Prerequisites
+=============
+
+We assume, we have the package created in the previous tutorial.
+Hence, the package structure should resemble this
+
+.. code-block:: sh
+
+   ~/fav/ros2/src
+   ├── nodes
+   │   └── setpoint_publisher.py
+   ├── CMakeLists.txt
+   └── package.xml
+
+Let's Start
+===========
+
+We create a new directory called :file:`launch`
+
+.. code-block:: sh
+
+   cd ~/fav/ros2/src/awesome_package
+   mkdir launch
+
+and create a launch file
+
+.. code-block:: sh
+
+   touch launch/setpoint.launch.py
+
+and start with a very minimal version of a launch file
+
+.. code-block:: python
+   :linenos:
+
+   from launch import LaunchDescription
+
+   def generate_launch_description() -> LaunchDescription:
+      launch_description = LaunchDescription()
+      return launch_description
+
+Since now we a :file:`launch` directory, we have to tell our build system to *install* it.
+
+Open :file:`CMakeLists.txt` and add the following lines right before the :code:`ament_package()` call.
+
+.. code-block:: cmake
+
+   install(
+     DIRECTORY launch
+     DESTINATION share/${PROJECT_NAME}
+   )
+
+These give the build system instructions to install all the directories following ``DIRECTORY``.
+
+.. note::
+   We only have to add this once.
+   Even if we add more launch files.
+   The whole directory gets installed by this instruction.
+
+If we try to run the launch file with
+
+.. code-block:: sh
+
+   ros2 launch awesome_package setpoint.launch.py
+
+we get an error message, that the launch file could not be found.
+No reason to trust anyone blindly.
+Try it out yourself!
+
+What did we forget?
+We did not rebuild our workspace.
+The instructions in :file:`CMakeLists.txt` are only executed when we build the workspace with
+
+.. code-block:: sh
+
+   build_ros
+
+Now, try it again.
+The launch command above should succeed. 
+Since it only consists of boilerplate code, not much will happen.
+Time to add some functionality.
+
+Launch a Node
+=============
+
+In the previous tutorial we have started our awesome :file:`setpoint_publisher.py` via ``ros2 run``.
+Let's see how we would accomplish this with our launch file.
+
+.. code-block:: python
+   :linenos:
+   :caption: setpoint.launch.py
+
+   from launch_ros.actions import Node
+   from launch import LaunchDescription
+
+
+   def generate_launch_description() -> LaunchDescription:
+       launch_description = LaunchDescription()
+
+       node = Node(executable='setpoint_publisher.py', package='awesome_package')
+       launch_description.add_action(node)
+
+       return launch_description
+
+.. note::
+   We do not have to rebuild anything. Just make sure the file has been saved.
+   Rebuilding is only required when we add new files.
+
+We again start the launch file
+
+.. code-block:: sh
+
+   ros2 launch awesome_package setpoint.launch.py
+
+and see the following output
+
+.. code-block:: sh
+
+   [INFO] [launch]: All log files can be found ...
+   [INFO] [launch]: Default logging verbosity is set to INFO
+   [INFO] [setpoint_publisher.py-1]: process started with pid [4991]
+    
+We observe, our node has been started.
+And this time the execution does not terminate by itself.
+Stop everything by hitting :kbd:`Ctrl` + :kbd:`C`.
+
+What comes next? 
+================
+A lot!
+
+* pushing nodes into namespaces
+* using launch arguments
+* including other launch files
+
+The python based launch workflow in ROS2 may appear quite complex and cumbersome if launch files get more complicated than our previous toy example.
+Do not feel discouraged by this and do not worry, if you do not manage to understand everything immediately.
+You will get used to to it, step by step each time you work with it.
+
+.. todo:: from here on follows the non-migrated out-dated ROS1 documentation!
+
 Before We Start
 ===============
 
