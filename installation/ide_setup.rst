@@ -1,6 +1,8 @@
 IDE Setup
 #########
 
+.. todo:: Update this for ROS2! This is outdated.
+
 For this class we recommend Visual Studio Code. Of course, you can use any IDE you like and that works for you.
 
 Installation
