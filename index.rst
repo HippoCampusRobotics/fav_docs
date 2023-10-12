@@ -20,11 +20,7 @@ Welcome to Formulas and Vehicles's documentation!
    00_main_toc/installation
    00_main_toc/the_robot
    00_main_toc/tutorials
-   00_main_toc/depth_estimator_example
    00_main_toc/resources
-   00_main_toc/assignment_depth_control
-   00_main_toc/assignment_loc_and_control
-   00_main_toc/final_project
 
 
 Indices and tables
