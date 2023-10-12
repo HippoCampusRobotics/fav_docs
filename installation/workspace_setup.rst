@@ -90,7 +90,8 @@ Populate ros2
 
    cd ~/fav/ros2/src \
    && git clone --recursive https://github.com/HippoCampusRobotics/hippo_core.git \
-   && git clone https://github.com/HippoCampusRobotics/hippo_simulation.git
+   && git clone https://github.com/HippoCampusRobotics/hippo_simulation.git \
+   && git clone https://github.com/FormulasAndVehicles/fav.git
 
 Build ros2
 ==========
@@ -140,5 +141,14 @@ Your :file:`~/.bashrc` should look like this this for the last lines:
 Final Check
 ===========
 
-.. todo:: Insert something like :code:`ros2 launch hippo_sim top_hippocampus_complete.launch.py fake_state_estimation:=true` here?
+Are we sure, everything is prepared correctly? Let's check it!
 
+.. code-block:: sh
+
+   ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
+
+If a window similar to the following opens, we are on the right track
+
+.. image:: /res/images/gazebo_test.png
+
+If things do not work out as you hoped, please read the terminal output carefully and check for errors. If you cannot figure out the problem yourself, send a copy of the complete output to your favourite research associate. Preferably via Slack. And use the code-block function there (:kbd:`Ctrl` + :kbd:`Alt` + :kbd:`Shift` + :kbd:`C`). This really helps us to help you.
