@@ -15,7 +15,7 @@ Hence, the package structure should resemble this
 
 .. code-block:: sh
 
-   ~/fav/ros2/src
+   ~/fav/ros2/src/awesome_package
    ├── nodes
    │   └── setpoint_publisher.py
    ├── CMakeLists.txt
