@@ -145,6 +145,100 @@ The python based launch workflow in ROS2 may appear quite complex and cumbersome
 Do not feel discouraged by this and do not worry, if you do not manage to understand everything immediately.
 You will get used to to it, step by step each time you work with it.
 
+So, why are we using lanch files, you might ask.
+Because it greatly simplifies launching our setups.
+Write the launch file once and profit the many times we start any setup.
+Trust me, you will start things **many** times.
+
+Pushing Nodes into Namespaces
+=============================
+
+Why do we care about namespaces?
+We want to avoid topic name collisions. 
+Just imagine we have more than one node publishing a debug topic calling it ``debug``.
+Or what about having multiple robots?
+We can easly imagine operating two BlueROVs at the same time.
+How can we distinguish between topics by the first and the second robot?
+Having different source code with manually changed topic names for both robots? 
+Does not sound like a way anyone would like to go.
+ROS namespaces come to the rescue.
+Just pushing nodes to namespaces might avoid all these problems.
+
+We have a great overview on the namespace topic in :ref:`tutorials/ros_names_and_namespaces:Names and Namespaces`.
+What we recommend is as a guideline:
+
+* Use namespaces where appropriate (in the course of this lecture most likely **everywhere**).
+* Never use global topic names if you do not have a specific reason to do so.
+* yeah, that's actually it...
+
+Let's illustrate that with the help of our :file:`setpoint_publisher.py` we created in the previous section.
+We created the publisher with
+
+.. code-block:: python
+
+   self.create_publisher(ActuatorControls, 'thruster_controls', 1)
+
+Topic names starting with ``/`` are global.
+Hence, the topic stays always exactly what we defined, no matter what the namespaces are the node is in or what the node name is.
+|br|
+"*But dude, we do not have a leading* ``/``."
+|br|
+True that. Thus, we have specified a relative topic.
+So every namespace our node is in will be prepended to the actually resolved topic name.
+We can quickly see this by pushing our node to different namespaces and check the resulting topic name with ``ros2 topic list``.
+
+.. tabs::
+
+   .. tab:: Without Namespace
+      
+      .. code-block:: sh
+
+         ros2 run awesome_package setpoint_publisher.py
+
+      ``ros2 topic list`` will show the topic name :file:`/thruster_controls`.
+
+   .. tab:: With Namespace
+
+      .. code-block:: sh
+
+         ros2 run awesome_package setpoint_publisher.py --ros-args -r __ns:=/my_namespace
+
+      ``ros2 topic list`` will show the topic name :file:`/my_namespace/thruster_controls`.
+      You can also try others namespaces if you like.
+      Just note that namespaces have to start with a leading ``/``.
+
+"*But didn't we want do this inside a launch file? We are in the launch file section!*"
+|br|
+Okay, we have two ways to push nodes into namespaces in launch files.
+For the first method we hand over a ``namespace`` parameter when creating the ``Node`` action.
+
+.. code-block:: python
+   :caption: setpoint.launch.py
+   :linenos:
+   :emphasize-lines: 10
+
+   from launch_ros.actions import Node
+   from launch import LaunchDescription
+
+
+   def generate_launch_description() -> LaunchDescription:
+       launch_description = LaunchDescription()
+
+       node = Node(executable='setpoint_publisher.py',
+                   package='awesome_package',
+                   namespace='my_namespace')
+       launch_description.add_action(node)
+
+       return launch_description
+
+When we start the launch file with
+
+.. code-block:: sh
+
+   ros2 launch awesome_package setpoint.launch.py
+
+We can observe that the node publishes now under the corresponding namespace.
+
 .. todo:: from here on follows the non-migrated out-dated ROS1 documentation!
 
 Before We Start
