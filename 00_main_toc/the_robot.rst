@@ -8,7 +8,7 @@ ROV stands for **Remotely Operated (Underwater) Vehicle**. The BlueROV2 has a te
 Our BlueROV2 has been upgraded to the so-called `Heavy Configuration <https://bluerobotics.com/introducing-bluerov2-heavy/>`_. In this configuration, the BlueROV2 has two additional vertical thrusters, providing six degree-of-freedom control.
 
 
-.. image:: /res/images/bluerov_hanging.png
+.. image:: /res/images/bluerov_hanging.jpg
 
 .. toctree::
    :maxdepth: 1

@@ -25,7 +25,7 @@ Cameras
 
 The BlueROV2 comes with a camera facing forward. This camera's pitch angle is actuated by a servo. We have added a second camera facing downward which is mainly used for our localization using AprilTag markers on the tank floor. 
 
-.. image:: /res/images/bluerov_cameras.png
+.. image:: /res/images/bluerov_cameras.jpg
     :width: 80%
     :align: center
 
