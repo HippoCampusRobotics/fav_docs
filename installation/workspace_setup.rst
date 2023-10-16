@@ -22,41 +22,27 @@ ros2
 Populate ros2_underlay
 ======================
 
-.. todo::
-   Those packages are actually not rquired.
-      * px4_msgs can be installed via package.
-      * The pre-compiled package of plotjuggler seems to work wihout problems since iron.
+.. code-block:: sh
 
-px4_msgs
-********
+   cd ~/fav/ros2_underlay/src \
+   && git clone --recursive https://github.com/HippoCampusRobotics/hippo_core.git \
+   && git clone https://github.com/HippoCampusRobotics/hippo_simulation.git
 
 .. code-block:: sh
 
-   cd ~/fav/ros2_underlay/src && \
-   git clone https://github.com/PX4/px4_msgs.git && \
+   cd ~/fav_ros2_underlay/src \
+   && git clone https://github.com/PX4/px4_msgs.git && \
    cd px4_msgs && \
    git checkout 8a7f3da
 
-apriltag_ros
-************
+.. todo::
+   Do we need apriltag_ros here?
+   If so, we probably want to have our own fork.
 
-.. code-block:: sh
-
-   cd ~/fav/ros2_underlay/src && \
-   git clone --depth 1 --branch ros2-port https://github.com/wep21/apriltag_ros.git
-
-plotjuggler
-***********
-
-.. code-block:: sh
-
-   cd ~/fav/ros2_underlay/src && \
-   git clone https://github.com/PlotJuggler/plotjuggler_msgs.git && \
-   git clone --depth 1 --branch 1.7.3 https://github.com/PlotJuggler/plotjuggler-ros-plugins.git && \
-   git clone --depth 1 --branch 3.7.1 https://github.com/facontidavide/PlotJuggler.git
 
 Build ros2_underlay
 ===================
+
 Create an alias for the build command for convenience
 
 .. code-block:: sh
@@ -94,8 +80,6 @@ Populate ros2
 .. code-block:: sh
 
    cd ~/fav/ros2/src \
-   && git clone --recursive https://github.com/HippoCampusRobotics/hippo_core.git \
-   && git clone https://github.com/HippoCampusRobotics/hippo_simulation.git \
    && git clone https://github.com/FormulasAndVehicles/fav.git
 
 Build ros2
