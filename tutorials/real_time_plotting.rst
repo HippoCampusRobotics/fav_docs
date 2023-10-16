@@ -85,7 +85,7 @@ We do not want to do all the configuration stuff over and over again if we have 
 Plotting Bagfile Data
 *********************
 
-Instead of streaming live data, we can also plot data stored in a bagfile. Really helpful to see what we actually have recorded (might differ from what we *intented* to record).
+Instead of streaming live data, we can also plot data stored in a bagfile. Really helpful to see what we actually have recorded (might differ from what we *intended* to record).
 
 .. image:: /res/images/plotjuggler_bagfile.png
 
