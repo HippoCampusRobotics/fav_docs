@@ -196,9 +196,10 @@ Your first node could look like:
    #!/usr/bin/env python3
 
    import math
+
    import rclpy
+   from hippo_msgs.msg import ActuatorSetpoint
    from rclpy.node import Node
-   from hippo_msgs.msg import ActuatorControls
 
 
    class MyFirstNode(Node):
@@ -213,34 +214,37 @@ Your first node could look like:
 
            # create a publisher. we need to specify the message type and the topic
            # name. The last argument specifies the queue length
-           self.my_publisher = self.create_publisher(ActuatorControls,
-                                                     'thruster_controls', 1)
+           self.thrust_pub = self.create_publisher(ActuatorSetpoint,
+                                                   'thrust_setpoint', 1)
+           self.torque_pub = self.create_publisher(ActuatorSetpoint,
+                                                   'torque_setpoint', 1)
            self.timer = self.create_timer(1 / 50, self.on_timer)
 
        def on_timer(self):
-           self.publish_my_msg()
+           self.publish_setpoints()
 
-       def publish_my_msg(self):
+       def publish_setpoints(self):
            # create the message object
-           msg = ActuatorControls()
+           thrust_msg = ActuatorSetpoint()
            now = self.get_clock().now()
-           msg.header.stamp = now.to_msg()
+           thrust_msg.header.stamp = now.to_msg()
            # get the time as floating point number in seconds
            t = now.nanoseconds * 1e-9
 
-           # the list holds 8 values for the 8 thrusters of the bluerov
-           msg.control[0] = 0.2 * math.sin(t)
-           msg.control[1] = -0.2 * math.sin(t)
-           msg.control[2] = 0.2 * math.cos(t)
-           msg.control[3] = -0.2 * math.cos(t)
-           msg.control[4] = 0.4 * math.sin(t)
-           msg.control[5] = -0.4 * math.sin(t)
-           msg.control[6] = 0.4 * math.cos(t)
-           msg.control[7] = -0.4 * math.cos(t)
+           thrust_msg.x = 0.5 * math.sin(t)
+           thrust_msg.y = -0.5 * math.sin(t)
+           thrust_msg.z = 0.5 * math.cos(t)
 
-           # publish the message with the publisher we created during the object
+           torque_msg = ActuatorSetpoint()
+           torque_msg.header.stamp = now.to_msg()
+
+           torque_msg.x = 0.4 * math.sin(t)
+           torque_msg.y = -0.4 * math.sin(t)
+           torque_msg.z = 0.4 * math.cos(t)
+           # publish the messages with the publishers we created during the object
            # initialization
-           self.my_publisher.publish(msg)
+           self.thrust_pub.publish(thrust_msg)
+           self.torque_pub.publish(torque_msg)
 
 
    def main():
@@ -302,9 +306,10 @@ Now, we should be ready to finally run our code
 
 .. hint:: Just to remind you: you stop running programs in a terminal by the shortcut :kbd:`Ctrl` + :kbd:`C`.
 
-In the node's source code you can see that the sent thruster setpoints are :code:`sin` and :code:`cos` signals.
+In the node's source code you can see that the sent setpoints are :code:`sin` and :code:`cos` signals.
 
-We have started the :code:`setpoint_publisher.py` node but since it just publishes ROS messages, we can't see any output in the terminals.
+We have started the :code:`setpoint_publisher.py` node.
+But since it just publishes ROS messages we can't see any output in the terminals.
 We can use command line tools :code:`ros2 node` and :code:`ros2 topic` to get some insights on what is going on in the background hidden from our curious eyes.
 With :code:`ros2 node info /name/of/our/node` we can get various information on our node. For example what publications and what subscriptions it has.
 Or in other words: what are the topics the node wants to receive data on and what are the topics it ouputs data on.
@@ -337,9 +342,11 @@ which in turn yields
    Again, we can use :kbd:`Tab` to auto-complete the node name after we have started writing the first few characters.
    Start using this feature if you haven't already! 
 
-The first two publishers are internally created by ROS2. We do not care about them for now. The last publisher is the one we have created with the program that we have written.
+The first two publishers are internally created by ROS2.
+We do not care about them for now.
+The other publishers are the ones we have created with the program that we have written.
 
-To see what messages the node is actually publishing, we use :code:`ros2 topic echo /the/topic/name/to/echo`.
+To see what messages the node is actually publishing, we could use :code:`ros2 topic echo /the/topic/name/to/echo`.
 
 .. asciinema:: /res/asciinema/ros2_topic_echo.cast
    :speed: 2
@@ -352,10 +359,7 @@ To see what messages the node is actually publishing, we use :code:`ros2 topic e
 These two commands are great to get at least some insights on what is going on during the execution of our node.
 But most of us will find it rather cumbersome to evaluate the echoed data in realtime.
 I mean, would you claim to be able to see that the echoed data is actually the output of a sine function?
-So some proper plotting tool might come in handy here.
+So, some proper plotting tool might come in handy here.
 
-We can use :code:`plotjuggler` to visualize the data. The following screenshot shows the thruster setpoints for the first two motors.
-
-.. image:: /res/images/plotjuggler_first_node.png
-
+We can use :code:`plotjuggler` to visualize the data.
 General information to :code:`plotjuggler` can be found on the `GitHub Page <https://facontidavide.github.io/PlotJuggler/visualization_howto/index.html>`__ and some step-by-step instructions in the section :ref:`tutorials/real_time_plotting:Real-Time Plotting`.
