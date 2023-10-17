@@ -1,5 +1,5 @@
 Install ROS
-###########
+############
 
 The `ROS documentation <https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html>`_ provides a complete installation guide. The following instructions are a summary of their article.
 
@@ -46,7 +46,7 @@ Preparation
 
 #. Update
 
-   .. warning:: This is critial!
+   .. warning:: This is critical!
    
 
    .. code-block:: sh
@@ -97,6 +97,6 @@ Managed to follow the instructions until here? To give you a bit of a good feeli
 
    ros2 run turtlesim turtlesim_node
 
-A window appears? Lucky you! If not try to figure out what went wrong or ask your favorite research associate for help.
+A window appears? Lucky you! If no window appears, try to figure out what went wrong or ask your favorite research associate for help.
 
 You can stop the program with :kbd:`Ctrl` + :kbd:`C`.
