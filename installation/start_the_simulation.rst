@@ -4,7 +4,7 @@ Start The Simulation
 Now that we have everything prepared, i.e.:
 
 * :ref:`installation/install_ros:Install ROS`
-* :ref:`installation/start_the_simulation:Start The Simulation`
+* :ref:`installation/workspace_setup:Workspace Setup`
 
 we can eventually start to work with ROS and the Gazebo simulator.
 

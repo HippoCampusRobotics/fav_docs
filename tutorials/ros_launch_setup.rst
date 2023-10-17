@@ -188,9 +188,9 @@ True that. Thus, we have specified a relative topic.
 So every namespace our node is in will be prepended to the actually resolved topic name.
 We can quickly see this by pushing our node to different namespaces and check the resulting topic name with ``ros2 topic list``.
 
-.. tabs::
+.. tab-set::
 
-   .. tab:: Without Namespace
+   .. tab-item:: Without Namespace
       
       .. code-block:: sh
 
@@ -198,7 +198,7 @@ We can quickly see this by pushing our node to different namespaces and check th
 
       ``ros2 topic list`` will show the topic name :file:`/thrust_setpoint`.
 
-   .. tab:: With Namespace
+   .. tab-item:: With Namespace
 
       .. code-block:: sh
 

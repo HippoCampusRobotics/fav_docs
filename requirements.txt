@@ -3,6 +3,7 @@ sphinx-book-theme
 sphinx==6.1.3
 docutils==0.18.1
 sphinx-tabs
+sphinx-design
 sphinx-favicon>=1.0
 sphinxcontrib.asciinema
 sphinx-copybutton
