@@ -81,5 +81,87 @@ Start The Installation Wizard
 
 #. Reboot.
 
+You should now have a running Ubuntu version on your laptop! 
+
+This is the time to check that your Windows partition still runs, too. As mentioned at the beginning, you might be asked for the bitlocker key when booting Windows again for the first time.
 
 
+Some Convenience Features
+=========================
+
+.. note:: 
+
+   The following is optional, just some tips/fixes for your convenience.
+
+Now that your dual-boot is set up, you might notice a few changes. 
+
+When booting, you will see the Grub menu. By default, Ubuntu is the first option. If you are mostly using Windows in your daily life, this can become tedious. It's easy to not react quickly enough and to end up booting Ubuntu by accident. Ending up in the seemingly endless rebooting cycle...
+
+While (hopefully!) you will spend a lot of time using Ubuntu this semester, the following explains how to change this back to Windows as the default.
+
+Open the Grub configuration file (for editing this, you need to open with :code:`sudo`)
+
+.. code-block:: sh
+
+   sudo gedit /etc/default/grub
+
+A window should open with contents similar to this:
+
+.. code-block::
+   :linenos:
+   :emphasize-lines: 6
+
+   # If you change this file, run 'update-grub' afterwards to update
+   # /boot/grub/grub.cfg.
+   # For full documentation of the options in this file, see:
+   #   info -f grub -n 'Simple configuration'
+
+   GRUB_DEFAULT=0
+   GRUB_TIMEOUT_STYLE=hidden
+   GRUB_TIMEOUT=10
+   GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+   GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+   GRUB_CMDLINE_LINUX=""
+
+   # Uncomment to enable BadRAM filtering, modify to suit your needs
+   # This works with Linux (no patch required) and with any kernel that obtains
+   # the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
+   #GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
+
+   # Uncomment to disable graphical terminal (grub-pc only)
+   #GRUB_TERMINAL=console
+
+   # The resolution used on graphical terminal
+   # note that you can use only modes which your graphic card supports via VBE
+   # you can see them in real GRUB with the command `vbeinfo'
+   #GRUB_GFXMODE=640x480
+
+   # Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
+   #GRUB_DISABLE_LINUX_UUID=true
+
+   # Uncomment to disable generation of recovery mode menu entries
+   #GRUB_DISABLE_RECOVERY="true"
+
+   # Uncomment to get a beep at grub start
+   #GRUB_INIT_TUNE="480 440 1"
+
+Find the line setting the :code:`GRUB_DEFAULT`, highlighted above. Setting this to 0 means that in the Grub menu, the very first option will be the default.
+
+Set this to the number of the Windows option in your Grub menu (starting to count from 0!) You will have to look this up again, but it is likely that Windows is the third option (i.e. :code:`GRUB_DEFAULT` = 2).
+
+Change the correct line in your configuration file. 
+
+After changing this file, update your configuration:
+
+.. code-block:: sh
+
+   update-grub
+
+
+Finally, you might notice a wrong time displayed when switching between Windows and Ubuntu.
+
+In order to fix this, in Ubuntu, simply run
+
+.. code-block:: sh
+
+   timedatectl set-local-rtc 1
