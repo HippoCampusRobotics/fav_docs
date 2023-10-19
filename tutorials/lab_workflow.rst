@@ -7,9 +7,9 @@ Time for experiments!
 ..    :align: center
 ..    :width: 10%
 
-.. image:: /res/images/lab_work1.jpg
+.. figure:: /res/images/lab_work1.jpg
     :width: 80%
-    :align: center
+   
 
 Checklist
 *********
@@ -96,6 +96,5 @@ At the Lab
    Let us know if you need any equipment (measuring tape, scale, weights, stick, ...). If you're looking for something we might not have at hand immediately, please ask beforehand.
 
 
-.. image:: /res/images/lab_work2.jpg
+.. figure:: /res/images/lab_work2.jpg
     :width: 80%
-    :align: center

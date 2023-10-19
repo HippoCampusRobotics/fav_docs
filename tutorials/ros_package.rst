@@ -12,6 +12,9 @@ In this section you will:
 
    The following tutorial **is not meant as a step-by-step solution for the first assignment.** These are just **toy examples** to demonstrate how to use ROS and interact with the simulated BlueROV *in an easy to follow manner*. Therefore, we do not claim that these code snippets are complete and we use some funny names at times. Please do **not** copy-paste them.
 
+.. hint:: 
+
+   The `ROS documentation <https://docs.ros.org/en/iron/index.html>`_ contains detailed tutorials and descriptions if you need them.
 
 
 Create A Package
@@ -42,7 +45,7 @@ The :file:`hippo_core` directory itself is not a package, but contains packages 
 For this guide it is not necessary to go into details too much.
 But if you like to know more about packages, you can read the article about packages in the `ROS Docs <https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html>`_.
 
-.. hint:: In ROS2 there is the option to create native Python packages. For this class, we stick to the CMake way of organizing packages. Even if we write pure Python packages. So in this regard our instructions differ from the official documentation.
+.. hint:: In ROS2, there is the option to create native Python packages. For this class, we stick to the CMake way of organizing packages. Even if we write pure Python packages. So in this regard, our instructions differ from the official documentation.
 
 Go to the :file:`src` directory
 

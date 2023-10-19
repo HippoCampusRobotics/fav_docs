@@ -2,11 +2,9 @@ ROS Launch Setup
 ################
 
 .. attention::
-   The following tutorial **is not meant as a step-by-step solution for the first assignment.**
-   These are just **toy examples** to demonstrate how to use ROS and interact with the simulated BlueROV in an *easy to follow manner*.
-   Therefore, we do not claim that these code snippets are complete and we use some funny names at times.
-   Please do **not** copy-paste them.
-   Use reasonable names for reasonable things.
+
+   The following tutorial **is not meant as a step-by-step solution for the first assignment.** These are just **toy examples** to demonstrate how to use ROS and interact with the simulated BlueROV *in an easy to follow manner*. Therefore, we do not claim that these code snippets are complete and we use some funny names at times. Please do **not** copy-paste them.
+
 
 Prerequisites
 =============
@@ -629,132 +627,8 @@ Imagine we want to start additional nodes.
 Do we really need a separate terminal for each of them? Of course not! Launch files to the rescue!
 
  
-Create A Launch Setup
-=====================
 
-Create a new launchfile.
-You could name it :file:`setpoint.launch` for example:
 
-.. image:: /res/images/create_launchfile.gif
-
-It could look like this:
-
-.. code-block:: xml
-   :linenos:
-
-   <launch>
-      <arg name="vehicle_name" default="bluerov" />
-
-      <!-- start the simulation -->
-      <include file="$(find fav_sim)/launch/simulation.launch" pass_all_args="true" />
-
-      <group ns="$(arg vehicle_name)">
-         <!-- start the setpoint publisher node -->
-         <node name="setpoint_publisher" pkg="awesome_package" type="setpoint_publisher.py" />
-      </group>
-      
-      <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" />
-   </launch>
-
-Explanation
-===========
-
-Let's take a detailed look what we have here.
-
-Arguments
-*********
-
-.. code-block:: xml
-   :lineno-start: 2
-   :linenos:
-
-   <arg name="vehicle_name" default="bluerov" />
-
-Declares an argument named :code:`vehicle_name` and assigns the default value :code:`"bluerov"`.
-We will use this argument to set the namespace of the nodes to be launched.
-To overwrite this argument without having to modify the launch file, we can simply append :code:`vehicle_name:="A_NEW_VALUE"` to the :code:`roslaunch` command.
-
-Include Files
-*************
-
-.. code-block:: xml
-   :lineno-start: 5
-   :linenos:
-
-   <include file="$(find fav_sim)/launch/simulation.launch" pass_all_args="true" />
-
-We can include other launch files.
-It is literally the same as copy pasting the content of the specified file right inside our own launch file.
-Furthermore, we have the special syntax :code:`$(find fav_sim)` here.
-We do not have to know the full path to the launch file.
-We can use :code:`$(find)` to get the path to ros packages.
-In case the :code:`pass_all_args` attribute is set to :code:`true`, all arguments in our launch file get passed to the included launch file.
-Otherwise this would not be the case.
-
-Groups and Nodes
-****************
-
-.. code-block:: xml
-   :lineno-start: 7
-   :linenos:
-
-   <group ns="$(arg vehicle_name)">
-      <!-- launch the motor_command_sender node-->
-      <node name="setpoint_publisher" pkg="awesome_package" type="setpoint_publisher.py" />
-   </group>
-
-Two things here.
-We can declare groups and assign a namespace to everything that is inside this group by settings the :code:`ns` attribute.
-To use the arguments we have declared in the launch file or pass in via the command line, we use :code:`$(arg parameter_name)` so in our case :code:`$(arg vehicle_name)`.
-To start the :code:`setpoint_publisher` node, we use the :code:`<node>` tag.
-The :code:`name` attribute overwrites the node's name set in the sourcode by :code:`rospy.init_node("setpoint_publisher")`. :code:`pkg` is the name of the package where the node is located.
-And :code:`type` is the file name of the executable.
-
-.. code-block:: xml
-   :lineno-start: 12
-   :linenos:
-
-   <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" />
-
-This starts the :code:`rqt_graph` tool directly in our launch setup.
-This way we do not have to start it in another terminal to see the nodegraph. 
-
-Launch the Setup
-================
-
-So this launch file produces the exact same setup we have created in the section :ref:`tutorials/ros_launch_setup:having fun with open-loop control` before.
-The advantage is, we can start it with a single command:
-
-.. code-block:: sh
-
-   roslaunch awesome_package setpoint.launch
-
-Really looks the same, doesn't it? Now stop everything and try to assign the :code:`vehicle_name` parameter from the command line.
-
-.. code-block:: sh
-
-   roslaunch awesome_package setpoint.launch vehicle_name:=klopsi
-
-Everything will still be connected just fine.
-The only difference is, that every node is running inside the :file:`/klopsi` namespace.
-
-Taking the Next Step
-====================
-
-We can also pass arguments to the launch file that are not declared in the file we are launching directly.
-Remember that we set :code:`pass_all_args` to true when including :file:`simulation.launch`? Inside :file:`simulation.launch` the file :file:`spawn_vehicle.launch` is included and all arguments are passed as well. 
-
-.. image:: /res/images/spawn_vehicle.png
-
-There are arguments :code:`x`, :code:`y` and :code:`z` declared for the spawning position of the vehicle and :code:`R`, :code:`P` and :code:`Y` for the orientation.
-We can pass arguments all the way down to this launch file.
-So we can modify the spawning position of the vehicle by running
-
-.. code-block:: sh
-
-   roslaunch awesome_package setpoint.launch x:=4 z:=-3
-
-Maybe it is necessary to rotate the camera inside gazebo to find the BlueROV in its new position.
 
 Get Sensor Data
 ===============
