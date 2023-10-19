@@ -27,17 +27,17 @@ author = 'Thies Lennart Alff, Nathalie Bauschmann, Daniel Dücker'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx.ext.githubpages",
-    "sphinx.ext.autosectionlabel",
-    "sphinx.ext.todo",
-    "sphinx_tabs.tabs",
-    "sphinxemoji.sphinxemoji",
-    "sphinx_favicon",
-    "sphinxcontrib.asciinema",
-    "sphinx.ext.mathjax",
-    "sphinx_copybutton",
-    "sphinxcontrib.jquery",
-    "sphinx_design",
+    'sphinx.ext.githubpages',
+    'sphinx.ext.autosectionlabel',
+    'sphinx.ext.todo',
+    'sphinx_tabs.tabs',
+    'sphinxemoji.sphinxemoji',
+    'sphinx_favicon',
+    'sphinxcontrib.asciinema',
+    'sphinx.ext.mathjax',
+    'sphinx_copybutton',
+    'sphinx_design',
+    'sphinx_rtd_theme',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -61,7 +61,7 @@ rst_prolog = """
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_book_theme'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
