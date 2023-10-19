@@ -204,20 +204,25 @@ Your first node could look like:
 
    class MyFirstNode(Node):
 
-       # the __init__ function gets called, when we create the object, i.e.
-       # run something like
-       #
+       # The __init__ function gets called when we create the object, i.e. 
+       # when we run something like:
        # node = MyFirstNode()
        def __init__(self):
-           # we initialize the rclpy Node with a unique name
+           # Nodes need unique names, therefore we initialize the node 
+           # with a name not used yet.
            super().__init__(node_name='my_first_node')
 
-           # create a publisher. we need to specify the message type and the topic
-           # name. The last argument specifies the queue length
+           # Create publishers. We need to specify the message type and 
+           # the topic name. The last argument specifies the queue length.
            self.thrust_pub = self.create_publisher(ActuatorSetpoint,
                                                    'thrust_setpoint', 1)
            self.torque_pub = self.create_publisher(ActuatorSetpoint,
                                                    'torque_setpoint', 1)
+
+           # Create a timer. We use it to call a function with a defined rate. 
+           # In this case we want to publish the setpoints with 50 Hz.
+           # The name of the function we want to call is given as the second 
+           # argument.
            self.timer = self.create_timer(1 / 50, self.on_timer)
 
        def on_timer(self):
@@ -226,23 +231,29 @@ Your first node could look like:
        def publish_setpoints(self):
            # create the message object
            thrust_msg = ActuatorSetpoint()
+
+           # get the current time for the message's timestamp
            now = self.get_clock().now()
            thrust_msg.header.stamp = now.to_msg()
-           # get the time as floating point number in seconds
+           
+           # get the time as floating point number in seconds to use for 
+           # calculating thrust and torque values in this toy example 
            t = now.nanoseconds * 1e-9
 
+           # fill the message object's fields
            thrust_msg.x = 0.5 * math.sin(t)
            thrust_msg.y = -0.5 * math.sin(t)
            thrust_msg.z = 0.5 * math.cos(t)
 
+           # repeat for torque setpoint message
            torque_msg = ActuatorSetpoint()
            torque_msg.header.stamp = now.to_msg()
-
            torque_msg.x = 0.4 * math.sin(t)
            torque_msg.y = -0.4 * math.sin(t)
            torque_msg.z = 0.4 * math.cos(t)
-           # publish the messages with the publishers we created during the object
-           # initialization
+
+           # publish the messages using the publishers we created during 
+           # the object initialization
            self.thrust_pub.publish(thrust_msg)
            self.torque_pub.publish(torque_msg)
 
