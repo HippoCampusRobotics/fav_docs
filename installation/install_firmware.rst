@@ -17,19 +17,19 @@ By now your directory structure should look like this if you followed the previo
 
 #. Clone the Firmware
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       cd ~/fav && git clone --recursive https://github.com/FormulasAndVehicles/PX4-Autopilot.git
 
 #. Clone MAVLink
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       git clone https://github.com/FormulasAndVehicles/mavlink.git ~/fav/catkin_ws/src/mavlink
 
 #. Clone mavros
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       git clone https://github.com/FormulasAndVehicles/mavros.git ~/fav/catkin_ws/src/mavros
 
@@ -41,19 +41,19 @@ By now your directory structure should look like this if you followed the previo
 
 #. Install GeographicLib dataset
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       sudo ./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 
 #. Install :code:`xmlstarlet` and :code:`python3-pip`
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       sudo apt install xmlstarlet python3-pip
 
 #. Install additional dependencies
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       sudo apt install libignition-rendering3
 
@@ -76,13 +76,13 @@ Build The Catkin Workspace
 
 #. Switch into your :file:`catkin_ws`
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       cd ~/fav/catkin_ws
 
 #. Build the code
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       catkin build
 
@@ -92,7 +92,7 @@ Update Gazebo Installation
 
 You might get a build error similar to 
 
-.. code-block:: bash
+.. code-block:: sh
 
    make[2]: *** No rule to make target '/usr/lib/x86_64-linux-gnu/libsdformat9.so.9.5.0', needed by '/home/hippo/fav/catkin_ws/devel/.private/bluerov_sim/lib/libgazebo_range_sensor_plugin.so'.  Stop.
    make[2]: *** Waiting for unfinished jobs....
@@ -105,13 +105,13 @@ You might get a build error similar to
 
 To fix this, uninstall Gazebo
 
-.. code-block:: bash
+.. code-block:: sh
 
    sudo apt remove gazebo11 ros-noetic-gazebo-*
 
 And reinstall
 
-.. code-block:: bash
+.. code-block:: sh
 
    sudo apt install gazebo11 ros-noetic-gazebo-*
 
@@ -120,26 +120,26 @@ Build The PX4 Firmware
 
 #. Switch into your :file:`PX4-Autopilot` directory
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       cd ~/fav/PX4-Autopilot
 
 #. Set up dependencies
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       bash ./Tools/setup/ubuntu.sh --no-nuttx
 
 #. Build the code
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       DONT_RUN=1 make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
 
    .. note:: In some cases the :code:`make` command might fail.
       You might have to execute this again (just once is enough):
       
-      .. code-block:: bash
+      .. code-block:: sh
          
          sudo apt install libignition-rendering3
       
@@ -152,25 +152,25 @@ Configure Environment Variables
 
 #. Switch into your :file:`fav` directory
 
-   .. code-block:: bash
+   .. code-block:: sh
 
       cd ~/fav
 
-#. Edit your :file:`~/.bashrc` by executing the following commands
+#. Edit your :file:`~/.zshrc` by executing the following commands
 
-   .. code-block:: bash
+   .. code-block:: sh
 
-      echo "source $(pwd)/PX4-Autopilot/Tools/setup_gazebo.bash $(pwd)/PX4-Autopilot $(pwd)/PX4-Autopilot/build/px4_sitl_default > /dev/null" >> ~/.bashrc
+      echo "source $(pwd)/PX4-Autopilot/Tools/setup_gazebo.zsh $(pwd)/PX4-Autopilot $(pwd)/PX4-Autopilot/build/px4_sitl_default > /dev/null" >> ~/.zshrc
       
-      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot" >> ~/.bashrc
+      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot" >> ~/.zshrc
       
-      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot/Tools/sitl_gazebo" >> ~/.bashrc
+      echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:$(pwd)/PX4-Autopilot/Tools/sitl_gazebo" >> ~/.zshrc
 
-#. Apply the changes of :file:`~/.bashrc`
+#. Apply the changes of :file:`~/.zshrc`
 
-   .. code-block:: bash
+   .. code-block:: sh
 
-      source ~/.bashrc
+      source ~/.zshrc
 
 Test Your Setup
 ===============
@@ -184,7 +184,7 @@ Test Your Setup
 
 At this point you can check that your setup is functional by launching the simulation:
 
-.. code-block:: bash
+.. code-block:: sh
 
    roslaunch px4 mavros_posix_sitl.launch vehicle:=uuv_bluerov2_heavy world:=$HOME/fav/PX4-Autopilot/Tools/sitl_gazebo/worlds/uuv_hippocampus.world
 

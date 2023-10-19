@@ -16,7 +16,7 @@ Checklist
 
 The following steps can be prepared at home before coming to the lab.
 
-#. Set the :code:`ROS_MASTER_URI` and :code:`ROS_HOSTNAME` environment variables in :file:`~/.bashrc`. You can have both configurations, for your simulation setup and your experiment setup and comment out the one you are not using with :code:`#`.
+#. Set the :code:`ROS_MASTER_URI` and :code:`ROS_HOSTNAME` environment variables in :file:`~/.zshrc`. You can have both configurations, for your simulation setup and your experiment setup and comment out the one you are not using with :code:`#`.
 
    .. tabs::
 
@@ -40,7 +40,7 @@ The following steps can be prepared at home before coming to the lab.
          # Your realworld/lab setup
          export ROS_MASTER_URI="http://hippo-celsius.local:11311"
 
-   .. note:: As always, run :code:`source ~/.bashrc` to apply these changes.
+   .. note:: As always, run :code:`source ~/.zshrc` to apply these changes.
 
 #. Do not **ever** start the simulation/gazebo while you are connected to our network. Otherwise we will have some unpleasant topic collision between the simulated vehicle and the real BlueROV in our lab.
 

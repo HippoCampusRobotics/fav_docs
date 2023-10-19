@@ -1,4 +1,4 @@
-{"version": 2, "width": 136, "height": 25, "timestamp": 1666172640, "env": {"SHELL": "/bin/bash", "TERM": "xterm"}}
+{"version": 2, "width": 136, "height": 25, "timestamp": 1666172640, "env": {"SHELL": "/bin/zsh", "TERM": "xterm"}}
 [0.162121, "o", "\u001b]0;~/fav/catkin_ws\u0007"]
 [0.162855, "o", "\r\n"]
 [0.162887, "o", "\u001b]2;vscode@archVermeer:~/fav/catkin_ws\u0007\u001b]1;~/fav/catkin_ws\u0007"]

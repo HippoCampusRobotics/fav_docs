@@ -60,15 +60,15 @@ Create an *alias* for the build command for convenience
 
 .. code-block:: sh
 
-   echo "alias build_underlay=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color bash -l -c 'source /opt/ros/iron/setup.bash && cd \$HOME/fav/ros2_underlay && colcon build'\"" >> ~/.bashrc
-   source ~/.bashrc
+   echo "alias build_underlay=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/iron/setup.zsh && cd \$HOME/fav/ros2_underlay && colcon build'\"" >> ~/.zshrc
+   source ~/.zshrc
 
 Make sure dependencies are installed
 
 .. code-block:: sh
 
    cd ~/fav/ros2_underlay \
-   && source /opt/ros/iron/setup.bash \
+   && source /opt/ros/iron/setup.zsh \
    && rosdep install --from-paths src -y --ignore-src
 
 Build the workspace (this may take some time!):
@@ -84,8 +84,8 @@ Source the "ros2_underlay" workspace
 
 .. code-block:: sh
 
-   echo 'source "$HOME/fav/ros2_underlay/install/setup.bash"' >> ~/.bashrc && \
-   source ~/.bashrc
+   echo 'source "$HOME/fav/ros2_underlay/install/setup.zsh"' >> ~/.zshrc && \
+   source ~/.zshrc
 
 2. "ros2" workspace
 ====================
@@ -107,8 +107,8 @@ Create an alias for the build command for convenience
 
 .. code-block:: sh
 
-   echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color bash -l -c 'source \$HOME/fav/ros2_underlay/install/setup.bash && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.bashrc
-   source ~/.bashrc
+   echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source \$HOME/fav/ros2_underlay/install/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
+   source ~/.zshrc
 
 Make sure dependencies are installed
 
@@ -130,18 +130,18 @@ Source "ros2" workspace
 
 .. code-block:: sh
 
-   echo 'source "$HOME/fav/ros2/install/local_setup.bash"' >> ~/.bashrc \
-   && . ~/.bashrc
+   echo 'source "$HOME/fav/ros2/install/local_setup.zsh"' >> ~/.zshrc \
+   && . ~/.zshrc
 
 
 
-Check :file:`.bashrc` file
+Check :file:`.zshrc` file
 ==========================
 
 .. note:: 
    
-   The mysterious :file:`.bashrc` file is used to set environment variables.
-   Everyone sometimes makes typos or errors while adding stuff to this :file:`.bashrc` file. You might open a new terminal and get an error as follows on the top:
+   The mysterious :file:`.zshrc` file is used to set environment variables.
+   Everyone sometimes makes typos or errors while adding stuff to this :file:`.zshrc` file. You might open a new terminal and get an error as follows on the top:
 
    .. code-block:: sh
 
@@ -149,32 +149,32 @@ Check :file:`.bashrc` file
 
    
       
-   In case you echo (aka write) a wrong line into the :file:`.bashrc` file, you can delete this line by opening the file in your favorite text editor. For example, using :code:`gedit` as text editor: 
+   In case you echo (aka write) a wrong line into the :file:`.zshrc` file, you can delete this line by opening the file in your favorite text editor. For example, using :code:`gedit` as text editor: 
 
    .. code-block:: sh
       
-      gedit ~/.bashrc
+      gedit ~/.zshrc
 
    The file should open in a new window. The command :code:`echo` adds lines to the end of the file. Therefore, scroll to the bottom and find what you've added. Delete the lines that cause errors and save the changes.
 
 
-Open the :file:`.bashrc` file, for example using :code:`gedit` as text editor:
+Open the :file:`.zshrc` file, for example using :code:`gedit` as text editor:
 
 .. code-block:: sh
 
-   gedit ~/.bashrc
+   gedit ~/.zshrc
 
-Your :file:`~/.bashrc` should look like this this for the last lines:
+Your :file:`~/.zshrc` should look like this this for the last lines:
 
 .. code-block:: 
 
    ...
 
-   source /opt/ros/iron/setup.bash
-   alias build_underlay="env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/iron/setup.bash && cd $HOME/fav/ros2_underlay && colcon build'"
-   source "$HOME/fav/ros2_underlay/install/setup.bash"
-   alias build_ros="env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source $HOME/fav/ros2_underlay/install/setup.bash && cd $HOME/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'"
-   source "$HOME/fav/ros2/install/local_setup.bash"
+   source /opt/ros/iron/setup.zsh
+   alias build_underlay="env -i HOME=$HOME USER=$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/iron/setup.zsh && cd $HOME/fav/ros2_underlay && colcon build'"
+   source "$HOME/fav/ros2_underlay/install/setup.zsh"
+   alias build_ros="env -i HOME=$HOME USER=$USER TERM=xterm-256color zsh -l -c 'source $HOME/fav/ros2_underlay/install/setup.zsh && cd $HOME/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'"
+   source "$HOME/fav/ros2/install/local_setup.zsh"
 
 Final Check
 ===========

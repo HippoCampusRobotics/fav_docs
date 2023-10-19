@@ -78,15 +78,15 @@ Installation
 
    .. code-block:: sh
 
-      echo 'source /opt/ros/iron/setup.bash' >> ~/.bashrc
+      echo 'source /opt/ros/iron/setup.zsh' >> ~/.zshrc
 
-#. Apply the changes to your :file:`.bashrc`
+#. Apply the changes to your :file:`.zshrc`
 
    Either close and reopen all open terminals or run the following command in **all** terminals:
 
    .. code-block:: sh
 
-      . ~/.bashrc
+      . ~/.zshrc
 
 A Brief Test
 ============

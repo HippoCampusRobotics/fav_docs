@@ -130,10 +130,10 @@ and source the newly created package.
 
 .. code-block:: sh
 
-   . ~/.bashrc
+   . ~/.zshrc
 
 This only needs to be done once a new package is created.
-Nothing bad happens if we are a bit overly cautios regarding sourcing our :file:`.bashrc`.
+Nothing bad happens if we are a bit overly cautios regarding sourcing our :file:`.zshrc`.
 But it does nothing good either.
 So we might want to save it up for the cases where it is actually required.
 
@@ -272,7 +272,7 @@ For our first node we add the highlighted line to the :file:`CMakeLists.txt`.
      DESTINATION lib/${PROJECT_NAME}
    )
 
-**Every** time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`build_ros` and to be super save you might also want to resource your workspace setup with :code:`. ~/.bashrc`.
+**Every** time you modify the :file:`CMakeLists.txt` rebuild your workspace with :code:`build_ros` and to be super save you might also want to resource your workspace setup with :code:`. ~/.zshrc`.
 The latter is only required if we added a new node.
 
 If you want to run a Python program, normally you would use a command like :code:`python3 /path/to/your/file/python_file.py`.
@@ -294,7 +294,7 @@ We created a package, but we haven't built our workspace since we modified :code
 
    build_ros
 
-.. note:: Every time we create a new package, or create a new node in an existing package, we need to build our workspace with :code:`build_ros` and apply the updated package paths with :code:`. ~/.bashrc`. 
+.. note:: Every time we create a new package, or create a new node in an existing package, we need to build our workspace with :code:`build_ros` and apply the updated package paths with :code:`. ~/.zshrc`. 
 
 Now, we should be ready to finally run our code
 

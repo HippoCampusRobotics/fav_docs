@@ -137,11 +137,11 @@ Build
 
    cd ~/fav/catkin_ws && catkin build
 
-Resource :file:`~/.bashrc`
+Resource :file:`~/.zshrc`
 
 .. code-block:: sh
 
-   source ~/.bashrc
+   source ~/.zshrc
 
 Writing a Reconfigurable Node
 *****************************
