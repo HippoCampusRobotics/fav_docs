@@ -96,6 +96,30 @@ The source code of our node :file:`depth_calculator.py` might look like this:
    You won't find these online.
    Instead, you can find the definition here: :file:`fav/ros2_underlay/src/hippo_core/hippo_msgs/msg/DepthStamped.msg`.
 
+   More conveniently, you can always look up message definitions using the command line tool :code:`ros2 interface show`.
+   
+   For example
+   
+   .. code-block:: sh
+
+      ros2 interface show hippo_msgs/msg/DepthStamped
+
+   will output:
+
+   .. code-block:: sh
+
+      std_msgs/Header header
+               builtin_interfaces/Time stamp
+                  int32 sec
+                  uint32 nanosec
+               string frame_id
+
+      float32 depth
+      float32 z_vel
+      float32 depth_covariance
+      float32 vel_covariance
+
+
 We can add this node to our launchfile as follows:
 
 .. code-block:: python
