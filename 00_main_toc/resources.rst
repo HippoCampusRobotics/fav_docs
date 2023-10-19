@@ -1,6 +1,9 @@
 ROS Resources
 #################
 
+.. attention:: 
+   This still needs to be updated to ROS2!
+
 .. note::
    This section tries to give you an overview of additional resources and tools you might need when working with ROS. This is by no means complete, and we encourage you to explore what's out there on your own.
 
