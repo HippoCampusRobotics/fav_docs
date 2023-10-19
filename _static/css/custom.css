@@ -56,6 +56,10 @@ div.admonition {
     border: 1px solid #C0C0C0;
 }
 
+.rst-content pre {
+   font-family: Noto Sans Mono
+}
+
 .highlight {
     background: rgb(243, 244, 245);
 }
@@ -67,4 +71,8 @@ body {
 
 p {
     font-size: 12pt;
+}
+
+img {
+   border-radius: 0.25rem;
 }

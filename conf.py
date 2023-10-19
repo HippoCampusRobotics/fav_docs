@@ -83,3 +83,8 @@ autosectionlabel_prefix_document = True
 favicons = [
     "bluerov.svg",
 ]
+
+sphinxcontrib_asciinema_defaults = {
+    'rows': 25,
+}
+
