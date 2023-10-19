@@ -15,6 +15,7 @@ Installation and Setup
    /installation/linux_terminal
    /installation/install_ubuntu
    /installation/virtual_machine
+   /installation/prepare_the_shell
    /installation/install_ros
    /installation/workspace_setup
    /installation/ide_setup
