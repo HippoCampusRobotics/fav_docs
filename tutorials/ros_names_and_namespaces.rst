@@ -33,13 +33,13 @@ Global
 Relative
    .. code-block:: python
 
-      self.pose_pub = self.create_publisher(PoseStamped, "my_robot/pose", 1)
+      self.pose_pub = self.create_publisher(PoseStamped, "pose", 1)
 
    A topic without leading ``/`` will be relative.
-   This means that if the node was launched in a namespace the namespace will get prepended.
-   So, for example if the node was launched in the namespace ``my_robot``, the resolved topic name will become ``/my_robot/position``.
+   This means that if the node was launched in a namespace, the namespace will get prepended.
+   So, for example if the node was launched in the namespace ``my_robot``, the resolved topic name will become ``/my_robot/pose``.
    In case the node was not launched inside any namespace, nothing will get prependended to the topic name.
-   It will be just :file:`/position`.
+   It will be just :file:`/pose`.
    If the node is pushed into multiple namespaces, they all get prepended to the resolved topic name.
 
    .. hint::
@@ -56,11 +56,11 @@ Private
             self.debug_pub = self.create_publisher(ControlDebugMessage, '~/debug', 1)
 
    Private topics are similar to relative ones.
-   The topic name start with :file:`~`.
-   The namespace will get prepended if it has been specified, just as it is for relative topics.
+   The topic name starts with :file:`~`.
+   The namespace will get prepended (if one has been specified), just as it will for relative topics.
    Additionally, the name of the node will *also* be prepended.
-   So, if the node with the name ``my_controller`` has been started in the namespace ``my_robot``, the resolved topic name will be ``/my_robot/my_controller/debug``.
-   Without a namespace it would be :file:`/my_controller/debug`.
+   So, if a node with the name ``my_controller`` has been started in the namespace ``my_robot``, the resolved topic name will be ``/my_robot/my_controller/debug``.
+   Without a namespace, it would be :file:`/my_controller/debug`.
 
    .. hint::
       This way of specifying topic names is less common, but it is especially useful for debug messages and other messages that are closely tied to a specific node.
@@ -69,7 +69,7 @@ BlueROV
 *******
 
 You will only work with a single robot.
-Still, it is nice to have things clean and start everything at least in the :file:`bluerov00` namespace. 
+Still, it is nice to keep things clean and tidy. We will start everything in the :file:`bluerov00` namespace.
 
 .. note::
    If you have a controller subscribing to a setpoint topic, it might be a good idea to use a private name ``'~/setpoint'``.

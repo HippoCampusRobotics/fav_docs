@@ -1,6 +1,10 @@
 Dynamic Reconfigure
 ===================
 
+.. todo:: 
+
+   Update for ROS2.
+
 Change parameters on the fly during runtime with the help of :code:`dynamic_reconfigure` and never ever restart your whole setup to tune your hardcoded parameters |partying_face| . You can find the API documentation and another tutorial guide in the `ROS wiki <http://wiki.ros.org/dynamic_reconfigure>`__. 
 
 Prerequisites

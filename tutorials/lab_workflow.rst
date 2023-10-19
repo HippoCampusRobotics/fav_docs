@@ -16,6 +16,10 @@ Checklist
 
 The following steps can be prepared at home before coming to the lab.
 
+.. todo:: 
+
+   Update for ROS2.
+
 #. Set the :code:`ROS_MASTER_URI` and :code:`ROS_HOSTNAME` environment variables in :file:`~/.zshrc`. You can have both configurations, for your simulation setup and your experiment setup and comment out the one you are not using with :code:`#`.
 
    .. tabs::
@@ -46,7 +50,7 @@ The following steps can be prepared at home before coming to the lab.
 
 #. It's best if one of you brings a **fully prepared software setup on your own laptop**. The real experiment will take less computing power since you are not running the simulation environment. If you cannot do this, let us know **in time** and we will prepare a laptop for you to use. 
 
-#. The setup can include a prepared settings file for :code:`rqt_multiplot`.
+#. The setup can include a prepared settings file for :code:`plot_juggler`.
 
 At the Lab
 **********
@@ -66,9 +70,9 @@ At the Lab
 
 #. We check if your network setup is working properly.
 
-#. We have a big TV screen at the lab. You can use it (we have HDMI and DisplayPort) for plotting data etc. so that everyone can see.
+#. We have a big TV screen at the lab. You can (and should!) use it (we have HDMI and DisplayPort) for plotting data etc. so that everyone can see.
 
-#. If you record data via :code:`rosbag`, do not include camera images (or if you need camera data, include just one topic). Camera images can overload the network. You can exclude topics matching regular expressions with :code:`-x`.
+#. If you record data via :code:`rosbag`, do not include camera images (or, if you *really* need camera data, include just one topic). Camera images can overload the network. You can exclude topics matching regular expressions with :code:`-x`.
    For example
 
    .. code-block:: sh

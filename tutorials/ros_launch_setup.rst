@@ -2,7 +2,7 @@ ROS Launch Setup
 ################
 
 .. attention::
-   The following tutorial **is not meant as a step-by-step solution for the first assignment.
+   The following tutorial **is not meant as a step-by-step solution for the first assignment.**
    These are just **toy examples** to demonstrate how to use ROS and interact with the simulated BlueROV in an *easy to follow manner*.
    Therefore, we do not claim that these code snippets are complete and we use some funny names at times.
    Please do **not** copy-paste them.
@@ -49,7 +49,7 @@ and start with a very minimal version of a launch file
       launch_description = LaunchDescription()
       return launch_description
 
-Since now we a :file:`launch` directory, we have to tell our build system to *install* it.
+Since now we have a :file:`launch` directory, we have to tell our build system to *install* it.
 
 Open :file:`CMakeLists.txt` and add the following lines right before the :code:`ament_package()` call.
 
@@ -73,7 +73,7 @@ If we try to run the launch file with
 
    ros2 launch awesome_package setpoint.launch.py
 
-we get an error message, that the launch file could not be found.
+we get an error message that the launch file could not be found.
 No reason to trust anyone blindly.
 Try it out yourself!
 
@@ -130,25 +130,25 @@ and see the following output
    [INFO] [launch]: Default logging verbosity is set to INFO
    [INFO] [setpoint_publisher.py-1]: process started with pid [4991]
     
-We observe, our node has been started.
-And this time the execution does not terminate by itself.
+We observe our node has been started.
+And this time, the execution does not terminate by itself.
 Stop everything by hitting :kbd:`Ctrl` + :kbd:`C`.
 
 What comes next? 
 ================
 A lot!
 
-* pushing nodes into namespaces
+* "pushing" nodes "into namespaces"
 * including other launch files
-* using launch arguments
+* using launch *arguments*
 
-The python based launch workflow in ROS2 may appear quite complex and cumbersome if launch files get more complicated than our previous toy example.
-Do not feel discouraged by this and do not worry, if you do not manage to understand everything immediately.
+The python-based launch workflow in ROS2 may appear quite complex and cumbersome when launch files get more complicated than our previous toy example.
+Do not feel discouraged by this and do not worry if you do not manage to understand everything immediately!
 You will get used to to it, step by step each time you work with it.
 
 So, why are we using lanch files, you might ask.
 Because it greatly simplifies launching our setups.
-Write the launch file once and profit the many times we start any setup.
+Write the launch file once and profit every time we start any setup.
 Trust me, you will start things **many** times.
 
 Pushing Nodes into Namespaces
@@ -156,20 +156,20 @@ Pushing Nodes into Namespaces
 
 Why do we care about namespaces?
 We want to avoid topic name collisions. 
-Just imagine we have more than one node publishing a debug topic calling it ``debug``.
+Just imagine we have more than one node publishing a debug topic, calling it ``debug``.
 Or what about having multiple robots?
 We can easly imagine operating two BlueROVs at the same time.
-How can we distinguish between topics by the first and the second robot?
+How can we distinguish between topics associated with the first and the second robot?
 Having different source code with manually changed topic names for both robots? 
 Does not sound like a way anyone would like to go.
-ROS namespaces come to the rescue.
-Just pushing nodes to namespaces might avoid all these problems.
+Here, ROS namespaces come to the rescue!
+Simply pushing nodes to so-called namespaces can avoid all these problems.
 
-We have a great overview on the namespace topic in :ref:`tutorials/ros_names_and_namespaces:Names and Namespaces`.
+We have a great overview on the topic of namespaces in :ref:`tutorials/ros_names_and_namespaces:Names and Namespaces`.
 What we recommend is as a guideline:
 
-* Use namespaces where appropriate (in the course of this lecture most likely **everywhere**).
-* Never use global topic names if you do not have a specific reason to do so.
+* Use namespaces where appropriate (in the course of this class: most likely **everywhere**).
+* Never use *global* topic names if you do not have a specific reason to do so.
 * yeah, that's actually it...
 
 Let's illustrate that with the help of our :file:`setpoint_publisher.py` we created in the previous section.
@@ -179,13 +179,13 @@ We created the publisher with
 
    self.create_publisher(ActuatorSetpoint, 'thrust_setpoint', 1)
 
-Topic names starting with ``/`` are global.
-Hence, the topic stays always exactly what we defined, no matter what the namespaces are the node is in or what the node name is.
+Topic names starting with ``/`` are *global*.
+Hence, the topic name stays always exactly what we defined, no matter what namespaces the node is in, or what the node's name is.
 |br|
-"*But dude, we do not have a leading* ``/``".
+"*But dude, I do not see a leading* ``/`` *here* ".
 |br|
-True that. Thus, we have specified a relative topic.
-So every namespace our node is in will be prepended to the actually resolved topic name.
+True that. Thus, we have specified a *relative* topic (and not a *global* one).
+This means that the topic name will by resolved at runtime: prepending all nested namespaces of our node. 
 We can quickly see this by pushing our node to different namespaces and check the resulting topic name with ``ros2 topic list``.
 
 .. tab-set::
@@ -211,7 +211,7 @@ We can quickly see this by pushing our node to different namespaces and check th
 "*But didn't we want do this inside a launch file? We are in the launch file section!*"
 |br|
 Okay, we have two ways to push nodes into namespaces in launch files.
-For the first method we hand over a ``namespace`` parameter when creating the ``Node`` action.
+For the first method, we hand over a ``namespace`` parameter when creating the ``Node`` action.
 
 .. code-block:: python
    :caption: setpoint.launch.py
@@ -238,11 +238,11 @@ When we start the launch file with
 
    ros2 launch awesome_package setpoint.launch.py
 
-We can observe that the node publishes now under the corresponding namespace.
+we can observe that the node now publishes under the corresponding namespace.
 Isn't this just awesome?
 We do not have to touch our actual source code at all and are still able to configure our node!
 
-So now let us talk about the second method, which might look it requires a bit more work.
+So now let us talk about the second method, which might look like it requires a bit more work.
 But at the same time it is more powerful.
 We make use of ``GroupAction`` and ``PushRosNamespace``.
 The ``GroupAction`` is just a *container* for actions.
@@ -282,12 +282,14 @@ When starting this launch setup, we get the following result
    :idle-time-limit: 1
    :poster: npt:0:01
 
-Did you recognize, that we have just nested namespaces? 
-Since we are still defining a namespace in ``Node`` and additionally push the node to another namespace with ``PushRosNamespace``, we and up with a topic name that concatenates these namespaces.
-We do not need this for now, but we might want to keep this in mind, it might become useful in some situations.
+Did you recognize that we *nested* two namespaces this way? 
+Since we are still defining a namespace in ``Node``, and additionally push the node to another namespace with  the name ``PushRosNamespace``, we end up with a topic name that concatenates these namespaces.
+We do not need this for now, but we might want to keep this in mind.
+It might become useful in some situations.
 
 This second approach is more flexible because we are not limited to ``Node`` actions that are pushed to our desired namespace.
-We can even push whole launch files to namespaces, since including launch files is done by actions, that can be put inside the ``GroupAction``, as well.
+We can even push whole launch files to namespaces, since including launch files is done by using actions.
+The action of including other launch files can be put inside the ``GroupAction``, just like any other action.
 
 This brings us to our next topic.
 
@@ -295,15 +297,16 @@ Using Launch Arguments
 ======================
 We have seen that we can configure our node in some way (i.e. prepending a namespace to topic names) without touching its source code.
 The next step is to configure our launch file without the need of changing it.
-We do not want to hardcode the namespace.
-We can imagine that we would like to use the same launch setup, i.e. starting the same nodes, for different vehicles with different vehicles.
+We do not want to *hardcode* the namespace.
+We can imagine that we would like to use the same launch setup, i.e. starting the same nodes, for different vehicles with different vehicle *names*.
+To differentiate between the vehicles, we would like to use the vehicle name as a namespace name.
 Without launch arguments this would mean that we would either have to change our launch file constantly between different launches or we would need almost identical launch files with just different values for the namespace for each setup.
 Both approaches are not that attractive.
 
-Instead we would like to pass the namespace via the command line during runtime.
+Instead, we would like to pass the namespace via the command line during runtime.
 We need two things for that.
 First, we *declare* the argument we would like to pass via the ``DeclareLaunchArgument`` action and add this action to our launch description.
-Second, we access the value of this argument via ``LaunchConfiguration`` and use it as parameter for ``PushRosNamespace`` instead of hardcoding the value.
+Second, we *access* the value of this argument via ``LaunchConfiguration`` and use it as parameter for ``PushRosNamespace`` instead of hardcoding the value.
 
 .. code-block:: python
    :linenos:
@@ -345,7 +348,7 @@ We will get an error message
    [ERROR] [launch]: Caught exception in launch (see debug for traceback): Included launch description missing required argument 'vehicle_name' (description: 'no description given'), given: []
 
 The launch system complains that we do not have provided our recently declared ``vehicle_name`` argument.
-We can pass arguments in general with ``<argument_name>:=<argument_value>``.
+In general, We can pass arguments with ``<argument_name>:=<argument_value>``.
 Thus, our launch command becomes
 
 .. code-block:: sh
@@ -360,8 +363,9 @@ Including Launch Files
 
 Okay, okay. Admittedly, we introduced a lot of new and maybe not that easy to understand concepts regarding launch files in ROS.
 But stay with us for this very last subsection.
-It is not only possible to combine sets of *nodes* in a launch file, but also combine launch files themselves.
-Remember the launch file we used to verify our workspace setup is working?
+
+It is not only possible to combine *sets* of nodes in a launch file, but also to combine launch files themselves.
+Remember the launch file we used to verify that our workspace setup is working?
 
 .. code-block:: sh
 
@@ -374,7 +378,7 @@ We will need ``PythonLaunchDescriptionSource`` and ``IncludeLaunchDescription`` 
 .. code-block:: python
    :linenos:
    :caption: ~/fav/ros2/src/awesome_package/include/setpoint.launch.py
-   :emphasize-lines: 27-33
+   :emphasize-lines: 8, 10, 27-33
 
    from ament_index_python.packages import get_package_share_path
    from launch_ros.actions import Node, PushRosNamespace
@@ -428,21 +432,22 @@ We can inspect the launch arugments declared by the launch file we included in o
 
 The result will list many arguments.
 The only parameter without default value is ``vehicle_name``.
-Therefore, we need to pass it our launch file as we have seen above.
+Therefore, we need to *pass* it to our launch file as we have seen above.
 
-Also we will run across a argument called ``use_sim_time`` quite often.
-This argument is used to the equally named node parameter.
-For the simulation, we harcoded it to ``true``.
-Hence, it is not necessary to set this in our example launch file.
-This parameter controls the time source of a node.
-If set to true, nodes will automatically subscribe to a special topic which provides it with the current time.
-In this case the actual time of the computer (wall time) is ignored.
-This is useful for simulations. 
+Also, we will run across an argument called ``use_sim_time`` quite often.
+For the *simulation*, we hardcoded it to ``true``.
+Hence, it is not necessary to manually set this argument in our example launch file.
+This parameter controls the *time source* of a node.
+If set to true, nodes will automatically subscribe to a special topic which provides the current time.
+In this case, the actual time of the computer (wall time) is ignored.
+Instead, a simulated time, starting at 0 each time you restart the simulation, is used.
+This is obviously very useful for simulations. 
 
 Depending on the performance of our computers, the simulation might be slower than real-time.
-If our computer is very fast, we might even simulate faster than real-time.
+If your computer is very fast, you might even simulate *faster* than real-time!
 By using the simulated time as time source, the simulation (gazebo) can control how fast time passes by from the perspective of the nodes.
-Usually the value should always be ``true`` for simulation setups and always be ``false`` for real world experiments.
+
+As a simple rule, the value should always be ``true`` for simulation setups and always be ``false`` for real world experiments.
 
 .. todo:: from here on follows the non-migrated out-dated ROS1 documentation!
 

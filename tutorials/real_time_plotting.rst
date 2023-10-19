@@ -9,11 +9,11 @@ Therefore, we highly recommend you use `plotjuggler <https://github.com/facontid
 
 To install :code:`plotjuggler`, run
 
-   .. code-block:: sh
+.. code-block:: sh
 
-      sudo apt install ros-$ROS_DISTRO-plotjuggler-ros
+   sudo apt install ros-$ROS_DISTRO-plotjuggler-ros
 
-Now we can start plotjuggler
+Now, we can start plotjuggler
 
 .. code-block:: sh
 
@@ -25,9 +25,9 @@ Getting Data In There
 
 .. image:: /res/images/plotjuggler_start.png
 
-#. Make sure the ROS2 topic subscriber is selected
+#. Make sure the **ROS2 topic subscriber** is selected
 #. Choose an appropriate buffer length (seconds). Only data received during this timespan is plotted. Usually something between 30s and 60s. Set it to whatever you need.
-#. Start
+#. Click **Start**
 
 .. image:: /res/images/plotjuggler_topic_selection.png
 
@@ -68,7 +68,7 @@ Extremely useful feature!
 Parametric Plots
 ****************
 
-We can do parametric plots by using the right mouse button instead of the left one when dragging the selected data fields onto the plot.
+We can do parametric plots (i.e. x-y-plots instead of the x-axis being the time) by using the right mouse button instead of the left one when dragging the selected data fields onto the plot.
 
 Multiple Tabs
 *************
@@ -85,7 +85,8 @@ We do not want to do all the configuration stuff over and over again if we have 
 Plotting Bagfile Data
 *********************
 
-Instead of streaming live data, we can also plot data stored in a bagfile. Really helpful to see what we actually have recorded (might differ from what we *intended* to record).
+Instead of streaming live data, we can also plot data stored in a bagfile (see :ref:`tutorials/recording_rosbags:recording data using bag files`).
+Really helpful to see what we actually have recorded (this sometimes differs from what we *intended* to record).
 
 .. image:: /res/images/plotjuggler_bagfile.png
 

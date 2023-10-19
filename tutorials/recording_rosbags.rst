@@ -1,6 +1,10 @@
 Recording Data Using Bag Files
 ##############################
 
+.. todo:: 
+
+   Update for ROS2.
+
 You can record data conveniently in bags. More information on bag files can be found `here <http://wiki.ros.org/Bags>`_.
 The standard tool to record and play back bag files is `rosbag <http://wiki.ros.org/rosbag>`_.
 
