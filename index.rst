@@ -5,7 +5,7 @@
 
 
 
-Welcome to Formulas and Vehicles's documentation!
+Welcome to Formulas and Vehicles' Documentation!
 =================================================
 
 .. image:: /res/images/klopsi_title.jpg
@@ -13,14 +13,32 @@ Welcome to Formulas and Vehicles's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Overview and Concept
    
    00_main_toc/overview
    00_main_toc/concepts
-   00_main_toc/installation
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Installation and Setup
+
+   /installation/linux_terminal
+   /installation/install_ubuntu
+   /installation/virtual_machine
+   /installation/prepare_the_shell
+   /installation/install_ros
+   /installation/workspace_setup
+   /installation/ide_setup
+   /installation/start_the_simulation
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Tutorials and Resources
+
    00_main_toc/the_robot
    00_main_toc/tutorials
    00_main_toc/resources
+
 
 
 Indices and tables
