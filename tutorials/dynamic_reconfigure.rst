@@ -1,191 +1,78 @@
 Dynamic Reconfigure
-===================
+###################
 
-.. todo:: 
+.. role:: strike
+   :class: strike
 
-   Update for ROS2.
-
-Change parameters on the fly during runtime with the help of :code:`dynamic_reconfigure` and never ever restart your whole setup to tune your hardcoded parameters |partying_face| . You can find the API documentation and another tutorial guide in the `ROS wiki <http://wiki.ros.org/dynamic_reconfigure>`__. 
+:strike:`Change parameters on the fly during runtime with the help of dynamic_reconfigure and never ever restart your whole setup to tune your hardcoded parameters.`
+We left ``dynamic_reconfigure`` behind, when we migrated to ROS2.
+ROS2 has built-in support for reconfigurable parameters.
 
 Prerequisites
-*************
+=============
 
 * a ROS package for which you want to use :code:`dynamic_reconfigure` 
 
-.. attention:: In this example this package will be called :file:`toy_example`. Replace occurences of this package name with your own package name. Do **not** copy-paste.
+.. attention::
+
+   In this example this package will be called :file:`toy_example`. Replace occurences of this package name with your own package name. Do **not** copy-paste.
+
+.. seealso::
+
+   You are not quite sure what the necessary steps to create a new package are?
+   Go back to :ref:`tutorials/ros_package:ROS Package`. 
 
 Scenario
-********
+========
 
-Imagine we have something like a PID-Controller and we want to change the gains and maybe some other parameters as well while the node is running. Things we would like to configure could be:
+Imagine we have something like a PID-Controller (yeah, we thought it would be nice to have very *applied* example, i.e. it is very close to what you want to achieve yourself during this course) and we want to change the gains and maybe some other parameters as well while the node is running.
+Things we would like to configure could be:
 
 * PID gains
 * limits for the integral term (there are many more anti-windup strategies. Use your preferred search engine for some inspiration.)
 * Activate/Deactivate the integrator so the integrator is not accumulating control errors while the controller is not active.
 
-Config File
-***********
 
-Config files define the parameters we use for a :code:`dynamic_reconfigure` service. In the following sections we will create such a config file and add some parameters.
-
-Create a Config File
-####################
-
-#. Create a directory called :file:`cfg` for your package.
-
-   .. tabs::
-
-      .. group-tab:: GUI
-
-         .. image:: /res/images/dyn_create_cfg_dir.gif
-
-      .. code-tab:: sh Terminal
-
-         cd ~/fav/catkin_ws/src/toy_example && mkdir cfg
-
-#. Create a config file with a meaningful name.
-   
-   .. tabs::
-
-      .. group-tab:: GUI
-
-         .. image:: /res/images/dyn_create_cfg_file.gif
-      
-      .. code-tab:: sh Terminal
-
-         touch PidControl.cfg
-
-Config File Boilerplate
-#######################
-
-Replace :code:`"toy_example"` with the name of your package.
-
-.. code-block:: python
-   :caption: PidControl.cfg
-   :linenos:
-
-   #!/usr/bin/env python
-   PACKAGE = "toy_example"
-
-   from dynamic_reconfigure.parameter_generator_catkin import *
-
-   gen = ParameterGenerator()
-
-   # here wee need to add our reconfigure parameters
-
-   exit(gen.generate(PACKAGE, "my_control_node", "PidControl"))
-
-:code:`"my_control_node"` is the name of a node that could use this :code:`dynamic_reconfigure` configuration. It is used for docs generation only and can be whatever we like. The last parameter :code:`"PidControl"` determines the name of the generated Python or C++ code. This will be relevant when we import the generated python file in our node. :code:`Config.py` will always be appended. So in our case the generated python file name will be :file:`PidControlConfig.py`
-
-Add Parameters
-##############
-
-We can use different parameter types:
-
-* :code:`int_t`
-* :code:`double_t`
-* :code:`str_t`
-* :code:`bool_t`
-
-Even :code:`enums` are possible but we will leave this out for now. For the PID gains and for the integral limits we use :code:`double_t`. For activating/deactivating the integrator of the PID control we use :code:`bool_t`.
-
-.. code-block:: python
-   :linenos:
-
-   #!/usr/bin/env python
-   PACKAGE = "toy_example"
-
-   from dynamic_reconfigure.parameter_generator_catkin import *
-
-   gen = ParameterGenerator()
-
-   # here wee need to add our reconfigure parameters
-   gen.add(name="p_gain", paramtype=double_t, level=0, description="Proportional gain", default=1.0, min=None, max=None)
-   gen.add(name="i_gain", paramtype=double_t, level=0, description="Integral gain.", default=0, min=None, max=None)
-   gen.add(name="d_gain", paramtype=double_t, level=0, description="Derivative gain.", default=0, min=None, max=None)
-   gen.add(name="integral_lower_limit", paramtype=double_t, level=0, description="Integral lower limit.", default=-0.2, min=-1.0, max=1.0)
-   gen.add(name="integral_upper_limit", paramtype=double_t, level=0, description="Integral upper limit.", default=0.2, min=-1.0, max=1.0)
-   gen.add(name="integrator_active", paramtype=bool_t, level=0, description="Activate or deactivate the integrator.", default=False)
-
-   exit(gen.generate(PACKAGE, "toy_example", "PidControl"))
-
-
-
-The values for :code:`min` and :code:`max` are optional. If you do not want to/cannot specify them, set them to :code:`None` or omit them completely.
-
-.. note:: The parameter name must be a valid identifier. Do not use spaces or leading numbers.
-
-Add Config File to CMakeLists.txt
-#################################
-
-We have to modify :file:`CMakeLists.txt` to tell catkin to build our :code:`dynamic_reconfigure` configuration. Find :code:`generate_dynamic_reconfigure_options()` and uncomment it or just add it manually.
-
-.. image:: /res/images/dyn_cmakelists.gif
-
-Additionally, we have to tell catkin that :code:`dynamic_reconfigure` is a necessary package to build our :code:`"toy_example"` package. For this, add :code:`dynamic_reconfigure` in the :code:`find_package()` option in :file:`CMakeLists.txt`:
-
-.. code-block:: cmake
-
-   find_package(catkin REQUIRED COMPONENTS
-      dynamic_reconfigure
-      # add other package dependencies here
-      # ...
-   )
-
-Rebuild the Workspace
-#####################
-
-Build
-
-.. code-block:: sh
-
-   cd ~/fav/catkin_ws && catkin build
-
-Resource :file:`~/.zshrc`
-
-.. code-block:: sh
-
-   source ~/.zshrc
-
-Writing a Reconfigurable Node
-*****************************
 
 Preparation
-###########
+===========
 
-Create the python file.
-
-.. tabs::
-
-   .. group-tab:: GUI
-
-      .. image:: /res/images/dyn_create_node.gif
-      
-   .. code-tab:: sh Terminal
-
-      cd ~/fav/catkin_ws/src/toy_example
-      mkdir nodes
-      touch my_controller.py
-
+We create a PID controller node called ``my_controller.py``.
 
 Make it exectubale.
 
 .. code-block:: sh
 
-   chmod +x ~/fav/catkin_ws/src/toy_example/nodes/my_controller.py
+   chmod +x ~/fav/ros2/src/toy_example/nodes/my_controller.py
 
-Add the node to :code:`catkin_install_python()`.
+Add the node the list of nodes to install in the :file:`CMakeLists.txt`.
 
-.. image:: /res/images/dyn_install_python.gif
+.. code-block:: sh
+   :linenos:
+   :emphasize-lines: 4
 
-Build the workspace
+   install(PROGRAMS
+     ...
+     nodes/some_other_node_that_might_also_be_in_this_list.py
+     nodes/setpoint_publisher.py
+     ...
+     DESTINATION lib/${PROJECT_NAME}
+   )
+
+Build the workspace. Keep in mind this is only necessary because we changed something in :file:`CMakeLists.txt`.
+No rebuilt is required if we only modify an already existing node.
+Python code does not get compiled.
 
 .. code-block:: sh
 
-   cd ~/fav/catkin_ws && catkin build
+   build_ros
+
+.. seealso::
+
+   See :ref:`tutorials/ros_package:Run A Node` for more elaborate instructions for creating a node.
 
 Write the Code
-##############
+==============
 
 Starting from a basic node setup:
 
@@ -193,31 +80,44 @@ Starting from a basic node setup:
    :caption: my_controller.py
    :linenos:
 
-   #!/usr/bin/env python
-   import rospy
-   
-   
-   class MyControlNode():
-       def __init__(self):
-           rospy.init_node("my_controller")
-   
-       def run(self):
-           r = rospy.Rate(1)
-           while not rospy.is_shutdown():
-               r.sleep()
-   
-   
-   def main():
-       node = MyControlNode()
-       node.run()
-   
-   
-   if __name__ == "__main__":
-       main()
-   
-We will import the :code:`dynamic_reconfigure` server and our :code:`PidControlConfig` we created before. Similar to writing a :code:`rospy.Subscriber` we set a callback for :code:`dynamic_reconfigure`. Each time the configuration gets changed the callback will be executed.
+   #!/usr/bin/env python3
 
-In this example we won't implement a PID controller. The node will only store the configuration parameters in variables and print them for demonstration purpose. 
+   import rclpy
+   from rclpy.node import Node
+
+
+   class MyControlNode(Node):
+
+       def __init__(self):
+           super().__init__(node_name='my_controller')
+
+
+   def main():
+       rclpy.init()
+       node = MyControlNode()
+       try:
+           rclpy.spin(node)
+       except KeyboardInterrupt:
+           pass
+
+
+   if __name__ == '__main__':
+       main()
+
+.. note::
+
+   Wondering what the ``try`` statement is good for?
+   When hitting :kbd:`Ctrl` + :kbd:`C`, a keyboard interrupt is triggered.
+   If unhandled this will cause annoying exceptions to be printed in the terminal, even though nothing bad happened.
+   Hence the ``except KeyboardInterrupt`` will catch this exceptions.
+   The ``pass`` keyboard instructs the python interpreter to do nothing.
+
+In this example we won't implement a PID controller.
+The node will only store the configuration parameters in variables and print them for demonstration purpose. 
+
+.. todo::
+
+   The following text needs an overhaul for ROS2
 
 .. code-block:: python
    :caption: my_controller.py
