@@ -37,6 +37,7 @@ Welcome to Formulas and Vehicles' Documentation!
 
    00_main_toc/the_robot
    00_main_toc/tutorials
+   /troubleshooting
    00_main_toc/resources
 
 
