@@ -34,6 +34,14 @@ div.admonition {
     border-radius: 4px 4px 0px 0px;
 }
 
+.rst-content .admonition-todo .admonition-title {
+   background: hsl(277, 68%, 71%);
+}
+.rst-content .admonition-todo {
+   background: hsl(277, 68%, 93%);
+}
+
+
 .rst-content div[class^="highlight"] pre {
     font-family: Noto Sans Mono, monospace;
     font-weight: normal;
@@ -75,4 +83,8 @@ p {
 
 img {
    border-radius: 0.25rem;
+}
+
+.strike {
+   text-decoration: line-through;
 }
