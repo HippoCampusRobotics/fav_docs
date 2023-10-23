@@ -210,9 +210,9 @@ On the other hand, it publishes sensor data, like the pressure sensor readings.
 Regarding Control
 *****************
 
-We can send the following control setpoints to the :file:`bluerov00/bridge` node:
+We can send the following control setpoints to the :file:`bluerov00/actuator_mixer_node` node:
 
-* Thrust setpoints: In the topic :file:`bluerov00/thruster_setpoint` using the message type :file:`hippo_msgs/ActuatorSetpoint`, we can send our **desired thrusts in x,y,z-direction** of the BlueROV.
+* Thrust setpoints: In the topic :file:`bluerov00/thrust_setpoint` using the message type :file:`hippo_msgs/ActuatorSetpoint`, we can send our **desired thrusts in x,y,z-direction** of the BlueROV.
 * Torque setpoints: Similarly, in the topic :file:`bluerov00/torque_setpoint` using the message type :file:`hippo_msgs/ActuatorSetpoint`, we send the **desired torques around the x,y,z-axis** of the BlueROV.
 
 That should be familiar to all of us from the previous tutorial and our dummy example with the :code:`setpoint_publisher.py`.
