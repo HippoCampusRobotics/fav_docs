@@ -35,6 +35,9 @@ The source code of our node :file:`depth_calculator.py` might look like this:
 .. code-block:: python
    :linenos:
 
+.. code-block:: python
+   :linenos:
+
    #!/usr/bin/env python3
    import rclpy
 
@@ -44,44 +47,43 @@ The source code of our node :file:`depth_calculator.py` might look like this:
 
 
    class MySecondNode(Node):
+       def __init__(self):
+           super().__init__(node_name='my_second_node')
+  
+           # Create publisher for the calculated depth.
+           self.depth_pub = self.create_publisher(DepthStamped, 'depth', 1)
+  
+           # Create subscriber. The third argument is the function that processes
+           # the data. Every time fresh data is received, this function is called.
+           # Subscribers should always come last within the __init__ function!
+           self.pressure_sub = self.create_subscription(FluidPressure, 'pressure',
+                                                        self.on_pressure, 1)
 
-      def __init__(self):
-         super().__init__(node_name='my_second_node')
-
-         # Create publisher for the calculated depth.
-         self.depth_pub = self.create_publisher(DepthStamped, 'depth', 1)
-
-         # Create subscriber. The third argument is the function that processes
-         # the data. Every time fresh data is received, this function gets called.
-         # Subscribers should always come last within the __init__ function! 
-         self.pressure_sub = self.create_subscription(FluidPressure, 'pressure',
-                                                      self.on_pressure, 1)
-      
-      def on_pressure(self, pressure_msg):
-         pascal_per_meter = 1.0e4
-         # Careful! You will have to do some additional thinking.
-         # What kind of pressure data do we get? Relative/absolute?
-         # What about the atmospheric pressure?
-
-         depth = -pressure_msg.fluid_pressure / pascal_per_meter
-
-         depth_msg = DepthStamped()
-         depth_msg.depth = depth
-         # let's add a timestamp:
-         now = self.get_clock().now()
-         depth_msg.header.stamp = now.to_msg()
-
-         self.depth_pub.publish(depth_msg)
-
-
+       def on_pressure(self, pressure_msg):
+           pascal_per_meter = 1.0e4
+           # Careful! You will have to do some additional thinking.
+           # What kind of pressure data do we get? Relative/absolute?
+           # What about the atmospheric pressure?
+  
+           depth = -pressure_msg.fluid_pressure / pascal_per_meter
+  
+           depth_msg = DepthStamped()
+           depth_msg.depth = depth
+           # let's add a timestamp:
+           now = self.get_clock().now()
+           depth_msg.header.stamp = now.to_msg()
+  
+           self.depth_pub.publish(depth_msg)
+ 
+ 
    def main():
-      rclpy.init()
-      node = MySecondNode()
-      rclpy.spin(node)
-
-
+       rclpy.init()
+       node = MySecondNode()
+       rclpy.spin(node)
+ 
+ 
    if __name__ == '__main__':
-      main()
+       main()
 
 
 .. hint::
@@ -142,31 +144,31 @@ We can add this node to our launchfile as follows:
 
 
    def generate_launch_description() -> LaunchDescription:
-      launch_description = LaunchDescription()
-
-      arg = DeclareLaunchArgument('vehicle_name')
-      launch_description.add_action(arg)
-
-      setpoint_node = Node(executable='setpoint_publisher.py',
-                           package='awesome_package')
-      depth_node = Node(executable='depth_calculator.py',
-                        package='awesome_package')
-      group = GroupAction([
-         PushRosNamespace(LaunchConfiguration('vehicle_name')),
-         setpoint_node,
-         depth_node,
-      ])
-      launch_description.add_action(group)
-
-      package_path = get_package_share_path('fav')
-      launch_path = str(package_path / 'launch/simulation.launch.py')
-      source = PythonLaunchDescriptionSource(launch_path)
-      launch_args = {'vehicle_name': LaunchConfiguration('vehicle_name')}
-      action = IncludeLaunchDescription(source,
-                                       launch_arguments=launch_args.items())
-      launch_description.add_action(action)
-
-      return launch_description
+       launch_description = LaunchDescription()
+ 
+       arg = DeclareLaunchArgument('vehicle_name')
+       launch_description.add_action(arg)
+ 
+       setpoint_node = Node(executable='setpoint_publisher.py',
+                            package='awesome_package')
+       depth_node = Node(executable='depth_calculator.py',
+                         package='awesome_package')
+       group = GroupAction([
+          PushRosNamespace(LaunchConfiguration('vehicle_name')),
+          setpoint_node,
+          depth_node,
+       ])
+       launch_description.add_action(group)
+ 
+       package_path = get_package_share_path('fav')
+       launch_path = str(package_path / 'launch/simulation.launch.py')
+       source = PythonLaunchDescriptionSource(launch_path)
+       launch_args = {'vehicle_name': LaunchConfiguration('vehicle_name')}
+       action = IncludeLaunchDescription(source,
+                                        launch_arguments=launch_args.items())
+       launch_description.add_action(action)
+ 
+       return launch_description
 
 And launch the setup:
 
