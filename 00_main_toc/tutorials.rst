@@ -14,5 +14,4 @@ The following pages are meant to help you start writing your own code and eventu
    /tutorials/real_time_plotting
    /tutorials/bag_file_plotting
    /tutorials/lab_workflow
-   /tutorials/recording_rosbags
    /tutorials/dynamic_reconfigure
