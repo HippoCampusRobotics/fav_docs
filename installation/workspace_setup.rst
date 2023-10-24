@@ -48,11 +48,6 @@ Let's download the relevant packages
    cd px4_msgs && \
    git checkout 8a7f3da
 
-.. todo::
-   Do we need apriltag_ros here?
-   If so, we probably want to have our own fork.
-
-
 Build the "ros2_underlay" workspace
 **************************************
 
