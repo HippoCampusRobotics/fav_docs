@@ -1,9 +1,16 @@
 IDE Setup
 #########
+.. role:: strike
+   :class: strike
 
-.. todo:: Update this for ROS2! This is outdated.
+:strike:`For this class we recommend Visual Studio Code`.
+We encourage you to use the IDE/editor of your choice.
+People are different and so are their needs and desires.
+Person A might prefer ``neovim``, while Person B likes **CLion**, whereas Person C is doing everything in **windows-notepad**.
+Nonetheless, we think VSCode is very beginner friendly and capable at the same time.
+Thus, for all of you not already having a preferred editor we present a basic setup for VSCode.
 
-For this class we recommend Visual Studio Code. Of course, you can use any IDE you like and that works for you.
+This does **not** mean, you could not switch to ``neovim`` later on...
 
 Installation
 ============
@@ -19,7 +26,9 @@ For more detailed instructions and alternative installation options see the `VS 
 VS Code Project Configuration
 =============================
 
-If you open a folder with VS Code you can have project specific settings stored in a :file:`.vscode` directory. The basic configuration files are the :file:`settings.json` and the :file:`extensions.json`. There might be some other fies present in a :file:`.vscode` directory depending on the extensions installed.
+If you open a folder with VS Code you can have project specific settings stored in a :file:`.vscode` directory.
+The basic configuration files are the :file:`settings.json` and the :file:`extensions.json`.
+There might be some other fies present in a :file:`.vscode` directory depending on the extensions installed.
 
 We provide a basic version of both the above mentioned files.
 
@@ -27,7 +36,25 @@ We provide a basic version of both the above mentioned files.
 
    .. code-block:: sh
 
-      mkdir ~/fav/catkin_ws/.vscode && cd ~/fav/catkin_ws/.vscode
+      mkdir ~/fav/ros2/.vscode \
+      && cd ~/fav/ros2/.vscode
+
+.. hint::
+
+   You can create and open the new files with your favorite editor.
+   Either directly in VSCode or for the sake of simplicity in ``gedit``.
+   
+   For the first file
+
+   .. code-block:: sh
+
+      gedit ~/fav/ros2/.vscode/extensions.json
+
+   and for the second one
+
+   .. code-block:: sh
+
+      gedit ~/fav/ros2/.vscode/settings.json
 
 Create the following files:
 
@@ -59,7 +86,6 @@ Create the following files:
    :caption: settings.json
 
    {
-        "python.languageServer": "Pylance",
         "python.formatting.provider": "yapf",
         "python.formatting.yapfArgs": [
             "--style={based_on_style: pep8, column_limit: 80}"
@@ -73,13 +99,13 @@ Create the following files:
         "python.analysis.completeFunctionParens": true,
         "clang-format.language.cpp.enable": true,
         "autoDocstring.docstringFormat": "google",
-        "files.insertFinalNewline": true,
+        "files.insertFinalNewline": false,
         "yaml.format.enable": true,
         "yaml.validate": true,
         // use google style per default
         "C_Cpp.clang_format_fallbackStyle": "Google",
         // never fall back to tag parser
-                "C_Cpp.intelliSenseEngineFallback": "disabled",
+        "C_Cpp.intelliSenseEngineFallback": "disabled",
         "C_Cpp.codeAnalysis.clangTidy.enabled": true,
         // use compile_commands.json specified in c_cpp_properties.json
         "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true
@@ -93,8 +119,8 @@ Open the Workspace
    cd ~/fav/ros2 \
    && code .
 
-
-If you followed the instructions in the previous section and created the :file:`.vscode` directory and put the :file:`settings.json` and :file:`extensions.json` into it, you probably get a message prompt informing you that there are extension recommendations. These recommendations are based on the :file:`extensions.json`. Install the extensions:
+If you followed the instructions in the previous section and created the :file:`.vscode` directory and put the :file:`settings.json` and :file:`extensions.json` into it, you probably get a message prompt informing you that there are extension recommendations.
+These recommendations are based on the :file:`extensions.json`. Install the extensions:
 
 .. image:: /res/images/vscode_recommended_extensions.png
 
