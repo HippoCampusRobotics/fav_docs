@@ -1,6 +1,25 @@
 Troubleshooting
 ###############
 
+What You Should Try First
+=========================
+
+Make sure your workspaces are built
+
+.. code-block:: sh
+
+   build_underlay
+
+.. code-block:: sh
+
+   build_ros
+
+and make sure your workspace is sourced after you added new packages/nodes!
+
+.. code-block:: sh
+
+   source ~/.zshrc
+
 I cannot run my node!
 =====================
 
