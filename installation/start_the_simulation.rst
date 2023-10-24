@@ -12,17 +12,12 @@ we can finally start to work with ROS and the Gazebo simulator.
    :emphasize-lines: 5-6
 
    .
-   ├── fav
-   │   ├── fav
-   │   ├── launch
-   │   │   ├── simulation.launch.py
-   │   │   └── simulation_with_keyboard_control.launch.py
-   │   └── keyboard_control
-   ├── hippo_core
-   │   └── ...
-   └── hippo_simulation
-       └── ...
-
+   └── fav
+       ├── fav
+       ├── launch
+       │   ├── simulation.launch.py
+       │   └── simulation_with_keyboard_control.launch.py
+       └── keyboard_control
 
 simulation.launch.py
    You probably recognize this one.
