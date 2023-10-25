@@ -12,6 +12,12 @@ Thus, for all of you not already having a preferred editor we present a basic se
 
 This does **not** mean, you could not switch to ``neovim`` later on...
 
+What is an IDE
+==============
+
+Simply speaking, an IDE is a more advanced text editor, with certain capabilites to simplify writing of program code.
+If you have experience with Matlab: the program that you have used to write your Matlab code is an example of an IDE.
+
 Installation
 ============
 
@@ -39,77 +45,87 @@ We provide a basic version of both the above mentioned files.
       mkdir ~/fav/ros2/.vscode \
       && cd ~/fav/ros2/.vscode
 
-.. hint::
-
-   You can create and open the new files with your favorite editor.
-   Either directly in VSCode or for the sake of simplicity in ``gedit``.
-   
-   For the first file
+#. Open an editor with the file name that we want to create
 
    .. code-block:: sh
 
       gedit ~/fav/ros2/.vscode/extensions.json
 
-   and for the second one
+   and paste the following content
+
+   .. code-block:: json
+      :caption: extensions.json
+
+      {
+          "recommendations": [
+               // generate docstring snippets for python
+            "njpwerner.autodocstring",
+               // python language support
+            "ms-python.python",
+               // cpp language support
+            "ms-vscode.cpptools",
+               // yaml language support
+            "redhat.vscode-yaml",
+               // ROS extension
+            "ms-iot.vscode-ros",
+               // xml language support
+            "redhat.vscode-xml",
+               // syntax support for cmake files
+            "twxs.cmake",
+               // generate doxygen comments
+            "cschlosser.doxdocgen"
+          ]
+      }
+
+#. Save the file with :kbd:`Ctrl` + :kbd:`S` and close the editor.
+
+#. Repeat the steps for ``settings.json``
 
    .. code-block:: sh
 
       gedit ~/fav/ros2/.vscode/settings.json
 
-Create the following files:
+   and paste the following content
 
-.. code-block:: json
-   :caption: extensions.json
+   .. code-block:: json
+      :caption: settings.json
 
-   {
-       "recommendations": [
-            // generate docstring snippets for python
-	    	"njpwerner.autodocstring",
-            // python language support
-	    	"ms-python.python",
-            // cpp language support
-	    	"ms-vscode.cpptools",
-            // yaml language support
-	    	"redhat.vscode-yaml",
-            // ROS extension
-	    	"ms-iot.vscode-ros",
-            // xml language support
-	    	"redhat.vscode-xml",
-            // syntax support for cmake files
-	    	"twxs.cmake",
-            // generate doxygen comments
-	    	"cschlosser.doxdocgen"
-	    ]
-   }
+      {
+           "python.formatting.provider": "yapf",
+           "python.formatting.yapfArgs": [
+               "--style={based_on_style: pep8, column_limit: 80}"
+           ],
+           "python.linting.enabled": true,
+           "python.linting.pylintEnabled": false,
+           "python.linting.flake8Enabled": true,
+           "python.linting.flake8Args": [
+               "--max-line-length=80"
+           ],
+           "python.analysis.completeFunctionParens": true,
+           "clang-format.language.cpp.enable": true,
+           "autoDocstring.docstringFormat": "google",
+           "files.insertFinalNewline": false,
+           "yaml.format.enable": true,
+           "yaml.validate": true,
+           // use google style per default
+           "C_Cpp.clang_format_fallbackStyle": "Google",
+           // never fall back to tag parser
+           "C_Cpp.intelliSenseEngineFallback": "disabled",
+           "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+           // use compile_commands.json specified in c_cpp_properties.json
+           "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true
+       }
 
-.. code-block:: json
-   :caption: settings.json
+   Again, save with :kbd:`Ctrl` + :kbd:`S` and close the window.
 
-   {
-        "python.formatting.provider": "yapf",
-        "python.formatting.yapfArgs": [
-            "--style={based_on_style: pep8, column_limit: 80}"
-        ],
-        "python.linting.enabled": true,
-        "python.linting.pylintEnabled": false,
-        "python.linting.flake8Enabled": true,
-        "python.linting.flake8Args": [
-            "--max-line-length=80"
-        ],
-        "python.analysis.completeFunctionParens": true,
-        "clang-format.language.cpp.enable": true,
-        "autoDocstring.docstringFormat": "google",
-        "files.insertFinalNewline": false,
-        "yaml.format.enable": true,
-        "yaml.validate": true,
-        // use google style per default
-        "C_Cpp.clang_format_fallbackStyle": "Google",
-        // never fall back to tag parser
-        "C_Cpp.intelliSenseEngineFallback": "disabled",
-        "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-        // use compile_commands.json specified in c_cpp_properties.json
-        "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true
-    }
+.. note:: 
+
+   In some occasions ``yapf`` does not get installed automatically by VSCode.
+   Better to be safe than sorry, so make sure it is installed by executing
+
+   .. code-block:: sh
+
+      python3 -m pip install yapf
 
 Open the Workspace
 ==================
