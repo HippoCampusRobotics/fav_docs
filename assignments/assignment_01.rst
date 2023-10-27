@@ -30,6 +30,18 @@ We clone the repository and store it at ~/fav/ros2/src/depth_control
 
    git clone https://github.com/FormulasAndVehicles/depth_control_template.git ~/fav/ros2/src/depth_control
 
+As a general rule, if we have a new package we have to rebuild our workspace
+
+.. code-block:: sh
+
+   build_ros
+
+and source the workspace in all open terminal windows
+
+.. code-block:: sh
+
+   source ~/.zshrc
+
 The structure of the template looks similar to
 
 .. code-block:: sh
