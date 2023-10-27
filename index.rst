@@ -34,6 +34,12 @@ Welcome to Formulas and Vehicles' Documentation!
 
 .. toctree::
    :maxdepth: 2
+   :caption: Assignment Support
+
+   /assignments/assignment_01.rst
+
+.. toctree::
+   :maxdepth: 2
    :caption: Tutorials and Resources
 
    00_main_toc/the_robot
