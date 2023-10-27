@@ -35,9 +35,6 @@ The source code of our node :file:`depth_calculator.py` might look like this:
 .. code-block:: python
    :linenos:
 
-.. code-block:: python
-   :linenos:
-
    #!/usr/bin/env python3
    import rclpy
 
