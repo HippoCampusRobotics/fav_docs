@@ -38,8 +38,8 @@ Let's download the relevant packages
 .. code-block:: sh
 
    cd ~/fav/ros2_underlay/src \
-   && git clone --recursive https://github.com/HippoCampusRobotics/hippo_core.git \
-   && git clone https://github.com/HippoCampusRobotics/hippo_simulation.git
+   git clone --recursive --branch fav-23/24 https://github.com/HippoCampusRobotics/hippo_core.git \
+   && git clone --branch fav-23/24 https://github.com/HippoCampusRobotics/hippo_simulation.git
 
 .. code-block:: sh
 
