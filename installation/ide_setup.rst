@@ -92,7 +92,6 @@ We provide a basic version of both the above mentioned files.
       :caption: settings.json
 
       {
-           "ros.distro": "iron",
            "[python]": {
                "editor.formatOnSaveMode": "file",
                "editor.formatOnSave": true,
