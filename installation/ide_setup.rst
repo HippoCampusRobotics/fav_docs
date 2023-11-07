@@ -62,6 +62,7 @@ We provide a basic version of both the above mentioned files.
             "njpwerner.autodocstring",
                // python language support
             "ms-python.python",
+            "eeyore.yapf",
                // cpp language support
             "ms-vscode.cpptools",
                // yaml language support
@@ -91,16 +92,13 @@ We provide a basic version of both the above mentioned files.
       :caption: settings.json
 
       {
-           "python.formatting.provider": "yapf",
-           "python.formatting.yapfArgs": [
-               "--style={based_on_style: pep8, column_limit: 80}"
-           ],
-           "python.linting.enabled": true,
-           "python.linting.pylintEnabled": false,
-           "python.linting.flake8Enabled": true,
-           "python.linting.flake8Args": [
-               "--max-line-length=80"
-           ],
+           "ros.distro": "iron",
+           "[python]": {
+               "editor.formatOnSaveMode": "file",
+               "editor.formatOnSave": true,
+               "editor.defaultFormatter": "eeyore.yapf",
+           },
+           "yapf.args": ["--style", "{based_on_style: pep8, indent_width: 4, column_limit: 80}"],
            "python.analysis.completeFunctionParens": true,
            "clang-format.language.cpp.enable": true,
            "autoDocstring.docstringFormat": "google",
