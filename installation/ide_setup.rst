@@ -18,6 +18,12 @@ What is an IDE
 Simply speaking, an IDE is a more advanced text editor, with certain capabilites to simplify writing of program code.
 If you have experience with Matlab: the program that you have used to write your Matlab code is an example of an IDE.
 
+.. note::
+
+   VSCode is probably the tool you will spent by far the most time with.
+   You will probably have it opened all the time.
+   You can create files and directories in it and will do all your programming in it too.
+
 Installation
 ============
 
