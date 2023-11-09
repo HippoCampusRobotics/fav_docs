@@ -101,9 +101,9 @@ While (hopefully!) you will spend a lot of time using Ubuntu this semester, the 
 
 Open the Grub configuration file (for editing this, you need to open with :code:`sudo`)
 
-.. code-block:: sh
+.. code-block:: console
 
-   sudo gedit /etc/default/grub
+   $ sudo gedit /etc/default/grub
 
 A window should open with contents similar to this:
 
@@ -153,15 +153,15 @@ Change the correct line in your configuration file.
 
 After changing this file, update your configuration:
 
-.. code-block:: sh
+.. code-block:: console
 
-   update-grub
+   $ update-grub
 
 
 Finally, you might notice a wrong time displayed when switching between Windows and Ubuntu.
 
 In order to fix this, in Ubuntu, simply run
 
-.. code-block:: sh
+.. code-block:: console
 
-   timedatectl set-local-rtc 1
+   $ timedatectl set-local-rtc 1

@@ -49,15 +49,15 @@ But if you like to know more about packages, you can read the article about pack
 
 Go to the :file:`src` directory
 
-.. code-block:: sh
+.. code-block:: console
 
-   cd ~/fav/ros2/src
+   $ cd ~/fav/ros2/src
 
 and create the package directory
 
-.. code-block:: sh
+.. code-block:: console
 
-   mkdir awesome_package
+   $ mkdir awesome_package
 
 Remember, we need at least :file:`package.xml` and :file:`CMakeLists.txt`.
 Almost minimal examples are presented in the following.
@@ -125,15 +125,15 @@ Your package structure should look similar to::
 
 We can now build our workspace
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_ros
+   $ build_ros
 
 and source the newly created package.
 
-.. code-block:: sh
+.. code-block:: console
 
-   . ~/.zshrc
+   $ . ~/.zshrc
 
 This only needs to be done once a new package is created.
 Nothing bad happens if we are a bit overly cautios regarding sourcing our :file:`.zshrc`.
@@ -143,9 +143,9 @@ So we might want to save it up for the cases where it is actually required.
 If the commands mentioned above completed without errors, we can check if our newly created is detected correctly.
 The following command should give as the installation path of our package.
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 pkg prefix awesome_package
+   $ ros2 pkg prefix awesome_package
 
 In case things did not work out as expected, we might get :code:`Package not found` as response.
 This indicates that we (most likely) messed something up while following the instructions above.
@@ -168,9 +168,9 @@ Right click :file:`awesome_package` and choose **New Folder** and name it :file:
 We have to make the Python file executable.
 To do so, enter the following command in your terminal (for example the integrated one in VS Code):
 
-.. code-block:: sh
+.. code-block:: console
 
-   chmod +x ~/fav/ros2/src/awesome_package/nodes/setpoint_publisher.py
+   $ chmod +x ~/fav/ros2/src/awesome_package/nodes/setpoint_publisher.py
 
 .. hint:: Just in case the integrated terminal is not open: You can open it with :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`\``.
 
@@ -296,25 +296,25 @@ The command finds the source file on its own.
 
 The general usage of the :code:`ros2 run` command is :code:`ros2 run <package_name> <executable_name>`. So for our :file:`awesome_package` and its :file:`setpoint_publisher.py` it would be:
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 run awesome_package setpoint_publisher.py
+   $ ros2 run awesome_package setpoint_publisher.py
 
 If you try to do so right now, you will likely get an error message :code:`No executable found`.
 
 We created a package, but we haven't built our workspace since we modified :code:`CMakeLists.txt` (remember, that we are supposed to rebuild our workspace each time we modify this file?).
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_ros
+   $ build_ros
 
 .. note:: Every time we create a new package, or create a new node in an existing package, we need to build our workspace with :code:`build_ros` and apply the updated package paths with :code:`. ~/.zshrc`. 
 
 Now, we should be ready to finally run our code
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 run awesome_package setpoint_publisher.py
+   $ ros2 run awesome_package setpoint_publisher.py
 
 .. hint:: You can use :kbd:`Tab` to use the shell's ability to auto-complete your commands. If the auto-completion is unambigous, a single hit will suffice. If there is more than one auto-complete option, hit :kbd:`Tab` twice to show the different options. 
 
@@ -330,9 +330,9 @@ Or in other words: what are the topics the node wants to receive data on and wha
 
 To get a list of all nodes, we run
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 node list
+   $ ros2 node list
 
 which in our case should yield::
 
@@ -340,9 +340,9 @@ which in our case should yield::
 
 To get more information on this node, we run
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 node info /my_first_node
+   $ ros2 node info /my_first_node
 
 which in turn yields
 

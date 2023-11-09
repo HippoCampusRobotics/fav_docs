@@ -75,9 +75,9 @@ At the Lab
 #. If you record data via :code:`rosbag`, do not include camera images (or, if you *really* need camera data, include just one topic). Camera images can overload the network. You can exclude topics matching regular expressions with :code:`-x`.
    For example
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      rosbag record -a -x "(.*)camera(.*)"
+      $ rosbag record -a -x "(.*)camera(.*)"
    
    should exclude all topics containing :file:`camera`.
    You can find more information in our section :ref:`tutorials/recording_rosbags:Recording Data Using Bag Files`.

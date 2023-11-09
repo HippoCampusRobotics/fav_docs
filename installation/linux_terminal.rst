@@ -11,9 +11,9 @@ Open a terminal with :kbd:`Ctrl` + :kbd:`Alt` + :kbd:`T`.
 
 In many cases it will be necessary/convenient to have multiple terminal sessions. So its recommendable to install :code:`terminator`, to have multiple terminals multiplexed in a single window. Install it with the following command:
 
-.. code-block:: sh
+.. code-block:: console
 
-   sudo apt install terminator
+   $ sudo apt install terminator
 
 Cook Delicious Copy-Pasta
 =========================

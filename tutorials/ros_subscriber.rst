@@ -99,13 +99,13 @@ The source code of our node :file:`depth_calculator.py` might look like this:
    
    For example
    
-   .. code-block:: sh
+   .. code-block:: console
 
-      ros2 interface show hippo_msgs/msg/DepthStamped
+      $ ros2 interface show hippo_msgs/msg/DepthStamped
 
    will output:
 
-   .. code-block:: sh
+   .. code-block:: console
 
       std_msgs/Header header
                builtin_interfaces/Time stamp
@@ -169,9 +169,9 @@ We can add this node to our launchfile as follows:
 
 And launch the setup:
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
+   $ ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
 
 
 
@@ -187,9 +187,9 @@ Are all nodes connected and interacting the way they should?
 A very handy tool to inspect your setup is :file:`rqt_graph`.
 Open another terminal to run
 
-.. code-block:: sh
+.. code-block:: console
 
-   rqt_graph
+   $ rqt_graph
 
 Make sure to uncheck **Dead sinks** and **Leaf Topics**.
 Also make sure **Nodes/Topics (all)** is selected in the upper left corner and refresh the view.

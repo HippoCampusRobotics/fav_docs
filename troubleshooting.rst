@@ -6,19 +6,19 @@ What You Should Try First
 
 Make sure your workspaces are built
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_underlay
+   $ build_underlay
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_ros
+   $ build_ros
 
 and make sure your workspace is sourced after you added new packages/nodes!
 
-.. code-block:: sh
+.. code-block:: console
 
-   source ~/.zshrc
+   $ source ~/.zshrc
 
 I cannot run my node!
 =====================
@@ -28,14 +28,14 @@ Problem
 
 You get a python exceptions with the last line of
 
-.. code-block:: sh
+.. code-block:: console
 
    Traceback (most recent call last):
    ...
 
 being the following error
 
-.. code-block:: sh
+.. code-block:: console
 
    OSError: [Errno 8] Exec format error: <path/to/your/node>
 
@@ -57,7 +57,7 @@ Problem
 
 You get the output
 
-.. code-block:: sh
+.. code-block:: console
 
    No executable found
 
@@ -67,7 +67,7 @@ Solution
 Double check that the node exists, gets installed (``CMakeLists.txt``, see :ref:`tutorials/ros_package:Run A Node`), and is executable.
 If you have forgotten to make it executable (most likely reason of the before mentioned causes), run 
 
-.. code-block:: sh
+.. code-block:: console
 
-   chmod +x <PATH_TO_YOUR_NODE>
+   $ chmod +x <PATH_TO_YOUR_NODE>
 

@@ -9,15 +9,15 @@ Therefore, we highly recommend you use `plotjuggler <https://github.com/facontid
 
 To install :code:`plotjuggler`, run
 
-.. code-block:: sh
+.. code-block:: console
 
-   sudo apt install ros-$ROS_DISTRO-plotjuggler-ros
+   $ sudo apt install ros-$ROS_DISTRO-plotjuggler-ros
 
 Now, we can start plotjuggler
 
-.. code-block:: sh
+.. code-block:: console
 
-      ros2 run plotjuggler plotjuggler
+   $ ros2 run plotjuggler plotjuggler
 
 
 Getting Data In There

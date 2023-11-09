@@ -65,9 +65,9 @@ Installing additional Packages
 ==============================
 Released packages can be installed with aptitude and don't have to be build from source. Use:
 
-.. code-block:: sh
+.. code-block:: console
 
-      sudo apt install ros-iron-<package>
+   $ sudo apt install ros-iron-<package>
 
 Additional Stuff
 ================

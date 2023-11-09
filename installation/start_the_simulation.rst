@@ -8,7 +8,7 @@ Now that we have everything prepared, i.e.:
 
 we can finally start to work with ROS and the Gazebo simulator.
 
-.. code-block:: sh
+.. code-block:: console
    :emphasize-lines: 5-6
 
    .
@@ -28,9 +28,9 @@ simulation_with_keyboard_control.launch.py
 
 Did we say we can remotely control the BlueROV in the simulation? Let's try it!
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch fav simulation_with_keyboard_control.launch.py vehicle_name:=bluerov00
+   $ ros2 launch fav simulation_with_keyboard_control.launch.py vehicle_name:=bluerov00
 
 Two windows should be created. One is the familiar simulation environment.
 The second window is for the keyboard control.

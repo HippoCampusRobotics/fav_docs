@@ -5,31 +5,31 @@ Get the Notebook
 ################
 
 
-.. code-block:: sh
+.. code-block:: console
 
-   git clone https://github.com/FormulasAndVehicles/depth_estimator_notebook.git
+   $ git clone https://github.com/FormulasAndVehicles/depth_estimator_notebook.git
 
-.. code-block:: sh
+.. code-block:: console
 
-   cd depth_estimator_notebook
+   $ cd depth_estimator_notebook
 
 Create a virtual environment
 
-.. code-block:: sh
+.. code-block:: console
 
-   python3 -m venv venv
+   $ python3 -m venv venv
 
 Source the environment
 
-.. code-block:: sh
+.. code-block:: console
    
-   source venv/bin/activate
+   $ source venv/bin/activate
 
 Install the dependencies
 
-.. code-block:: sh
+.. code-block:: console
 
-   python3 -m pip install -r requirements.txt
+   $ python3 -m pip install -r requirements.txt
 
 Open the Notebook
 #################

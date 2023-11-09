@@ -12,7 +12,7 @@ Prerequisites
 We assume, we have the package created in the previous tutorial.
 Hence, the package structure should resemble this
 
-.. code-block:: sh
+.. code-block:: console
 
    ~/fav/ros2/src/awesome_package
    ├── nodes
@@ -25,16 +25,16 @@ Let's Start
 
 We create a new directory called :file:`launch`
 
-.. code-block:: sh
+.. code-block:: console
 
-   cd ~/fav/ros2/src/awesome_package
-   mkdir launch
+   $ cd ~/fav/ros2/src/awesome_package
+   $ mkdir launch
 
 and create a launch file
 
-.. code-block:: sh
+.. code-block:: console
 
-   touch launch/setpoint.launch.py
+   $ touch launch/setpoint.launch.py
 
 and start with a very minimal version of a launch file
 
@@ -67,9 +67,9 @@ These give the build system instructions to install all the directories followin
 
 If we try to run the launch file with
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch awesome_package setpoint.launch.py
+   $ ros2 launch awesome_package setpoint.launch.py
 
 we get an error message that the launch file could not be found.
 No reason to trust anyone blindly.
@@ -79,9 +79,9 @@ What did we forget?
 We did not rebuild our workspace.
 The instructions in :file:`CMakeLists.txt` are only executed when we build the workspace with
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_ros
+   $ build_ros
 
 Now, try it again.
 The launch command above should succeed. 
@@ -116,13 +116,13 @@ Let's see how we would accomplish this with our launch file.
 
 We again start the launch file
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch awesome_package setpoint.launch.py
+   $ ros2 launch awesome_package setpoint.launch.py
 
 and see the following output
 
-.. code-block:: sh
+.. code-block:: console
 
    [INFO] [launch]: All log files can be found ...
    [INFO] [launch]: Default logging verbosity is set to INFO
@@ -190,17 +190,17 @@ We can quickly see this by pushing our node to different namespaces and check th
 
    .. tab-item:: Without Namespace
       
-      .. code-block:: sh
+      .. code-block:: console
 
-         ros2 run awesome_package setpoint_publisher.py
+         $ ros2 run awesome_package setpoint_publisher.py
 
       ``ros2 topic list`` will show the topic name :file:`/thrust_setpoint`.
 
    .. tab-item:: With Namespace
 
-      .. code-block:: sh
+      .. code-block:: console
 
-         ros2 run awesome_package setpoint_publisher.py --ros-args -r __ns:=/my_namespace
+         $ ros2 run awesome_package setpoint_publisher.py --ros-args -r __ns:=/my_namespace
 
       ``ros2 topic list`` will show the topic name :file:`/my_namespace/thrust_setpoint`.
       You can also try others namespaces if you like.
@@ -232,9 +232,9 @@ For the first method, we hand over a ``namespace`` parameter when creating the `
 
 When we start the launch file with
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch awesome_package setpoint.launch.py
+   $ ros2 launch awesome_package setpoint.launch.py
 
 we can observe that the node now publishes under the corresponding namespace.
 Isn't this just awesome?
@@ -335,13 +335,13 @@ Second, we *access* the value of this argument via ``LaunchConfiguration`` and u
 
 If we just start our setup with the usual
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch awesome_package setpoint.launch.py
+   $ ros2 launch awesome_package setpoint.launch.py
 
 We will get an error message
 
-.. code-block:: sh
+.. code-block:: console
 
    [ERROR] [launch]: Caught exception in launch (see debug for traceback): Included launch description missing required argument 'vehicle_name' (description: 'no description given'), given: []
 
@@ -349,9 +349,9 @@ The launch system complains that we do not have provided our recently declared `
 In general, We can pass arguments with ``<argument_name>:=<argument_value>``.
 Thus, our launch command becomes
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch awesome_package setpoint.launch.py vehicle_name:=my_vehicle_name
+   $ ros2 launch awesome_package setpoint.launch.py vehicle_name:=my_vehicle_name
 
 Verify that the topic name gets changed accordingly to how you define the ``vehicle_name`` argument in the command line.
 
@@ -365,10 +365,10 @@ But stay with us for this very last subsection.
 It is not only possible to combine *sets* of nodes in a launch file, but also to combine launch files themselves.
 Remember the launch file we used to verify that our workspace setup is working?
 
-.. code-block:: sh
+.. code-block:: console
 
    # do not run this now
-   ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
+   $ ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
 
 Let us include this launch file in our awesome ``setpoint.launch.py`` launch file.
 We will need ``PythonLaunchDescriptionSource`` and ``IncludeLaunchDescription`` to accomplish this.
@@ -424,9 +424,9 @@ Usually we always use the ``vehicle_name`` parameter as namespace for all vehicl
 To conveniently find out what arguments are declared by a launch file or in any of its included launch files, we can pass ``-s`` to the launch command.
 We can inspect the launch arugments declared by the launch file we included in our ``setpoint.launch.py``, we run
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch fav simulation.launch.py -s
+   $ ros2 launch fav simulation.launch.py -s
 
 The result will list many arguments.
 The only parameter without default value is ``vehicle_name``.

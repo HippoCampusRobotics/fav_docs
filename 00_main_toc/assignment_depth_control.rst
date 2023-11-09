@@ -6,23 +6,23 @@ Assignment 1 - Depth Control
    Since we are still working on the code as this class is progressing, please make sure to regularly update your local repositories.
    You can do this by navigating into the repository, and pulling the newest changes:
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      cd ~/fav/catkin_ws/src/fav
+      $ cd ~/fav/catkin_ws/src/fav
 
    To pull our changes, execute here:
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      git pull
+      $ git pull
 
 So you've learned some basics of ROS from our tutorials, or maybe you already know your way around ROS. Now it's finally time to get some hands-on experience with a real robot. 
 
 You will design a depth controller for the BlueROV2. We have prepared an empty ROS package that you can use. To clone it, use:
 
-.. code-block:: sh
+.. code-block:: console
 
-   git clone https://github.com/FormulasAndVehicles/depth_control_template.git ~/fav/catkin_ws/src/depth_controller
+   $ git clone https://github.com/FormulasAndVehicles/depth_control_template.git ~/fav/catkin_ws/src/depth_controller
 
 This package already includes an *example* node for publishing depth setpoints.
 

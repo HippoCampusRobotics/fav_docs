@@ -5,15 +5,15 @@ Final Project
 
    Please make sure to update your local repository.
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      cd ~/fav/catkin_ws/src/fav 
+      $ cd ~/fav/catkin_ws/src/fav 
 
    To pull our changes, execute:
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      git pull origin --ff-only
+      $ git pull origin --ff-only
 
 This section presents some additional features of our simulation environment. It should give you an idea on how to add models to the Gazebo world for your final project. As an *example* model, we will include a new AprilTag in the world. Additionally, we will look at the AprilTag detection algorithm.
 
@@ -25,9 +25,9 @@ Default World
 
 Probably the default world you want to start off with is :file:`tank_with_tags.world`. You already know the corresponding launch command from assignment 1.
 
-.. code-block:: sh
+.. code-block:: console
 
-   roslaunch fav_sim gazebo_apriltag_tank_world.launch
+   $ roslaunch fav_sim gazebo_apriltag_tank_world.launch
 
 
 BlueROV2 Model with Simulated Cameras
@@ -37,9 +37,9 @@ So far, we haven't actually used simulated cameras on the BlueROV. Instead of si
 
 We have added optional simulated camera sensors to the BlueROV description files. To enable them, we have the two launch arguments :code:`use_front_camera` and :code:`use_vertical_camera` available. Their default value is :code:`false`. To enable them, spawn the vehicle as follows:
 
-.. code-block:: sh
+.. code-block:: console
 
-   roslaunch fav_sim spawn_vehicle.launch use_front_camera:=true use_vertical_camera:=true
+   $ roslaunch fav_sim spawn_vehicle.launch use_front_camera:=true use_vertical_camera:=true
 
 See :file:`spawn_vehicle.launch` for reference:
 
@@ -141,15 +141,15 @@ In line 2, we specify the path to the model file we want to include. In line 3 w
 
 If you have Gazebo already running, you can run the following commands in a terminal
 
-.. code-block:: sh
+.. code-block:: console
 
-   SDF_MODEL=$(rospack find fav_sim)/models/sdf_models/tag36_11_00127/model.sdf
+   $ SDF_MODEL=$(rospack find fav_sim)/models/sdf_models/tag36_11_00127/model.sdf
 
 This command stores the path to the model file in a environment variable called :code:`SDF_MODEL`. This is just for convenience. We could also directly substitute :code:`$SDF_MODEL` with the path in the next command.
 
-.. code-block:: sh
+.. code-block:: console
 
-   rosrun gazebo_ros spawn_model -sdf -file $SDF_MODEL -model tag_127-x0.1 -y0.3 -z-0.5 -R0.9 -P0.2 -Y2.4
+   $ rosrun gazebo_ros spawn_model -sdf -file $SDF_MODEL -model tag_127-x0.1 -y0.3 -z-0.5 -R0.9 -P0.2 -Y2.4
 
 This exectues the model spawner.
 
@@ -248,9 +248,9 @@ An example for the tag configuration is given in :file:`fav_sim/config/tags_fron
 
    It is better to not modify these configuration files, but to create new ones and tell the launch file about it:
 
-   .. code-block:: sh
+   .. code-block:: console
       
-      roslaunch fav_sim simulation.launch use_vertical_camera:=true tag_file_vertical_camera:=/my/custom/path/to/some/tags.yaml
+      $ roslaunch fav_sim simulation.launch use_vertical_camera:=true tag_file_vertical_camera:=/my/custom/path/to/some/tags.yaml
 
 .. note:: 
 

@@ -21,18 +21,18 @@ You can record data using :code:`rosbag record`. This subscribes to topics and w
 
 To record specific topics, use
 
-.. code-block:: sh
+.. code-block:: console
 
-   rosbag record topic1 topic2
+   $ rosbag record topic1 topic2
 
 High bandwidth messages, such as camera images, can overload the network. For this reason, do not record camera images. If you really need camera data, include just a single topic. Due to image processing, our setup includes a lot of camera image topics. Recording all of these topics **will** overload the network. 
 
 You can exclude topics matching regular expressions with :code:`-x`.
 To record all but the camera topics, execute
 
-.. code-block:: sh
+.. code-block:: console
 
-   rosbag record -a -x "(.*)camera(.*)"
+   $ rosbag record -a -x "(.*)camera(.*)"
 
 where :code:`(.*)` stands for an arbitrary number of arbitrary characters. This means that any topic including the substring :code:`camera` will not be recorded.  
 

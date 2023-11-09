@@ -44,13 +44,13 @@ We create a PID controller node called ``my_controller.py``.
 
 Make it exectubale.
 
-.. code-block:: sh
+.. code-block:: console
 
-   chmod +x ~/fav/ros2/src/awesome_package/nodes/my_controller.py
+   $ chmod +x ~/fav/ros2/src/awesome_package/nodes/my_controller.py
 
 Add the node the list of nodes to install in the :file:`CMakeLists.txt`.
 
-.. code-block:: sh
+.. code-block:: cmake
    :linenos:
    :emphasize-lines: 4
 
@@ -66,9 +66,9 @@ Build the workspace. Keep in mind this is only necessary because we changed some
 No rebuilt is required if we only modify an already existing node.
 Python code does not get compiled.
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_ros
+   $ build_ros
 
 .. seealso::
 
@@ -184,13 +184,13 @@ This way we can make sure, that the values have to be provided when starting the
 
 If we now run the node with
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 run awesome_package my_controller.py
+   $ ros2 run awesome_package my_controller.py
 
 an exception will be raised.
 
-.. code-block:: sh
+.. code-block:: console
 
    rclpy.exceptions.ParameterUninitializedException: The parameter 'gains.p' is not initialized
    [ros2run]: Process exited with failure 1
@@ -198,9 +198,9 @@ an exception will be raised.
 This was to be expected.
 To test our node before we integrate it in a launch file setup, we can pass the arguments in the terminal with ``--ros-args`` and `-p`.
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 run awesome_package my_controller.py --ros-args -p gains.p:=1.0 -p gains.i:=0.01 -p gains.d:=0.0
+   $ ros2 run awesome_package my_controller.py --ros-args -p gains.p:=1.0 -p gains.i:=0.01 -p gains.d:=0.0
 
 No exception is raised! An the logs reflect our manually set parameter values |partying_face|.
 
@@ -210,16 +210,16 @@ No exception is raised! An the logs reflect our manually set parameter values |p
 
 We can see the parameters while the node is running
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 param list
+   $ ros2 param list
 
 yielding
 
-.. code-block:: sh
+.. code-block:: console
    :emphasize-lines: 3-5
 
-   ❯ ros2 param list
+   $ ros2 param list
    /my_controller:
      gains.d
      gains.i
@@ -229,9 +229,9 @@ yielding
 
 Get a parameter value
 
-.. code-block:: sh
+.. code-block:: console
    
-   ❯ ros2 param get /my_controller gains.p
+   $ ros2 param get /my_controller gains.p
    Double value is: 1.0
 
 .. hint::
@@ -241,18 +241,18 @@ Get a parameter value
 
    For example
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      ros2 param get --help
+      $ ros2 param get --help
 
    Use this kind of help.
    This way you can figure out yourself how to use all these tools without relying on other people's tutorials.
 
 We can also **set** the parameter value, for example
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 param set /my_controller gains.p 3.0
+   $ ros2 param set /my_controller gains.p 3.0
 
 But currently our node does not handle these changes of the parameters.
 
@@ -339,9 +339,9 @@ Parameter files can exist at arbitrary paths.
 It is common practice to have the default parameters in a ``config`` directory inside our package.
 We create it for this tutorial package with
 
-.. code-block:: sh
+.. code-block:: console
 
-   mkdir ~/fav/ros2/src/awesome_package/config
+   $ mkdir ~/fav/ros2/src/awesome_package/config
 
 and create a ``controller_params.yaml`` file to store the parameters.
 
@@ -374,9 +374,9 @@ We do this by making sure your ``CMakeLists.txt`` of our package contains the fo
 
 After we have done this, we need to rebuild our workspace to install the newly added ``config`` directory and the corresponding config file.
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_ros
+   $ build_ros
 
 An example showing you how to load this parameter file during your launch setup is shown below.
 Lines corresponding to the loading of the parameters are highlighted.
@@ -429,13 +429,13 @@ Hence, we rebuild our workspace with ``build_ros`` |partying_face|.
 A default parameter file is chosen in line 20.
 If we run our setup with
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch awesome_package controller.launch.py vehicle_name:=bluerov00
+   $ ros2 launch awesome_package controller.launch.py vehicle_name:=bluerov00
 
 we can tell by the logging output, that our parameters have been loaded from the parameter file:
 
-.. code-block:: sh
+.. code-block:: console
 
    [INFO] [my_controller.py-1]: process started with pid [11493]
    [my_controller.py-1] [INFO] [bluerov00.my_controller]: gains.p=1.0
@@ -451,14 +451,12 @@ Use rqt to Change Parameters
 
 Run
 
-.. code-block:: sh
+.. code-block:: console
 
-   rqt
+   $ rqt
 
 and open the ``dynamic_reconfigure`` plugin as shown below
 
-.. image::
-
-   /res/images/dyn_rqt_plugin_open.png
+.. image:: /res/images/dyn_rqt_plugin_open.png
 
 This way to change parameter values might be less tedious than doing it via the command line.

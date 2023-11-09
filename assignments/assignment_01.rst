@@ -28,25 +28,25 @@ Get the Template
 
 We clone the repository and store it at ~/fav/ros2/src/depth_control
 
-.. code-block:: sh
+.. code-block:: console
 
-   git clone https://github.com/FormulasAndVehicles/depth_control_template.git ~/fav/ros2/src/depth_control
+   $ git clone https://github.com/FormulasAndVehicles/depth_control_template.git ~/fav/ros2/src/depth_control
 
 As a general rule, if we have a new package we have to rebuild our workspace
 
-.. code-block:: sh
+.. code-block:: console
 
-   build_ros
+   $ build_ros
 
 and source the workspace in all open terminal windows
 
-.. code-block:: sh
+.. code-block:: console
 
-   source ~/.zshrc
+   $ source ~/.zshrc
 
 The structure of the template looks similar to
 
-.. code-block:: sh
+.. code-block:: console
 
    ~/fav/ros2/src/depth_control
    ├── CMakeLists.txt
@@ -113,15 +113,15 @@ Get Going
 
 We start the simulation with the following command
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
+   $ ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
 
 and start our depth control setup in a second terminal with
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 launch depth_control depth.launch.py vehicle_name:=bluerov00
+   $ ros2 launch depth_control depth.launch.py vehicle_name:=bluerov00
 
 .. hint::
 

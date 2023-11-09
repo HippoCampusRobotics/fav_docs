@@ -19,34 +19,34 @@ Installation
    After the following command you will be asked if you want to use ``zsh`` as your default shell.
    We recommend to confirm this.
 
-.. code-block:: sh
+.. code-block:: console
 
-   sudo apt install -y zsh git curl wget vim \
+   $ sudo apt install -y zsh git curl wget vim \
    && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 And now set up our shell real quick
 
-.. code-block:: sh
+.. code-block:: console
 
    # clone repo
-   mkdir -p "$HOME/.zsh"
-   git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+   $ mkdir -p "$HOME/.zsh"
+   $ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
    # add path to ~/.zshrc, initialize prompt and choose pure (at the top of the file!)
-   echo 'fpath+=$HOME/.zsh/pure \nautoload -U promptinit; promptinit \nprompt pure' | cat - ~/.zshrc > temp && mv temp ~/.zshrc
+   $ echo 'fpath+=$HOME/.zsh/pure \nautoload -U promptinit; promptinit \nprompt pure' | cat - ~/.zshrc > temp && mv temp ~/.zshrc
 
    # delete default theme entry
-   sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME=""/' ~/.zshrc
+   $ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME=""/' ~/.zshrc
    # clone repo
-   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+   $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
    # add plugin to list of plugins
    # assuming unchanged list containing only git, otherwise do this manually
-   sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions)/' ~/.zshrc
-   echo "zstyle ':prompt:pure:path' color 075\nzstyle ':prompt:pure:prompt:success' color 214\nzstyle ':prompt:pure:user' color 119\nzstyle ':prompt:pure:host' color 119\nZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=161'" >> ~/.zshrc
-   echo "zstyle ':prompt:pure:path' color 075\nzstyle ':prompt:pure:prompt:success' color 214\nzstyle ':prompt:pure:user' color 119\nzstyle ':prompt:pure:host' color 119\nZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=161'" >> ~/.zshrc
-   echo "export TERM=xterm-256color" >> ~/.zshrc
-   source ~/.zshrc
+   $ sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions)/' ~/.zshrc
+   $ echo "zstyle ':prompt:pure:path' color 075\nzstyle ':prompt:pure:prompt:success' color 214\nzstyle ':prompt:pure:user' color 119\nzstyle ':prompt:pure:host' color 119\nZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=161'" >> ~/.zshrc
+   $ echo "zstyle ':prompt:pure:path' color 075\nzstyle ':prompt:pure:prompt:success' color 214\nzstyle ':prompt:pure:user' color 119\nzstyle ':prompt:pure:host' color 119\nZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=161'" >> ~/.zshrc
+   $ echo "export TERM=xterm-256color" >> ~/.zshrc
+   $ source ~/.zshrc
 
 Useful Hints
 ============

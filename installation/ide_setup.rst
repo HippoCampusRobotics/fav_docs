@@ -29,9 +29,9 @@ Installation
 
 Ubuntu has :code:`snap` preinstalled so probably the easiest way to install VS Code is to execute
 
-.. code-block:: sh
+.. code-block:: console
 
-   sudo snap install --classic code
+   $ sudo snap install --classic code
 
 For more detailed instructions and alternative installation options see the `VS Code Documentation <https://code.visualstudio.com/docs/setup/linux>`_.
 
@@ -46,16 +46,16 @@ We provide a basic version of both the above mentioned files.
 
 #. Create the :file:`.vscode` directory
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      mkdir ~/fav/ros2/.vscode \
+      $ mkdir ~/fav/ros2/.vscode \
       && cd ~/fav/ros2/.vscode
 
 #. Open an editor with the file name that we want to create
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      gedit ~/fav/ros2/.vscode/extensions.json
+      $ gedit ~/fav/ros2/.vscode/extensions.json
 
    and paste the following content
 
@@ -88,9 +88,9 @@ We provide a basic version of both the above mentioned files.
 
 #. Repeat the steps for ``settings.json``
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      gedit ~/fav/ros2/.vscode/settings.json
+      $ gedit ~/fav/ros2/.vscode/settings.json
 
    and paste the following content
 
@@ -126,16 +126,16 @@ We provide a basic version of both the above mentioned files.
    In some occasions ``yapf`` does not get installed automatically by VSCode.
    Better to be safe than sorry, so make sure it is installed by executing
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      python3 -m pip install yapf
+      $ python3 -m pip install yapf
 
 Open the Workspace
 ==================
 
-.. code-block:: sh
+.. code-block:: console
 
-   cd ~/fav/ros2 \
+   $ cd ~/fav/ros2 \
    && code .
 
 If you followed the instructions in the previous section and created the :file:`.vscode` directory and put the :file:`settings.json` and :file:`extensions.json` into it, you probably get a message prompt informing you that there are extension recommendations.

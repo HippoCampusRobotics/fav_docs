@@ -5,9 +5,9 @@ Assignment 2 - Localization and Control
 
    Please update the :code:`fav` repository. 
 
-   .. code-block:: sh
+   .. code-block:: console
 
-      cd ~/fav/catkin_ws/src/fav && git pull
+      $ cd ~/fav/catkin_ws/src/fav && git pull
    
    We have prepared a new launchfile for you to start with: :file:`gazebo_assignment2.launch`. Use this launchfile instead of :file:`gazebo_apriltag_tank_world.launch` in order to include the simulated range sensor.
 
@@ -17,38 +17,38 @@ Assignment 2 - Localization and Control
 
 .. You will need to update your :code:`bluerov_sim` package, for example by:
 
-.. .. code-block:: sh
+.. .. code-block:: console
 
-..    roscd bluerov_sim && git pull
+..    $ roscd bluerov_sim && git pull
 
 
 .. We have prepared a :code:`range_sensor` package that will publish the range measurements in a topic :code:`/ranges`:
 
-.. .. code-block:: sh
+.. .. code-block:: console
 
-..    git clone https://github.com/FormulasAndVehicles/range_sensor.git ~/fav/catkin_ws/src/range_sensor
+..    $ git clone https://github.com/FormulasAndVehicles/range_sensor.git ~/fav/catkin_ws/src/range_sensor
 
 .. To install missing dependencies:
 
-.. .. code-block:: sh
+.. .. code-block:: console
 
-..    cd ~/fav/catkin_ws && rosdep install --from-paths src --ignore-src -r -y
+..    $ cd ~/fav/catkin_ws && rosdep install --from-paths src --ignore-src -r -y
 
 
 .. Don't forget to rebuild your catkin workspace after downloading these packages.
 
 .. .. We have made some adjustments to the PX4-Autopilot firmware running on the Flight Control Unit as well, so we need to update this:
 
-.. .. .. code-block:: sh
+.. .. .. code-block:: console
 
-.. ..    cd ~/fav/fav_PX4-Autopilot && git pull
+.. ..    $ cd ~/fav/fav_PX4-Autopilot && git pull
 
 .. .. And to rebuild the code, execute in the firmware's directory:
 
-.. .. .. code-block:: sh
+.. .. .. code-block:: console
 
-.. ..    DONT_RUN=1 make clean 
-.. ..    DONT_RUN=1 make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
+.. ..    $ DONT_RUN=1 make clean 
+.. ..    $ DONT_RUN=1 make -j1 px4_sitl gazebo_uuv_bluerov2_heavy
 
 .. .. .. note::
 
