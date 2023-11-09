@@ -82,10 +82,12 @@ We do not want to do all the configuration stuff over and over again if we have 
 
 .. image:: /res/images/plotjuggler_layout.png
 
-Plotting Bagfile Data
-*********************
+.. _plotjuggler-bag-file:
 
-Instead of streaming live data, we can also plot data stored in a bagfile (see :ref:`tutorials/recording_rosbags:recording data using bag files`).
+Plotting Bag File Data
+**********************
+
+Instead of streaming live data, we can also plot data stored in a bag file (see :ref:`bag-file-plotting`).
 Really helpful to see what we actually have recorded (this sometimes differs from what we *intended* to record).
 
 .. image:: /res/images/plotjuggler_bagfile.png

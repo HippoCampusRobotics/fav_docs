@@ -1,3 +1,5 @@
+.. _bag-file-plotting:
+
 Bag File Plotting
 ################# 
 
@@ -33,9 +35,9 @@ Furthermore, subscribing to all topics might even overload the network capacity 
 
 As a sensible suggestion, we provide you with the following snippet
 
-.. code-block:: sh
+.. code-block:: console
 
-   ros2 bag record -a -x '(.*)camera(.*)' -o my_bag_file
+   $ ros2 bag record -a -x '(.*)camera(.*)' -o my_bag_file
 
 Let's have a detailed look at the command
 
@@ -49,9 +51,118 @@ Let's have a detailed look at the command
    The ``'(.*)camera(.*)'`` matches any topic name containing the substring ``camera``.
    This way we avoid the most likely unncessary subscription of camera related topics, including camera images.
 
+The command will print the topics it subscribes to on the screen.
+This way we can already check if the topics we wanted to subscribe are actually recorded.
+
+.. code-block:: console
+
+   $ ros2 bag record -a -x '(.*)camera(.*)' -o my_bag_file 
+
+   [INFO] [1699443379.136203027] [rosbag2_recorder]: Press SPACE for pausing/resuming
+   [INFO] [1699443379.149421111] [rosbag2_recorder]: Listening for topics...
+   [INFO] [1699443379.149427346] [rosbag2_recorder]: Event publisher thread: Starting
+   [INFO] [1699443379.165404721] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+   [INFO] [1699443379.167117074] [rosbag2_recorder]: Subscribed to topic '/tf'
+   [INFO] [1699443379.172027901] [rosbag2_recorder]: Subscribed to topic '/parameter_events'
+   [INFO] [1699443379.174665871] [rosbag2_recorder]: Subscribed to topic '/events/write_split'
+   [INFO] [1699443379.179409041] [rosbag2_recorder]: Subscribed to topic '/rosout'
+   [INFO] [1699443379.186010634] [rosbag2_recorder]: Subscribed to topic '/bluerov00/odometry'
+   [INFO] [1699443379.186489321] [rosbag2_recorder]: Recording...
+   [INFO] [1699443379.837613418] [rosbag2_recorder]: Subscribed to topic '/bluerov00/thruster_command'
+   [INFO] [1699443379.953955551] [rosbag2_recorder]: Subscribed to topic '/bluerov00/thrusts'
+   [INFO] [1699443379.962161809] [rosbag2_recorder]: Subscribed to topic '/clock'
+   [INFO] [1699443379.971717827] [rosbag2_recorder]: Subscribed to topic '/bluerov00/pressure'
+   [INFO] [1699443379.978513537] [rosbag2_recorder]: Subscribed to topic '/bluerov00/ground_truth/pose'
+   [INFO] [1699443379.981857609] [rosbag2_recorder]: Subscribed to topic '/bluerov00/ground_truth/odometry'
+   [INFO] [1699443379.988602954] [rosbag2_recorder]: Subscribed to topic '/bluerov00/imu'
+   [INFO] [1699443379.991957938] [rosbag2_recorder]: Subscribed to topic '/bluerov00/esc_rpm'
+   [INFO] [1699443379.997513827] [rosbag2_recorder]: Subscribed to topic '/bluerov00/angular_velocity'
+   [INFO] [1699443380.002118454] [rosbag2_recorder]: Subscribed to topic '/bluerov00/acceleration'
+   [INFO] [1699443380.255532039] [rosbag2_recorder]: Subscribed to topic '/bluerov00/thrust_setpoint'
+   [INFO] [1699443380.264418114] [rosbag2_recorder]: Subscribed to topic '/bluerov00/depth_setpoint'
+   [INFO] [1699443380.379486377] [rosbag2_recorder]: Subscribed to topic '/bluerov00/depth'
+   [INFO] [1699443444.550188742] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+   [INFO] [1699443444.577895499] [rosbag2_recorder]: Event publisher thread: Exiting
+   [INFO] [1699443444.578708119] [rosbag2_recorder]: Recording stopped
+   [INFO] [1699443444.604525312] [rosbag2_recorder]: Recording stopped
+
+.. note::
+
+   The recording is stopped with :kbd:`Ctrl` + :kbd:`C`.
+
+Inspecting the Bag File
+***********************
+
+
+To see important information of the recorded bag file, we use
+
+.. code-block:: console
+
+   $ ros2 bag info my_bag_file/
+
+Note the ``Count`` entry at the end of the topic lines.
+This way you can verify that messages have been recorded.
+
+.. code-block:: console
+
+   $ ros2 bag info my_bag_file/
+
+   Files:             my_bag_file_0.mcap
+   Bag size:          16.5 MiB
+   Storage id:        mcap
+   Duration:          65.352s
+   Start:             Nov  8 2023 11:36:19.187 (1699443379.187)
+   End:               Nov  8 2023 11:37:24.539 (1699443444.539)
+   Messages:          103159
+   Topic information: Topic: /bluerov00/thrust_setpoint | Type: hippo_msgs/msg/ActuatorSetpoint | Count: 5224 | Serialization Format: cdr
+                      Topic: /bluerov00/depth_setpoint | Type: hippo_msgs/msg/Float64Stamped | Count: 3214 | Serialization Format: cdr
+                      Topic: /bluerov00/acceleration | Type: geometry_msgs/msg/Vector3Stamped | Count: 3146 | Serialization Format: cdr
+                      Topic: /bluerov00/angular_velocity | Type: hippo_msgs/msg/AngularVelocity | Count: 15730 | Serialization Format: cdr
+                      Topic: /bluerov00/esc_rpm | Type: hippo_msgs/msg/EscRpms | Count: 15731 | Serialization Format: cdr
+                      Topic: /clock | Type: rosgraph_msgs/msg/Clock | Count: 15738 | Serialization Format: cdr
+                      Topic: /events/write_split | Type: rosbag2_interfaces/msg/WriteSplitEvent | Count: 0 | Serialization Format: cdr
+                      Topic: /bluerov00/ground_truth/odometry | Type: nav_msgs/msg/Odometry | Count: 3157 | Serialization Format: cdr
+                      Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 3186 | Serialization Format: cdr
+                      Topic: /bluerov00/thruster_command | Type: hippo_msgs/msg/ActuatorControls | Count: 5467 | Serialization Format: cdr
+                      Topic: /bluerov00/odometry | Type: nav_msgs/msg/Odometry | Count: 3186 | Serialization Format: cdr
+                      Topic: /parameter_events | Type: rcl_interfaces/msg/ParameterEvent | Count: 0 | Serialization Format: cdr
+                      Topic: /bluerov00/pressure | Type: sensor_msgs/msg/FluidPressure | Count: 5246 | Serialization Format: cdr
+                      Topic: /bluerov00/thrusts | Type: hippo_msgs/msg/ThrusterForces | Count: 15740 | Serialization Format: cdr
+                      Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 1 | Serialization Format: cdr
+                      Topic: /bluerov00/ground_truth/pose | Type: geometry_msgs/msg/PoseStamped | Count: 3157 | Serialization Format: cdr
+                      Topic: /bluerov00/depth | Type: hippo_msgs/msg/DepthStamped | Count: 5213 | Serialization Format: cdr
+                      Topic: /rosout | Type: rcl_interfaces/msg/Log | Count: 23 | Serialization Format: cdr
+                      Topic: /bluerov00/imu | Type: sensor_msgs/msg/Imu | Count: 0 | Serialization Format: cdr
+
+.. note::
+
+   Nothing is more frustrating than recording bag files while having some great experiment-time, but when we get home, we realize that the bag file is empty and no data has been recorded!
+   **Make sure**, this is not happening to you.
+
+Often it is quite useful to have a look on the recorded data even during the lab session.
+Luckily, this is rather easy to accomplish with ``plotjuggler`` as described :ref:`here <plotjuggler-bag-file>`.
 
 Extract Data From a Bag File
 ============================
+
+*"Dude, we already have such a nice plot of our bag file data in plotjuggler, what else could we possibly want?"* |br|
+True that, but a few aspects to motivate this section include but are not limited to
+
+* the data we record is not the data we want to plot (let's say we want to display the distance between to robots but the bag file *only* contains the position for both of the).
+* we want to create a plot based on multiple subequent runs of the same experiment and overlay/combine them.
+* we need to annotate our plot or highlight some sections
+* we want our plot to of visually sufficient quality to support the information we would like to present sufficiently well (lines that are too thin, axis labels that are hardly readable, etc. all distract from the information that should be conveyed by the plot).
+
+Workflow
+********
+
+We suggest the following workflow.
+
+#. Read the bag file from within a python program.
+#. Do the required data processing in python with ``numpy``. ``numpy`` is the de-facto standard library for number crunching in python.
+#. Preview the plots directly in python with ``matplotlib``. ``matplotlib`` is the de-facto standard plotting library in python. With its submodule ``pyplot`` it should feel very familiar to the way we would plot in Matlab.
+#. Export the data we want to finally plot as ``.csv`` file.
+#. Look forward in joyful anticipation of the creation of the final plot in ``LaTex``.
 
 Create Beatiful Plots in LaTex
 ==============================
