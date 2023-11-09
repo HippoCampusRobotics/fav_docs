@@ -90,3 +90,5 @@ favicons = [
 sphinxcontrib_asciinema_defaults = {
     'rows': 25,
 }
+
+copybutton_exclude = '.linenos, .gp, .go'

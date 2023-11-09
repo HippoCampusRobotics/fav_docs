@@ -20,11 +20,7 @@
         url(../fonts/NotoSansMono-Regular.ttf);
     font-weight: 400;
 }
-#@font-face {
-#    font-family: Noto Sans Mono;
-#    src: url(../fonts/NotoSansMono-Bold.ttf);
-#    font-weight: bold;
-#}
+
 div.admonition {
     border-radius: 4px;
     box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.29);
@@ -48,6 +44,19 @@ div.admonition {
     font-size: 10pt;
     border-radius: 0.25rem;
     line-height: 125%;
+}
+
+.rst-content div[class^="highlight-console"] span[class^="gp"] {
+   font-size: 0px;
+}
+
+.rst-content div[class^="highlight-console"] span[class^="gp"]:after {
+   content: '❯ ';
+   font-size: 10pt;
+}
+
+.go {
+   user-select: none;
 }
 
 .rst-content div[class^="highlight"] {
