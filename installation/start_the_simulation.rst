@@ -7,6 +7,7 @@ Now that we have everything prepared, i.e.:
 * :ref:`installation/workspace_setup:Workspace Setup`
 
 we can finally start to work with ROS and the Gazebo simulator.
+The directory structure should look similar to the below displayed one
 
 .. code-block:: console
    :emphasize-lines: 5-6
