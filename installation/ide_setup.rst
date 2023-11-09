@@ -60,6 +60,7 @@ We provide a basic version of both the above mentioned files.
    and paste the following content
 
    .. code-block:: json
+      :linenos:
       :caption: extensions.json
 
       {
@@ -95,6 +96,7 @@ We provide a basic version of both the above mentioned files.
    and paste the following content
 
    .. code-block:: json
+      :linenos:
       :caption: settings.json
 
       {
