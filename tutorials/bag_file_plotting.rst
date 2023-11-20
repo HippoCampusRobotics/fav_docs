@@ -165,12 +165,6 @@ Luckily, this is rather easy to accomplish with ``plotjuggler`` as described :re
 Extract Data From a Bag File
 ============================
 
-.. todo::
-
-   This section is still work-in-progress.
-   It will be completed soon.
-   You can ignore it for now.
-
 *"Dude, we already have such a nice plot of our bag file data in plotjuggler, what else could we possibly want?"* |br|
 True that, but a few aspects to motivate this section include but are not limited to
 
@@ -305,8 +299,346 @@ and run the ``main.py`` script
 
 We see the list of messages printed to the screen.
 
+Create a Preview Plot
+*********************
+
+We change ``main.py`` so it holds the following content:
+
+.. code-block:: python
+   :linenos:
+   :caption: main.py
+
+   #!/usr/bin/env python3
+
+   from reader import Reader
+   import matplotlib.pyplot as plt
+   import numpy as np
+
+
+   def plot_depth_vs_setpoint(reader: Reader):
+       setpoint_data = reader.get_data('/bluerov00/depth_setpoint')
+       n_messages = len(setpoint_data)
+       depth_setpoints = np.zeros([n_messages])
+       t_setpoints = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in setpoint_data:
+           depth_setpoints[i] = msg.data
+           t_setpoints[i] = time_received * 1e-9
+           i += 1
+
+       depth_data = reader.get_data('/bluerov00/depth')
+       n_messages = len(depth_data)
+       depth = np.zeros([n_messages])
+       t_depth = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in depth_data:
+           depth[i] = msg.depth
+           t_depth[i] = time_received * 1e-9
+           i += 1
+
+       plt.figure()
+       plt.plot(t_setpoints, depth_setpoints, label='Depth Setpoint')
+       plt.plot(t_depth, depth, label='Current Depth')
+       plt.legend()
+       plt.show()
+
+
+   def main():
+       reader = Reader('my_bag_file')
+       plot_depth_vs_setpoint(reader)
+
+
+   if __name__ == '__main__':
+       main()
+
+
+Again, identical to the previous section, we run the program with
+
+.. code-block:: console
+
+   $ python3 main.py
+
+Which yields the following plot:
+
+.. image:: /res/images/first_pyplot.png
+
+Congrats, our first manually created plot from extracted bag file data! |partying_face|
+
+.. note::
+
+   Old habits die hard.
+   For the sake of simplicity we did not label the axes.
+   We wouldn't go so far to call it *best-practice*.
+   Even if we only strive for *barely-good-enough*, we usually should add axes labels to any plot we create.
+   So better do not get used to omitting the labels.
+
+But now we should crop the data to a meaningful time span.
+
+Lets have the plot begin 5 seconds before a setpoint change and end after the second setpoint change, so that we end up with a plot containing upward and downward changes of the setpoint.
+
+A quick way to do this is by hovering with the cursor over the plot to see at which point in time the first setpoint change happens. 
+When we do this, the coordinates are shown in the lower right corner of the plotting window.
+
+For this very plot the first setpoint change happens at 1699443397.7s.
+Since we want our plot to start with :math:`t_0=0\,\mathrm{s}` five seconds earlier, we subtract the corresponding time.
+The required code changes are highlighted below
+
+.. code-block:: python
+   :linenos:
+   :caption: main.py
+   :emphasize-lines: 9,25,32
+
+   #!/usr/bin/env python3
+
+   from reader import Reader
+   import matplotlib.pyplot as plt
+   import numpy as np
+
+
+   def plot_depth_vs_setpoint(reader: Reader):
+       t_offset = 1699443392.7
+       setpoint_data = reader.get_data('/bluerov00/depth_setpoint')
+       n_messages = len(setpoint_data)
+       depth_setpoints = np.zeros([n_messages])
+       t_setpoints = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in setpoint_data:
+           depth_setpoints[i] = msg.data
+           t_setpoints[i] = time_received * 1e-9
+           i += 1
+       t_setpoints -= t_offset
+
+       depth_data = reader.get_data('/bluerov00/depth')
+       n_messages = len(depth_data)
+       depth = np.zeros([n_messages])
+       t_depth = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in depth_data:
+           depth[i] = msg.depth
+           t_depth[i] = time_received * 1e-9
+           i += 1
+       t_depth -= t_offset
+
+       plt.figure()
+       plt.plot(t_setpoints, depth_setpoints, label='Depth Setpoint')
+       plt.plot(t_depth, depth, label='Current Depth')
+       plt.legend()
+       plt.show()
+
+
+   def main():
+       reader = Reader('my_bag_file')
+       plot_depth_vs_setpoint(reader)
+
+
+   if __name__ == '__main__':
+       main()
+
+Now the plot should look like this:
+
+.. image:: /res/images/second_pyplot.png
+
+For cropping the data to the area of our interest, we provide you with a cropping function that we add to ``main.py``.
+
+The enhanced ``main.py`` looks like 
+
+.. code-block:: python
+   :linenos:
+   :caption: main.py
+   :emphasize-lines: 8-13,31-32,45
+
+   #!/usr/bin/env python3
+
+   from reader import Reader
+   import matplotlib.pyplot as plt
+   import numpy as np
+
+
+   def crop_data(data, time, t0, t1):
+       tmp = np.abs(time - t0)
+       a = tmp.argmin()
+       tmp = np.abs(time - t1)
+       b = tmp.argmin()
+       return data[a:b], time[a:b]
+
+
+   def plot_depth_vs_setpoint(reader: Reader):
+       t_offset = 1699443392.7
+       t_start = 0.0
+       t_end = 45.0
+       setpoint_data = reader.get_data('/bluerov00/depth_setpoint')
+       n_messages = len(setpoint_data)
+       depth_setpoints = np.zeros([n_messages])
+       t_setpoints = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in setpoint_data:
+           depth_setpoints[i] = msg.data
+           t_setpoints[i] = time_received * 1e-9
+           i += 1
+       t_setpoints -= t_offset
+       depth_setpoints, t_setpoints = crop_data(depth_setpoints, t_setpoints,
+                                                t_start, t_end)
+
+       depth_data = reader.get_data('/bluerov00/depth')
+       n_messages = len(depth_data)
+       depth = np.zeros([n_messages])
+       t_depth = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in depth_data:
+           depth[i] = msg.depth
+           t_depth[i] = time_received * 1e-9
+           i += 1
+       t_depth -= t_offset
+       depth, t_depth = crop_data(depth, t_depth, t_start, t_end)
+
+       plt.figure()
+       plt.plot(t_setpoints, depth_setpoints, label='Depth Setpoint')
+       plt.plot(t_depth, depth, label='Current Depth')
+       plt.legend()
+       plt.show()
+
+
+   def main():
+       reader = Reader('my_bag_file')
+       plot_depth_vs_setpoint(reader)
+
+
+   if __name__ == '__main__':
+       main()
+
+which produces the following plot when we run it
+
+.. image:: /res/images/third_pyplot.png
+
+Export the Plot Data
+====================
+
+This looks almost like we finished the plotting. 
+But now we have to export this plot/data into a ``csv`` file that us used to create the very same plot directly in LaTex.
+
+We create the additional directory ``export`` in our ``bag_evaluation`` directory (via the following command or directly in VSCode)
+
+.. code-block:: console
+
+   $ mkdir ~/fav/bag_evaluation/export
+
+Check that your directory structure looks similar to
+
+.. code-block:: console
+   :emphasize-lines: 2
+
+   ~/fav/bag_evaluation
+   ├── export
+   ├── main.py
+   ├── my_bag_file
+   │   ├── metadata.yaml
+   │   └── my_bag_file_0.mcap
+   └── reader.py
+   
+Writing the ``csv`` can be implemented real quick and can be seen at the highlighted lines below
+
+.. code-block:: python
+   :linenos:
+   :caption: main.py
+   :emphasize-lines: 33-40,55-60
+
+   #!/usr/bin/env python3
+
+   from reader import Reader
+   import matplotlib.pyplot as plt
+   import numpy as np
+
+
+   def crop_data(data, time, t0, t1):
+       tmp = np.abs(time - t0)
+       a = tmp.argmin()
+       tmp = np.abs(time - t1)
+       b = tmp.argmin()
+       return data[a:b], time[a:b]
+
+
+   def plot_depth_vs_setpoint(reader: Reader):
+       t_offset = 1699443392.7
+       t_start = 0.0
+       t_end = 45.0
+       setpoint_data = reader.get_data('/bluerov00/depth_setpoint')
+       n_messages = len(setpoint_data)
+       depth_setpoints = np.zeros([n_messages])
+       t_setpoints = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in setpoint_data:
+           depth_setpoints[i] = msg.data
+           t_setpoints[i] = time_received * 1e-9
+           i += 1
+       t_setpoints -= t_offset
+       depth_setpoints, t_setpoints = crop_data(depth_setpoints, t_setpoints,
+                                                t_start, t_end)
+       data = np.hstack(
+           [t_setpoints.reshape(-1, 1),
+            depth_setpoints.reshape(-1, 1)])
+       np.savetxt('export/depth_setpoint.csv',
+                   data,
+                   delimiter=',',
+                   header='t, depth_setpoint',
+                   comments='')
+
+       depth_data = reader.get_data('/bluerov00/depth')
+       n_messages = len(depth_data)
+       depth = np.zeros([n_messages])
+       t_depth = np.zeros([n_messages])
+
+       i = 0
+       for msg, time_received in depth_data:
+           depth[i] = msg.depth
+           t_depth[i] = time_received * 1e-9
+           i += 1
+       t_depth -= t_offset
+       depth, t_depth = crop_data(depth, t_depth, t_start, t_end)
+
+       data = np.hstack([t_depth.reshape(-1, 1), depth.reshape(-1, 1)])
+       np.savetxt('export/depth.csv',
+                   data,
+                   delimiter=',',
+                   header='t, depth_setpoint',
+                   comments='')
+
+       plt.figure()
+       plt.plot(t_setpoints, depth_setpoints, label='Depth Setpoint')
+       plt.plot(t_depth, depth, label='Current Depth')
+       plt.legend()
+       plt.show()
+
+
+   def main():
+       reader = Reader('my_bag_file')
+       plot_depth_vs_setpoint(reader)
+
+
+   if __name__ == '__main__':
+       main()
+
+After running ``python3 main.py`` there should be the correspond ``csv`` files in the ``export`` directory.
+You can directly check this in VSCode or via the command line
+
+.. code-block:: console
+
+   $ ls ~/fav/bag_evaluation/export
+   depth.csv  depth_setpoint.csv
 
 
 
 Create Beatiful Plots in LaTex
 ==============================
+
+.. todo::
+
+   This section is still work-in-progress.
+   It will be completed soon.
+   You can ignore it for now.
