@@ -3,21 +3,39 @@
 Bag File Plotting
 ################# 
 
-.. todo::
+In the first part, we will learn how to record data to a bag file (:ref:`record-bag-file`) and how access this data for plotting and further evaluation (:ref:`extract-bag-file-data`).
 
-   This section is still work-in-progress.
-   It will be completed soon.
-   You can ignore it for now.
-
-In the first part, we will learn how to record data to a bag file and how access this data for plotting and further evaluation.
 In the second part, we will go through a suggested workflow to plot this data in a thesis-/paper-/report-ready format that makes the reviewer happy, because we provide him with beautiful vector graphics with appropriate font sizes, scaling and line thicknesses.
+This way, the reader is not distracted and can appreciate the relevant information of the plot.
+
+.. _record-bag-file:
 
 Record a Bag File
-===================
+=================
+
+Prerequisites
+*************
+
+To follow along this tutorial with an identical setup, we suggest the launch setup from assignment 1:
+
+.. code-block:: console
+
+   $ ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
+
+and our control setup
+
+.. code-block:: console
+
+   $ ros2 launch depth_control depth.launch.py vehicle_name:=bluerov00
+
+In general, you could also use any other setup and adapt the instructions where needed.
+
+Recording the Bag
+*****************
 
 We use the command line tool ``ros2 bag record`` for recording bag files.
 See the `official docs <https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html#ros2-bag-record>`__ for more details.
-
+   
 In general, we have to specify which topics we want to record and the name of the output file.
 The latter is optional and if not specified, the name will be the current date and time.
 We encourage you to choose a meainingful file name.
@@ -139,11 +157,19 @@ This way you can verify that messages have been recorded.
    Nothing is more frustrating than recording bag files while having some great experiment-time, but when we get home, we realize that the bag file is empty and no data has been recorded!
    **Make sure**, this is not happening to you.
 
-Often it is quite useful to have a look on the recorded data even during the lab session.
+Often it is quite useful to have a look on the recorded data **even during the lab session**.
 Luckily, this is rather easy to accomplish with ``plotjuggler`` as described :ref:`here <plotjuggler-bag-file>`.
+
+.. _extract-bag-file-data:
 
 Extract Data From a Bag File
 ============================
+
+.. todo::
+
+   This section is still work-in-progress.
+   It will be completed soon.
+   You can ignore it for now.
 
 *"Dude, we already have such a nice plot of our bag file data in plotjuggler, what else could we possibly want?"* |br|
 True that, but a few aspects to motivate this section include but are not limited to
@@ -163,6 +189,124 @@ We suggest the following workflow.
 #. Preview the plots directly in python with ``matplotlib``. ``matplotlib`` is the de-facto standard plotting library in python. With its submodule ``pyplot`` it should feel very familiar to the way we would plot in Matlab.
 #. Export the data we want to finally plot as ``.csv`` file.
 #. Look forward in joyful anticipation of the creation of the final plot in ``LaTex``.
+
+Load the Bag File
+*****************
+
+.. note::
+
+   We will use the simulation setup based on assignment 1 for demonstration purposes.
+   The general workflow should be understandable without having done this assignment and can be easily adapted for other scenarios.
+
+We write a python program and use the ``rosbag2_py`` modue to read the bag file.
+
+We want to create the following directory structure:
+
+.. code-block:: console
+
+   ~/fav/bag_evaluation
+   ├── main.py
+   ├── my_bag_file
+   │   ├── metadata.yaml
+   │   └── my_bag_file_0.mcap
+   └── reader.py
+
+.. note::
+
+   We can create this directory and the ``main.py`` and ``reader.py`` directly inside VSCode!
+   The ``my_bag_file`` directory is the bag file directory created via ``ros2 bag record``.
+
+We copy-paste the following code into ``reader.py``
+
+.. code-block:: python
+   :linenos:
+   :caption: reader.py
+
+   import rosbag2_py
+   from rclpy.serialization import deserialize_message
+   from rosidl_runtime_py.utilities import get_message
+
+
+   class Reader():
+
+       def __init__(self, bag_file: str):
+           self.bag_file = bag_file
+
+       def _read_topic(self, selected_topic: str):
+           reader = rosbag2_py.SequentialReader()
+           reader.open(
+               rosbag2_py.StorageOptions(uri=self.bag_file, storage_id="mcap"),
+               rosbag2_py.ConverterOptions(input_serialization_format="cdr",
+                                           output_serialization_format="cdr"),
+           )
+           topic_types = reader.get_all_topics_and_types()
+
+           def typename(topic_name):
+               for topic_type in topic_types:
+                   if topic_type.name == topic_name:
+                       return topic_type.type
+               raise ValueError(f'topic {topic_name} not in bag')
+
+           while reader.has_next():
+               topic, data, timestamp = reader.read_next()
+               if topic != selected_topic:
+                   continue
+               msg_type = get_message(typename(topic))
+               msg = deserialize_message(data, msg_type)
+               yield topic, msg, timestamp
+           del reader
+
+       def get_data(self, topic: str):
+           return [[x[1], x[2]] for x in self._read_topic(topic)]
+
+
+We do not care for the details of the reader implementation for now.
+It simply provides us with the functionality to read data from the bag file.
+
+To have a minimal working example, we paste the follwing snippet into ``main.py``
+
+.. code-block:: python
+   :linenos:
+   :caption: main.py
+
+   #!/usr/bin/env python3
+
+   from reader import Reader
+
+   def main():
+       reader = Reader('my_bag_file')
+       data = reader.get_data('/bluerov00/depth_setpoint')
+
+       for (msg, time_received) in data:
+           print(f'Message: {msg}\ntime_received: {time_received}')
+
+
+   if __name__ == '__main__':
+       main()
+
+In a terminal (an integrated one of VSCode or open a new one with :kbd:`Ctrl` + :kbd:`Alt` + :kbd:`T`) we make sure we are in the same directory as the ``main.py`` file
+
+.. code-block:: console
+
+   $ cd ~/fav/bag_evaluation
+
+and run the ``main.py`` script
+
+.. code-block:: console
+
+   $ python3 main.py
+   ...
+   Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=495445714), frame_id=''), data=-0.6)
+   time_received: 1699443444495922280
+   Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=515611158), frame_id=''), data=-0.6)
+   time_received: 1699443444516101056
+   Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=535362893), frame_id=''), data=-0.6)
+   time_received: 1699443444536112988
+
+We see the list of messages printed to the screen.
+
+
+
 
 Create Beatiful Plots in LaTex
 ==============================
