@@ -606,7 +606,7 @@ Writing the ``csv`` can be implemented real quick and can be seen at the highlig
        np.savetxt('export/depth.csv',
                    data,
                    delimiter=',',
-                   header='t, depth_setpoint',
+                   header='t, depth',
                    comments='')
 
        plt.figure()
@@ -637,8 +637,83 @@ You can directly check this in VSCode or via the command line
 Create Beatiful Plots in LaTex
 ==============================
 
-.. todo::
+We will share/have shared a LaTex template via Overleaf with you.
+There is an example for plotting the data already implemented.
 
-   This section is still work-in-progress.
-   It will be completed soon.
-   You can ignore it for now.
+We recommend to create a separate ``tex`` file for each plot inside the ``/plots/`` directory.
+Thus, the file structure of the LaTex project would look like
+
+.. code-block:: console
+
+   /plots
+   ├── data
+   │   ├── depth_setpoint.csv
+   │   └── depth.csv
+   └── depth_plot.tex
+
+The ``data`` directory contains the ``csv`` files we exported in the previous section.
+The actual plotting is done in ``plots/depth_plot.tex`` with ``pgfplots`` in a ``tikz`` environment.
+Hence, both of these are useful keywords when using your favourite search engine how to accomplish certain things when it comes to plotting data.
+
+
+For the sake of completeness, we present the content of ``depth_plot.tex`` and a typical way to include this plot in a figure.
+
+.. code-block:: latex
+   :linenos:
+   :caption: depth_plot.tex
+
+   \begin{tikzpicture}
+       \begin{axis} [
+           % scale the plot relative to available space
+           width=\linewidth,
+           height=0.4\linewidth,
+           % we know our plot starts at t=0 and has a duration of 45s.
+           xmin=0,
+           xmax=45,
+           ymin=-0.7,
+           ymax=-0.3,
+           % a grid is often a valuable visual aid
+           grid=both,
+           % always label the axes!
+           xlabel={Time (s)},
+           ylabel={Depth (m)},
+           % if not unambiguous, add a legend to the plot.
+           % otherwise the viewer cannot know which line corresponds to what.
+           legend entries = {Setpoint, Depth},
+           % the default position would be top right.
+           % to not have the legend covering a part of our plot, we move
+           % it to the bottom right corner.
+           legend style={at={(1, 0)}, anchor=south east, xshift=-2mm, yshift=2mm},
+       ]
+
+       % usually, anything smaller than thick lines is too small.
+       \addplot+[thick, dashed, black]
+           % we choose the data for x and y by name specified in the
+           % first line of our csv file.
+           table [x=t, y=depth_setpoint, col sep=comma]
+           % specify the data file to get the data from
+           {plots/data/depth_setpoint.csv};
+
+       \addplot+[thick, mumred]
+           table [x=t, y=depth, col sep=comma]
+           {plots/data/depth.csv};
+       \end{axis}
+   \end{tikzpicture}
+
+We then include this plot inside a figure environment in our ``main.tex`` file.
+
+.. code-block:: latex
+   :linenos:
+   :caption: main.tex
+
+   % ... some content before
+   \begin{figure}
+       \centering
+       \input{plots/depth_plot}
+       \caption{Add a sufficiently descriptive caption here!}
+       \label{fig:depth-plot}
+   \end{figure}
+   % ... some content after
+
+For more detailed plot configurations use the publicly available resources.
+There are so many options to configure a plot which would definitely go beyond the scope of this tutorial.
