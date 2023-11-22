@@ -371,7 +371,7 @@ Congrats, our first manually created plot from extracted bag file data! |partyin
    Old habits die hard.
    For the sake of simplicity we did not label the axes.
    We wouldn't go so far to call it *best-practice*.
-   Even if we only strive for *barely-good-enough*, we usually should add axes labels to any plot we create.
+   Even if we only strive for *barely-good-enough*, we should add axes labels to any plot we create.
    So better do not get used to omitting the labels.
 
 But now we should crop the data to a meaningful time span.
