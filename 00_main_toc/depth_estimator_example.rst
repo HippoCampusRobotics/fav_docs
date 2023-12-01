@@ -1,9 +1,12 @@
-Depth-Estimator Example
-=======================
+Kalman Filter: Depth-Estimator Example
+======================================
 
-Get the Notebook
-################
+We use a Jupyter notebook. 
+So instead of having a 'live' simulation in ROS, we run a simulation with a predefined time span, all at once. We also have to include some code that simulates the real system. In ROS, these data would come from either Gazebo or the real world.
 
+
+Download the Code
+#################
 
 .. code-block:: console
 
@@ -34,6 +37,7 @@ Install the dependencies
 Open the Notebook
 #################
 
-Start VSCode and open the repository's directory. Probably VSCode suggests to install the Jupyter extension. If not, you can install it manually.
+Start VSCode and open the repository's directory. 
+VSCode probablly suggests to install the Jupyter extension. If not, you can install it manually.
 
 You can then open the file :file:`ekf_example.ipynb` and run the notebook.

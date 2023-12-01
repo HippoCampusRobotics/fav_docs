@@ -38,6 +38,7 @@ Welcome to Formulas and Vehicles' Documentation!
 
    /assignments/assignment_01
    /assignments/assignment_02
+   00_main_toc/depth_estimator_example
 
 .. toctree::
    :maxdepth: 2
