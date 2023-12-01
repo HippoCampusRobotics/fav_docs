@@ -9,6 +9,13 @@ Assignment 1.1
 
    You will need to update our repositories: :ref:`updating`.
 
+Get the Template
+================
+
+.. todo:: 
+
+   Insert the link to the template here!
+
 There are two new launch files in the updated ``fav`` package.
 
 simulation_with_tags.launch.py
