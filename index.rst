@@ -37,7 +37,7 @@ Welcome to Formulas and Vehicles' Documentation!
    :caption: Assignment Support
 
    /assignments/assignment_01
-   /assignments/assignment_01.1
+   /assignments/assignment_02
 
 .. toctree::
    :maxdepth: 2

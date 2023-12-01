@@ -1,5 +1,5 @@
-Assignment 1.1
-##############
+Assignment 2
+############
 
 .. todo::
 
@@ -15,6 +15,9 @@ Get the Template
 .. todo:: 
 
    Insert the link to the template here!
+
+New Launch Files
+================
 
 There are two new launch files in the updated ``fav`` package.
 
@@ -87,3 +90,32 @@ It is fine to to the localization for the camera and apply the transformation to
 
 In the simulation the position of the distance sensor is exactly known and has an offset of ``[0.2, 0.0, 0.1]`` relative to the vehicle's origin.
 
+Hints on the Controllers
+========================
+
+Feel free to reuse the depth controller from the previous assignment.
+It can also be used as a base PID controller implementation for the additional controller(s).
+
+It is up to you to decide wether you want to implement x-, y-, z-, and yaw-control in separate nodes each.
+You mighht also find it more compelling to implement x- and y-control in the same node.
+
+The yaw-controller is recommended, since the ``range_sensor`` can only detect the anchors/landmarks/AprilTags within a certain field of view.
+Making the robot "looking" at the tags will make sure, they get detected more reliably.
+
+Also keep in mind that there are almost no disturbances changing the BlueROV's heading in the simulation.
+Most likely this will be different for the lab experiments, rendering the yaw-controller essential.
+
+Additional Notes
+================
+
+Quaternions
+***********
+
+In this assignment we might get in touch of the rotation representation via quaternions.
+The ROS convention is to write them in the order ``[x, y, z, w]``, while there is also the popular notation of writing them in alphabetical order ``[w, x, y, z]``.
+We mention this here, to avoid annoying mistakes caused by mixing these different notations.
+Note, that in this assignment it will not be necessary to directly work with quaternions.
+Since we are only interested in the yaw component, we will simply convert the orientation expressed in quaternions to an euler angle representation.
+
+There are many euler-angle representations.
+The one usually used for mobile robots is the intrinsic ``z-y'-x''``, which is equivalent to the extrinsic ``x-y-z``.
