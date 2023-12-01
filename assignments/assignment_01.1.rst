@@ -1,6 +1,10 @@
 Assignment 1.1
 ##############
 
+.. todo::
+
+   This section still needs to be finished.
+
 .. attention::
 
    You will need to update our repositories: :ref:`updating`.
