@@ -19,6 +19,7 @@ Pressure Sensor
 
 A pressure sensor located in the upper enclosure's end cap can measure the (water) pressure. This can be used to estimate the vehicle's height.
 
+.. _camera-sensors:
 
 Cameras
 =======
