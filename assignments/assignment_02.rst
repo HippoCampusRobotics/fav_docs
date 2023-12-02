@@ -24,36 +24,6 @@ We install them with
    $ sudo pip3 install transforms3d
 
 
-Template Package
-================
-
-Get the Template
-****************
-
-.. code-block:: console
-
-   $ cd ~/fav/ros2/src && \
-   git clone https://github.com/FormulasAndVehicles/position_control_template.git position_control
-
-Launch Files
-************
-
-Yaw Controller
-**************
-
-The template contains a very basic implementation of a P-controller for controlling the yaw angle.
-You can find it in ``position_control/nodes/yaw_controller.py``.
-The main purpose of the code is to provide an example on how to extract the vehicle's yaw angle from the ``vision_pose_cov`` topic.
-Most likely you have already implemented a more advanced controller for the previous assignment.
-Feel free to extend this controller or write a new one based on this base implemention as you see fit.
-
-Kalman Filter
-*************
-
-.. todo::
-
-   Write this section
-
 New Simulation Launch Files
 ===========================
 
@@ -117,6 +87,58 @@ In Python we can iterate over the measurements with the following loop:
 .. seealso::
 
    A similar snippet can be found in the template code we provide for this assignment.
+
+Template Package
+================
+
+Get the Template
+****************
+
+.. code-block:: console
+
+   $ cd ~/fav/ros2/src && \
+   git clone https://github.com/FormulasAndVehicles/position_control_template.git position_control
+
+Launch Files
+************
+
+The template containts two launch files.
+
+control.launch.py
+   This starts the provided yaw controller.
+   You can add your additional control nodes you implement for this assignment there.
+
+   .. code-block:: console
+
+      $ ros2 launch position_control control.launch.py vehicle_name:=bluerov00
+
+   .. note:: 
+
+      We recommend to start with the localization before taking care of control.
+      Hence, you can leave this launch file alone for now and start it as soon as your localization procudes sufficient results.
+
+localization.launch.py
+   This node starts the Kalman Filter.
+
+   .. code-block:: console
+
+      $ ros2 launch position_control localization.launch.py vehicle_name:=bluerov00
+
+Yaw Controller
+**************
+
+The template contains a very basic implementation of a P-controller for controlling the yaw angle.
+You can find it in ``position_control/nodes/yaw_controller.py``.
+The main purpose of the code is to provide an example on how to extract the vehicle's yaw angle from the ``vision_pose_cov`` topic.
+Most likely you have already implemented a more advanced controller for the previous assignment.
+Feel free to extend this controller or write a new one based on this base implemention as you see fit.
+
+Kalman Filter
+*************
+
+.. todo::
+
+   Write this section
 
 The Distance Sensor
 ===================
