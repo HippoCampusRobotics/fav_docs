@@ -33,7 +33,7 @@ Get the Template
 .. code-block:: console
 
    $ cd ~/fav/ros2/src && \
-   git clone https://github.com/FormulasAndVehicles/position_control_template.git > position_control
+   git clone https://github.com/FormulasAndVehicles/position_control_template.git position_control
 
 Launch Files
 ************
