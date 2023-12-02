@@ -30,10 +30,13 @@ Template Package
 Get the Template
 ****************
 
-.. todo:: 
+.. code-block:: console
 
-   Insert the link to the template here!
+   $ cd ~/fav/ros2/src && \
+   git clone https://github.com/FormulasAndVehicles/position_control_template.git > position_control
 
+Launch Files
+************
 
 Yaw Controller
 **************
@@ -51,8 +54,8 @@ Kalman Filter
 
    Write this section
 
-New Launch Files
-================
+New FaV Launch Files
+====================
 
 There are two new launch files in the updated ``fav`` package.
 
