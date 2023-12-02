@@ -54,8 +54,8 @@ Kalman Filter
 
    Write this section
 
-New FaV Launch Files
-====================
+New Simulation Launch Files
+===========================
 
 There are two new launch files in the updated ``fav`` package.
 
