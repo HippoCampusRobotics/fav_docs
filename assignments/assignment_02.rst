@@ -9,12 +9,47 @@ Assignment 2
 
    You will need to update our repositories: :ref:`updating`.
 
-Get the Template
+Install Dependencies
+====================
+
+The template provided for this assignment has additional dependencies.
+We install them with
+
+.. code-block:: console
+
+   $ sudo apt install ros-iron-tf-transformation
+
+.. code-block:: console
+
+   $ sudo pip3 install transforms3d
+
+
+Template Package
 ================
+
+Get the Template
+****************
 
 .. todo:: 
 
    Insert the link to the template here!
+
+
+Yaw Controller
+**************
+
+The template contains a very basic implementation of a P-controller for controlling the yaw angle.
+You can find it in ``position_control/nodes/yaw_controller.py``.
+The main purpose of the code is to provide an example on how to extract the vehicle's yaw angle from the ``vision_pose_cov`` topic.
+Most likely you have already implemented a more advanced controller for the previous assignment.
+Feel free to extend this controller or write a new one based on this base implemention as you see fit.
+
+Kalman Filter
+*************
+
+.. todo::
+
+   Write this section
 
 New Launch Files
 ================
@@ -97,13 +132,13 @@ Feel free to reuse the depth controller from the previous assignment.
 It can also be used as a base PID controller implementation for the additional controller(s).
 
 It is up to you to decide wether you want to implement x-, y-, z-, and yaw-control in separate nodes each.
-You mighht also find it more compelling to implement x- and y-control in the same node.
+You might also find it more compelling to implement x- and y-control in the same node.
 
 The yaw-controller is recommended, since the ``range_sensor`` can only detect the anchors/landmarks/AprilTags within a certain field of view.
 Making the robot "looking" at the tags will make sure, they get detected more reliably.
 
 Also keep in mind that there are almost no disturbances changing the BlueROV's heading in the simulation.
-Most likely this will be different for the lab experiments, rendering the yaw-controller essential.
+Most likely this will be different for the lab experiments, making the yaw-controller essential.
 
 Additional Notes
 ================
