@@ -1,10 +1,6 @@
 Assignment 2
 ############
 
-.. todo::
-
-   This section still needs to be finished.
-
 .. attention::
 
    You will need to update our repositories: :ref:`updating`.
@@ -30,11 +26,11 @@ New Simulation Launch Files
 There are two new launch files in the updated ``fav`` package.
 
 simulation_with_tags.launch.py
-   Analogue to ``simulation.launch.py`` but does additionally spawn landmark tags used for distance based localization.
+   Analogue to ``simulation.launch.py``, but additionally spawns landmark tags used for the distance based localization.
 
 simulation_with_tags_and_keyboard_control.launch.py
    Extends the above mentioned launch file by the keyboard control node.
-   This might be particularly useful for testing your localization algorithms befor combining it with control nodes.
+   This is useful for testing your localization algorithms befor combining it with control nodes.
 
 We can start the simulation with keyboard control with
 
@@ -45,7 +41,7 @@ We can start the simulation with keyboard control with
 Note the four AprilTags on the opposite side of the vehicle.
 
 The measured distances to these tags are published under the ``ranges`` topic inside the vehicles namespace.
-Details about the the message definitions can be queried with
+Details about the message definitions can be queried with
 
 .. code-block:: console
 
@@ -136,9 +132,20 @@ Feel free to extend this controller or write a new one based on this base implem
 Kalman Filter
 *************
 
-.. todo::
+This template contains the Kalman Filter that will compute a position estimate using the distance measurements to the tags/anchors.
+You will need to implement the :code:`measurement_update` and the :code:`prediction` functions, as well as some data processing (in the callback function :code:`on_ranges`) beforehand.
 
-   Write this section
+The initial covariance matrices are all assumed to be diagonal. The measurement noise covariance matrix R and the prediction/process noise covariance matrix Q are used to tune your filter.
+The diagonal entries are the squared standard deviations, i.e. for the process noise this means the first entry corresponds to how much the uncertainty in the x-position in each prediction step increases.
+For your convenience, we have implemented the standard deviation as ROS parameters already.
+To get more intuition about this, also have a look at the depth Kalman Filter example.
+
+
+Ranges Debugger
+***************
+
+This is simply a convenience node. It republishes the range measurements in an ordered fashion under the topic :code:`debug`. This allows you to plot the measurements from each tag individually.
+
 
 The Distance Sensor
 ===================
