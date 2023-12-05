@@ -8,9 +8,12 @@ So instead of having a 'live' simulation in ROS, we run a simulation with a pred
 Download the Code
 #################
 
+Do not clone this repository into the ROS2 workdpace.
+
+
 .. code-block:: console
 
-   $ git clone https://github.com/FormulasAndVehicles/depth_estimator_notebook.git
+   $ cd && git clone https://github.com/FormulasAndVehicles/depth_estimator_notebook.git
 
 .. code-block:: console
 
