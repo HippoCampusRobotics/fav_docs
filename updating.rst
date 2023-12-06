@@ -20,6 +20,13 @@ Thus, you do not have to check for updates proactively.
       $ cd ~/fav/ros2_underlay/src/hippo_core \
       && git pull origin && git checkout fav-23/24
 
+#. Update the ``fav`` package
+
+   .. code-block:: console
+
+   $ cd ~/fav/ros2/src/fav \
+   && git pull origin
+
 #. Rebuild the workspace
 
    .. code-block:: console
