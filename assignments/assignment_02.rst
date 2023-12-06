@@ -13,7 +13,7 @@ We install them with
 
 .. code-block:: console
 
-   $ sudo apt install ros-iron-tf-transformation
+   $ sudo apt install ros-iron-tf-transformations
 
 .. code-block:: console
 
