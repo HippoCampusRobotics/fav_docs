@@ -27,12 +27,19 @@ Thus, you do not have to check for updates proactively.
       $ cd ~/fav/ros2/src/fav \
       && git pull origin
 
-#. Rebuild the workspace
+#. Rebuild the underlay workspace
 
    .. code-block:: console
 
       $ build_underlay
 
+
+#. Rebuild the normal workspace
+
+   .. code-block:: console
+
+      $ build_ros
+   
 #. Make sure everything is sourced
 
    .. code-block:: console
