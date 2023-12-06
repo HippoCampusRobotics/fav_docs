@@ -24,8 +24,8 @@ Thus, you do not have to check for updates proactively.
 
    .. code-block:: console
 
-   $ cd ~/fav/ros2/src/fav \
-   && git pull origin
+      $ cd ~/fav/ros2/src/fav \
+      && git pull origin
 
 #. Rebuild the workspace
 
