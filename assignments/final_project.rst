@@ -100,3 +100,44 @@ Position Controller
 Yaw Controller
 **************
 
+
+Rviz
+====
+
+If you are using a 4k monitor, the RViz overlays showing the status and progress of the scenario might not be displayed correctly.
+
+You can change the size of the circular progress display in :file:`config/rviz.rviz` here:
+
+.. code-block:: 
+   :emphasize-lines: 26
+
+   - Class: rviz_2d_overlay_plugins/PieChartOverlay
+   Enabled: true
+   Name: Progress
+   Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /bluerov00/scenario_node/viewpoint_progress
+   Value: true
+   auto color change: true
+   background color: 0; 0; 0
+   backround alpha: 0
+   clockwise rotate direction: true
+   foreground alpha: 0.699999988079071
+   foreground alpha 2: 0.4000000059604645
+   foreground color: 255; 255; 255
+   left: 10
+   max color: 0; 255; 0
+   max color change threthold: 0.75
+   max value: 1
+   med color: 255; 255; 0
+   med color change threthold: 0.10000000149011612
+   min value: 0
+   show caption: true
+   size: 80
+   text size: 14
+   top: 80
+
+200 could be a good value for 4k resolution.
