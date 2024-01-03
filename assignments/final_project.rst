@@ -13,7 +13,7 @@ We install them with
 
 .. code-block:: console
 
-   $ ros-humble-rviz-2d-overlay-plugins
+   $ sudo apt install ros-${ROS_DISTRO}-rviz-2d-overlay-plugins
 
 Template Package
 ================
@@ -32,7 +32,7 @@ Remember to build and source your workspace.
 Launch the Project
 ==================
 
-We will use RVIZ for visualization during the final project. 
+We will use RViz for visualization during the final project. 
 Start the simulation with Gazebo in headless mode: 
 
 .. code-block:: console
@@ -64,7 +64,6 @@ Now, to start the algorithm, you need to call the start service:
 
       $ ros2 service call /bluerov00/scenario_node/reset std_srvs/srv/Trigger
    
-
 You can now see the viewpoints and obstacles as well as the occupancy grid map.
 Once a path is found, the BlueROV automatically drives to the next viewpoint (so far using our very simple solution).
 
@@ -79,11 +78,10 @@ The needed time from start of computation to completion of all viewpoints will b
 .. image:: /res/images/screenshot_finished.png
 
 
-Restarting your code
-********************
+Restarting the Algorithm
+************************
 
-When you want to rerun your algorithm, simply restart the :code:`final_project.launch.py` launch file and call the start service.
-
+When you want to rerun your algorithm after a completed run, simply call the start service again. Otherwise, restart the :code:`final_project.launch.py` launch file and call the start service again.
 
 Scenario Description
 ====================
@@ -94,6 +92,14 @@ You can find the scenario files here: :file:`config/scenario_X.yaml`
 A scenario is described by obstacles and viewpoints.
 Each obstacle is a polygon with n corner points, described by their x and y coordinate. 
 We use a pose to describe each viewpoint (position + quaternion desribing the orientation). However, only the x and y position, as well as the yaw angle are relevant.
+
+.. hint::
+   The first scenario is constructed to work with our baseline solution. Expect this scenario to be the closest to the given scenario in the live demo. 
+   However, the viewpoints will not be ordered by the distance to the start.
+
+   The second scenario only consists of a start viewpoint and a second viewpoint in order to give you something simple to test your path planning algorithm. 
+
+   The third scenario includes some fancier obstacles. Since space is (unfortunately) limited in the real water tank, we will not use as many large obstacles in the live demo.
 
 .. note::
    No one stops you from creating your own scenarios if you feel like the given scenarios do not satisfy your needs.
@@ -112,7 +118,7 @@ obstacles
 
 viewpoints
    Contains a list of viewpoints.
-   Each viewpoint has the followoing structure
+   Each viewpoint has the following structure
 
    .. code-block:: console
       :emphasize-lines: 4,15
@@ -133,8 +139,8 @@ viewpoints
       float64 progress
       bool completed
 
-   Of course it contains the information about the viewpoint's pose, but also the ``completed`` field will be of particular interest.
-   This way, we are informed if a viewpoint is considered completed and, if that is the case, that the can start visiting the next viewpoint.
+   It contains the information about the viewpoint's pose, but also the ``completed`` field will be of particular interest.
+   This way, we are informed if a viewpoint is considered completed and, if that is the case, that we can start visiting the next viewpoint.
    
 
 Provided Nodes
@@ -146,10 +152,8 @@ This node computes an occupancy grid map.
 In the file :file:`config/mapping_params.yaml`, you can change the discretization.
 
 All obstacles included in the scenario description will automatically be included in the grid map.
-
 Additionally, we have already implemented a safety margin around all obstacles.
 Since the BlueROV's real size is not necessary identical with the grid cells' size, the obstacles need to be inflated and additional grid cells marked as occupied in order to avoid collision.
-
 In order to adjust this inflation size, have a look at this node's source code.
 
 Apart from this, you should not need to touch this node.
@@ -157,9 +161,9 @@ Apart from this, you should not need to touch this node.
 
 Path Planner
 ************
-This is one of (if not the) core nodes.
-Do not feel obliged to stick with our base line implementaiton in any way (it does not even have to bee occupancy grid map based if you prefer some other method).
-Still we recommend to keep the services/clients of this node as they are.
+This is one of (if not *the*) core nodes.
+Do not feel obliged to stick with our base line implementation in any way (it does not even have to be occupancy-grid-map-based if you prefer some other method).
+Still, we recommend to keep the services/clients of this node as they are.
 The ``scenario_node`` calls these services and might get upset if they are not available.
 But feel free to extend the service callbacks as you see fit.
 
@@ -169,28 +173,29 @@ The ``path_follower`` tries to follow a given path via pure pursuit.
 The path is set via the ``set_path`` service.
 Most likely services are a new concept to you.
 But they will feel very similar to messages.
+If needed, look up the tutorials in the official ROS2 docs.
 Again a callback is registered as for a subscription as well.
 
 The whole flow can be described as follows.
 The ``scenario_node`` publishes a list of viewpoints and the ``path_planner`` computes path segments based on these viewpoints.
-In our baseline implementation these segments are straight lines between the viewpoints discretized to fit the occupancy grid map.
-The ``path_planner`` than calls the ``set_path`` of the ``path_follower``.
+In our baseline implementation, these segments are straight lines between the viewpoints and discretized to fit the occupancy grid map.
+The ``path_planner`` then calls the ``set_path`` of the ``path_follower``.
 As soon as the current path segments target ``viewpoint`` is declared completed by the ``scenario_node``, the ``path_planner`` calls the ``set_path`` service with the next path segment.
 This repeats until all viewpoints have been visited.
 
-Our base line implementation does perform collision detection but does **not** perform collision avoidance.
-Thus, if an obstacle is in the way if the viewpoints are connected via straight-line-paths, the ``path_planner`` will consider this scenario infeasible and will give up.
+Our baseline implementation does perform collision detection but does **not** perform collision avoidance.
+Thus, if an obstacle is in the way when the viewpoints are connected via straight-line-paths, the ``path_planner`` will consider this scenario infeasible and will give up.
 
 Position Controller
 *******************
-This is a very basic implementation to get a fully functional base line implementation of the whole system.
-We are confident that you have already implented much better performing controllers during this course.
-Do not hold back, improve it!
+This is a very basic implementation to get a fully functional baseline implementation of the whole system.
+We are confident that you have already implemented much better performing controllers during this class.
+Do not hold back, improve ours!
 
 We would like to encourage you to keep time timeout implementation in place.
 After a certain timeout period during which no setpoints have been received, the controller emits zero setpoints.
-Inside the simulation it won't matter much.
-But for the lab sessions, this might proof useful.
+Inside the simulation this won't matter much.
+But for the lab sessions, it might proof useful.
 
 Yaw Controller
 **************
