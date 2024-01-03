@@ -48,11 +48,29 @@ Launch the final project:
 
 The scenario can be chosen using the launch argument :code:`scenario`.
 
+RViz should open and look like this:
+
+.. image:: /res/images/screenshot_before_start.png
+
 Now, to start the algorithm, you need to call the start service:
 
 .. code-block:: console
 
    $ ros2 service call /bluerov00/scenario_node/start std_srvs/srv/Trigger
+
+You can now see the viewpoints and obstacles as well as the occupancy grid map.
+Once a path is found, the BlueROV automatically drives to the next viewpoint (so far using our very simple solution).
+
+It should look like this:
+
+.. image:: /res/images/screenshot_progress.png
+
+For a viewpoint to be registered as 'visited', the robot needs to be in close proximity for a while. The progress is displayed in the overlay chart on the left.
+
+The needed time from start of computation to completion of all viewpoints will be displayed:
+
+.. image:: /res/images/screenshot_finished.png
+
 
 Restarting your code
 ********************
@@ -75,7 +93,7 @@ Provided Nodes
 
 Mapper
 ******
-This node computes an obstacle grid map.
+This node computes an occupancy grid map.
 In the file :file:`config/mapping_params.yaml`, you can change the discretization.
 
 All obstacles included in the scenario description will automatically be included in the grid map.
