@@ -13,8 +13,7 @@ We install them with
 
 .. code-block:: console
 
-   $ TODO - RVIZ progress bar installieren
-
+   $ ros-humble-rviz-2d-overlay-plugins
 
 Template Package
 ================
@@ -58,6 +57,14 @@ Now, to start the algorithm, you need to call the start service:
 
    $ ros2 service call /bluerov00/scenario_node/start std_srvs/srv/Trigger
 
+.. hint::
+   To abort your current run without stopping everything, you can call the following service
+
+   .. code-block:: console
+
+      $ ros2 service call /bluerov00/scenario_node/reset std_srvs/srv/Trigger
+   
+
 You can now see the viewpoints and obstacles as well as the occupancy grid map.
 Once a path is found, the BlueROV automatically drives to the next viewpoint (so far using our very simple solution).
 
@@ -88,6 +95,48 @@ A scenario is described by obstacles and viewpoints.
 Each obstacle is a polygon with n corner points, described by their x and y coordinate. 
 We use a pose to describe each viewpoint (position + quaternion desribing the orientation). However, only the x and y position, as well as the yaw angle are relevant.
 
+.. note::
+   No one stops you from creating your own scenarios if you feel like the given scenarios do not satisfy your needs.
+
+Structural Overview
+===================
+
+The ``scenario_node`` loads a scenario as described in the previous section and publishes two important topics
+
+* :file:`obstacles` as **scenario_msgs/PolygonsStamped**
+* :file:`viewpoints` as **scenario_msgs/Viewpoints**
+
+obstacles
+   Contains a list of polygons that represent obstacles.
+   These messages are used by the mapper node to create a corresponding occupancy grid map.
+
+viewpoints
+   Contains a list of viewpoints.
+   Each viewpoint has the followoing structure
+
+   .. code-block:: console
+      :emphasize-lines: 4,15
+
+      $ ros2 interface show scenario_msgs/msg/Viewpoint
+      std_msgs/Header header
+         ...
+      geometry_msgs/Pose pose
+         Point position
+            float64 x
+            float64 y
+            float64 z
+         Quaternion orientation
+            float64 x 0
+            float64 y 0
+            float64 z 0
+            float64 w 1
+      float64 progress
+      bool completed
+
+   Of course it contains the information about the viewpoint's pose, but also the ``completed`` field will be of particular interest.
+   This way, we are informed if a viewpoint is considered completed and, if that is the case, that the can start visiting the next viewpoint.
+   
+
 Provided Nodes
 ==============
 
@@ -108,15 +157,44 @@ Apart from this, you should not need to touch this node.
 
 Path Planner
 ************
+This is one of (if not the) core nodes.
+Do not feel obliged to stick with our base line implementaiton in any way (it does not even have to bee occupancy grid map based if you prefer some other method).
+Still we recommend to keep the services/clients of this node as they are.
+The ``scenario_node`` calls these services and might get upset if they are not available.
+But feel free to extend the service callbacks as you see fit.
 
 Path Follower
 *************
+The ``path_follower`` tries to follow a given path via pure pursuit.
+The path is set via the ``set_path`` service.
+Most likely services are a new concept to you.
+But they will feel very similar to messages.
+Again a callback is registered as for a subscription as well.
+
+The whole flow can be described as follows.
+The ``scenario_node`` publishes a list of viewpoints and the ``path_planner`` computes path segments based on these viewpoints.
+In our baseline implementation these segments are straight lines between the viewpoints discretized to fit the occupancy grid map.
+The ``path_planner`` than calls the ``set_path`` of the ``path_follower``.
+As soon as the current path segments target ``viewpoint`` is declared completed by the ``scenario_node``, the ``path_planner`` calls the ``set_path`` service with the next path segment.
+This repeats until all viewpoints have been visited.
+
+Our base line implementation does perform collision detection but does **not** perform collision avoidance.
+Thus, if an obstacle is in the way if the viewpoints are connected via straight-line-paths, the ``path_planner`` will consider this scenario infeasible and will give up.
 
 Position Controller
 *******************
+This is a very basic implementation to get a fully functional base line implementation of the whole system.
+We are confident that you have already implented much better performing controllers during this course.
+Do not hold back, improve it!
+
+We would like to encourage you to keep time timeout implementation in place.
+After a certain timeout period during which no setpoints have been received, the controller emits zero setpoints.
+Inside the simulation it won't matter much.
+But for the lab sessions, this might proof useful.
 
 Yaw Controller
 **************
+The same as for the position controller applies for the yaw controller.
 
 
 Rviz
