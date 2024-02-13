@@ -40,6 +40,7 @@ Welcome to Formulas and Vehicles' Documentation!
    /assignments/assignment_02
    00_main_toc/depth_estimator_example
    /assignments/final_project
+   /assignments/final_event
 
 .. toctree::
    :maxdepth: 2
