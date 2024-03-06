@@ -34,16 +34,6 @@ Welcome to Formulas and Vehicles' Documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Assignment Support
-
-   /assignments/assignment_01
-   /assignments/assignment_02
-   00_main_toc/depth_estimator_example
-   /assignments/final_project
-   /assignments/final_event
-
-.. toctree::
-   :maxdepth: 2
    :caption: Tutorials and Resources
 
    00_main_toc/the_robot
@@ -52,6 +42,17 @@ Welcome to Formulas and Vehicles' Documentation!
    /faq
    /updating
    00_main_toc/resources
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Assignment Support
+
+   /assignments/assignment_01
+   /assignments/assignment_02
+   00_main_toc/depth_estimator_example
+   /assignments/final_project
+   /assignments/final_event
+
 
 
 

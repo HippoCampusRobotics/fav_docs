@@ -30,12 +30,20 @@ The lectures are supposed to give you some ideas and starting points.
     Working on final projects.
 
 
+.. .. raw:: html
+    
+..     <iframe width="560" height="315" src="https://www.youtube.com/embed/KTxX9foiolA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 .. raw:: html
-    
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/KTxX9foiolA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-*Example of a Final Project from last year*.
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/7l6Y8Iajj_I?si=fopvXUgDiBs5IcdM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+.. raw:: html 
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/i2hN86TyAIk?si=Sd12mnxLmgn2okSK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+*Examples of past Final Projects*.
+
 
 
 Format and Schedule
