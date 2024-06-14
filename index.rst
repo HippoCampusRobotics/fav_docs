@@ -47,6 +47,7 @@ Welcome to Formulas and Vehicles' Documentation!
    :maxdepth: 2
    :caption: Assignment Support
 
+   00_main_toc/Python101
    /assignments/assignment_01
    /assignments/assignment_02
    00_main_toc/depth_estimator_example
