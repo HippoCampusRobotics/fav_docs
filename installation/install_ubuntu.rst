@@ -28,7 +28,7 @@ Prepare Your Disk Partition
 Create A Bootable USB stick
 ===========================
 
-#. Download `Ubuntu 22.04 Desktop <https://releases.ubuntu.com/22.04/>`_ from the offical Website.
+#. Download `Ubuntu 24.04 Desktop <https://releases.ubuntu.com/24.04/>`_ from the offical Website.
 
 #. Download `Etcher <https://www.balena.io/etcher/>`_. 
 
