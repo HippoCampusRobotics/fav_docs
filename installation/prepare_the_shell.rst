@@ -83,9 +83,9 @@ Auto Complete
 Oh yeah, auto complete is a feature we should extensively make use of.
 With :kbd:`Tab` we trigger the completion.
 If it can be performed because the completion is unambigious, it will be done.
-Otherwise we will immediately provided with the available options.
+Otherwise we will immediately be provided with the available options.
 We can navigate through them with :kbd:`Tab` and :kbd:`Shift` + :kbd:`Tab`.
-If there are many available options, they will be aranged in a table format.
+If there are many available options, they will be arranged in a table format.
 We can navigate to the desired completion directly with the arrow keys.
 
 .. note::
