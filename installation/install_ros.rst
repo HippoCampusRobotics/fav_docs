@@ -60,7 +60,7 @@ Installation
 
    .. code-block:: console
 
-      $ sudo apt install ros-iron-desktop-full
+      $ sudo apt install ros-jazzy-desktop-full
 
 #. Install build dependencies
 
@@ -78,7 +78,7 @@ Installation
 
    .. code-block:: console
 
-      $ echo 'source /opt/ros/iron/setup.zsh' >> ~/.zshrc
+      $ echo 'source /opt/ros/jazzy/setup.zsh' >> ~/.zshrc
 
 #. Apply the changes to your :file:`.zshrc`
 
