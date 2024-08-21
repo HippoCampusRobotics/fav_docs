@@ -118,7 +118,7 @@ Source the "ros2_underlay" workspace
    $ echo 'source "$HOME/fav/ros2_underlay/install/setup.zsh"' >> ~/.zshrc && \
    source ~/.zshrc
 
-1. "ros2" workspace
+2. "ros2" workspace
 ====================
 
 Now on to our development workspace. You will later on fill this workspace with your own packages. Exciting!
