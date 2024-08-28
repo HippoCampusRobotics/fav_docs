@@ -34,10 +34,8 @@ ros2
 
 We will first setup the **ros2_underlay** workspace. 
 
-Populate the "ros2_underlay" workspace
+Prepare the installation of the pre-built packages
 **************************************
-
-Prepare the installation of the pre-built packages:
 
    1. Adding the key
 
@@ -74,41 +72,6 @@ Prepare the installation of the pre-built packages:
       .. code-block:: console
 
          $ sudo apt install ros-jazzy-hippo-full
-
-Clone another package into the workspace:
-
-   .. code-block:: console
-
-      $ cd ~/fav/ros2_underlay/src \
-      && git clone https://github.com/PX4/px4_msgs.git && \
-      cd px4_msgs && \
-      git checkout 8a7f3da
-
-Build the "ros2_underlay" workspace
-**************************************
-
-Create an *alias* for the build command for convenience
-
-.. code-block:: console
-
-   $ echo "alias build_underlay=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd \$HOME/fav/ros2_underlay && colcon build'\"" >> ~/.zshrc
-   $ source ~/.zshrc
-
-Make sure dependencies are installed
-
-.. code-block:: console
-
-   $ cd ~/fav/ros2_underlay \
-   && source /opt/ros/jazzy/setup.zsh \
-   && rosdep install --from-paths src -y --ignore-src
-
-Build the workspace (this may take some time!):
-
-.. code-block:: console
-
-   $ build_underlay
-
-Note that by executing the defined alias, you do not have to be inside the respective workspace directory to build. Very convenient!
 
 Source the "ros2_underlay" workspace
 **************************************
