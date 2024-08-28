@@ -167,7 +167,6 @@ Open the :file:`.zshrc` file, for example using :code:`gedit` as text editor:
          ...
 
          source /opt/ros/jazzy/setup.zsh
-         alias build_underlay="env -i HOME=$HOME USER=$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd $HOME/fav/ros2_underlay && colcon build'"
          source "$HOME/fav/ros2_underlay/install/setup.zsh"
          alias build_ros="env -i HOME=$HOME USER=$USER TERM=xterm-256color zsh -l -c 'source $HOME/fav/ros2_underlay/install/setup.zsh && cd $HOME/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'"
          source "$HOME/fav/ros2/install/local_setup.zsh"
