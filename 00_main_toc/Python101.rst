@@ -21,7 +21,7 @@ Now simply **copy and paste** the following lines of code step by step:
 
 .. code-block:: console
 
-   $ cd Python101
+   $ cd PythonOnramp
 
 Create a virtual environment:
 
