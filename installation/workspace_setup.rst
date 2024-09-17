@@ -7,12 +7,18 @@ Create the Structure
 .. code-block:: console
 
    $ mkdir -p ~/fav/ros2/src
+   $ mkdir -p ~/fav/ros2_underlay/src
 
 In ROS, we put the code we write (or use) in so-called "workspaces". 
-We can have multiple workspaces and can either use them in combination by "overlaying" the workspaces. Or we can have them as completely independent setups and use only a certain selection of them at a time. Conveniently, for this class we only have one.
+We can have multiple workspaces and can either use them in combination by "overlaying" the workspaces. Or we can have them as completely independent setups and use only a certain selection of them at a time.
+
+For this class, we use the two workspaces :file:`ros2` and :file:`ros2_underlay`. As the name suggests, we use :file:`ros2` as an overlay to :file:`ros2_underlay`. Of course there is a reasoning behind this.
+
+ros2_underlay
+   We use this workspace for code/packages we want or have to build from source. However, these packages we do not modify regularly or work with at all. Outsourcing these packages into a separate workspace speeds up the compilation time of our actual development workspace.
 
 ros2
-   :file:`ros2` is our development workspace. We put all the packages/code developed during this class here.
+   This is our development workspace. We put all the packages/code developed during this class here.
 
 .. note:: 
    The setup normally includes three steps:
@@ -23,10 +29,13 @@ ros2
   
    The process of building the code can be pretty time consuming. So, sometimes it can be beneficial to skip this step by using **pre-built packages**.
 
+1. "ros2_underlay" workspace
+============================
 
+We will first setup the **ros2_underlay** workspace. 
 
 Prepare the installation of the pre-built packages
-==================================================
+**************************************
 
    1. Adding the key
 
@@ -64,9 +73,16 @@ Prepare the installation of the pre-built packages
 
          $ sudo apt install ros-jazzy-hippo-full
 
+Source the "ros2_underlay" workspace
+**************************************
 
-"ros2" workspace
-================
+.. code-block:: console
+
+   $ echo 'source "$HOME/fav/ros2_underlay/install/setup.zsh"' >> ~/.zshrc && \
+   source ~/.zshrc
+
+2. "ros2" workspace
+====================
 
 Now on to our development workspace. You will later on fill this workspace with your own packages. Exciting!
 
