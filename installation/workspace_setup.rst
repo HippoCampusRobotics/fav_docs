@@ -26,7 +26,7 @@ ros2
 
 
 Prepare the installation of the pre-built packages
-**************************************
+==================================================
 
    1. Adding the key
 
@@ -65,8 +65,8 @@ Prepare the installation of the pre-built packages
          $ sudo apt install ros-jazzy-hippo-full
 
 
-2. "ros2" workspace
-====================
+"ros2" workspace
+================
 
 Now on to our development workspace. You will later on fill this workspace with your own packages. Exciting!
 
