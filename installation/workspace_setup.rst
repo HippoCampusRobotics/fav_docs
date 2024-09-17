@@ -9,12 +9,10 @@ Create the Structure
    $ mkdir -p ~/fav/ros2/src
 
 In ROS, we put the code we write (or use) in so-called "workspaces". 
-We can have multiple workspaces and can either use them in combination by "overlaying" the workspaces. Or we can have them as completely independent setups and use only a certain selection of them at a time.
-
-For this class, we use the two workspaces :file:`ros2` and :file:`ros2_underlay`. As the name suggests, we use :file:`ros2` as an overlay to :file:`ros2_underlay`. Of course there is a reasoning behind this.
+We can have multiple workspaces and can either use them in combination by "overlaying" the workspaces. Or we can have them as completely independent setups and use only a certain selection of them at a time. Conveniently, for this class we only have one.
 
 ros2
-   This is our development workspace. We put all the packages/code developed during this class here.
+   :file:`ros2` is our development workspace. We put all the packages/code developed during this class here.
 
 .. note:: 
    The setup normally includes three steps:
