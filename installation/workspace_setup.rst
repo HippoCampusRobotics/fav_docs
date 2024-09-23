@@ -7,7 +7,6 @@ Create the Structure
 .. code-block:: console
 
    $ mkdir -p ~/fav/ros2/src
-   $ mkdir -p ~/fav/ros2_underlay/src
 
 In ROS, we put the code we write (or use) in so-called "workspaces". 
 We can have multiple workspaces and can either use them in combination by "overlaying" the workspaces. Or we can have them as completely independent setups and use only a certain selection of them at a time.
@@ -73,13 +72,6 @@ Prepare the installation of the pre-built packages
 
          $ sudo apt install ros-jazzy-hippo-full
 
-Source the "ros2_underlay" workspace
-**************************************
-
-.. code-block:: console
-
-   $ echo 'source "$HOME/fav/ros2_underlay/install/setup.zsh"' >> ~/.zshrc && \
-   source ~/.zshrc
 
 2. "ros2" workspace
 ====================
@@ -101,15 +93,16 @@ Create an alias for the build command for convenience
 
 .. code-block:: console
 
-   $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source \$HOME/fav/ros2_underlay/install/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
+   $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
+   $ source ~/.zshrc
+   $ echo "alias rosdep-ros2=\"env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.zsh && cd $HOME/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
    $ source ~/.zshrc
 
 Make sure dependencies are installed
 
 .. code-block:: console
 
-   $ cd ~/fav/ros2 \
-   && rosdep install --from-paths src -y --ignore-src
+   $ rosdep-ros2
 
 Build the workspace (this may take some time!):
 
