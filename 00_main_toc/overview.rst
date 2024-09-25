@@ -50,7 +50,7 @@ Format and Schedule
 ###################
 
 There will be in-person pitch lectures as well as practical lab experiments.
-Lectures will be held Fridays from 11:30 to 13:00.
+Lectures will be held Thursdays from 15:00 to 17:00.
 
 Registration
 ############
