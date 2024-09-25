@@ -7,129 +7,104 @@ Create the Structure
 .. code-block:: console
 
    $ mkdir -p ~/fav/ros2/src
-   $ mkdir -p ~/fav/ros2_underlay/src
 
 In ROS, we put the code we write (or use) in so-called "workspaces". 
-We can have multiple workspaces and can either use them in combination by "overlaying" the workspaces. Or we can have them as completely independent setups and use only a certain selection of them at a time.
+We can have multiple workspaces and can either use them in combination by "overlaying" the workspaces. Or we can have them as completely independent setups and use only a certain selection of them at a time. This devision is done mainly because of time saving reasons.
 
-For this class, we use the two workspaces :file:`ros2` and :file:`ros2_underlay`. As the name suggests, we use :file:`ros2` as an overlay to :file:`ros2_underlay`. Of course there is a reasoning behind this.
+For convenience, we only use one workspace :file:`ros2` for this class, which is our development workspace. We put all the packages/code developed during this class here.
 
-ros2_underlay
-   We use this workspace for code/packages we want or have to build from source. However, these packages we do not modify regularly or work with at all. Outsourcing these packages into a separate workspace speeds up the compilation time of our actual development workspace.
+.. note:: 
+   The setup normally includes three steps:
 
-ros2
-   This is our development workspace. We put all the packages/code developed during this class here.
+   - *downloading* the code of the packages we want from e.g. github
+   - *building* the code
+   - *sourcing* the workspace, so that the built packages can be found by your machine and executed.
+  
+   The process of *building* the code can be pretty time consuming. So, sometimes it can be beneficial to skip this step by using **pre-built packages**.
 
-1. "ros2_underlay" workspace
-============================
+The installation of the pre-built packages
+==============================================
 
-We will first setup the **ros2_underlay** workspace. The setup includes three steps:
+1. Adding the key
 
-- *downloading* the code of the packages we want from e.g. github
-- *building* the code
-- *sourcing* the workspace, so that the built packages can be found by your machine and executed
+   .. code-block:: console
 
+      $ sudo curl https://repositories.hippocampus-robotics.net/hippo-archive.key -o /etc/apt/keyrings/hippocampus-robotics.asc
 
-Populate the "ros2_underlay" workspace
-**************************************
+2. Adding the sources
 
-Let's download the relevant packages
+   .. code-block:: console
 
-.. code-block:: console
+      $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/hippocampus-robotics.asc] https://repositories.hippocampus-robotics.net/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/hippocampus.list
 
-   $ cd ~/fav/ros2_underlay/src \
-   && git clone --recursive --branch fav-23/24 https://github.com/HippoCampusRobotics/hippo_core.git \
-   && git clone --branch fav-23/24 https://github.com/HippoCampusRobotics/hippo_simulation.git \
-   && git clone https://github.com/HippoCampusRobotics/hippo_control_msgs.git
+3. Updating :file:`.apt`
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ cd ~/fav/ros2_underlay/src \
-   && git clone https://github.com/PX4/px4_msgs.git && \
-   cd px4_msgs && \
-   git checkout 8a7f3da
+      $ sudo apt update
 
-Build the "ros2_underlay" workspace
-**************************************
+4. Add keys for :file:`rosdep`, so it knows that our packages can be resolved via :file:`apt install ros-${ROS_DISTRO}-<pkg-name>`.
 
-Create an *alias* for the build command for convenience
+   .. code-block:: console
 
-.. code-block:: console
+      $ echo "yaml https://raw.githubusercontent.com/HippoCampusRobotics/hippo_infrastructure/main/rosdep-${ROS_DISTRO}.yaml" | sudo tee /etc/ros/rosdep/sources.list.d/50-hippocampus-packages.list
 
-   $ echo "alias build_underlay=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/iron/setup.zsh && cd \$HOME/fav/ros2_underlay && colcon build'\"" >> ~/.zshrc
-   $ source ~/.zshrc
+5. Apply the changes
 
-Make sure dependencies are installed
+   .. code-block:: console
 
-.. code-block:: console
+      $ rosdep update
 
-   $ cd ~/fav/ros2_underlay \
-   && source /opt/ros/iron/setup.zsh \
-   && rosdep install --from-paths src -y --ignore-src
+6. Installation
 
-Build the workspace (this may take some time!):
+   .. code-block:: console
 
-.. code-block:: console
+      $ sudo apt install ros-jazzy-hippo-full
 
-   $ build_underlay
-
-Note that by executing the defined alias, you do not have to be inside the respective workspace directory to build. Very convenient!
-
-Source the "ros2_underlay" workspace
-**************************************
-
-.. code-block:: console
-
-   $ echo 'source "$HOME/fav/ros2_underlay/install/setup.zsh"' >> ~/.zshrc && \
-   source ~/.zshrc
-
-2. "ros2" workspace
+"ros2" workspace
 ====================
 
-Now on to our development workspace. You will later on fill this workspace with your own packages. Exciting!
+Now on to our development workspace
 
-Populate "ros2" workspace
-**************************************
+1. Populate "ros2" workspace by *downloading* the code
 
-.. code-block:: console
+   .. code-block:: console
 
-   $ cd ~/fav/ros2/src \
-   && git clone https://github.com/FormulasAndVehicles/fav.git
+      $ cd ~/fav/ros2/src \
+      && git clone https://github.com/FormulasAndVehicles/fav.git
 
-Build "ros2" workspace
-**************************************
-
-Create an alias for the build command for convenience
-
-.. code-block:: console
-
-   $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source \$HOME/fav/ros2_underlay/install/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
-   $ source ~/.zshrc
-
-Make sure dependencies are installed
-
-.. code-block:: console
-
-   $ cd ~/fav/ros2 \
-   && rosdep install --from-paths src -y --ignore-src
-
-Build the workspace (this may take some time!):
-
-.. code-block:: console
-
-   $ build_ros
+2. *Build* "ros2" workspace
 
 
+   Creating some short aliases for inconveniently long commands:
 
-Source "ros2" workspace
-**************************************
+   .. code-block:: console
 
-.. code-block:: console
+      $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
+      $ source ~/.zshrc
+      $ echo "alias rosdep-ros2=\"env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd $HOME/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
+      $ source ~/.zshrc
 
-   $ echo 'source "$HOME/fav/ros2/install/local_setup.zsh"' >> ~/.zshrc \
-   && . ~/.zshrc
+   Make sure dependencies are installed
+
+   .. code-block:: console
+
+      $ rosdep-ros2
+
+   Build the workspace (this may take some time!):
+
+   .. code-block:: console
+
+      $ build_ros
 
 
+
+3. *Source* "ros2" workspace
+
+   .. code-block:: console
+
+      $ echo 'source "$HOME/fav/ros2/install/local_setup.zsh"' >> ~/.zshrc \
+      && . ~/.zshrc
 
 Check :file:`.zshrc` file
 ==========================
@@ -160,17 +135,17 @@ Open the :file:`.zshrc` file, for example using :code:`gedit` as text editor:
 
    $ gedit ~/.zshrc
 
-Your :file:`~/.zshrc` should look like this this for the last lines:
+.. attention:: 
 
-.. code-block:: 
+   Your :file:`~/.zshrc` should look like this this for the last lines:
 
-   ...
+      .. code-block:: 
 
-   source /opt/ros/iron/setup.zsh
-   alias build_underlay="env -i HOME=$HOME USER=$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/iron/setup.zsh && cd $HOME/fav/ros2_underlay && colcon build'"
-   source "$HOME/fav/ros2_underlay/install/setup.zsh"
-   alias build_ros="env -i HOME=$HOME USER=$USER TERM=xterm-256color zsh -l -c 'source $HOME/fav/ros2_underlay/install/setup.zsh && cd $HOME/ros2 && colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'"
-   source "$HOME/fav/ros2/install/local_setup.zsh"
+         ...
+
+         alias build_ros="env -i HOME=$HOME USER=$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd $HOME/fav/ros2 && colcon build --symlink-install --cmake-args --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'"
+         alias rosdep-ros2="env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd $HOME/ros2 && rosdep install --from-paths src -y --ignore-src'"
+         source $HOME/fav/ros2/install/local_setup.zsh
 
 Final Check
 ===========
