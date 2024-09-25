@@ -22,89 +22,89 @@ For convenience, we only use one workspace :file:`ros2` for this class, which is
   
    The process of *building* the code can be pretty time consuming. So, sometimes it can be beneficial to skip this step by using **pre-built packages**.
 
-1. The installation of the pre-built packages
-***************************************************
+The installation of the pre-built packages
+==============================================
 
-   1. Adding the key
+1. Adding the key
 
-      .. code-block:: console
+   .. code-block:: console
 
-         $ sudo curl https://repositories.hippocampus-robotics.net/hippo-archive.key -o /etc/apt/keyrings/hippocampus-robotics.asc
+      $ sudo curl https://repositories.hippocampus-robotics.net/hippo-archive.key -o /etc/apt/keyrings/hippocampus-robotics.asc
 
-   2. Adding the sources
+2. Adding the sources
 
-      .. code-block:: console
+   .. code-block:: console
 
-         $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/hippocampus-robotics.asc] https://repositories.hippocampus-robotics.net/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/hippocampus.list
+      $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/hippocampus-robotics.asc] https://repositories.hippocampus-robotics.net/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/hippocampus.list
 
-   3. Updating :file:`.apt`
+3. Updating :file:`.apt`
 
-      .. code-block:: console
+   .. code-block:: console
 
-         $ sudo apt update
+      $ sudo apt update
 
-   4. Add keys for :file:`rosdep`, so it knows that our packages can be resolved via :file:`apt install ros-${ROS_DISTRO}-<pkg-name>`.
-   
-      .. code-block:: console
+4. Add keys for :file:`rosdep`, so it knows that our packages can be resolved via :file:`apt install ros-${ROS_DISTRO}-<pkg-name>`.
 
-         $ echo "yaml https://raw.githubusercontent.com/HippoCampusRobotics/hippo_infrastructure/main/rosdep-${ROS_DISTRO}.yaml" | sudo tee /etc/ros/rosdep/sources.list.d/50-hippocampus-packages.list
+   .. code-block:: console
 
-   5. Apply the changes
+      $ echo "yaml https://raw.githubusercontent.com/HippoCampusRobotics/hippo_infrastructure/main/rosdep-${ROS_DISTRO}.yaml" | sudo tee /etc/ros/rosdep/sources.list.d/50-hippocampus-packages.list
 
-      .. code-block:: console
+5. Apply the changes
 
-         $ rosdep update
+   .. code-block:: console
 
-   6. Installation
+      $ rosdep update
 
-      .. code-block:: console
+6. Installation
 
-         $ sudo apt install ros-jazzy-hippo-full
+   .. code-block:: console
 
-2. "ros2" workspace
+      $ sudo apt install ros-jazzy-hippo-full
+
+"ros2" workspace
 ====================
 
 Now on to our development workspace
 
-   1. Populate "ros2" workspace by *downloading* the code
+1. Populate "ros2" workspace by *downloading* the code
 
-      .. code-block:: console
+   .. code-block:: console
 
-         $ cd ~/fav/ros2/src \
-         && git clone https://github.com/FormulasAndVehicles/fav.git
+      $ cd ~/fav/ros2/src \
+      && git clone https://github.com/FormulasAndVehicles/fav.git
 
-   2. *Build* "ros2" workspace
-
-
-      Creating some short aliases for inconveniently long commands:
-
-      .. code-block:: console
-
-         $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
-         $ source ~/.zshrc
-         $ echo "alias rosdep-ros2=\"env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd $HOME/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
-         $ source ~/.zshrc
-
-      Make sure dependencies are installed
-
-      .. code-block:: console
-
-         $ rosdep-ros2
-
-      Build the workspace (this may take some time!):
-
-      .. code-block:: console
-
-         $ build_ros
+2. *Build* "ros2" workspace
 
 
+   Creating some short aliases for inconveniently long commands:
 
-   3. *Source* "ros2" workspace
+   .. code-block:: console
 
-      .. code-block:: console
+      $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
+      $ source ~/.zshrc
+      $ echo "alias rosdep-ros2=\"env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd $HOME/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
+      $ source ~/.zshrc
 
-         $ echo 'source "$HOME/fav/ros2/install/local_setup.zsh"' >> ~/.zshrc \
-         && . ~/.zshrc
+   Make sure dependencies are installed
+
+   .. code-block:: console
+
+      $ rosdep-ros2
+
+   Build the workspace (this may take some time!):
+
+   .. code-block:: console
+
+      $ build_ros
+
+
+
+3. *Source* "ros2" workspace
+
+   .. code-block:: console
+
+      $ echo 'source "$HOME/fav/ros2/install/local_setup.zsh"' >> ~/.zshrc \
+      && . ~/.zshrc
 
 Check :file:`.zshrc` file
 ==========================
