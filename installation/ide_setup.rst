@@ -40,7 +40,7 @@ VS Code Project Configuration
 
 If you open a folder with VS Code you can have project specific settings stored in a :file:`.vscode` directory.
 The basic configuration files are the :file:`settings.json` and the :file:`extensions.json`.
-There might be some other fies present in a :file:`.vscode` directory depending on the extensions installed.
+There might be some other files present in a :file:`.vscode` directory depending on the extensions installed.
 
 We provide a basic version of both the above mentioned files.
 
