@@ -93,7 +93,7 @@ The source code of our node :file:`depth_calculator.py` might look like this:
    
    All :file:`hippo_msgs` message definitions, such as the above-used :file:`DepthStamped` message, are our own definitions.
    You won't find these online.
-   Instead, you can find the definition here: :file:`fav/ros2_underlay/src/hippo_core/hippo_msgs/msg/DepthStamped.msg`.
+   Instead, you can find the definition here: :file:`opt/ros/jazzy/share/hippo_msgs/msg/DepthStamped.msg`.
 
    More conveniently, you can always look up message definitions using the command line tool :code:`ros2 interface show`.
    
