@@ -4,11 +4,7 @@ Troubleshooting
 What You Should Try First
 =========================
 
-Make sure your workspaces are built
-
-.. code-block:: console
-
-   $ build_underlay
+Make sure your workspace is built
 
 .. code-block:: console
 
