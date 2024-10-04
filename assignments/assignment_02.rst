@@ -13,7 +13,7 @@ We install them with
 
 .. code-block:: console
 
-   $ sudo apt install ros-iron-tf-transformations
+   $ sudo apt install ros-jazzy-tf-transformations
 
 .. code-block:: console
 
