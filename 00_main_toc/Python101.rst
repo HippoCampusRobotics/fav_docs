@@ -52,10 +52,3 @@ A new browser tab should open.
 Open the notebook by right clicking :file:`python101.py`
 
 and selecting :menuselection:`Open with --> Notebook`
-
-**Alternatively** you can open the notebook in VSCode.
-
-Start VSCode and open the repository's directory. 
-VSCode probablly suggests to install the Jupyter extension. If not, you can install it manually.
-
-You can then open the file :file:`Python101.ipynb` and run the notebook.
