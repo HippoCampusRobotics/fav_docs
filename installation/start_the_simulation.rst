@@ -36,6 +36,14 @@ Did we say we can remotely control the BlueROV in the simulation? Let's try it!
 Two windows should be created. One is the familiar simulation environment.
 The second window is for the keyboard control.
 
+.. note::
+
+   If you are experiencing any difficulties, multiple warnings and errors appear within the terminal and gazebo dies after a few seconds, you may have a problem with your wayland protocol. In this case, you need to run the following command **each time** before you start the simulation with gazebo:
+
+   .. code-block:: console
+
+      $ export QT_QPA_PLATFORM=xcb
+
 .. image:: /res/images/keyboard_control_qt.png
 
 Make sure you have the keyboard control window in the foreground.
