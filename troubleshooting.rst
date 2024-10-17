@@ -67,3 +67,8 @@ If you have forgotten to make it executable (most likely reason of the before me
 
    $ chmod +x <PATH_TO_YOUR_NODE>
 
+
+I cannot start the simulation!
+===============================
+
+In this case the wayland protocol may be the cause. A fix for this is described here: :ref:`installation/start_the_simulation:start the simulation`
