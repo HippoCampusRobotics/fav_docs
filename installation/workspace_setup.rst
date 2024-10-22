@@ -160,4 +160,12 @@ If a window similar to the following opens, we are on the right track
 
 .. image:: /res/images/gazebo_test.png
 
-If things do not work out as you hoped, please read the terminal output carefully and check for errors. If you cannot figure out the problem yourself, send a copy of the complete output to your favourite research associate. Preferably via Slack. And use the code-block function there (:kbd:`Ctrl` + :kbd:`Alt` + :kbd:`Shift` + :kbd:`C`). This really helps us to help you!
+.. note::
+
+   If you are experiencing any difficulties, multiple warnings and errors appear within the terminal and gazebo dies after a few seconds, you may have a problem with your wayland protocol. In this case, you need to run the following command **each time** before you start the simulation with gazebo:
+
+   .. code-block:: console
+
+      $ export QT_QPA_PLATFORM=xcb
+
+If things still do not work out as you hoped, please read the terminal output carefully and check for errors. If you cannot figure out the problem yourself, send a copy of the complete output to your favourite research associate. Preferably via Slack. And use the code-block function there (:kbd:`Ctrl` + :kbd:`Alt` + :kbd:`Shift` + :kbd:`C`). This really helps us to help you!
