@@ -82,7 +82,7 @@ Now on to our development workspace
 
       $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
       $ source ~/.zshrc
-      $ echo "alias rosdep-ros2=\"env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd $HOME/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
+      $ echo "alias rosdep-ros2=\"env -i HOME=\$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd \$HOME/fav/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
       $ source ~/.zshrc
 
    Make sure dependencies are installed
