@@ -24,7 +24,7 @@ But please feel free to tinker around with the rest of the code as well!
 
 .. note::
 
-   We cannot and also do not want to avoid lerning how to create new packages/nodes during the course of this lecture.
+   We cannot and also do not want to avoid learning how to create new packages/nodes during the course of this lecture.
    It it beneficial to start with it as soon as possible.
    Hence, we encourage you to read our guide on this topic and learn what it takes to write what the template already provides you with from scratch on your own.
 
