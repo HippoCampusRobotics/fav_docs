@@ -224,7 +224,7 @@ Are you wondering why we have these blocks
 
 around ``rclpy.spin(node)``?
 Glad you asked!
-When we hit :kbd:`Ctrl` + :kbd: `C` to stop the execution of our programs, a keyboard interrupt is triggered.
+When we hit :kbd:`Ctrl` + :kbd:`C` to stop the execution of our programs, a keyboard interrupt is triggered.
 This tells our program to stop.
 As a consequence, an exception is raised. 
 If this exception was not handled, we would get a not very useful terminal output.
