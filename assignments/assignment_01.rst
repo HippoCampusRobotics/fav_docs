@@ -1,7 +1,12 @@
 Assignment 1
 ############
 
-Time to get our hands dirty!
+Time to get our hands dirty! And to update our system!
+
+.. code-block:: console
+
+   $ sudo apt update && sudo apt upgrade
+
 In this assignment, you will do depth control for our underwater robot.
 
 In the hope of getting you started as smoothly as possible, we provide you with a template package for this assignment.

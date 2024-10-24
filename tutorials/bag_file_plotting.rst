@@ -26,7 +26,7 @@ and our control setup
 
 .. code-block:: console
 
-   $ ros2 launch depth_control depth.launch.py vehicle_name:=bluerov00
+   $ ros2 launch depth_control depth_control_full.launch.py vehicle_name:=bluerov00 use_sim_time:=true
 
 In general, you could also use any other setup and adapt the instructions where needed.
 
