@@ -84,7 +84,7 @@ depth_calculator.py
       For this specific topic a non-default quality of service profile is required.
       Otherwise the subscriber will not receive the messages.
       The reason behind this is maybe a bit out of scope of this assignment and it is perfectly fine if you ignore it.
-      If you are still interested, we refer you to the `QoS concept page <https://docs.ros.org/en/iron/Concepts/Intermediate/About-Quality-of-Service-Settings.html>`__ of the ROS documentation.
+      If you are still interested, we refer you to the `QoS concept page <https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html>`__ of the ROS documentation.
 
 depth_controller.py
    
