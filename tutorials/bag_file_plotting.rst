@@ -34,7 +34,7 @@ Recording the Bag
 *****************
 
 We use the command line tool ``ros2 bag record`` for recording bag files.
-See the `official docs <https://docs.ros.org/en/iron/Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html#ros2-bag-record>`__ for more details.
+See the `official docs <https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html#ros2-bag-record>`__ for more details.
    
 In general, we have to specify which topics we want to record and the name of the output file.
 The latter is optional and if not specified, the name will be the current date and time.

@@ -1,7 +1,7 @@
 Install ROS
 ############
 
-The `ROS documentation <https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html>`_ provides a complete installation guide. The following instructions are a summary of their article.
+The `ROS documentation <https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html>`_ provides a complete installation guide. The following instructions are a summary of their article.
 
 .. attention:: 
 

@@ -14,7 +14,7 @@ In this section you will:
 
 .. hint:: 
 
-   The `ROS documentation <https://docs.ros.org/en/iron/index.html>`_ contains detailed tutorials and descriptions if you need them.
+   The `ROS documentation <https://docs.ros.org/en/jazzy/index.html>`_ contains detailed tutorials and descriptions if you need them.
 
 
 Create A Package
@@ -43,7 +43,7 @@ An example for this is the :file:`hippo_core` repository you cloned during the s
 The :file:`hippo_core` directory itself is not a package, but contains packages as subdirectories like :file:`hippo_common` or :file:`hippo_msgs`.
 
 For this guide it is not necessary to go into details too much.
-But if you like to know more about packages, you can read the article about packages in the `ROS Docs <https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html>`_.
+But if you like to know more about packages, you can read the article about packages in the `ROS Docs <https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html>`_.
 
 .. hint:: In ROS2, there is the option to create native Python packages. For this class, we stick to the CMake way of organizing packages. Even if we write pure Python packages. So in this regard, our instructions differ from the official documentation.
 
