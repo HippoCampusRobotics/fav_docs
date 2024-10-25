@@ -130,7 +130,7 @@ We provide a basic version of both the above mentioned files.
 
    .. code-block:: console
 
-      $ python3 -m pip install yapf
+      $ sudo apt install python3-yapf
 
 Open the Workspace
 ==================

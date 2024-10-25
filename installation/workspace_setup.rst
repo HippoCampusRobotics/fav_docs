@@ -82,7 +82,7 @@ Now on to our development workspace
 
       $ echo "alias build_ros=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color zsh -l -c 'source /opt/ros/jazzy/setup.zsh && cd \$HOME/fav/ros2 && colcon build --symlink-install --cmake-args --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'\"" >> ~/.zshrc
       $ source ~/.zshrc
-      $ echo "alias rosdep-ros2=\"env -i HOME=$HOME USER=$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd $HOME/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
+      $ echo "alias rosdep-ros2=\"env -i HOME=\$HOME USER=\$USER TERM=xterm-256color bash -l -c 'source /opt/ros/jazzy/setup.bash && cd \$HOME/fav/ros2 && rosdep install --from-paths src -y --ignore-src'\"" >> ~/.zshrc
       $ source ~/.zshrc
 
    Make sure dependencies are installed
@@ -160,4 +160,12 @@ If a window similar to the following opens, we are on the right track
 
 .. image:: /res/images/gazebo_test.png
 
-If things do not work out as you hoped, please read the terminal output carefully and check for errors. If you cannot figure out the problem yourself, send a copy of the complete output to your favourite research associate. Preferably via Slack. And use the code-block function there (:kbd:`Ctrl` + :kbd:`Alt` + :kbd:`Shift` + :kbd:`C`). This really helps us to help you!
+.. note::
+
+   If you are experiencing any difficulties, multiple warnings and errors appear within the terminal and gazebo dies after a few seconds, you may have a problem with your wayland protocol. In this case, you need to run the following command **each time** before you start the simulation with gazebo:
+
+   .. code-block:: console
+
+      $ export QT_QPA_PLATFORM=xcb
+
+If things still do not work out as you hoped, please read the terminal output carefully and check for errors. If you cannot figure out the problem yourself, send a copy of the complete output to your favourite research associate. Preferably via Slack. And use the code-block function there (:kbd:`Ctrl` + :kbd:`Alt` + :kbd:`Shift` + :kbd:`C`). This really helps us to help you!

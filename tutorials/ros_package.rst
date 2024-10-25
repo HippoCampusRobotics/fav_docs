@@ -136,7 +136,7 @@ and source the newly created package.
    $ . ~/.zshrc
 
 This only needs to be done once a new package is created.
-Nothing bad happens if we are a bit overly cautios regarding sourcing our :file:`.zshrc`.
+Nothing bad happens if we are a bit overly cautious regarding sourcing our :file:`.zshrc`.
 But it does nothing good either.
 So we might want to save it up for the cases where it is actually required.
 
@@ -176,10 +176,6 @@ To do so, enter the following command in your terminal (for example the integrat
 
 The general syntax is :code:`chmod +x PATH_TO_THE_FILE`.
 
-If you feel more comfortable with the graphical interface, you can also set the executable flag in the file browser by right clicking it and open its properties:
-
-.. image:: /res/images/executable.gif
-
 .. note:: Each time you create a new node, make sure you have made it executable.
 
 The first line of your node needs to be:
@@ -201,7 +197,7 @@ Your first node could look like:
    import math
 
    import rclpy
-   from hippo_msgs.msg import ActuatorSetpoint
+   from hippo_control_msgs.msg import ActuatorSetpoint
    from rclpy.node import Node
 
 

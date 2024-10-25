@@ -6,6 +6,12 @@ Updating
 Usually we anounce updates relevant for the class.
 Thus, you do not have to check for updates proactively.
 
+#. Update the system packages
+
+   .. code-block:: console
+
+      $ sudo apt update && sudo apt upgrade
+
 #. Update the ``fav`` package
 
    .. code-block:: console

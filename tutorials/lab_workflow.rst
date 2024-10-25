@@ -23,6 +23,11 @@ Checklist
 
 #. The setup can include a prepared settings file for :code:`plot_juggler`.
 
+.. note::
+
+   The lab is **not** the simulation. Hello, Captain Obvious 😱.
+   Hence, whereever we have a ``use_sim_time:=true`` in our terminal commands, we have to make sure we write ``use_sim_time:=false`` while we are in the lab.
+
 At the Lab
 **********
 

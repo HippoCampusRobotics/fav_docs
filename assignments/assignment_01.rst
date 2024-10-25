@@ -1,7 +1,12 @@
 Assignment 1
 ############
 
-Time to get our hands dirty!
+Time to get our hands dirty! And to update our system!
+
+.. code-block:: console
+
+   $ sudo apt update && sudo apt upgrade
+
 In this assignment, you will do depth control for our underwater robot.
 
 In the hope of getting you started as smoothly as possible, we provide you with a template package for this assignment.
@@ -19,7 +24,7 @@ But please feel free to tinker around with the rest of the code as well!
 
 .. note::
 
-   We cannot and also do not want to avoid lerning how to create new packages/nodes during the course of this lecture.
+   We cannot and also do not want to avoid learning how to create new packages/nodes during the course of this lecture.
    It it beneficial to start with it as soon as possible.
    Hence, we encourage you to read our guide on this topic and learn what it takes to write what the template already provides you with from scratch on your own.
 
@@ -51,7 +56,8 @@ The structure of the template looks similar to
    ~/fav/ros2/src/depth_control
    ├── CMakeLists.txt
    ├── launch
-   │   └── depth.launch.py
+   │   ├── depth_calculator.launch.py
+   │   └── depth_control_full.launch.py
    ├── nodes
    │   ├── depth_calculator.py
    │   ├── depth_controller.py
@@ -98,30 +104,62 @@ depth_setpoint.py
    Moreover, there are clearly limits to the vehicle's dynamics.
    It cannot change its velocity arbitrarily fast, as we might remember from the mechanics lectures.
 
-The Launch File
-===============
+The Launch Files
+================
 
-This file enables us to start all the nodes at the same time.
-We at least encountered two launch files during assignment 0, even though we do not know mouch about them yet.
-It is perfectly fine if it stays that way for now.
-But at some time in the future you will probably like to read something about them.
-You can do so in our tutorials section.
-Besides that, there is a plethora of great tutorials regarding launch files (and actually almost everything else regarding ROS) just one google search away.
+depth_calculator.launch.py
+
+   Runs the ``depth_calculator`` node that is to be implemented in assignment 1a.
+
+depth_control_full.launch.py
+
+   This file enables us to start all the nodes at the same time.
+   This becomes mainly useful for assignment 1b and following.
+   We at least encountered three launch files during assignment 0, even though we do not know mouch about them yet.
+   It is perfectly fine if it stays that way for now.
+   But at some time in the future you will probably like to read something about them.
+   You can do so in our tutorials section.
+   Besides that, there is a plethora of great tutorials regarding launch files (and actually almost everything else regarding ROS) just one google search away.
 
 Get Going
 =========
+
+Assignment 1a
+-------------
 
 We start the simulation with the following command
 
 .. code-block:: console
 
-   $ ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
+   $ ros2 launch fav simulation_with_keyboard_control.launch.py vehicle_name:=bluerov00 use_sim_time:=true
+
+and start the depth calculator node from the template package with
+
+.. code-block:: console
+
+   $ ros2 launch depth_control depth_calculator.launch.py vehicle_name:=bluerov00 use_sim_time:=true
+
+Assignment 1b
+-------------
+
+We start the simulation with the following command
+
+.. code-block:: console
+
+   $ ros2 launch fav simulation.launch.py vehicle_name:=bluerov00 use_sim_time:=true
 
 and start our depth control setup in a second terminal with
 
 .. code-block:: console
 
-   $ ros2 launch depth_control depth.launch.py vehicle_name:=bluerov00
+   $ ros2 launch depth_control depth_control_full.launch.py vehicle_name:=bluerov00 use_sim_time:=true
+
+.. note::
+
+   In contrast to task 1a, we do not want the simulation with the keyboard control.
+   We will have our depth control node, that is responsible for publishing desired thrust commands.
+   If we would start the keyboard control node at the same time, they would publish different values to the same topic.
+   The result will be most likely chaotic.
 
 .. hint::
 
@@ -191,7 +229,7 @@ Are you wondering why we have these blocks
 
 around ``rclpy.spin(node)``?
 Glad you asked!
-When we hit :kbd:`Ctrl` + :kbd: `C` to stop the execution of our programs, a keyboard interrupt is triggered.
+When we hit :kbd:`Ctrl` + :kbd:`C` to stop the execution of our programs, a keyboard interrupt is triggered.
 This tells our program to stop.
 As a consequence, an exception is raised. 
 If this exception was not handled, we would get a not very useful terminal output.
