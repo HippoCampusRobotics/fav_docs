@@ -3,7 +3,7 @@
 Updating
 ########
 
-Usually we anounce updates relevant for the class.
+Usually, we anounce updates relevant for the class.
 Thus, you do not need to check for updates proactively.
 
 #. Update the system packages
