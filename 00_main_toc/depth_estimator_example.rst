@@ -40,7 +40,11 @@ Install the dependencies
 Open the Notebook
 #################
 
-Start VSCode and open the repository's directory. 
-VSCode probablly suggests to install the Jupyter extension. If not, you can install it manually.
+.. code-block:: console
 
-You can then open the file :file:`ekf_example.ipynb` and run the notebook.
+   $ jupyter notebook
+
+A new browser tab should open. 
+Open the notebook by right clicking :file:`ekf_example.ipynb`
+
+and selecting :menuselection:`Open with --> Notebook`
