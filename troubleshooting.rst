@@ -71,4 +71,25 @@ If you have forgotten to make it executable (most likely reason of the before me
 I cannot start the simulation!
 ===============================
 
-In this case the wayland protocol may be the cause. A fix for this is described here: :ref:`installation/start_the_simulation:start the simulation`
+Problem
+********
+
+You are using Ubuntu in a Virtual Machine and Gazebo dies after a few seconds and you get the following Output:
+
+.. code-block:: console
+
+   [gz-4] terminate called after throwing an instance of ‘Ogre::RenderingAPIException’
+   [gz-4]   what():  OGRE EXCEPTION(3:RenderingAPIException): Fragment Program 100000002PixelShader_ps failed to compile. See compile log above for details. in GLSLShader::compile at ./.obj-aarch64-linux-gnu/gz_ogre_next_vendor-prefix/src/gz_ogre_next_vendor/RenderSystems/GL3Plus/src/GLSL/OgreGLSLShader.cpp (line 361)
+
+The VM is trying to render with hardware to which is does not have full access.
+
+Solution
+**********
+
+Run the following command:
+
+.. code-block:: console
+
+   $ echo ‘export LIBGL_ALWAYS_SOFTWARE=1’ >> ~/.zshrc \
+   && . ~/.zshrc
+
