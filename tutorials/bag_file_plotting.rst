@@ -51,11 +51,12 @@ Furthermore, subscribing to all topics might even overload the network capacity 
 
    Choose the topics to record wisely.
 
-As a sensible suggestion, we provide you with the following snippet
+As a sensible suggestion, we provide you with the following snippet. Before you enter the command we recommend to go to the target directoy where you want the file to be saved
 
 .. code-block:: console
 
-   $ ros2 bag record -a -x '(.*)camera(.*)' -o my_bag_file
+   $ ros2 bag record -a --exclude-regex '(.*)camera(.*)' -o my_bag_file
+
 
 Let's have a detailed look at the command
 
@@ -63,7 +64,7 @@ Let's have a detailed look at the command
    Record everything.
    This way we do not have to specify individual topics.
 
--x ``'(.*)camera(.*)'``
+--exclude-regex ``'(.*)camera(.*)'``
    Exclude certain topics.
    We can either write them out directly or we can use regular expressions.
    The ``'(.*)camera(.*)'`` matches any topic name containing the substring ``camera``.
@@ -74,7 +75,7 @@ This way we can already check if the topics we wanted to subscribe are actually 
 
 .. code-block:: console
 
-   $ ros2 bag record -a -x '(.*)camera(.*)' -o my_bag_file 
+   $ ros2 bag record -a --exclude-regex '(.*)camera(.*)' -o my_bag_file 
 
    [INFO] [1699443379.136203027] [rosbag2_recorder]: Press SPACE for pausing/resuming
    [INFO] [1699443379.149421111] [rosbag2_recorder]: Listening for topics...

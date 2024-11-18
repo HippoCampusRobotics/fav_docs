@@ -48,6 +48,8 @@ At the Lab
 
 #. We check if your network setup is working properly.
 
+#. If you want to launch any nodes, you will need to make sure to use the right namespace, since the real robot's name is different: ``vehicle_name:=bluerov01``
+
 #. We have a big TV screen at the lab. You can (and should!) use it (we have HDMI and DisplayPort) for plotting data etc. so that everyone can see.
 
 #. If you record data via :code:`ros2 bag record`, do not include camera images (or, if you *really* need camera data, include just one topic).
