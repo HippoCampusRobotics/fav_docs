@@ -21,7 +21,7 @@ Checklist
    The real experiment will take less computing power since you are not running the simulation environment.
    If you cannot do this, let us know **in time** and we will prepare a laptop for you to use. 
 
-#. The setup can include a prepared settings file for :code:`plot_juggler`.
+#. The setup can include a prepared settings file (xml) for :code:`plot_juggler`. We reccomend to edit the xml-file as a preparation for the labs changing the namespace from the simulated BlueROV ``bluerov00`` to the real one ``bluerov01``
 
 .. note::
 
