@@ -60,7 +60,7 @@ At the Lab
 
    .. code-block:: console
 
-      $ ros2 bag record -a -x '(.*)camera(.*)' -o my_bag_file
+      $ ros2 bag record -a --exclude-regex '(.*)camera(.*)' -o my_bag_file
    
    should exclude all topics containing :file:`camera` and write the data to a file called ``my_bag_file``.
    You can find more information in our section :ref:`record-bag-file`.
