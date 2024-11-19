@@ -202,7 +202,7 @@ To test our node before we integrate it in a launch file setup, we can pass the 
 
    $ ros2 run awesome_package my_controller.py --ros-args -p gains.p:=1.0 -p gains.i:=0.01 -p gains.d:=0.0
 
-No exception is raised! An the logs reflect our manually set parameter values |partying_face|.
+No exception is raised! And the logs reflect our manually set parameter values |partying_face|.
 
 .. note::
 

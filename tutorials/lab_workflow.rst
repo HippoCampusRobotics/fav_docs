@@ -54,7 +54,7 @@ At the Lab
 
 #. If you record data via :code:`ros2 bag record`, do not include camera images (or, if you *really* need camera data, include just one topic).
    Camera images can overload the network.
-   You can exclude topics matching regular expressions with :code:`-x`.
+   You can exclude topics matching regular expressions with :code:`--exclude-regex`.
 
    For example
 
