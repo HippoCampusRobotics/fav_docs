@@ -314,7 +314,7 @@ Handle Parameter Changes
                    self.d_gain = param.value
                else:
                    continue
-           return SetParametersResult(succesful=True, reason='Parameter set')
+           return SetParametersResult(successful=True, reason='Parameter set')
 
 
    def main():
