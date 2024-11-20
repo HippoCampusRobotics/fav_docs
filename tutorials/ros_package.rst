@@ -140,6 +140,9 @@ Nothing bad happens if we are a bit overly cautious regarding sourcing our :file
 But it does nothing good either.
 So we might want to save it up for the cases where it is actually required.
 
+.. note:: 
+   Remeber to either close and reopen all terminals or source in each terminal individually.
+
 If the commands mentioned above completed without errors, we can check if our newly created is detected correctly.
 The following command should give as the installation path of our package.
 
@@ -340,7 +343,30 @@ To get more information on this node, we run
 
    $ ros2 node info /my_first_node
 
-which in turn yields
+which in turn yields::
+
+   /my_first_node
+  Subscribers:
+
+  Publishers:
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+    /rosout: rcl_interfaces/msg/Log
+    /thrust_setpoint: hippo_control_msgs/msg/ActuatorSetpoint
+    /torque_setpoint: hippo_control_msgs/msg/ActuatorSetpoint
+  Service Servers:
+    /my_first_node/describe_parameters: rcl_interfaces/srv/DescribeParameters
+    /my_first_node/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
+    /my_first_node/get_parameters: rcl_interfaces/srv/GetParameters
+    /my_first_node/get_type_description: type_description_interfaces/srv/GetTypeDescription
+    /my_first_node/list_parameters: rcl_interfaces/srv/ListParameters
+    /my_first_node/set_parameters: rcl_interfaces/srv/SetParameters
+    /my_first_node/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
+  Service Clients:
+
+  Action Servers:
+
+  Action Clients:
+
 
 .. asciinema:: /res/asciinema/ros2_node_info.cast
    :speed: 2
