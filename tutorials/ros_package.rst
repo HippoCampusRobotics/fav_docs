@@ -37,10 +37,10 @@ For our code directories to be recognized as packages, two files are required:
 * :file:`package.xml`
 * :file:`CMakeLists.txt`
 
-Otherwise a package is nothing but a normal directory containing arbitrary files and subdirectories.
+Otherwise a package is nothing but a normal directory containing arbitrary files and subdirectories. 
 Packages can also be in arbitrary subdirectories, since the build system will look for directories containing a :file:`package.xml` recursively to identify packages.
-An example for this is the :file:`hippo_core` repository you cloned during the setup instructions.
-The :file:`hippo_core` directory itself is not a package, but contains packages as subdirectories like :file:`hippo_common` or :file:`hippo_msgs`.
+An example for this is the :file:`fav` repository you cloned during the setup instructions.
+The :file:`fav` directory itself is not a package, but contains packages as subdirectories like :file:`keyboard_control` or :file:`scenario_msgs`.
 
 For this guide it is not necessary to go into details too much.
 But if you like to know more about packages, you can read the article about packages in the `ROS Docs <https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html>`_.
