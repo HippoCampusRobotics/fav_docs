@@ -194,7 +194,14 @@ We can quickly see this by pushing our node to different namespaces and check th
 
          $ ros2 run awesome_package setpoint_publisher.py
 
-      ``ros2 topic list`` will show the topic name :file:`/thrust_setpoint`.
+      ``ros2 topic list`` will show the the output
+
+      .. code-block:: console
+
+         /parameter_events
+         /thrust_setpoint
+         /torque_setpoint
+         /rosout
 
    .. tab-item:: With Namespace
 
@@ -202,7 +209,15 @@ We can quickly see this by pushing our node to different namespaces and check th
 
          $ ros2 run awesome_package setpoint_publisher.py --ros-args -r __ns:=/my_namespace
 
-      ``ros2 topic list`` will show the topic name :file:`/my_namespace/thrust_setpoint`.
+      ``ros2 topic list`` will show the output:
+      
+      .. code-block:: console
+
+         /parameter_events
+         /my_namespace/thrust_setpoint
+         /my_namespace/torque_setpoint
+         /rosout
+
       You can also try others namespaces if you like.
       Just note that namespaces have to start with a leading ``/``.
 
@@ -272,13 +287,15 @@ Our ``Node`` is an action, so we will put it inside the ``GroupAction``.
        return launch_description
 
 Instead of directly adding the ``Node`` action to our launch description, we add the node to the ``GroupAction`` which in turn is then the action added to the launch description.
-When starting this launch setup, we get the following result
+When starting this launch setup, we get the following result after entering ``ros2 topic list``:
 
-.. asciinema:: /res/asciinema/ros2_topic_list_nested_namespace.cast
-   :speed: 2
-   :start-at: 1
-   :idle-time-limit: 1
-   :poster: npt:0:01
+.. code-block:: console
+
+   /parameter_events
+   /pushed_to_this_namespace/my_namespace/thrust_setpoint
+   /pushed_to_this_namespace/my_namespace/torque_setpoint
+   /rosout
+
 
 Did you recognize that we *nested* two namespaces this way? 
 Since we are still defining a namespace in ``Node``, and additionally push the node to another namespace with  the name ``PushRosNamespace``, we end up with a topic name that concatenates these namespaces.
