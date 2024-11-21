@@ -42,6 +42,7 @@ Welcome to Formulas and Vehicles' Documentation!
    /faq
    /updating
    00_main_toc/resources
+   00_main_toc/depth_estimator_example.rst
 
 .. toctree::
    :maxdepth: 2
