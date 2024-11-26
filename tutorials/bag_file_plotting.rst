@@ -389,7 +389,7 @@ The required code changes are highlighted below
 .. code-block:: python
    :linenos:
    :caption: main.py
-   :emphasize-lines: 9,25,32
+   :emphasize-lines: 9,20,32
 
    #!/usr/bin/env python3
 
