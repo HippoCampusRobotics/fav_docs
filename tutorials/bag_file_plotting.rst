@@ -450,7 +450,7 @@ The enhanced ``main.py`` looks like
 .. code-block:: python
    :linenos:
    :caption: main.py
-   :emphasize-lines: 8-13,31-32,45
+   :emphasize-lines: 8-13,18-19,31-32,45
 
    #!/usr/bin/env python3
 
