@@ -9,7 +9,7 @@ The concept of names and namespaces is explained in detail in the `ROS Documenta
 
 You can start nodes in namespaces (you can also have nested namespaces).
 This means that the namespace gets prepended to all relative and private topic/action/service names.
-We already used this in the :ref:`launch file tutorial <tutorials/ros_launch_setup:ROS Launch Setup>`.
+We already used this in the :ref:`ROS Launch and Setup <tutorials/ros_launch_setup:ROS Launch Setup>`.
 Every node (and also every node in included launch files) inside a ``GroupAction`` with a ``PushRosNamespace`` action is launched inside a namespace.
 
 Names
@@ -19,9 +19,14 @@ If you have a node subscribing or publishing to/from a topic, you have to specif
 
 Global
    .. code-block:: python
+      :emphasize-lines: 5
 
-      self.pose_pub = self.create_publisher(PoseStamped, "/my_robot/pose", 1)
-   
+      class MyNode(Node):
+         
+         def __init__(self):
+            super().__init__(node_name='my_controller')
+            self.pose_pub = self.create_publisher(PoseStamped, "/my_robot/pose", 1)
+
    A topic name with a leading ``/`` will be resolved globally.
    This means that it does not matter if the node was launched in a namespace or not.
    The resulting topic name will be exactly ``/my_robot/pose``.
@@ -32,8 +37,13 @@ Global
 
 Relative
    .. code-block:: python
+      :emphasize-lines: 5
 
-      self.pose_pub = self.create_publisher(PoseStamped, "pose", 1)
+      class MyNode(Node):
+         
+         def __init__(self):
+            super().__init__(node_name='my_controller')
+            self.pose_pub = self.create_publisher(PoseStamped, "pose", 1)
 
    A topic without leading ``/`` will be relative.
    This means that if the node was launched in a namespace, the namespace will get prepended.
@@ -48,11 +58,13 @@ Relative
 
 Private
    .. code-block:: python
+      :emphasize-lines: 6
 
       class MyNode(Node):
          
          def __init__(self):
-            super().__init__('my_controller')
+            super().__init__(node_name='my_controller')
+            self.pose_pub = self.create_publisher(PoseStamped, "pose", 1)
             self.debug_pub = self.create_publisher(ControlDebugMessage, '~/debug', 1)
 
    Private topics are similar to relative ones.
@@ -68,8 +80,9 @@ Private
 BlueROV
 *******
 
-You will only work with a single robot.
-Still, it is nice to keep things clean and tidy. We will start everything in the :file:`bluerov00` namespace.
+You will only work with a single robot in the labs.
+So, in the labs we will start everything in the :file:`bluerov01` namespace.
+**But**, when we are working with the digital mock up in the simulation, we use a different namespace, which is :file:`bluerov00`.
 
 .. note::
    If you have a controller subscribing to a setpoint topic, it might be a good idea to use a private name ``'~/setpoint'``.
