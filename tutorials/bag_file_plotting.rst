@@ -208,8 +208,11 @@ We want to create the following directory structure:
 
 .. note::
 
-   We can create this directory and the ``main.py`` and ``reader.py`` directly inside VSCode!
+   We can create this directory and the ``main.py`` and ``reader.py`` directly inside VSCode! Remember, that you need to make them executable.
    The ``my_bag_file`` directory is the bag file directory created via ``ros2 bag record``.
+
+Create a Preview Plot
+*********************
 
 We copy-paste the following code into ``reader.py``
 
@@ -258,52 +261,7 @@ We copy-paste the following code into ``reader.py``
 We do not care for the details of the reader implementation for now.
 It simply provides us with the functionality to read data from the bag file.
 
-To have a minimal working example, we paste the follwing snippet into ``main.py``
-
-.. code-block:: python
-   :linenos:
-   :caption: main.py
-
-   #!/usr/bin/env python3
-
-   from reader import Reader
-
-   def main():
-       reader = Reader('my_bag_file')
-       data = reader.get_data('/bluerov00/depth_setpoint')
-
-       for (msg, time_received) in data:
-           print(f'Message: {msg}\ntime_received: {time_received}')
-
-
-   if __name__ == '__main__':
-       main()
-
-In a terminal (an integrated one of VSCode or open a new one with :kbd:`Ctrl` + :kbd:`Alt` + :kbd:`T`) we make sure we are in the same directory as the ``main.py`` file
-
-.. code-block:: console
-
-   $ cd ~/fav/bag_evaluation
-
-and run the ``main.py`` script
-
-.. code-block:: console
-
-   $ python3 main.py
-   ...
-   Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=495445714), frame_id=''), data=-0.6)
-   time_received: 1699443444495922280
-   Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=515611158), frame_id=''), data=-0.6)
-   time_received: 1699443444516101056
-   Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=535362893), frame_id=''), data=-0.6)
-   time_received: 1699443444536112988
-
-We see the list of messages printed to the screen.
-
-Create a Preview Plot
-*********************
-
-We change ``main.py`` so it holds the following content:
+We do the same for the content of ``main.py`` with the following code:
 
 .. code-block:: python
    :linenos:
@@ -354,18 +312,73 @@ We change ``main.py`` so it holds the following content:
    if __name__ == '__main__':
        main()
 
+Not to be Captain Obvious again, but don't forget to update the argument in ``reader = Reader('my_bag_file')`` to your bag's actual name. 👀
 
-Again, identical to the previous section, we run the program with
+In a terminal (an integrated one of VSCode or open a new one with :kbd:`Ctrl` + :kbd:`Alt` + :kbd:`T`) we make sure we are in the same directory as the ``main.py`` file
 
 .. code-block:: console
 
-   $ python3 main.py
+   $ cd ~/fav/bag_evaluation
 
-Which yields the following plot:
+and run the ``main.py`` script:
+
+.. code-block:: console
+
+    $ python3 main.py
+
+Which yields the following plot (or a similar one):
 
 .. image:: /res/images/first_pyplot.png
 
 Congrats, our first manually created plot from extracted bag file data! |partying_face|
+
+
+.. dropdown:: Don't see a plot?
+    :animate: fade-in
+    :color: primary
+
+        Firstly, we recommend (if not already done before) to inspect the bag file, making sure, your desired topics have been recorded at all:
+
+        .. code-block:: console
+
+            $ ros2 bag info my_bag_file/
+        
+        Well, to check if there is anything wrong with our bag file, we can check the data by simply exchanging the ``main.py`` content to the following snippet:
+
+        .. code-block:: python
+            :linenos:
+            :caption: main.py
+
+            #!/usr/bin/env python3
+
+            from reader import Reader
+
+            def main():
+                reader = Reader('my_bag_file')
+                data = reader.get_data('/bluerov00/depth_setpoint')
+
+                for (msg, time_received) in data:
+                    print(f'Message: {msg}\ntime_received: {time_received}')
+
+
+            if __name__ == '__main__':
+                main()
+
+        If you execute ``main.py`` now, you should get a list of messages printed to the screen, each one representing recorded data at a specific time:
+
+        .. code-block:: console
+
+            $ python3 main.py
+            ...
+            Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=495445714), frame_id=''), data=-0.6)
+            time_received: 1699443444495922280
+            Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=515611158), frame_id=''), data=-0.6)
+            time_received: 1699443444516101056
+            Message: hippo_msgs.msg.Float64Stamped(header=std_msgs.msg.Header(stamp=builtin_interfaces.msg.Time(sec=1699443444, nanosec=535362893), frame_id=''), data=-0.6)
+            time_received: 1699443444536112988
+
+        This is one way, you could check for discrepancies.
+
 
 .. note::
 
@@ -375,7 +388,8 @@ Congrats, our first manually created plot from extracted bag file data! |partyin
    Even if we only strive for *barely-good-enough*, we should add axes labels to any plot we create.
    So better do not get used to omitting the labels.
 
-But now we should crop the data to a meaningful time span.
+Crop the Data to a meaningful Time-Span
+****************************************
 
 Lets have the plot begin 5 seconds before a setpoint change and end after the second setpoint change, so that we end up with a plot containing upward and downward changes of the setpoint.
 
@@ -442,6 +456,9 @@ The required code changes are highlighted below
 Now the plot should look like this:
 
 .. image:: /res/images/second_pyplot.png
+
+.. note::
+    If you want to plot further topics, ensure that you also include the offset for each additional data series
 
 For cropping the data to the area of our interest, we provide you with a cropping function that we add to ``main.py``.
 
@@ -513,7 +530,7 @@ The enhanced ``main.py`` looks like
    if __name__ == '__main__':
        main()
 
-which produces the following plot when we run it
+which in our case produces the following plot when we run it
 
 .. image:: /res/images/third_pyplot.png
 
@@ -635,7 +652,7 @@ You can directly check this in VSCode or via the command line
 
 
 
-Create Beatiful Plots in LaTex
+Create Beautiful Plots in LaTex
 ==============================
 
 We will share/have shared a LaTex template via Overleaf with you.
