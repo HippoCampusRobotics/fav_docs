@@ -34,6 +34,7 @@ The source code of our node :file:`depth_calculator.py` might look like this:
 
 .. code-block:: python
    :linenos:
+   :caption: depth_calculator.py
 
    #!/usr/bin/env python3
    import rclpy
@@ -171,7 +172,8 @@ And launch the setup:
 
 .. code-block:: console
 
-   $ ros2 launch fav simulation.launch.py vehicle_name:=bluerov00
+   $ ros2 launch awesome_package setpoint.launch.py vehicle_name:=my_name
+
 
 
 
