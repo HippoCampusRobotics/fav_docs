@@ -13,20 +13,16 @@ We install them with
 
 .. code-block:: console
 
-   $ sudo apt install ros-jazzy-tf-transformations
-
-.. code-block:: console
-
-   $ sudo pip3 install transforms3d
+   $ sudo apt install ros-jazzy-tf-transformations python3-transforms3d
 
 
 New Simulation Launch Files
 ===========================
 
-There are two new launch files in the updated ``fav`` package.
+There are two more launch files in the ``fav`` package that we haven't used so far:
 
 simulation_with_tags.launch.py
-   Analogue to ``simulation.launch.py``, but additionally spawns landmark tags used for the distance based localization.
+   Analogue to ``simulation.launch.py``, but additionally spawns landmark tags used for the distance-based localization.
 
 simulation_with_tags_and_keyboard_control.launch.py
    Extends the above mentioned launch file by the keyboard control node.
@@ -144,7 +140,7 @@ To get more intuition about this, also have a look at the depth Kalman Filter ex
 Ranges Debugger
 ***************
 
-This is simply a convenience node. It republishes the range measurements in an ordered fashion under the topic :code:`debug`. This allows you to plot the measurements from each tag individually.
+This is simply a convenience node. It republishes the range measurements in an ordered fashion under the topic :code:`/bluerov00/range_debugger/debug`. This allows you to plot the measurements from each tag individually.
 
 
 The Distance Sensor
@@ -153,7 +149,7 @@ The Distance Sensor
 The distance sensor is located at the front camera's position of the BlueROV, as depicted in :ref:`camera-sensors`.
 Hence, the measurements are relative to this position.
 Usually we consider the center of the vehicle as the robot's position.
-It is fine to to the localization for the camera and apply the transformation to the robot's center in a post-processing step.
+It is fine to do the localization for the camera and apply the transformation to the robot's center in a post-processing step.
 
 In the simulation the position of the distance sensor is exactly known and has an offset of ``[0.2, 0.0, 0.1]`` relative to the vehicle's origin.
 
@@ -180,7 +176,7 @@ Quaternions
 
 In this assignment we might get in touch of the rotation representation via quaternions.
 The ROS convention is to write them in the order ``[x, y, z, w]``, while there is also the popular notation of writing them in alphabetical order ``[w, x, y, z]``.
-We mention this here, to avoid annoying mistakes caused by mixing these different notations.
+We mention this here to avoid annoying mistakes caused by mixing these different notations.
 Note, that in this assignment it will not be necessary to directly work with quaternions.
 Since we are only interested in the yaw component, we will simply convert the orientation expressed in quaternions to an euler angle representation.
 
