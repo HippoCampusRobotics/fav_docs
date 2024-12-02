@@ -38,11 +38,8 @@ Welcome to Formulas and Vehicles' Documentation!
 
    00_main_toc/the_robot
    00_main_toc/tutorials
-   /troubleshooting
-   /faq
    /updating
    00_main_toc/resources
-   00_main_toc/depth_estimator_example.rst
 
 .. toctree::
    :maxdepth: 2
@@ -51,6 +48,9 @@ Welcome to Formulas and Vehicles' Documentation!
    00_main_toc/Python101
    /assignments/assignment_01
    /assignments/assignment_02
+   00_main_toc/depth_estimator_example.rst
+   /troubleshooting
+   /faq
 
 
 
