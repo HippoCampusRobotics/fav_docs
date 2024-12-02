@@ -163,7 +163,7 @@ Does not sound like a way anyone would like to go.
 Here, ROS namespaces come to the rescue!
 Simply pushing nodes to so-called namespaces can avoid all these problems.
 
-We have a great overview on the topic of namespaces in :ref:`tutorials/ros_publisher_and_namespaces:Names and Namespaces`.
+We have a great overview on the topic of namespaces in :ref:`tutorials/ros_names_and_namespaces:Names and Namespaces`.
 What we recommend is as a guideline:
 
 * Use namespaces where appropriate (in the course of this class: most likely **everywhere**).
