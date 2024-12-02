@@ -5,6 +5,22 @@ Assignment 2
 
    You will need to update our repositories: :ref:`updating`.
 
+Install Dependencies
+====================
+
+The template provided for this assignment has additional dependencies.
+We install them with
+
+.. code-block:: console
+
+   $ sudo apt install ros-jazzy-tf-transformations
+
+.. code-block:: console
+
+   $ sudo pip3 install transforms3d
+
+
+
 New Simulation Launch Files
 ===========================
 
