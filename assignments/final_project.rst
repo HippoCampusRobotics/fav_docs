@@ -171,10 +171,10 @@ Path Follower
 *************
 The ``path_follower`` tries to follow a given path via pure pursuit.
 The path is set via the ``set_path`` service.
-Most likely services are a new concept to you.
+Most likely, services are a new concept to you.
 But they will feel very similar to messages.
 If needed, look up the tutorials in the official ROS2 docs.
-Again a callback is registered as for a subscription as well.
+Again, a callback is registered as for a subscription as well.
 
 The whole flow can be described as follows.
 The ``scenario_node`` publishes a list of viewpoints and the ``path_planner`` computes path segments based on these viewpoints.
@@ -190,7 +190,7 @@ Position Controller
 *******************
 This is a very basic implementation to get a fully functional baseline implementation of the whole system.
 We are confident that you have already implemented much better performing controllers during this class.
-Do not hold back, improve ours!
+Do not hold back, improve ours or use your own!
 
 We would like to encourage you to keep time timeout implementation in place.
 After a certain timeout period during which no setpoints have been received, the controller emits zero setpoints.
@@ -240,5 +240,3 @@ You can change the size of the circular progress display in :file:`config/rviz.r
    size: 80
    text size: 14
    top: 80
-
-200 could be a good value for 4k resolution.
