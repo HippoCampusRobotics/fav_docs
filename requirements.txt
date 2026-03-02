@@ -1,4 +1,4 @@
-sphinx>=7
+sphinx>=7,<9
 sphinxemoji
 sphinx-book-theme
 sphinx_rtd_theme
