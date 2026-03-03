@@ -50,12 +50,12 @@ Format and Schedule
 ###################
 
 There will be in-person pitch lectures as well as practical lab experiments.
-Lectures will be held Thursdays from 15:00 to 17:00.
+Lectures will be held Fridays from 13:15 to 16:30.
 
 Registration
 ############
 
-Students who are interested in participating in this class register via StudIP (TUHH-Students). 
+Students who are interested in participating in this class register via StudIP:  "Mechatronic Systems - Design, Simulation and Implementation (PBL)".
 
 .. note::
    Unfortunately, we have to limit the number of spots in this class.
