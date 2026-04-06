@@ -46,7 +46,7 @@ Welcome to Formulas and Vehicles' Documentation!
    :caption: Assignment Support
 
    00_main_toc/Python101
-   /assignments/assignment_01
+   .. /assignments/assignment_01
    /troubleshooting
    /faq
    .. /assignments/assignment_02
