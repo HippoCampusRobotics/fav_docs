@@ -23,9 +23,9 @@ Welcome to Formulas and Vehicles' Documentation!
    :maxdepth: 2
    :caption: Installation and Setup
 
-   /installation/linux_terminal
    /installation/install_ubuntu
    /installation/virtual_machine
+   /installation/linux_terminal
    /installation/prepare_the_shell
    /installation/install_ros
    /installation/workspace_setup
