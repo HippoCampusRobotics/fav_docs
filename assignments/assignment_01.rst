@@ -1,7 +1,7 @@
 Assignment 1
 ############
 
-Download the assignment PDF: :download:`Assignment 1 </res/pdfs/ws2425_assignment1.pdf>`
+.. Download the assignment PDF: :download:`Assignment 1 </res/pdfs/ws2425_assignment1.pdf>`
 
 In this assignment, you will do depth control for our underwater robot.
 
@@ -120,8 +120,8 @@ depth_control_full.launch.py
 Get Going
 =========
 
-Assignment 1a
--------------
+Just Depth Calculation
+----------------------
 
 We start the simulation with the following command
 
@@ -135,8 +135,11 @@ and start the depth calculator node from the template package with
 
    $ ros2 launch depth_control depth_calculator.launch.py vehicle_name:=bluerov00 use_sim_time:=true
 
-Assignment 1b
--------------
+Now, you test your depth calculation while moving the robot by hand (keyboard).
+
+
+Include Control
+---------------
 
 We start the simulation with the following command
 
@@ -152,14 +155,14 @@ and start our depth control setup in a second terminal with
 
 .. note::
 
-   In contrast to task 1a, we do not want the simulation with the keyboard control.
-   We will have our depth control node, that is responsible for publishing desired thrust commands.
+   In contrast to above, we do not want the simulation with the keyboard control.
+   Instead, now our depth control node is responsible for publishing desired thrust commands.
    If we would start the keyboard control node at the same time, they would publish different values to the same topic.
    The result will be most likely chaotic.
 
 .. hint::
 
-   Have you installed ``terminator`` according to :ref:`installation/linux_terminal:Linux Terminal` ?
+   Have you installed ``terminator`` according to the section :ref:`installation/linux_terminal:Linux Terminal` ?
    In terminator, you can create subterminals by rightclicking inside the terminal and choose to split horizontally or vertically.
    This way you do not have to open two or more separate terminals.
 
@@ -170,13 +173,15 @@ and start our depth control setup in a second terminal with
 
 You should receive many logs from the second launch setup regarding received messages.
 If no regular log messages appear, this indicates that something is not working properly.
-If you are not able to fix the problem yourself, you may want to ask your favourite research associate for help!
+If you are not able to fix the problem yourself, you may want to ask your favourite research associate or tutor for help!
+
+Once the logs start to annoy you, feel free to comment those lines out.
 
 Additional Notes
 ================
 
-Keyword Arguments
-*****************
+Keyword Arguments in Python
+---------------------------
 
 The concept of keyword arguments might be new for you.
 Instead of passing arguments to a function in a specific order, we can use keywords to assign values to the parameters.
@@ -212,7 +217,7 @@ You will probably see the latter variant more often, though.
    There are also functions with positional arguments that you can optionally pass by their keywords, and arguments that you can **exclusively** pass by keywords.
 
 Try-Except Around rclpy.spin
-****************************
+----------------------------
 
 Are you wondering why we have these blocks
 
