@@ -117,6 +117,8 @@ depth_control_full.launch.py
    You can do so in our tutorials section.
    Besides that, there is a plethora of great tutorials regarding launch files (and actually almost everything else regarding ROS) just one google search away.
 
+Note that if you want to start several launch files at the same time, they have to be started in seperate terminals.
+
 Get Going
 =========
 
@@ -129,7 +131,7 @@ We start the simulation with the following command
 
    $ ros2 launch fav simulation_with_keyboard_control.launch.py vehicle_name:=bluerov00 use_sim_time:=true
 
-and start the depth calculator node from the template package with
+and start the depth calculator node from the template package in a second terminal with
 
 .. code-block:: console
 
