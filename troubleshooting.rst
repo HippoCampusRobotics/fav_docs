@@ -195,7 +195,7 @@ For example, to use domain ID ``42`` temporarily in the current terminal, run:
 
 .. code-block:: console
 
-   $ export ROS_DOMAIN_ID=100
+   $ export ROS_DOMAIN_ID=42
 
 You must do this before starting your ROS2 nodes or launch files.
 
@@ -216,7 +216,7 @@ You should see:
 
 .. code-block:: console
 
-   100
+   42
 
 Important
 *********
