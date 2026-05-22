@@ -5,7 +5,7 @@ Assignment 2
 
 ..    You will need to update our repositories: :ref:`updating`.
 
-Download the assignment PDF: :download:`Assignment 2 </res/pdfs/ws2425_assignment2.pdf>`
+.. Download the assignment PDF: :download:`Assignment 2 </res/pdfs/ws2425_assignment2.pdf>`
 
 Install Dependencies
 ====================
@@ -59,11 +59,11 @@ Details about the message definitions can be queried with
       float64 range
 
 Most relevant is the ``measurements`` array.
-Each element of this array consists of a ``id`` field and a ``range`` field.
+Each element of this array consists of an ``id`` field and a ``range`` field.
 The ``id`` identifies the anchor/landmark/AprilTag to which the ``range`` (i.e. distance) was measured.
 These IDs will be in the range [0;3] but the array of measurements is not guaranteed to be ordered.
 
-If a landmark/AprilTag was not detected, it will not be included in the ``measurements`` array.
+If an AprilTag was not detected, it will not be included in the ``measurements`` array.
 Thus, the ``measurements`` array is of variable size.
 
 In Python we can iterate over the measurements with the following loop:
@@ -136,7 +136,7 @@ You will need to implement the :code:`measurement_update` and the :code:`predict
 The initial covariance matrices are all assumed to be diagonal. The measurement noise covariance matrix R and the prediction/process noise covariance matrix Q are used to tune your filter.
 The diagonal entries are the squared standard deviations, i.e. for the process noise this means the first entry corresponds to how much the uncertainty in the x-position in each prediction step increases.
 For your convenience, we have implemented the standard deviation as ROS parameters already.
-To get more intuition about this, also have a look at the depth Kalman Filter example.
+To get more intuition about this, also have a look at the :ref:`kalman-filter-example`.
 
 
 Ranges Debugger
@@ -165,7 +165,7 @@ It is up to you to decide wether you want to implement x-, y-, z-, and yaw-contr
 You might also find it more compelling to implement x- and y-control in the same node.
 
 The yaw-controller is recommended, since the ``range_sensor`` can only detect the anchors/landmarks/AprilTags within a certain field of view.
-Making the robot "looking" at the tags will make sure, they get detected more reliably.
+Making the robot "look" at the tags will make sure that they get detected (more reliably).
 
 Also keep in mind that there are almost no disturbances changing the BlueROV's heading in the simulation.
 Most likely this will be different for the lab experiments, making the yaw-controller essential.
@@ -183,4 +183,4 @@ Note, that in this assignment it will not be necessary to directly work with qua
 Since we are only interested in the yaw component, we will simply convert the orientation expressed in quaternions to an euler angle representation.
 
 There are many euler-angle representations.
-The one usually used for mobile robots is the intrinsic ``z-y'-x''``, which is equivalent to the extrinsic ``x-y-z``.
+The one usually used for mobile robots is the intrinsic ``z-y'-x''``, which is equivalent to the extrinsic ``x-y-z`` representation.

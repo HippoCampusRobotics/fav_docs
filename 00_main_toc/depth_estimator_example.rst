@@ -1,3 +1,5 @@
+.. _kalman-filter-example:
+
 Kalman Filter: Depth-Estimator Example
 ======================================
 

@@ -47,9 +47,9 @@ Welcome to Formulas and Vehicles' Documentation!
 
    00_main_toc/Python101
    /assignments/assignment_01
+   /assignments/assignment_02
    /troubleshooting
    /faq
-   .. /assignments/assignment_02
    .. /assignments/final_project
    00_main_toc/depth_estimator_example.rst
 
