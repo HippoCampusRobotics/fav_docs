@@ -5,7 +5,7 @@ Assignment 2
 
 ..    You will need to update our repositories: :ref:`updating`.
 
-.. Download the assignment PDF: :download:`Assignment 2 </res/pdfs/ws2425_assignment2.pdf>`
+Download the assignment PDF: :download:`Assignment 2 </res/pdfs/2026_assignment_2.pdf>`
 
 Install Dependencies
 ====================

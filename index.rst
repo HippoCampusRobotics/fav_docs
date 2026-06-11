@@ -50,7 +50,7 @@ Welcome to Formulas and Vehicles' Documentation!
    /assignments/assignment_02
    /troubleshooting
    /faq
-   .. /assignments/final_project
+   /assignments/final_project
    00_main_toc/depth_estimator_example.rst
 
 

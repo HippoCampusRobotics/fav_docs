@@ -1,22 +1,39 @@
 Final Project
 #############
 
-Download the assignment PDF: :download:`Assignment Final Project </res/pdfs/ws2425_assignment_final_project.pdf>`
+Download the assignment PDF: :download:`Assignment Final Project </res/pdfs/2026_assignment_final_project.pdf>`
 
-
-.. .. attention::
-
-..    You will need to update our repositories: :ref:`updating`.
 
 Install Dependencies
 ====================
 
 The template provided for this assignment has additional dependencies.
-We install them with
+Due to some `current issue with this library <https://github.com/teamspatzenhirn/rviz_2d_overlay_plugins/pull/28>`_ (as of June 2026), we have to install from source:
 
 .. code-block:: console
 
-   $ sudo apt install ros-${ROS_DISTRO}-rviz-2d-overlay-plugins
+   $ cd ~/fav/ros2/src && \
+   git clone https://github.com/teamspatzenhirn/rviz_2d_overlay_plugins.git && \
+   cd rviz_2d_overlay_plugins && \
+   git checkout 1.4.0
+   
+Get the dependencies: 
+
+.. code-block:: console
+
+   $ rosdep-ros2
+
+and rebuild the workspace:
+
+.. code-block:: console
+
+   $ build_ros
+
+Remember, you have to source the workspace again:
+
+.. code-block:: console
+
+   $ source ~/.zshrc
 
 Template Package
 ================

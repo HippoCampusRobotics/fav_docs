@@ -1,7 +1,7 @@
 Assignment 1
 ############
 
-.. Download the assignment PDF: :download:`Assignment 1 </res/pdfs/ws2425_assignment1.pdf>`
+Download the assignment PDF: :download:`Assignment 1 </res/pdfs/2026_assignment_1.pdf>`
 
 In this assignment, you will do depth control for our underwater robot.
 
