@@ -1,9 +1,6 @@
 Final Project
 #############
 
-Download the assignment PDF: :download:`Assignment Final Project </res/pdfs/2026_assignment_final_project.pdf>`
-
-
 Install Dependencies
 ====================
 
