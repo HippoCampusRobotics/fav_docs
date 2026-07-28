@@ -275,34 +275,8 @@ We will run these nodes on another machine.
 
    Not removing these nodes from your launch setup will cause node/topic collisions.
 
-Remove this code block from ``final_project/launch/final_project.launch.py``
-
-.. code-block:: python
-   :linenos:
-   :lineno-start: 74
-   :caption: final_project/launch/final_project.launch.py
-
-   Node(
-       executable='scenario_node',
-       package='fav',
-       parameters=[
-           {
-               'scenario': LaunchConfiguration('scenario'),
-               'use_sim_time': LaunchConfiguration('use_sim_time'),
-           },
-       ],
-   ),
-   Node(
-       executable='robot_marker_publisher',
-       package='fav',
-       parameters=[
-           {
-               'use_sim_time': LaunchConfiguration('use_sim_time'),
-           },
-       ],
-   ),
-
-
+The ``scenario_node`` will not be started if you set the launch argument ``use_scenario`` to ``false``. 
+You need to remove the ``robot_marker_publisher`` node manually from your launch setup. 
 
 Since we will show the ``rviz`` visualization as well, you might consider removing the ``rviz`` node as well for performance reasons.
 But that is up to your personal preferences.
@@ -331,4 +305,4 @@ We do not need to specify a scenario either.
 
 .. code-block:: console
 
-   $ ros2 launch final_project final_project.launch.py vehicle_name:=bluerov01 use_sim_time:=false
+   $ ros2 launch final_project final_project.launch.py vehicle_name:=bluerov01 use_sim_time:=false use_scenario:=false
